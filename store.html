@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store | Boutique Method IP Holding</title>
-    <meta name="description" content="Acervo de ativos intelectuais, frameworks e ferramentas de gestão para licenciamento imediato.">
+    <title>Store | Boutique Method</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -20,18 +18,8 @@
                     },
                     colors: {
                         gold: {
-                            100: '#f9f1d8',
                             400: '#d4af37',
                             900: '#8a6d1f',
-                        }
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -39,20 +27,19 @@
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; }
-        .gold-border { border: 1px solid rgba(212, 175, 55, 0.2); }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
     </style>
 </head>
-<body class="antialiased selection:bg-gold-900 selection:text-white">
+<body class="antialiased gold-selection">
 
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
             <div class="hidden md:flex space-x-8 text-xs tracking-[0.2em] uppercase font-light">
                 <a href="a-holding.html" class="hover:text-gold-400 transition">A Holding</a>
-                <a href="metodo.html" class="hover:text-gold-400 transition">O Método</a>
                 <a href="licenciamento.html" class="hover:text-gold-400 transition">Licenciamento</a>
                 <a href="store.html" class="text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
             </div>
@@ -62,91 +49,74 @@
         </div>
     </nav>
 
-    <header class="relative pt-40 pb-20 px-6 text-center border-b border-white/5 bg-neutral-900">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-800 via-black to-black -z-10 opacity-50"></div>
-        <p class="text-gold-400 text-xs tracking-[0.3em] uppercase mb-6 animate-fade-in-up">IP Assets & Tools</p>
-        <h1 class="font-serif text-5xl md:text-6xl text-white mb-6 animate-fade-in-up delay-100">
-            Acervo Proprietário
-        </h1>
-        <p class="max-w-xl mx-auto text-neutral-400 text-lg font-light leading-relaxed animate-fade-in-up delay-200">
-            Ferramentas táticas, frameworks e documentos operacionais disponíveis para licenciamento individual e implementação imediata.
-        </p>
+    <header class="pt-40 pb-12 px-6 border-b border-white/5 bg-neutral-900/50">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="font-serif text-4xl text-white mb-2">Acervo Digital</h1>
+            <p class="text-neutral-500 font-light max-w-xl">Ferramentas táticas e protocolos operacionais para implementação imediata.</p>
+        </div>
     </header>
 
-    <section class="py-20 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row gap-12">
             
-            <div class="mb-20">
-                <h3 class="text-white font-serif text-2xl border-l-2 border-gold-400 pl-4 mb-10">JUR — High Performance Law</h3>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="group border border-white/10 p-8 hover:border-gold-400/50 transition duration-500 bg-neutral-950">
-                        <div class="h-48 bg-neutral-900 mb-6 flex items-center justify-center border border-white/5">
-                            <span class="font-serif text-4xl text-neutral-700 italic group-hover:text-gold-400 transition">J.01</span>
-                        </div>
-                        <h4 class="text-white font-serif text-xl mb-2">Legal Design System</h4>
-                        <p class="text-neutral-500 text-xs uppercase tracking-widest mb-4">Template & Grid • Figma/Word</p>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">
-                            Sistema de padronização visual para petições de alta complexidade. Inclui hierarquia tipográfica e paleta sóbria.
-                        </p>
-                        <a href="#" class="inline-block text-gold-400 text-xs uppercase tracking-widest border border-gold-400/20 px-4 py-2 hover:bg-gold-400 hover:text-black transition">Licenciar Ativo</a>
-                    </div>
-
-                    <div class="group border border-white/10 p-8 hover:border-gold-400/50 transition duration-500 bg-neutral-950">
-                        <div class="h-48 bg-neutral-900 mb-6 flex items-center justify-center border border-white/5">
-                            <span class="font-serif text-4xl text-neutral-700 italic group-hover:text-gold-400 transition">J.02</span>
-                        </div>
-                        <h4 class="text-white font-serif text-xl mb-2">Manual de Redação</h4>
-                        <p class="text-neutral-500 text-xs uppercase tracking-widest mb-4">PDF Operacional • 50 pgs</p>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">
-                            Diretrizes de tom de voz institucional para escritórios que desejam eliminar o "juridiquês" sem perder a técnica.
-                        </p>
-                        <a href="#" class="inline-block text-gold-400 text-xs uppercase tracking-widest border border-gold-400/20 px-4 py-2 hover:bg-gold-400 hover:text-black transition">Licenciar Ativo</a>
-                    </div>
+            <aside class="w-full md:w-64 space-y-8 pt-2">
+                <div>
+                    <h3 class="text-xs uppercase tracking-widest text-white border-b border-white/10 pb-2 mb-4">Vertente</h3>
+                    <ul class="space-y-2 text-sm text-neutral-500">
+                        <li class="text-gold-400 cursor-pointer font-bold">Todas</li>
+                        <li class="hover:text-gold-400 cursor-pointer transition">Jurídico (JUR)</li>
+                        <li class="hover:text-gold-400 cursor-pointer transition">Health Care (HC)</li>
+                        <li class="hover:text-gold-400 cursor-pointer transition">Política (POL)</li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="mb-20">
-                <h3 class="text-white font-serif text-2xl border-l-2 border-gold-400 pl-4 mb-10">HC — Health Care Experience</h3>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="group border border-white/10 p-8 hover:border-gold-400/50 transition duration-500 bg-neutral-950">
-                        <div class="h-48 bg-neutral-900 mb-6 flex items-center justify-center border border-white/5">
-                            <span class="font-serif text-4xl text-neutral-700 italic group-hover:text-gold-400 transition">H.01</span>
-                        </div>
-                        <h4 class="text-white font-serif text-xl mb-2">Script de Recepção Premium</h4>
-                        <p class="text-neutral-500 text-xs uppercase tracking-widest mb-4">Protocolo Verbal</p>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">
-                            Roteiro exato do que dizer (e não dizer) desde o primeiro "bom dia" até o pós-consulta em clínicas high-ticket.
-                        </p>
-                        <a href="#" class="inline-block text-gold-400 text-xs uppercase tracking-widest border border-gold-400/20 px-4 py-2 hover:bg-gold-400 hover:text-black transition">Licenciar Ativo</a>
-                    </div>
+                <div>
+                    <h3 class="text-xs uppercase tracking-widest text-white border-b border-white/10 pb-2 mb-4">Tipo</h3>
+                    <ul class="space-y-2 text-sm text-neutral-500">
+                        <li class="hover:text-gold-400 cursor-pointer transition">Protocolos</li>
+                        <li class="hover:text-gold-400 cursor-pointer transition">Checklists</li>
+                        <li class="hover:text-gold-400 cursor-pointer transition">Scripts</li>
+                    </ul>
                 </div>
-            </div>
+            </aside>
 
-            <div class="border border-gold-400/30 bg-gradient-to-r from-neutral-900 to-black p-12 md:p-20 text-center relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent"></div>
-                <h2 class="font-serif text-3xl md:text-5xl text-white mb-6">Boutique Club<span class="align-top text-xs text-gold-400">®</span></h2>
-                <p class="text-neutral-400 max-w-2xl mx-auto mb-10 text-lg font-light">
-                    Acesso irrestrito a todo o acervo digital, atualizações mensais de ferramentas e masterclasses de implementação.
-                </p>
-                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-3 uppercase tracking-widest text-xs font-bold hover:bg-white transition duration-300">
-                    Aplicar para Membresia
-                </a>
-            </div>
+            <main class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="group border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] border border-white/20 px-2 py-1 text-neutral-400 uppercase tracking-wider">HC / JUR</span>
+                        <span class="text-gold-400 text-xs font-serif italic">doc</span>
+                    </div>
+                    <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold-400 transition">Protocolo de Recepção</h3>
+                    <p class="text-sm text-neutral-500 mb-6 line-clamp-2 h-10">Roteiro completo de atendimento, postura e linguagem para recepções de alto padrão.</p>
+                    <a href="iniciar-tratativas.html" class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 hover:border-gold-400 hover:text-gold-400 transition">Licenciar Ativo &rarr;</a>
+                </div>
 
+                <div class="group border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] border border-white/20 px-2 py-1 text-neutral-400 uppercase tracking-wider">POL</span>
+                        <span class="text-gold-400 text-xs font-serif italic">pdf</span>
+                    </div>
+                    <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold-400 transition">Kit Crise & Reputação</h3>
+                    <p class="text-sm text-neutral-500 mb-6 line-clamp-2 h-10">Matriz de risco imediato e templates de notas oficiais para contenção de danos.</p>
+                    <a href="iniciar-tratativas.html" class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 hover:border-gold-400 hover:text-gold-400 transition">Licenciar Ativo &rarr;</a>
+                </div>
+
+                <div class="group border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] border border-white/20 px-2 py-1 text-neutral-400 uppercase tracking-wider">JUR</span>
+                        <span class="text-gold-400 text-xs font-serif italic">xls</span>
+                    </div>
+                    <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold-400 transition">Dashboard de Processos</h3>
+                    <p class="text-sm text-neutral-500 mb-6 line-clamp-2 h-10">Planilha estruturada para controle visual de prazos e etapas processuais.</p>
+                    <a href="iniciar-tratativas.html" class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 hover:border-gold-400 hover:text-gold-400 transition">Licenciar Ativo &rarr;</a>
+                </div>
+
+                <div class="group border border-dashed border-white/10 p-6 flex items-center justify-center text-neutral-600 text-xs uppercase tracking-widest min-h-[200px]">
+                    Novos Ativos em Breve
+                </div>
+
+            </main>
         </div>
-    </section>
-
-    <footer class="bg-black py-20 border-t border-white/10 text-xs text-neutral-500 font-light">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-            <div>
-                <h5 class="text-white uppercase tracking-widest mb-4">Boutique Method IP Holding Ltda</h5>
-                <p>Santa Maria/RS – Brasil</p>
-            </div>
-            <div class="md:text-right">
-                <a href="index.html" class="block hover:text-white transition">Voltar ao Início</a>
-            </div>
-        </div>
-    </footer>
-
+    </div>
 </body>
 </html>
