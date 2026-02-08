@@ -10,25 +10,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            100: '#f9f1d8',
-                            400: '#d4af37',
-                            900: '#8a6d1f',
-                        }
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    serif: ['"Playfair Display"', 'serif'],
+                    sans: ['"Lato"', 'sans-serif'],
+                },
+                colors: {
+                    gold: {
+                        100: '#f9f1d8',
+                        400: '#d4af37',
+                        900: '#8a6d1f',
+                    }
+                },
+                // ADIÇÃO: Configuração da Animação
+                animation: {
+                    'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                },
+                keyframes: {
+                    fadeInUp: {
+                        '0%': { opacity: '0', transform: 'translateY(20px)' },
+                        '100%': { opacity: '1', transform: 'translateY(0)' },
                     }
                 }
             }
         }
-    </script>
+    }
+</script>
     <style>
         body { background-color: #050505; color: #e5e5e5; }
         .gold-border { border: 1px solid rgba(212, 175, 55, 0.2); }
