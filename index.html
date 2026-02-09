@@ -46,18 +46,22 @@
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="hidden md:flex space-x-8 text-xs tracking-[0.2em] uppercase font-light">
-               <a href="manifesto.html" class="hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" class="hover:text-gold-400 transition">Licenciamento</a>
-                <a href="store.html" class="hover:text-gold-400 transition">Store</a>
+
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
+            
         </div>
     </nav>
 
@@ -102,40 +106,3 @@
                             E-mail Corporativo
                         </label>
                     </div>
-
-                    <div class="relative group">
-                        <select name="assunto" required 
-                            class="w-full bg-black border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300 text-sm uppercase tracking-wider text-neutral-400">
-                            <option value="" disabled selected>Selecione a Pauta</option>
-                            <option value="JUR">JUR — Jurídico & Legal Design</option>
-                            <option value="HC">HC — Health Care & Experiência</option>
-                            <option value="POL">POL — Integridade & Reputação</option>
-                            <option value="Store">Licenciamento de Ativos (Store)</option>
-                            <option value="Institucional">Assuntos Institucionais</option>
-                        </select>
-                    </div>
-
-                    <div class="relative group">
-                        <textarea name="mensagem" id="mensagem" rows="3" required placeholder=" "
-                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300"></textarea>
-                        <label for="mensagem" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
-                            Breve descrição da demanda
-                        </label>
-                    </div>
-
-                    <button type="submit" class="w-full bg-gold-400 text-black py-4 uppercase tracking-[0.2em] font-bold text-xs hover:bg-white transition duration-500 mt-8">
-                        Iniciar Protocolo
-                    </button>
-
-                </form>
-            </div>
-
-        </div>
-    </main>
-
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
-    </footer>
-
-</body>
-</html>
