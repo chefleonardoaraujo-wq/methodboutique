@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluções Corporativas | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
+    </script>
+    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="store.html" class="text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
+            </div>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-52 pb-32 px-6">
+        <div class="max-w-7xl mx-auto space-y-16">
+            
+            <div class="text-center space-y-4">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Catálogo de Produtos</span>
+                <h1 class="font-serif text-4xl md:text-5xl text-white">
+                    Soluções <span class="italic text-neutral-500">Corporativas</span>
+                </h1>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 border-y border-white/10 py-8 text-center">
+                <div class="space-y-2">
+                    <h3 class="text-white font-serif text-lg">Comunicação Pública</h3>
+                    <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Cerimoniais • Discursos • Porta-voz</p>
+                </div>
+                <div class="space-y-2 md:border-x border-white/10">
+                    <h3 class="text-white font-serif text-lg">Gestão & Processos</h3>
+                    <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Org. Interna • Governança • Treinamentos</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-serif text-lg">Posicionamento</h3>
+                    <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Diagnóstico • Branding • Reputação</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Proteção</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Crise & Reputação</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Estruturamos respostas, posicionamentos e protocolos para reduzir risco reputacional.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Plano de resposta rápida</li>
+                            <li>• Nota oficial e comunicados</li>
+                            <li>• Q&A (perguntas difíceis)</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Sistemas</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Governança & Protocolos</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Regras e fluxos para que a mensagem da empresa seja consistente e segura.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Matriz de canais</li>
+                            <li>• Padrões editoriais</li>
+                            <li>• Fluxo de aprovações</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Análise</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Diagnóstico Estratégico</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Leitura objetiva do cenário: ruídos, riscos, desperdícios e oportunidades.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Mapa de ruídos e gargalos</li>
+                            <li>• Riscos de compliance</li>
+                            <li>• Plano de ação por etapas</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Marca</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Posicionamento Premium</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Ajustamos a narrativa externa à realidade interna do negócio.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Proposta de valor</li>
+                            <li>• Core narrative</li>
+                            <li>• Pitch institucional</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Eficiência</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Organização & Padronização</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Estruturação de fluxos de comunicação interna para eliminar retrabalho.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Fim do retrabalho</li>
+                            <li>• Cultura de eficiência</li>
+                            <li>• Rituais e cadência</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Performance</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Porta-Voz & Autoridade</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Treinamento prático para entrevistas, eventos e vídeos com controle de mensagem.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Media training</li>
+                            <li>• Storyline e pontos-chave</li>
+                            <li>• Postura executiva</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Jurídico</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Legal Design Kit</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Transformamos documentos densos em peças claras, elegantes e objetivas.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Contratos e propostas</li>
+                            <li>• Políticas e termos</li>
+                            <li>• Padronização visual</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Rotina</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Scripts Operacionais</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Scripts para rotina real: atendimento, cobrança, suporte e alinhamento.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Atendimento (WhatsApp)</li>
+                            <li>• Cobrança e inadimplência</li>
+                            <li>• Mensagens de alinhamento</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+</body>
+</html>
