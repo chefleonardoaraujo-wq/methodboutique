@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Tratativas | Boutique Method</title>
+    <title>Store | Boutique Method</title>
     
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -33,14 +33,6 @@
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Efeito de Label Flutuante */
-        .floating-input:focus ~ label,
-        .floating-input:not(:placeholder-shown) ~ label {
-            top: -1.5rem;
-            font-size: 0.7rem;
-            color: #d4af37;
-        }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -55,7 +47,7 @@
             <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
                 <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                 <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
             </div>
 
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
@@ -65,75 +57,19 @@
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center py-32 px-6">
-        <div class="max-w-4xl w-full grid md:grid-cols-2 gap-16 items-start">
-            
-            <div class="space-y-8">
-                <h1 class="font-serif text-4xl md:text-5xl text-white leading-tight">
-                    Protocolo de <br><span class="italic text-neutral-500">Iniciação</span>
-                </h1>
-                <p class="text-neutral-400 font-light leading-relaxed">
-                    Para garantir a integridade de nossas operações e o sigilo de nossos clientes, todas as tratativas iniciam-se através deste canal seguro.
-                </p>
-                <div class="space-y-4 pt-8 border-t border-white/10">
-                    <div class="flex items-center gap-4 text-sm text-neutral-500">
-                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        <span>Atendimento sob NDA</span>
-                    </div>
-                    <div class="flex items-center gap-4 text-sm text-neutral-500">
-                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        <span>Resposta em até 24h úteis</span>
-                    </div>
-                </div>
+    <main class="flex-grow flex items-center justify-center px-6">
+        <div class="text-center space-y-8">
+            <h1 class="font-serif text-5xl md:text-7xl text-white">
+                Store <span class="italic text-gold-400">Concept</span>
+            </h1>
+            <p class="text-neutral-400 font-light tracking-widest uppercase text-xs md:text-sm">
+                Licenciamento de Ativos & Produtos Exclusivos
+            </p>
+            <div class="pt-8">
+                <span class="px-4 py-2 border border-white/10 bg-white/5 text-xs text-neutral-500 uppercase tracking-widest">
+                    Em Breve
+                </span>
             </div>
-
-            <div class="bg-neutral-900/30 p-8 border border-white/5 backdrop-blur-sm">
-                
-                <form action="https://formspree.io/f/xykdznjb" method="POST" class="space-y-8">
-                    
-                    <div class="relative group mt-4">
-                        <input type="text" name="nome" id="nome" required placeholder=" "
-                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
-                        <label for="nome" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
-                            Nome Completo / Cargo
-                        </label>
-                    </div>
-
-                    <div class="relative group">
-                        <input type="email" name="email" id="email" required placeholder=" "
-                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
-                        <label for="email" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
-                            E-mail Corporativo
-                        </label>
-                    </div>
-
-                    <div class="relative group">
-                        <select name="assunto" required 
-                            class="w-full bg-black border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300 text-sm uppercase tracking-wider text-neutral-400">
-                            <option value="" disabled selected>Selecione a Pauta</option>
-                            <option value="JUR">JUR — Jurídico & Legal Design</option>
-                            <option value="HC">HC — Health Care & Experiência</option>
-                            <option value="POL">POL — Integridade & Reputação</option>
-                            <option value="Store">Licenciamento de Ativos (Store)</option>
-                            <option value="Institucional">Assuntos Institucionais</option>
-                        </select>
-                    </div>
-
-                    <div class="relative group">
-                        <textarea name="mensagem" id="mensagem" rows="3" required placeholder=" "
-                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300"></textarea>
-                        <label for="mensagem" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
-                            Breve descrição da demanda
-                        </label>
-                    </div>
-
-                    <button type="submit" class="w-full bg-gold-400 text-black py-4 uppercase tracking-[0.2em] font-bold text-xs hover:bg-white transition duration-500 mt-8">
-                        Iniciar Protocolo
-                    </button>
-
-                </form>
-            </div>
-
         </div>
     </main>
 
