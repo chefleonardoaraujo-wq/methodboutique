@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoria Executiva | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
+    </script>
+    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="store.html" class="text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
+            </div>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-52 pb-32 px-6">
+        <div class="max-w-4xl mx-auto space-y-16">
+            
+            <div class="space-y-6 text-center md:text-left">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Executive Mentoring</span>
+                <h1 class="font-serif text-4xl md:text-6xl text-white leading-tight">
+                    Mentoria <span class="italic text-neutral-500">Executiva</span>
+                </h1>
+                <p class="text-neutral-400 font-light text-lg leading-relaxed max-w-2xl">
+                    Acompanhamento estratégico direto com os sócios da Holding, desenhado para líderes que precisam de clareza, priorização e execução com padrão executivo.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
+                
+                <div class="space-y-8">
+                    <h3 class="font-serif text-2xl text-white">O que você <span class="italic text-gold-400">Recebe</span></h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <span class="text-gold-400 mt-1">✓</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">Diagnóstico de Cenário</strong>
+                                <p class="text-neutral-500 text-xs">Definição clara de prioridades: o que fazer agora vs. o que pode esperar.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-gold-400 mt-1">✓</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">Plano de Ação Objetivo</strong>
+                                <p class="text-neutral-500 text-xs">Metas claras, responsáveis definidos e checkpoints de validação.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-gold-400 mt-1">✓</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">Ajuste de Posicionamento</strong>
+                                <p class="text-neutral-500 text-xs">Refinamento de narrativa, proposta de valor e estrutura comercial.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-gold-400 mt-1">✓</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">Governança de Execução</strong>
+                                <p class="text-neutral-500 text-xs">Rituais, indicadores e cadência para garantir que o plano não morra.</p>
+                            </div>
+                        </li>
+                         <li class="flex items-start gap-4">
+                            <span class="text-gold-400 mt-1">✓</span>
+                            <div>
+                                <strong class="text-white text-sm block mb-1">Revisão de Materiais Críticos</strong>
+                                <p class="text-neutral-500 text-xs">Análise técnica de site, pitch, propostas, contratos e scripts.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-12">
+                    
+                    <div class="bg-neutral-900/30 p-8 border border-white/5">
+                        <h4 class="text-white text-xs uppercase tracking-widest mb-4 border-b border-white/10 pb-2">Formato</h4>
+                        <ul class="space-y-2 text-sm text-neutral-400 font-light">
+                            <li>• Encontros 1:1 (online) com pauta e registro.</li>
+                            <li>• Frequência semanal ou quinzenal.</li>
+                            <li>• Suporte estratégico entre encontros.</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-white text-xs uppercase tracking-widest mb-2">Para quem é</h4>
+                        <p class="text-neutral-500 text-sm font-light">
+                            Sócios e executivos em fase de estruturação, crescimento ou reposicionamento que exigem blindagem de método.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-white text-xs uppercase tracking-widest mb-2">Resultado Esperado</h4>
+                        <p class="text-white font-serif text-lg italic">
+                            "Decisões mais rápidas, menos retrabalho e execução com direção."
+                        </p>
+                    </div>
+
+                    <a href="iniciar-tratativas.html" class="block w-full text-center bg-gold-400 text-black py-4 uppercase tracking-[0.2em] font-bold text-xs hover:bg-white transition duration-500">
+                        Agendar Conversa
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+</body>
+</html>
