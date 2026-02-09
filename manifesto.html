@@ -6,30 +6,19 @@
     <title>Manifesto | Boutique Method</title>
     
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            400: '#d4af37',
-                            900: '#8a6d1f',
-                        }
-                    }
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
                 }
             }
         }
     </script>
-    
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
@@ -38,69 +27,91 @@
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="hidden md:flex space-x-8 text-xs tracking-[0.2em] uppercase font-light">
-                <a href="manifesto.html" class="text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" class="hover:text-gold-400 transition">Licenciamento</a>
-                <a href="store.html" class="hover:text-gold-400 transition">Store</a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
+                <a href="manifesto.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">A Holding</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
         </div>
     </nav>
 
     <main class="flex-grow flex items-center justify-center py-32 px-6">
-        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-16 items-start">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-16 items-center">
             
             <div class="space-y-8">
-                <span class="text-[10px] uppercase tracking-widest text-gold-400">Sobre Nós</span>
-                <h1 class="font-serif text-4xl md:text-5xl text-white leading-tight mb-8">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Sobre Nós</span>
+                <h1 class="font-serif text-5xl md:text-6xl text-white leading-tight">
                     Manifesto <span class="italic text-neutral-500">Institucional</span>
                 </h1>
                 
-                <div class="space-y-6 text-neutral-400 font-light leading-relaxed text-sm md:text-base text-justify">
-                    <p>
-                        Em um mercado saturado de promessas vazias, o verdadeiro poder não está na fama, mas na <span class="text-white italic">consistência</span>.
-                    </p>
-                    <p class="border-l-2 border-gold-400 pl-4 text-white italic">
-                        Não somos uma agência de marketing. Não vendemos "hacks" de internet. Somos uma Holding de Propriedade Intelectual que transforma o seu conhecimento em patrimônio.
-                    </p>
-                    <p>
-                        Nosso papel é tirar o método da sua cabeça e transformá-lo em processos que sua equipe possa seguir. Organizamos o caos para que sua marca valha mais e dependa menos da sua presença física.
+                <p class="text-neutral-400 font-light leading-relaxed text-lg">
+                    Em um mercado saturado de promessas vazias, o verdadeiro poder não está na fama, mas na <span class="text-white italic">consistência</span>.
+                </p>
+
+                <div class="border-l-2 border-gold-400 pl-6 py-2">
+                    <p class="text-white italic font-serif text-xl">
+                        "Não somos uma agência de marketing. Não vendemos 'hacks' de internet. Somos uma Holding de Propriedade Intelectual que transforma o seu conhecimento em patrimônio."
                     </p>
                 </div>
 
-                <div class="pt-8">
-                    <a href="iniciar-tratativas.html" class="inline-block border-b border-gold-400 pb-1 text-xs uppercase tracking-widest hover:text-gold-400 transition">
-                        Agendar Apresentação &rarr;
-                    </a>
-                </div>
+                <p class="text-neutral-500 font-light leading-relaxed text-sm">
+                    Nosso papel é tirar o método da sua cabeça e transformá-lo em processos que sua equipe possa seguir. Organizamos o caos para que sua marca valha mais e dependa menos da sua presença física.
+                </p>
+
+                <a href="iniciar-tratativas.html" class="inline-block mt-8 text-xs uppercase tracking-widest text-gold-400 hover:text-white transition border-b border-gold-400 pb-1">
+                    Agendar Apresentação &rarr;
+                </a>
             </div>
 
-            <div class="bg-white/5 border border-white/10 p-10 backdrop-blur-sm relative mt-8 md:mt-0">
-                <div class="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-gold-400"></div>
-                <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b border-r border-gold-400"></div>
+            <div class="bg-neutral-900/30 p-10 border border-white/10 backdrop-blur-sm relative group hover:border-gold-400/30 transition duration-500">
+                <div class="absolute -top-2 -right-2 w-8 h-8 border-t border-r border-gold-400/50"></div>
+                <div class="absolute -bottom-2 -left-2 w-8 h-8 border-b border-l border-gold-400/50"></div>
 
-                <h3 class="font-serif text-xl text-white mb-8 border-b border-white/10 pb-4">
-                    Política de Atuação
+                <h3 class="font-serif text-2xl text-white mb-8 border-b border-white/5 pb-4">
+                    Princípios <span class="italic text-gold-400">Inegociáveis</span>
                 </h3>
 
                 <ul class="space-y-6">
                     <li class="flex items-start gap-4">
-                        <span class="text-gold-400 text-xs mt-1">✕</span>
-                        <p class="text-xs text-neutral-400 font-light uppercase tracking-wide">
-                            Não aplicamos táticas de escassez artificial.
-                        </p>
+                        <span class="text-red-500 font-serif text-lg mt-1">✕</span>
+                        <div>
+                            <h4 class="text-white text-xs uppercase tracking-widest mb-1">Zero Escassez Artificial</h4>
+                            <p class="text-neutral-500 text-xs">Não manipulamos audiência. Se algo é exclusivo, é porque realmente é raro.</p>
+                        </div>
                     </li>
+                    
                     <li class="flex items-start gap-4">
-                        <span class="text-gold-400 text-xs mt-1">✕</span>
-                        <p class="text-xs text-neutral-400 font-light uppercase tracking-wide">
-                            Não oferecemos fórmulas sem lastro operacional.
-                        </p>
+                        <span class="text-red-500 font-serif text-lg mt-1">✕</span>
+                        <div>
+                            <h4 class="text-white text-xs uppercase tracking-widest mb-1">Sem Fórmulas Mágicas</h4>
+                            <p class="text-neutral-500 text-xs">Não vendemos atalhos. Vendemos estrutura, processo e solidez operacional.</p>
+                        </div>
                     </li>
+
                     <li class="flex items-start gap-4">
-                        <span class="text-gold-400 text-xs mt-1
+                        <span class="text-gold-400 font-serif text-lg mt-1">✓</span>
+                        <div>
+                            <h4 class="text-white text-xs uppercase tracking-widest mb-1">Foco em Equity</h4>
+                            <p class="text-neutral-500 text-xs">Trabalhamos para aumentar o valor da sua empresa (Valuation), não apenas o seu faturamento mensal.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+</body>
+</html>
