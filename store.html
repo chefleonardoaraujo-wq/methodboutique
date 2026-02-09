@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store | Boutique Method</title>
+    <title>Iniciar Tratativas | Boutique Method</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -26,97 +29,117 @@
             }
         }
     </script>
+    
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
+        
+        /* Efeito de Label Flutuante */
+        .floating-input:focus ~ label,
+        .floating-input:not(:placeholder-shown) ~ label {
+            top: -1.5rem;
+            font-size: 0.7rem;
+            color: #d4af37;
+        }
     </style>
 </head>
-<body class="antialiased gold-selection">
+<body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="hidden md:flex space-x-8 text-xs tracking-[0.2em] uppercase font-light">
-                <a href="a-holding.html" class="hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" class="hover:text-gold-400 transition">Licenciamento</a>
-                <a href="store.html" class="text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
+
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-white/20 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition duration-500">
+
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
+            
         </div>
     </nav>
 
-    <header class="pt-40 pb-12 px-6 border-b border-white/5 bg-neutral-900/50">
-        <div class="max-w-7xl mx-auto">
-            <h1 class="font-serif text-4xl text-white mb-2">Acervo Digital</h1>
-            <p class="text-neutral-500 font-light max-w-xl">Ferramentas táticas e protocolos operacionais para implementação imediata.</p>
-        </div>
-    </header>
-
-    <div class="max-w-7xl mx-auto px-6 py-12">
-        <div class="flex flex-col md:flex-row gap-12">
+    <main class="flex-grow flex items-center justify-center py-32 px-6">
+        <div class="max-w-4xl w-full grid md:grid-cols-2 gap-16 items-start">
             
-            <aside class="w-full md:w-64 space-y-8 pt-2">
-                <div>
-                    <h3 class="text-xs uppercase tracking-widest text-white border-b border-white/10 pb-2 mb-4">Vertente</h3>
-                    <ul class="space-y-2 text-sm text-neutral-500">
-                        <li class="text-gold-400 cursor-pointer font-bold">Todas</li>
-                        <li class="hover:text-gold-400 cursor-pointer transition">Jurídico (JUR)</li>
-                        <li class="hover:text-gold-400 cursor-pointer transition">Health Care (HC)</li>
-                        <li class="hover:text-gold-400 cursor-pointer transition">Política (POL)</li>
-                    </ul>
+            <div class="space-y-8">
+                <h1 class="font-serif text-4xl md:text-5xl text-white leading-tight">
+                    Protocolo de <br><span class="italic text-neutral-500">Iniciação</span>
+                </h1>
+                <p class="text-neutral-400 font-light leading-relaxed">
+                    Para garantir a integridade de nossas operações e o sigilo de nossos clientes, todas as tratativas iniciam-se através deste canal seguro.
+                </p>
+                <div class="space-y-4 pt-8 border-t border-white/10">
+                    <div class="flex items-center gap-4 text-sm text-neutral-500">
+                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
+                        <span>Atendimento sob NDA</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm text-neutral-500">
+                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
+                        <span>Resposta em até 24h úteis</span>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-xs uppercase tracking-widest text-white border-b border-white/10 pb-2 mb-4">Tipo</h3>
-                    <ul class="space-y-2 text-sm text-neutral-500">
-                        <li class="hover:text-gold-400 cursor-pointer transition">Protocolos</li>
-                        <li class="hover:text-gold-400 cursor-pointer transition">Checklists</li>
-                        <li class="hover:text-gold-400 cursor-pointer transition">Scripts</li>
-                    </ul>
-                </div>
-            </aside>
+            </div>
 
-            <main class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-neutral-900/30 p-8 border border-white/5 backdrop-blur-sm">
                 
-                <div class="group border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-300">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[10px] border border-white/20 px-2 py-1 text-neutral-400 uppercase tracking-wider">HC / JUR</span>
-                        <span class="text-gold-400 text-xs font-serif italic">doc</span>
+                <form action="https://formspree.io/f/xykdznjb" method="POST" class="space-y-8">
+                    
+                    <div class="relative group mt-4">
+                        <input type="text" name="nome" id="nome" required placeholder=" "
+                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
+                        <label for="nome" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
+                            Nome Completo / Cargo
+                        </label>
                     </div>
-                    <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold-400 transition">Protocolo de Recepção</h3>
-                    <p class="text-sm text-neutral-500 mb-6 line-clamp-2 h-10">Roteiro completo de atendimento, postura e linguagem para recepções de alto padrão.</p>
-                    <a href="iniciar-tratativas.html" class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 hover:border-gold-400 hover:text-gold-400 transition">Licenciar Ativo &rarr;</a>
-                </div>
 
-                <div class="group border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-300">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[10px] border border-white/20 px-2 py-1 text-neutral-400 uppercase tracking-wider">POL</span>
-                        <span class="text-gold-400 text-xs font-serif italic">pdf</span>
+                    <div class="relative group">
+                        <input type="email" name="email" id="email" required placeholder=" "
+                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
+                        <label for="email" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
+                            E-mail Corporativo
+                        </label>
                     </div>
-                    <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold-400 transition">Kit Crise & Reputação</h3>
-                    <p class="text-sm text-neutral-500 mb-6 line-clamp-2 h-10">Matriz de risco imediato e templates de notas oficiais para contenção de danos.</p>
-                    <a href="iniciar-tratativas.html" class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 hover:border-gold-400 hover:text-gold-400 transition">Licenciar Ativo &rarr;</a>
-                </div>
 
-                <div class="group border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-300">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[10px] border border-white/20 px-2 py-1 text-neutral-400 uppercase tracking-wider">JUR</span>
-                        <span class="text-gold-400 text-xs font-serif italic">xls</span>
+                    <div class="relative group">
+                        <select name="assunto" required 
+                            class="w-full bg-black border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300 text-sm uppercase tracking-wider text-neutral-400">
+                            <option value="" disabled selected>Selecione a Pauta</option>
+                            <option value="JUR">JUR — Jurídico & Legal Design</option>
+                            <option value="HC">HC — Health Care & Experiência</option>
+                            <option value="POL">POL — Integridade & Reputação</option>
+                            <option value="Store">Licenciamento de Ativos (Store)</option>
+                            <option value="Institucional">Assuntos Institucionais</option>
+                        </select>
                     </div>
-                    <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold-400 transition">Dashboard de Processos</h3>
-                    <p class="text-sm text-neutral-500 mb-6 line-clamp-2 h-10">Planilha estruturada para controle visual de prazos e etapas processuais.</p>
-                    <a href="iniciar-tratativas.html" class="text-xs uppercase tracking-widest border-b border-white/20 pb-1 hover:border-gold-400 hover:text-gold-400 transition">Licenciar Ativo &rarr;</a>
-                </div>
 
-                <div class="group border border-dashed border-white/10 p-6 flex items-center justify-center text-neutral-600 text-xs uppercase tracking-widest min-h-[200px]">
-                    Novos Ativos em Breve
-                </div>
+                    <div class="relative group">
+                        <textarea name="mensagem" id="mensagem" rows="3" required placeholder=" "
+                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300"></textarea>
+                        <label for="mensagem" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
+                            Breve descrição da demanda
+                        </label>
+                    </div>
 
-            </main>
+                    <button type="submit" class="w-full bg-gold-400 text-black py-4 uppercase tracking-[0.2em] font-bold text-xs hover:bg-white transition duration-500 mt-8">
+                        Iniciar Protocolo
+                    </button>
+
+                </form>
+            </div>
+
         </div>
-    </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
 </body>
 </html>
