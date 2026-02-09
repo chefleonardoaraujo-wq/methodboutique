@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUR | Boutique Method</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#d4af37',
+                            900: '#8a6d1f',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+    </style>
+</head>
+<body class="antialiased gold-selection">
+    
+    <nav class="fixed w-full z-50 p-8 flex justify-between items-center mix-blend-difference text-white/80">
+        <a href="index.html" class="uppercase tracking-[0.2em] text-xs hover:text-white transition">← Voltar para Home</a>
+        <span class="hidden md:block text-[10px] uppercase tracking-widest border border-white/20 px-3 py-1 rounded-full">Vertente JUR</span>
+    </nav>
+
+    <header class="h-[65vh] flex items-center justify-center bg-neutral-900 border-b border-white/5 relative overflow-hidden">
+        <div class="absolute text-[20vw] opacity-[0.02] font-serif select-none pointer-events-none text-white">JUR</div>
+        <div class="text-center z-10 px-6 animate-fade-in">
+            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">Jurídico</h1>
+            <p class="text-gold-400 uppercase tracking-[0.2em] text-sm md:text-base">Performance & Design Institucional</p>
+        </div>
+    </header>
+
+    <section class="max-w-4xl mx-auto py-24 px-6">
+        <h2 class="font-serif text-3xl mb-8 text-white">A nova era das bancas</h2>
+        <p class="text-neutral-400 leading-loose mb-12 text-lg font-light">
+            O setor jurídico exige mais do que excelência técnica; exige percepção de valor. A vertente JUR do Boutique Method estrutura a "autoridade silenciosa" de escritórios através de:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+                <h3 class="text-white uppercase tracking-widest text-xs border-b border-gold-400 pb-2 mb-4 w-12">01</h3>
+                <h4 class="text-xl mb-2 text-white font-serif">Legal Design Institucional</h4>
+                <p class="text-sm text-neutral-500 leading-relaxed">Padronização visual e textual de peças processuais para maximizar a clareza e persuasão.</p>
+            </div>
+            <div>
+                <h3 class="text-white uppercase tracking-widest text-xs border-b border-gold-400 pb-2 mb-4 w-12">02</h3>
+                <h4 class="text-xl mb-2 text-white font-serif">Comunicação Inclusiva</h4>
+                <p class="text-sm text-neutral-500 leading-relaxed">Protocolos de linguagem que conectam o operador do direito ao cliente final sem perda de tecnicidade.</p>
+            </div>
+        </div>
+
+        <div class="bg-neutral-900/50 p-12 border border-white/5 text-center backdrop-blur-sm">
+            <p class="text-sm text-neutral-400 mb-8 font-light">Explore os produtos desta vertente ou inicie uma consultoria completa.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="store.html" class="px-8 py-4 border border-white/20 text-white hover:bg-white hover:text-black transition duration-300 text-[10px] uppercase tracking-[0.2em]">
+                    Ver Produtos JUR
+                </a>
+                <a href="iniciar-tratativas.html" class="
