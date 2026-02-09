@@ -3,135 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Tratativas | Boutique Method</title>
-    
+    <title>Licenciamento BMIP | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            400: '#d4af37',
-                            900: '#8a6d1f',
-                        }
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
     </script>
-    
-    <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
-        .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Efeito de Label Flutuante */
-        .floating-input:focus ~ label,
-        .floating-input:not(:placeholder-shown) ~ label {
-            top: -1.5rem;
-            font-size: 0.7rem;
-            color: #d4af37;
-        }
-    </style>
+    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-
             <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
                 <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
                 <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
             </div>
-
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
-            
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center py-32 px-6">
-        <div class="max-w-4xl w-full grid md:grid-cols-2 gap-16 items-start">
+    <main class="flex-grow pt-52 pb-32 px-6">
+        <div class="max-w-7xl mx-auto space-y-24">
             
-            <div class="space-y-8">
-                <h1 class="font-serif text-4xl md:text-5xl text-white leading-tight">
-                    Protocolo de <br><span class="italic text-neutral-500">Iniciação</span>
+            <div class="text-center space-y-4">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">BMIP Structures</span>
+                <h1 class="font-serif text-4xl md:text-5xl text-white">
+                    Modelos de <span class="italic text-neutral-500">Licenciamento</span>
                 </h1>
-                <p class="text-neutral-400 font-light leading-relaxed">
-                    Para garantir a integridade de nossas operações e o sigilo de nossos clientes, todas as tratativas iniciam-se através deste canal seguro.
+                <p class="text-neutral-400 font-light max-w-2xl mx-auto text-sm leading-relaxed">
+                    Estruturados por sprints de implantação: ciclos semanais com entregáveis, treinamento, aplicação e revisão.
                 </p>
-                <div class="space-y-4 pt-8 border-t border-white/10">
-                    <div class="flex items-center gap-4 text-sm text-neutral-500">
-                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        <span>Atendimento sob NDA</span>
-                    </div>
-                    <div class="flex items-center gap-4 text-sm text-neutral-500">
-                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        <span>Resposta em até 24h úteis</span>
-                    </div>
-                </div>
             </div>
 
-            <div class="bg-neutral-900/30 p-8 border border-white/5 backdrop-blur-sm">
+            <div class="grid md:grid-cols-3 gap-8">
                 
-                <form action="https://formspree.io/f/xykdznjb" method="POST" class="space-y-8">
+                <div class="border border-white/10 bg-neutral-900/20 p-8 hover:border-white/30 transition duration-500 flex flex-col">
+                    <div class="mb-6">
+                        <span class="bg-white/10 text-white text-[10px] px-2 py-1 uppercase tracking-widest">2 Sprints</span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-gold-400 mb-2">Essential</h3>
+                    <p class="text-white text-xs uppercase tracking-widest mb-6 border-b border-white/5 pb-4">Padrão Mínimo Premium</p>
                     
-                    <div class="relative group mt-4">
-                        <input type="text" name="nome" id="nome" required placeholder=" "
-                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
-                        <label for="nome" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
-                            Nome Completo / Cargo
-                        </label>
+                    <div class="space-y-4 flex-grow text-sm text-neutral-400 font-light">
+                        <p><strong class="text-white">Objetivo:</strong> Colocar a operação “de pé” sem complexidade.</p>
+                        <p><strong class="text-white">Ideal para:</strong> Pequenas/médias empresas, primeira implantação, time enxuto.</p>
+                        <ul class="list-disc list-inside space-y-1 pt-2 text-xs">
+                            <li>Base do método</li>
+                            <li>Kit inicial de comunicação</li>
+                            <li>Configuração essencial de canais</li>
+                            <li>Governança mínima</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border border-gold-400/30 bg-neutral-900/40 p-8 relative transform md:-translate-y-4 shadow-2xl shadow-gold-900/10 flex flex-col">
+                    <div class="absolute top-0 right-0 bg-gold-400 text-black text-[10px] px-3 py-1 font-bold uppercase tracking-widest">Recomendado</div>
+                    <div class="mb-6">
+                        <span class="bg-gold-400/20 text-gold-400 text-[10px] px-2 py-1 uppercase tracking-widest">4 Sprints</span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-2">Professional</h3>
+                    <p class="text-gold-400 text-xs uppercase tracking-widest mb-6 border-b border-white/5 pb-4">Escala com Previsibilidade</p>
+                    
+                    <div class="space-y-4 flex-grow text-sm text-neutral-400 font-light">
+                        <p><strong class="text-white">Objetivo:</strong> Implantar com consistência, padronizar processos e escalar.</p>
+                        <p><strong class="text-white">Ideal para:</strong> Empresas em crescimento, mais de um ponto de atendimento.</p>
+                        <ul class="list-disc list-inside space-y-1 pt-2 text-xs">
+                            <li>Tudo do Essential</li>
+                            <li>SOPs e Treinamento por papel</li>
+                            <li>Playbooks e Matriz de suporte</li>
+                            <li>Indicadores e cadência</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border border-white/10 bg-neutral-900/20 p-8 hover:border-white/30 transition duration-500 flex flex-col">
+                    <div class="mb-6">
+                        <span class="bg-white/10 text-white text-[10px] px-2 py-1 uppercase tracking-widest">8–12 Sprints</span>
+                    </div>
+                    <h3 class="font-serif text-2xl text-gold-400 mb-2">Enterprise</h3>
+                    <p class="text-white text-xs uppercase tracking-widest mb-6 border-b border-white/5 pb-4">Governança Robusta</p>
+                    
+                    <div class="space-y-4 flex-grow text-sm text-neutral-400 font-light">
+                        <p><strong class="text-white">Objetivo:</strong> Escala real, multiunidades, auditoria e compliance.</p>
+                        <p><strong class="text-white">Ideal para:</strong> Redes, franquias, grupos com várias unidades.</p>
+                        <ul class="list-disc list-inside space-y-1 pt-2 text-xs">
+                            <li>Tudo do Professional</li>
+                            <li>Trilhas de treinamento avançadas</li>
+                            <li>Rituais executivos e Auditorias</li>
+                            <li>Arquitetura de expansão</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-20">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-3xl text-white">Vertentes de <span class="italic text-gold-400">Aplicação</span></h2>
+                    <p class="text-neutral-500 text-xs uppercase tracking-widest mt-4">Linhas de atuação do Método Boutique</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-12">
+                    
+                    <div class="text-center space-y-4 group">
+                        <div class="h-16 w-16 mx-auto border border-white/20 rounded-full flex items-center justify-center group-hover:border-gold-400 transition duration-500">
+                            <span class="font-serif text-xl text-gold-400">JUR</span>
+                        </div>
+                        <h3 class="text-white text-lg font-serif">Jurídico</h3>
+                        <p class="text-neutral-500 text-sm font-light leading-relaxed px-4">
+                            Aplicação em escritórios, consultorias e compliance. Foco na comunicação inclusiva e conformidade de postura.
+                        </p>
                     </div>
 
-                    <div class="relative group">
-                        <input type="email" name="email" id="email" required placeholder=" "
-                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
-                        <label for="email" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
-                            E-mail Corporativo
-                        </label>
+                    <div class="text-center space-y-4 group">
+                        <div class="h-16 w-16 mx-auto border border-white/20 rounded-full flex items-center justify-center group-hover:border-gold-400 transition duration-500">
+                            <span class="font-serif text-xl text-gold-400">HC</span>
+                        </div>
+                        <h3 class="text-white text-lg font-serif">Health Care</h3>
+                        <p class="text-neutral-500 text-sm font-light leading-relaxed px-4">
+                            Clínicas e consultórios. Padronização da jornada do paciente, experiência, rotina e suporte.
+                        </p>
                     </div>
 
-                    <div class="relative group">
-                        <select name="assunto" required 
-                            class="w-full bg-black border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300 text-sm uppercase tracking-wider text-neutral-400">
-                            <option value="" disabled selected>Selecione a Pauta</option>
-                            <option value="JUR">JUR — Jurídico & Legal Design</option>
-                            <option value="HC">HC — Health Care & Experiência</option>
-                            <option value="POL">POL — Integridade & Reputação</option>
-                            <option value="Store">Licenciamento de Ativos (Store)</option>
-                            <option value="Institucional">Assuntos Institucionais</option>
-                        </select>
+                    <div class="text-center space-y-4 group">
+                        <div class="h-16 w-16 mx-auto border border-white/20 rounded-full flex items-center justify-center group-hover:border-gold-400 transition duration-500">
+                            <span class="font-serif text-xl text-gold-400">POL</span>
+                        </div>
+                        <h3 class="text-white text-lg font-serif">Integridade</h3>
+                        <p class="text-neutral-500 text-sm font-light leading-relaxed px-4">
+                            Mandatos e equipes públicas. Reputação, gestão de crise, governança e protocolos de interesse público.
+                        </p>
                     </div>
 
-                    <div class="relative group">
-                        <textarea name="mensagem" id="mensagem" rows="3" required placeholder=" "
-                            class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300"></textarea>
-                        <label for="mensagem" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">
-                            Breve descrição da demanda
-                        </label>
-                    </div>
+                </div>
 
-                    <button type="submit" class="w-full bg-gold-400 text-black py-4 uppercase tracking-[0.2em] font-bold text-xs hover:bg-white transition duration-500 mt-8">
-                        Iniciar Protocolo
-                    </button>
-
-                </form>
+                <div class="text-center mt-20">
+                    <a href="iniciar-tratativas.html" class="inline-block border border-gold-400 text-gold-400 px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                        Consultar Disponibilidade
+                    </a>
+                </div>
             </div>
 
         </div>
