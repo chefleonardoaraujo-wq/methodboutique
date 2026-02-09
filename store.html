@@ -6,25 +6,15 @@
     <title>Store | Boutique Method</title>
     
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            400: '#d4af37',
-                            900: '#8a6d1f',
-                        }
-                    }
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
                 }
             }
         }
@@ -39,37 +29,75 @@
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-
             <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center">
                 <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                 <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                <a href="store.html" class="text-white hover:text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
+                <a href="store.html" class="text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
             </div>
-
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
-            
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center px-6">
-        <div class="text-center space-y-8">
-            <h1 class="font-serif text-5xl md:text-7xl text-white">
-                Store <span class="italic text-gold-400">Concept</span>
-            </h1>
-            <p class="text-neutral-400 font-light tracking-widest uppercase text-xs md:text-sm">
-                Licenciamento de Ativos & Produtos Exclusivos
-            </p>
-            <div class="pt-8">
-                <span class="px-4 py-2 border border-white/10 bg-white/5 text-xs text-neutral-500 uppercase tracking-widest">
-                    Em Breve
-                </span>
+    <main class="flex-grow py-32 px-6">
+        <div class="max-w-7xl mx-auto space-y-16">
+            
+            <div class="text-center space-y-4">
+                <h1 class="font-serif text-4xl md:text-6xl text-white">
+                    Store <span class="italic text-gold-400">Concept</span>
+                </h1>
+                <p class="text-neutral-400 text-xs tracking-[0.3em] uppercase">
+                    Ativos Intelectuais & Produtos Exclusivos
+                </p>
             </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <div class="group border border-white/10 bg-neutral-900/30 p-8 hover:border-gold-400/50 transition duration-500">
+                    <div class="h-48 bg-black/50 flex items-center justify-center mb-6 border border-white/5">
+                        <span class="font-serif text-4xl text-neutral-700 italic group-hover:text-gold-400 transition">BM®</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-white mb-2">Licenciamento Full</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed mb-6">
+                        Acesso completo à metodologia Boutique para aplicação em seu negócio.
+                    </p>
+                    <a href="iniciar-tratativas.html" class="inline-block text-[10px] uppercase tracking-widest text-gold-400 border-b border-gold-400 pb-1 hover:text-white hover:border-white transition">
+                        Consultar Valor
+                    </a>
+                </div>
+
+                <div class="group border border-white/10 bg-neutral-900/30 p-8 hover:border-gold-400/50 transition duration-500">
+                    <div class="h-48 bg-black/50 flex items-center justify-center mb-6 border border-white/5">
+                        <span class="font-serif text-4xl text-neutral-700 italic group-hover:text-gold-400 transition">Mentoring</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-white mb-2">Mentoria Executiva</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed mb-6">
+                        Acompanhamento estratégico direto com os sócios da Holding.
+                    </p>
+                    <a href="iniciar-tratativas.html" class="inline-block text-[10px] uppercase tracking-widest text-gold-400 border-b border-gold-400 pb-1 hover:text-white hover:border-white transition">
+                        Agendar
+                    </a>
+                </div>
+
+                <div class="group border border-white/10 bg-neutral-900/30 p-8 hover:border-gold-400/50 transition duration-500">
+                    <div class="h-48 bg-black/50 flex items-center justify-center mb-6 border border-white/5">
+                        <span class="font-serif text-4xl text-neutral-700 italic group-hover:text-gold-400 transition">Legal</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-white mb-2">Legal Design Kit</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed mb-6">
+                        Pacote de documentos jurídicos otimizados para alto valor percebido.
+                    </p>
+                    <a href="iniciar-tratativas.html" class="inline-block text-[10px] uppercase tracking-widest text-gold-400 border-b border-gold-400 pb-1 hover:text-white hover:border-white transition">
+                        Ver Detalhes
+                    </a>
+                </div>
+
+            </div>
+
         </div>
     </main>
 
