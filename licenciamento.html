@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Licenciamento | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
     </script>
-
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
@@ -39,64 +42,88 @@
         </div>
     </nav>
 
-    <header class="pt-40 md:pt-52 pb-12 px-6 text-center">
+    <header class="pt-52 pb-20 px-6 text-center">
         <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Pilar Estratégico</span>
-        <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">
+        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
             Licenciamento de <span class="italic text-neutral-500">Método</span>
         </h1>
-        <p class="text-neutral-400 font-light max-w-xl mx-auto text-sm md:text-base leading-relaxed tracking-wide">
+        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
             Escalar sem inchar. Transformar seu know-how em produtos que outros podem aplicar.
         </p>
     </header>
 
-    <main class="flex-grow px-6 pb-20">
-        
-        <div class="max-w-4xl mx-auto text-center mb-20">
-            <p class="text-lg md:text-xl text-neutral-300 font-light leading-relaxed">
-                O modelo tradicional de consultoria ou serviço exige sua presença física. O modelo de Licenciamento permite que você "clone" sua inteligência. Ao criar um método proprietário, você pode licenciar o uso dele para outros profissionais, empresas ou filiais, recebendo royalties sem precisar estar lá.
-            </p>
-        </div>
+    <main class="flex-grow px-6 pb-32">
+        <div class="max-w-5xl mx-auto space-y-24"> <div class="max-w-4xl mx-auto text-center md:text-left">
+                <p class="text-neutral-300 font-light text-xl leading-relaxed">
+                    O modelo tradicional de consultoria ou serviço exige sua presença física. O modelo de Licenciamento permite que você "clone" sua inteligência. Ao criar um método proprietário, você pode licenciar o uso dele para outros profissionais, empresas ou filiais, recebendo royalties sem precisar estar lá.
+                </p>
 
-        <section class="max-w-6xl mx-auto border border-white/10 bg-[#0f0f0f] p-8 md:p-16 relative mb-20">
-            <div class="mb-12">
-                <h2 class="font-serif text-3xl text-white mb-2">O Ativo Intelectual</h2>
-                <span class="text-[10px] tracking-[0.2em] uppercase text-neutral-500">Comparativo de Modelos de Entrega e Valor</span>
+                <div class="bg-white/5 border border-white/10 p-8 md:p-12 mt-16 text-left">
+                    <h3 class="font-serif text-2xl text-white mb-2">O Ativo Intelectual</h3>
+                    <p class="text-neutral-500 text-xs uppercase tracking-widest mb-8">Comparativo de modelos de entrega e valor.</p>
+
+                    <div class="grid md:grid-cols-3 gap-8 border-t border-white/10 pt-8">
+                        <div>
+                            <span class="text-gold-400 text-[10px] uppercase tracking-widest block mb-2">Consultoria Comum</span>
+                            <p class="text-neutral-400 text-sm">Vende horas. Difícil de escalar. Depende do dono.</p>
+                        </div>
+                        <div>
+                            <span class="text-gold-400 text-[10px] uppercase tracking-widest block mb-2">Educação Executiva</span>
+                            <p class="text-neutral-400 text-sm">Vende cursos. Baixa barreira de entrada. Muita concorrência.</p>
+                        </div>
+                        <div>
+                            <span class="text-white font-bold text-[10px] uppercase tracking-widest block mb-2">Método Boutique™</span>
+                            <p class="text-white text-sm">Vende sistema. Alta barreira de entrada. Gera Equity e Royalties.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-                
-                <div class="space-y-3 opacity-60 hover:opacity-100 transition duration-500">
-                    <h3 class="text-gold-400 text-xs tracking-widest uppercase font-bold">Consultoria Comum</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed border-l border-white/10 pl-4">
-                        Vende horas. Difícil de escalar. Depende 100% da presença do dono para entregar qualidade.
-                    </p>
+            <div class="border-t border-white/10 pt-24">
+                <div class="text-center mb-16">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Especializações</span>
+                    <h2 class="font-serif text-4xl text-white">Nossas Vertentes</h2>
                 </div>
 
-                <div class="space-y-3 opacity-60 hover:opacity-100 transition duration-500">
-                    <h3 class="text-gold-400 text-xs tracking-widest uppercase font-bold">Educação Executiva</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed border-l border-white/10 pl-4">
-                        Vende cursos. Baixa barreira de entrada. Muita concorrência e margem espremida pelo tráfego pago.
-                    </p>
-                </div>
-
-                <div class="space-y-3 relative">
-                    <div class="absolute -left-4 top-0 bottom-0 w-[1px] bg-gold-400 hidden md:block"></div>
+                <div class="grid md:grid-cols-3 gap-8">
                     
-                    <h3 class="text-white text-xs tracking-widest uppercase font-bold">Método Boutique™</h3>
-                    <p class="text-base text-white leading-relaxed font-medium pl-0 md:pl-4">
-                        Vende sistema. Alta barreira de entrada. Gera <span class="italic text-gold-400">Equity</span> (valor de marca) e <span class="italic text-gold-400">Royalties</span> recorrentes.
-                    </p>
+                    <a href="licenciamento-jur.html" class="group block bg-neutral-900/40 border border-white/5 p-8 hover:border-gold-400/50 transition duration-500">
+                        <span class="text-gold-400 font-serif italic text-4xl mb-4 block group-hover:scale-110 transition duration-500">JUR</span>
+                        <h3 class="text-white text-sm uppercase tracking-widest mb-2">Jurídico & Legal Design</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed">
+                            Padronização de documentos e comunicação jurídica para escritórios e departamentos legais.
+                        </p>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mt-6 block group-hover:translate-x-2 transition duration-300">Explorar &rarr;</span>
+                    </a>
+
+                    <a href="licenciamento-hc.html" class="group block bg-neutral-900/40 border border-white/5 p-8 hover:border-gold-400/50 transition duration-500">
+                        <span class="text-gold-400 font-serif italic text-4xl mb-4 block group-hover:scale-110 transition duration-500">HC</span>
+                        <h3 class="text-white text-sm uppercase tracking-widest mb-2">Health Care & Experience</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed">
+                            Protocolos de atendimento e experiência do paciente para clínicas de alto padrão e hospitais.
+                        </p>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mt-6 block group-hover:translate-x-2 transition duration-300">Explorar &rarr;</span>
+                    </a>
+
+                    <a href="licenciamento-pol.html" class="group block bg-neutral-900/40 border border-white/5 p-8 hover:border-gold-400/50 transition duration-500">
+                        <span class="text-gold-400 font-serif italic text-4xl mb-4 block group-hover:scale-110 transition duration-500">POL</span>
+                        <h3 class="text-white text-sm uppercase tracking-widest mb-2">Política & Institucional</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed">
+                            Gestão de reputação, gabinete e comunicação estratégica para figuras públicas.
+                        </p>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mt-6 block group-hover:translate-x-2 transition duration-300">Explorar &rarr;</span>
+                    </a>
+
                 </div>
-
             </div>
-        </section>
 
-        <div class="text-center mt-12 mb-12">
-            <a href="iniciar-tratativas.html" class="inline-block border border-gold-400 text-gold-400 px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500">
-                Quero Licenciar meu Método
-            </a>
+            <div class="pt-12 text-center">
+                <a href="iniciar-tratativas.html" class="inline-block px-10 py-4 border border-gold-400 text-gold-400 text-xs uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500 font-bold">
+                    Quero Licenciar meu Método
+                </a>
+            </div>
+
         </div>
-
     </main>
 
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
