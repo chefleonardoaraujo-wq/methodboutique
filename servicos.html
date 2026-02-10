@@ -7,8 +7,17 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script> tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } } </script>
-    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
+    </script>
+    <style> 
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } 
+        .gold-selection::selection { background: #d4af37; color: black; }
+        /* Estilo sutil para a tabela */
+        td, th { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1.5rem 1rem; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: rgba(212, 175, 55, 0.05); transition: 0.3s; }
+    </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
@@ -35,54 +44,181 @@
         <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">
             Áreas de <span class="italic text-neutral-500">Expertise</span>
         </h1>
-        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-base leading-relaxed">
-            Eliminamos o ruído para que a sua mensagem — e sua operação — cheguem ao estado da arte através de métodos proprietários.
+        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            Eliminamos o ruído para que a sua operação chegue ao estado da arte.
         </p>
     </header>
 
-    <main class="flex-grow px-6 pb-32">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-            
+    <main class="flex-grow px-6 pb-20">
+        <div class="max-w-6xl mx-auto space-y-8">
+
             <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
-                <h3 class="font-serif text-2xl text-white mb-4">Implementação de Método</h3>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
-                    Acompanhamento consultivo para instalação dos pilares do Método Boutique na sua estrutura atual, focando em SOPs, manuais e cultura operacional.
-                </p>
-                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
+                <div class="flex flex-col md:flex-row md:items-start gap-8">
+                    <div class="md:w-1/3">
+                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Consultoria & Escala</span>
+                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Implementação de Método</h2>
+                    </div>
+                    <div class="md:w-2/3 space-y-6">
+                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
+                            Acompanhamento consultivo para instalação dos pilares do Método Boutique na sua estrutura atual, focando em SOPs, manuais e cultura operacional.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
-                <h3 class="font-serif text-2xl text-white mb-4">Arquitetura de IP</h3>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
-                    Transformação de conhecimento tácito em ativos de propriedade intelectual (IP) auditáveis e protegidos juridicamente para ganho de equity.
-                </p>
-                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
+                <div class="flex flex-col md:flex-row md:items-start gap-8">
+                    <div class="md:w-1/3">
+                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Propriedade Intelectual</span>
+                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Arquitetura de IP</h2>
+                    </div>
+                    <div class="md:w-2/3 space-y-6">
+                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
+                            Transformação de conhecimento tácito em ativos de propriedade intelectual (IP) auditáveis e protegidos juridicamente para ganho de equity.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
-                <h3 class="font-serif text-2xl text-white mb-4">Legal Design</h3>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
-                    Reformulação de documentos e fluxos jurídicos para alta performance, utilizando clareza visual e acessibilidade para reduzir atritos de contrato.
-                </p>
-                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
+                <div class="flex flex-col md:flex-row md:items-start gap-8">
+                    <div class="md:w-1/3">
+                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Jurídico & Visual</span>
+                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Legal Design</h2>
+                    </div>
+                    <div class="md:w-2/3 space-y-6">
+                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
+                            Reformulação de documentos e fluxos jurídicos para alta performance, utilizando clareza visual e acessibilidade para reduzir atritos de contrato.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
-                <h3 class="font-serif text-2xl text-white mb-4">Governança Reputacional</h3>
-                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
-                    Gestão de crises e blindagem de imagem institucional para figuras públicas e grandes corporações através de protocolos de comunicação.
-                </p>
-                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
+                <div class="flex flex-col md:flex-row md:items-start gap-8">
+                    <div class="md:w-1/3">
+                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Gestão de Crise</span>
+                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Governança Reputacional</h2>
+                    </div>
+                    <div class="md:w-2/3 space-y-6">
+                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
+                            Gestão de crises e blindagem de imagem institucional para figuras públicas e grandes corporações através de protocolos de comunicação.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-        </div>
+            <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
+                <div class="flex flex-col md:flex-row md:items-start gap-8">
+                    <div class="md:w-1/3">
+                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Comunicação Pública</span>
+                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Scripts & Cerimoniais</h2>
+                    </div>
+                    <div class="md:w-2/3 space-y-6">
+                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
+                            Desenvolvemos roteiros precisos para todas as esferas e ocasiões solenes. Do protocolo governamental a eventos corporativos de luxo.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-        <div class="mt-20 text-center">
-            <a href="iniciar-tratativas.html" class="inline-block px-12 py-4 border border-gold-400 text-gold-400 text-xs uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500 font-bold">
-                Agendar Diagnóstico
-            </a>
+            <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
+                <div class="flex flex-col md:flex-row md:items-start gap-8">
+                    <div class="md:w-1/3">
+                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Gestão & Processos</span>
+                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Organização Interna</h2>
+                    </div>
+                    <div class="md:w-2/3 space-y-6">
+                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
+                            Estruturação dos fluxos de comunicação interna para eliminar ruídos, alinhar equipes e garantir eficiência operacional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
+                <div class="flex flex-col md:flex-row md:items-start gap-8">
+                    <div class="md:w-1/3">
+                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Posicionamento</span>
+                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Estratégia & Branding</h2>
+                    </div>
+                    <div class="md:w-2/3 space-y-6">
+                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
+                            Alinhamos a percepção externa com a realidade interna. Diagnóstico, Branding e Gestão de Crise.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
+
+    <section class="bg-neutral-900/30 border-t border-white/5 py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12 text-center md:text-left">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">Transparência Corporativa</span>
+                <h2 class="font-serif text-3xl text-white">Honorários Referenciais</h2>
+                <p class="text-neutral-500 text-sm mt-4 max-w-xl">
+                    Valores base para contratação avulsa (Spot). Projetos de licenciamento contínuo possuem condições exclusivas.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-neutral-400">
+                    <thead>
+                        <tr class="text-xs uppercase tracking-widest text-gold-400 border-b border-white/10">
+                            <th class="pb-6 font-normal">Ativo Intelectual</th>
+                            <th class="pb-6 font-normal hidden md:table-cell">Entregável</th>
+                            <th class="pb-6 font-normal text-right">Aporte Base</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-light">
+                        <tr>
+                            <td>Implementação de Método</td>
+                            <td class="hidden md:table-cell text-neutral-600">Ciclo de Consultoria</td>
+                            <td class="text-right text-white">R$ 24.500</td>
+                        </tr>
+                        <tr>
+                            <td>Arquitetura de IP</td>
+                            <td class="hidden md:table-cell text-neutral-600">Valuation & Registro</td>
+                            <td class="text-right text-white">R$ 38.000</td>
+                        </tr>
+                        <tr>
+                            <td>Estratégia & Branding</td>
+                            <td class="hidden md:table-cell text-neutral-600">Diagnóstico + Plano</td>
+                            <td class="text-right text-white">R$ 32.000</td>
+                        </tr>
+                        <tr>
+                            <td>Governança Reputacional</td>
+                            <td class="hidden md:table-cell text-neutral-600">Setup de Crise</td>
+                            <td class="text-right text-white">R$ 18.500</td>
+                        </tr>
+                        <tr>
+                            <td>Organização Interna</td>
+                            <td class="hidden md:table-cell text-neutral-600">Sprint de Processos</td>
+                            <td class="text-right text-white">R$ 14.000</td>
+                        </tr>
+                        <tr>
+                            <td>Legal Design</td>
+                            <td class="hidden md:table-cell text-neutral-600">Pack Contratual</td>
+                            <td class="text-right text-white">R$ 9.800</td>
+                        </tr>
+                        <tr>
+                            <td>Scripts & Cerimoniais</td>
+                            <td class="hidden md:table-cell text-neutral-600">Por Demanda</td>
+                            <td class="text-right text-white">R$ 5.200</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-12 text-center md:text-right">
+                <a href="iniciar-tratativas.html" class="inline-block px-8 py-3 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-gold-400 transition duration-500">
+                    Solicitar Proposta Formal
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
         <p>Boutique Method IP Holding Ltda © 2026</p>
