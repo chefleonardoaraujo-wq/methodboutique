@@ -6,12 +6,16 @@
     <title>A Origem | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                        signature: ['"Great Vibes"', 'cursive'] // Nova fonte para assinatura
+                    },
                     colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
                 }
             }
@@ -67,25 +71,14 @@
             </div>
 
             <div class="border-t border-white/10 pt-24">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="max-w-3xl mx-auto">
                     
-                    <div class="relative group">
-                        <div class="aspect-[3/4] bg-neutral-900 overflow-hidden border border-white/5 relative">
-                            <div class="absolute inset-0 bg-neutral-800 flex items-center justify-center">
-                                <span class="text-gold-400/20 font-serif italic text-6xl">LA</span>
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                            
-                            <div class="absolute bottom-8 left-8">
-                                <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase block mb-2">Founder & CEO</span>
-                                <h3 class="font-serif text-3xl text-white">Leonardo Araujo</h3>
-                            </div>
-                        </div>
+                    <div class="space-y-4 mb-12">
+                        <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase block">LEONARDO CHAVES ARAUJO - Founder & CEO</span>
+                        <h2 class="font-serif text-4xl text-white">A Ciência por Trás do Método</h2>
                     </div>
 
-                    <div class="space-y-6 text-neutral-300 font-light leading-relaxed text-justify">
-                        <h2 class="font-serif text-3xl text-white mb-6">A Ciência por Trás do Método</h2>
-                        
+                    <div class="space-y-8 text-neutral-300 font-light leading-relaxed text-lg text-justify">
                         <p>
                             Para Leonardo Araujo, a excelência não é um ato, é um hábito construído sobre processos obsessivos. Sua trajetória é marcada pela busca incessante pela ordem em ambientes de alta complexidade.
                         </p>
@@ -95,10 +88,10 @@
                         <p>
                             Fundou a <strong>Boutique Method IP Holding</strong> com uma missão clara: aplicar esse rigor científico à gestão. Transformar o "jeito de fazer" intuitivo de grandes líderes em ativos de Propriedade Intelectual sólidos, gerando valor, escala replicável e, acima de tudo, liberdade.
                         </p>
+                    </div>
 
-                        <div class="pt-6">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_sample.svg/1200px-Signature_sample.svg.png" alt="Assinatura" class="h-12 mt-4 opacity-50 invert brightness-0 filter" style="filter: invert(1);">
-                        </div>
+                    <div class="pt-16">
+                        <p class="font-signature text-5xl text-gold-400 opacity-80">Leonardo Chaves Araujo</p>
                     </div>
 
                 </div>
