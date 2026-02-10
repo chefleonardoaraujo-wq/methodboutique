@@ -5,91 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Tratativas | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
     </script>
-    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label { top: -1.5rem; font-size: 0.7rem; color: #d4af37; } </style>
+
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+        
+        /* Estilo dos Inputs */
+        .input-minimal {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            width: 100%;
+            padding: 12px 0;
+            outline: none;
+            transition: 0.3s;
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+        .input-minimal:focus {
+            border-bottom-color: #d4af37;
+        }
+        .input-minimal::placeholder {
+            color: #555;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        
+        select.input-minimal {
+            appearance: none;
+            border-radius: 0;
+        }
+    </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-  <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUR - Jurídico | Boutique Method</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } </style>
-</head>
-<body class="antialiased flex flex-col min-h-screen">
-    <nav class="fixed w-full z-50 bg-black/90 border-b border-white/5 p-6 flex justify-between items-center">
-        <a href="licenciamento.html" class="text-xs uppercase tracking-widest text-neutral-400 hover:text-white">&larr; Voltar</a>
-        <a href="index.html" class="font-serif text-lg text-white">Boutique Method</a>
-    </nav>
-
-    <main class="flex-grow pt-40 pb-20 px-6">
-        <div class="max-w-4xl mx-auto space-y-8">
-            <h1 class="font-serif text-5xl md:text-7xl text-white italic border-l-2 border-gold-400 pl-6">JUR</h1>
-            <p class="text-neutral-300 font-light text-lg leading-relaxed text-justify">
-                A vertente JUR do Método Boutique foi desenhada para estruturar a comunicação jurídica como um ativo operacional — com clareza, consistência e previsibilidade.
-            </p>
-            <div class="pt-10 text-center">
-                <a href="iniciar-tratativas.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">Solicitar Licenciamento JUR</a>
-            </div>
+    <nav class="w-full py-8 px-8 flex justify-between items-center bg-transparent relative z-20">
+        <a href="index.html" class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition">
+            ← Voltar
+        </a>
+        <div class="font-serif text-xl tracking-widest text-white uppercase">
+            Boutique Method
         </div>
-    </main>
-</body>
-</html>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center pt-52 pb-32 px-6">
-        <div class="max-w-4xl w-full grid md:grid-cols-2 gap-16 items-start">
-            <div class="space-y-8">
-                <h1 class="font-serif text-4xl md:text-5xl text-white leading-tight">Protocolo de <br><span class="italic text-neutral-500">Iniciação</span></h1>
-                <p class="text-neutral-400 font-light leading-relaxed">Para garantir a integridade de nossas operações e o sigilo de nossos clientes, todas as tratativas iniciam-se através deste canal seguro.</p>
-                <div class="space-y-4 pt-8 border-t border-white/10">
-                    <div class="flex items-center gap-4 text-sm text-neutral-500">
-                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        <span>Atendimento sob NDA</span>
-                    </div>
-                    <div class="flex items-center gap-4 text-sm text-neutral-500">
-                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        <span>Resposta em até 24h úteis</span>
-                    </div>
-                </div>
+    <main class="flex-grow flex items-center justify-center px-6 py-12">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
+            
+            <div class="space-y-8 pt-10">
+                <h1 class="font-serif text-5xl md:text-6xl text-white leading-tight">
+                    Protocolo de <br>
+                    <span class="italic text-neutral-500">Iniciação</span>
+                </h1>
+                
+                <p class="text-neutral-400 font-light leading-relaxed max-w-md">
+                    Para garantir a integridade de nossas operações e o sigilo de nossos clientes, todas as tratativas iniciam-se através deste canal seguro.
+                </p>
+
+                <ul class="space-y-3 mt-8">
+                    <li class="flex items-center text-sm text-neutral-300">
+                        <span class="w-1.5 h-1.5 bg-gold-400 rounded-full mr-3"></span>
+                        Atendimento sob NDA
+                    </li>
+                    <li class="flex items-center text-sm text-neutral-300">
+                        <span class="w-1.5 h-1.5 bg-gold-400 rounded-full mr-3"></span>
+                        Resposta em até 24h úteis
+                    </li>
+                </ul>
             </div>
-            <div class="bg-neutral-900/30 p-8 border border-white/5 backdrop-blur-sm">
-                <form action="https://formspree.io/f/xykdznjb" method="POST" class="space-y-8">
-                    <div class="relative group mt-4">
-                        <input type="text" name="nome" id="nome" required placeholder=" " class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
-                        <label for="nome" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">Nome Completo / Cargo</label>
+
+            <div class="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 shadow-2xl">
+                <form action="https://formsubmit.co/seuemail@aqui.com" method="POST" class="space-y-8">
+                    
+                    <div>
+                        <input type="text" name="nome" class="input-minimal" placeholder="Nome Completo / Cargo" required>
                     </div>
-                    <div class="relative group">
-                        <input type="email" name="email" id="email" required placeholder=" " class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300">
-                        <label for="email" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">E-mail Corporativo</label>
+
+                    <div>
+                        <input type="email" name="email" class="input-minimal" placeholder="E-mail Corporativo" required>
                     </div>
-                    <div class="relative group">
-                        <select name="assunto" required class="w-full bg-black border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300 text-sm uppercase tracking-wider text-neutral-400">
-                            <option value="" disabled selected>Selecione a Pauta</option>
-                            <option value="JUR">JUR — Jurídico & Legal Design</option>
-                            <option value="HC">HC — Health Care & Experiência</option>
-                            <option value="POL">POL — Integridade & Reputação</option>
-                            <option value="Store">Licenciamento de Ativos (Store)</option>
-                            <option value="Institucional">Assuntos Institucionais</option>
+
+                    <div class="relative">
+                        <select name="pauta" class="input-minimal text-neutral-400" required>
+                            <option value="" disabled selected>SELECIONE A PAUTA</option>
+                            <option value="licenciamento" style="background:#000;">Licenciamento de Método</option>
+                            <option value="servicos" style="background:#000;">Contratação de Serviços</option>
+                            <option value="parceria" style="background:#000;">Parceria Estratégica</option>
+                            <option value="imprensa" style="background:#000;">Imprensa / Mídia</option>
                         </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
                     </div>
-                    <div class="relative group">
-                        <textarea name="mensagem" id="mensagem" rows="3" required placeholder=" " class="floating-input w-full bg-transparent border-b border-white/20 py-2 text-white focus:outline-none focus:border-gold-400 transition duration-300"></textarea>
-                        <label for="mensagem" class="absolute left-0 top-2 text-neutral-500 text-xs uppercase tracking-widest transition-all duration-300 pointer-events-none">Breve descrição da demanda</label>
+
+                    <div>
+                        <textarea name="mensagem" rows="3" class="input-minimal" placeholder="Breve descrição da demanda" required></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-gold-400 text-black py-4 uppercase tracking-[0.2em] font-bold text-xs hover:bg-white transition duration-500 mt-8">Iniciar Protocolo</button>
+
+                    <button type="submit" class="w-full bg-gold-400 text-black font-bold text-xs uppercase tracking-[0.2em] py-5 hover:bg-white transition duration-500 mt-4">
+                        Iniciar Protocolo
+                    </button>
+
+                    <input type="hidden" name="_next" value="https://boutiquemethodip.com/obrigado.html">
+                    <input type="hidden" name="_captcha" value="false">
                 </form>
             </div>
+
         </div>
     </main>
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest"><p>Boutique Method IP Holding Ltda © 2026</p></footer>
+
+    <footer class="py-8 text-center text-[10px] text-neutral-600 uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
 </body>
 </html>
