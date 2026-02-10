@@ -8,52 +8,35 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
     </script>
 
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* ESTILO DOS MODALS (JANELAS) - AGORA MAIORES E MAIS ELEGANTES */
-        dialog::backdrop { background: rgba(0,0,0,0.92); backdrop-filter: blur(6px); }
+        /* ESTILO DOS MODALS (NOVO PADRÃO STORE) */
+        dialog::backdrop { background: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
+        
         dialog { 
-            border: 1px solid #D4AF37; 
-            background: #0a0a0a; 
-            color: #fff; 
-            padding: 50px; /* Mais espaço interno */
-            max-width: 800px; /* BEM MAIOR AGORA */
+            background: transparent;
+            padding: 0;
+            max-width: 800px; 
             width: 95%; 
+            border: none;
+            outline: none;
             position: fixed; 
             top: 50%; 
             left: 50%; 
             transform: translate(-50%, -50%); 
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.15); 
-            border-radius: 6px;
             z-index: 9999;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.3s ease;
         }
         dialog[open] { opacity: 1; }
-        
-        .fechar-modal { position: absolute; top: 20px; right: 25px; font-size: 32px; cursor: pointer; background: none; border: none; color: #666; transition: 0.2s;}
-        .fechar-modal:hover { color: #D4AF37; }
-        
-        /* Botão CTA Refinado */
-        .modal-btn { display: block; width: 100%; background: #D4AF37; color: #000; text-align: center; padding: 18px; font-weight: bold; text-transform: uppercase; margin-top: 35px; letter-spacing: 2px; transition: 0.3s; text-decoration: none; font-size: 0.9rem; }
-        .modal-btn:hover { background: #fff; transform: scale(1.01); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
-
-        .modal-list { margin-top: 25px; }
-        .modal-list li { margin-bottom: 15px; color: #d0d0d0; list-style: none; position: relative; padding-left: 30px; font-size: 1.05rem; font-weight: 300; }
-        .modal-list li::before { content: "✦"; color: #D4AF37; position: absolute; left: 0; font-size: 1rem; top: 2px; }
-        
-        /* Títulos Elegantes */
-        .modal-title { color:#D4AF37; font-family:serif; font-size:2.2rem; margin-bottom:10px; line-height: 1.2; }
-        .modal-subtitle { color:#fff; font-size:1.25rem; border-left: 4px solid #D4AF37; padding-left:20px; margin-bottom:30px; font-style: italic; opacity: 0.95; font-weight: 300; }
-        .modal-text { font-size: 1.1rem; line-height: 1.7; color: #aaa; }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -236,94 +219,185 @@
     </footer>
 
     <dialog id="m1">
-        <button class="fechar-modal" onclick="this.closest('dialog').close()">×</button>
-        <h2 class="modal-title">Transforme sua operação em um legado autônomo.</h2>
-        <h3 class="modal-subtitle">Sua empresa precisa funcionar (e crescer) mesmo quando você não está na sala.</h3>
-        <p class="modal-text">A "Implementação de Método" é o passo definitivo para sair do operacional e assumir o estratégico. Nós extraímos o conhecimento tácito da liderança e o transformamos em um sistema auditável de alta performance.</p>
-        <ul class="modal-list">
-            <li>Autonomia operacional: sua equipe com as respostas certas.</li>
-            <li>Escala previsível: processos claros geram resultados constantes.</li>
-            <li>Qualidade de vida: recupere o controle da sua agenda.</li>
-        </ul>
-        <a href="iniciar-tratativas.html" class="modal-btn">PROFISSIONALIZAR MINHA GESTÃO</a>
+        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Implementação de Método</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-2">Transforme sua operação em um legado autônomo.</h3>
+                    <p class="text-neutral-400 font-light leading-relaxed">A "Implementação de Método" é o passo definitivo para sair do operacional e assumir o estratégico. Extraímos o conhecimento tácito da liderança e o transformamos em um sistema auditável.</p>
+                </div>
+                
+                <ul class="space-y-2 text-neutral-400 font-light">
+                    <li><span class="text-gold-400 mr-2">✦</span> Autonomia operacional: sua equipe com as respostas certas.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Escala previsível: processos claros geram resultados.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Qualidade de vida: recupere o controle da agenda.</li>
+                </ul>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="font-serif text-gold-400 text-2xl">R$ 24.500 <span class="text-xs text-neutral-600 font-sans tracking-widest uppercase block mt-1">Investimento Base</span></div>
+                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-300 text-center">Profissionalizar Gestão</a>
+            </div>
+        </div>
     </dialog>
 
     <dialog id="m2">
-        <button class="fechar-modal" onclick="this.closest('dialog').close()">×</button>
-        <h2 class="modal-title">Seu conhecimento é seu maior ativo. Torne-o tangível.</h2>
-        <h3 class="modal-subtitle">Não venda apenas horas. Venda sua propriedade intelectual licenciada.</h3>
-        <p class="modal-text">O segredo das grandes consultorias é empacotar o "know-how" em produtos de prateleira. A "Arquitetura de IP" transforma sua expertise em um patrimônio registrado, protegido e pronto para escalar.</p>
-        <ul class="modal-list">
-            <li>Aumento real do Valuation da marca (Equity).</li>
-            <li>Segurança jurídica e proteção contra cópias.</li>
-            <li>Novas linhas de receita passiva (Licenciamento e Franquia).</li>
-        </ul>
-        <a href="iniciar-tratativas.html" class="modal-btn">VALORIZAR MEU INTELECTO</a>
+        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Arquitetura de IP</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-2">Seu conhecimento é seu maior ativo. Torne-o tangível.</h3>
+                    <p class="text-neutral-400 font-light leading-relaxed">Não venda apenas horas. O segredo das grandes consultorias é empacotar o "know-how" em produtos de prateleira. Transforme expertise em patrimônio registrado.</p>
+                </div>
+                
+                <ul class="space-y-2 text-neutral-400 font-light">
+                    <li><span class="text-gold-400 mr-2">✦</span> Aumento real do Valuation da marca (Equity).</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Segurança jurídica e proteção contra cópias.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Novas linhas de receita (Licenciamento/Franquia).</li>
+                </ul>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="font-serif text-gold-400 text-2xl">R$ 38.000 <span class="text-xs text-neutral-600 font-sans tracking-widest uppercase block mt-1">Investimento Base</span></div>
+                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-300 text-center">Valorizar meu Intelecto</a>
+            </div>
+        </div>
     </dialog>
 
     <dialog id="m3">
-        <button class="fechar-modal" onclick="this.closest('dialog').close()">×</button>
-        <h2 class="modal-title">O jurídico deve acelerar o negócio, não travá-lo.</h2>
-        <h3 class="modal-subtitle">Contratos claros e visuais transmitem autoridade e fecham mais negócios.</h3>
-        <p class="modal-text">Documentos densos geram desconfiança e atrito. Com o Legal Design, transformamos seus contratos em ferramentas de conversão, garantindo 100% da segurança jurídica com uma experiência premium para o cliente.</p>
-        <ul class="modal-list">
-            <li>Ciclo de vendas mais rápido (menos idas e vindas).</li>
-            <li>Percepção imediata de transparência e modernidade.</li>
-            <li>Redução drástica de dúvidas e negociações desgastantes.</li>
-        </ul>
-        <a href="iniciar-tratativas.html" class="modal-btn">MODERNIZAR MEUS CONTRATOS</a>
+        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Legal Design</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-2">O jurídico deve acelerar o negócio, não travá-lo.</h3>
+                    <p class="text-neutral-400 font-light leading-relaxed">Contratos claros e visuais transmitem autoridade. Transformamos documentos densos em ferramentas de conversão, garantindo segurança jurídica com experiência premium.</p>
+                </div>
+                
+                <ul class="space-y-2 text-neutral-400 font-light">
+                    <li><span class="text-gold-400 mr-2">✦</span> Ciclo de vendas mais rápido (menos atrito).</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Percepção imediata de transparência.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Redução drástica de dúvidas contratuais.</li>
+                </ul>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="font-serif text-gold-400 text-2xl">R$ 9.800 <span class="text-xs text-neutral-600 font-sans tracking-widest uppercase block mt-1">Investimento Base</span></div>
+                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-300 text-center">Modernizar Contratos</a>
+            </div>
+        </div>
     </dialog>
 
     <dialog id="m4">
-        <button class="fechar-modal" onclick="this.closest('dialog').close()">×</button>
-        <h2 class="modal-title">Proteja o que você levou anos para construir.</h2>
-        <h3 class="modal-subtitle">A reputação é o ativo mais frágil de uma corporação. Esteja preparado.</h3>
-        <p class="modal-text">No mundo digital, o silêncio é um risco. A "Governança Reputacional" instala os protocolos de segurança necessários para que você controle a narrativa em qualquer cenário, agindo com precisão e calma.</p>
-        <ul class="modal-list">
-            <li>Protocolos de resposta rápida ("Golden Hour").</li>
-            <li>Blindagem da imagem institucional e dos sócios.</li>
-            <li>Segurança para operar em alto nível sem medo de exposição.</li>
-        </ul>
-        <a href="iniciar-tratativas.html" class="modal-btn">ATIVAR BLINDAGEM</a>
+        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Governança Reputacional</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-2">Proteja o que você levou anos para construir.</h3>
+                    <p class="text-neutral-400 font-light leading-relaxed">No mundo digital, o silêncio é um risco. Instalamos os protocolos de segurança necessários para que você controle a narrativa em qualquer cenário, agindo com precisão.</p>
+                </div>
+                
+                <ul class="space-y-2 text-neutral-400 font-light">
+                    <li><span class="text-gold-400 mr-2">✦</span> Protocolos de resposta rápida ("Golden Hour").</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Blindagem da imagem institucional e dos sócios.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Segurança para operar em alto nível.</li>
+                </ul>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="font-serif text-gold-400 text-2xl">R$ 18.500 <span class="text-xs text-neutral-600 font-sans tracking-widest uppercase block mt-1">Investimento Base</span></div>
+                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-300 text-center">Ativar Blindagem</a>
+            </div>
+        </div>
     </dialog>
 
     <dialog id="m5">
-        <button class="fechar-modal" onclick="this.closest('dialog').close()">×</button>
-        <h2 class="modal-title">Domine a narrativa em qualquer ambiente.</h2>
-        <h3 class="modal-subtitle">A excelência mora nos detalhes. O improviso custa caro.</h3>
-        <p class="modal-text">Seja em uma reunião de conselho ou em um evento solene, a forma como você se comunica define sua autoridade. Criamos roteiros estratégicos onde cada palavra e silêncio são desenhados para impacto máximo.</p>
-        <ul class="modal-list">
-            <li>Postura de estadista e autoridade inquestionável.</li>
-            <li>Domínio total do palco e da audiência.</li>
-            <li>Segurança absoluta em situações de alta pressão.</li>
-        </ul>
-        <a href="iniciar-tratativas.html" class="modal-btn">ELEVAR O PADRÃO</a>
+        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Scripts & Cerimoniais</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-2">Domine a narrativa em qualquer ambiente.</h3>
+                    <p class="text-neutral-400 font-light leading-relaxed">A excelência mora nos detalhes. O improviso custa caro. Criamos roteiros estratégicos onde cada palavra e silêncio são desenhados para impacto máximo em reuniões e eventos.</p>
+                </div>
+                
+                <ul class="space-y-2 text-neutral-400 font-light">
+                    <li><span class="text-gold-400 mr-2">✦</span> Postura de estadista e autoridade inquestionável.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Domínio total do palco e da audiência.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Segurança absoluta sob pressão.</li>
+                </ul>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="font-serif text-gold-400 text-2xl">R$ 5.200 <span class="text-xs text-neutral-600 font-sans tracking-widest uppercase block mt-1">Investimento Base</span></div>
+                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-300 text-center">Elevar o Padrão</a>
+            </div>
+        </div>
     </dialog>
 
     <dialog id="m6">
-        <button class="fechar-modal" onclick="this.closest('dialog').close()">×</button>
-        <h2 class="modal-title">Eficiência é a chave para a escala sustentável.</h2>
-        <h3 class="modal-subtitle">Elimine ruídos e alinhe sua equipe em uma única direção.</h3>
-        <p class="modal-text">O desalinhamento custa tempo e dinheiro. A "Organização Interna" cria um ecossistema fluido onde a informação circula corretamente, eliminando retrabalho e criando uma cultura de responsabilidade.</p>
-        <ul class="modal-list">
-            <li>Fluxos de comunicação limpos e auditáveis.</li>
-            <li>Maior engajamento e clareza para o time.</li>
-            <li>Uma operação azeitada, pronta para crescer.</li>
-        </ul>
-        <a href="iniciar-tratativas.html" class="modal-btn">OTIMIZAR PROCESSOS</a>
+        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Organização Interna</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-2">Eficiência é a chave para a escala sustentável.</h3>
+                    <p class="text-neutral-400 font-light leading-relaxed">O desalinhamento custa tempo e dinheiro. Criamos um ecossistema fluido onde a informação circula corretamente, eliminando retrabalho e criando uma cultura de responsabilidade.</p>
+                </div>
+                
+                <ul class="space-y-2 text-neutral-400 font-light">
+                    <li><span class="text-gold-400 mr-2">✦</span> Fluxos de comunicação limpos e auditáveis.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Maior engajamento e clareza para o time.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Uma operação azeitada, pronta para crescer.</li>
+                </ul>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="font-serif text-gold-400 text-2xl">R$ 14.000 <span class="text-xs text-neutral-600 font-sans tracking-widest uppercase block mt-1">Investimento Base</span></div>
+                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-300 text-center">Otimizar Processos</a>
+            </div>
+        </div>
     </dialog>
 
     <dialog id="m7">
-        <button class="fechar-modal" onclick="this.closest('dialog').close()">×</button>
-        <h2 class="modal-title">O mercado paga pelo valor percebido.</h2>
-        <h3 class="modal-subtitle">Alinhe sua excelência interna com uma imagem externa impecável.</h3>
-        <p class="modal-text">Não basta ser o melhor, é preciso parecer o melhor. Nossa estratégia de Branding reposiciona sua marca para sair da guerra de preços e atrair clientes que buscam (e pagam por) exclusividade e valor.</p>
-        <ul class="modal-list">
-            <li>Atração de clientes qualificados e tickets mais altos.</li>
-            <li>Diferenciação clara em um mercado saturado.</li>
-            <li>Uma narrativa poderosa que vende antes de você falar.</li>
-        </ul>
-        <a href="iniciar-tratativas.html" class="modal-btn">REPOSICIONAR MINHA MARCA</a>
+        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Estratégia & Branding</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-2">O mercado paga pelo valor percebido.</h3>
+                    <p class="text-neutral-400 font-light leading-relaxed">Não basta ser o melhor, é preciso parecer o melhor. Reposicionamos sua marca para sair da guerra de preços e atrair clientes que buscam (e pagam por) exclusividade e valor.</p>
+                </div>
+                
+                <ul class="space-y-2 text-neutral-400 font-light">
+                    <li><span class="text-gold-400 mr-2">✦</span> Atração de clientes qualificados (High Ticket).</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Diferenciação clara em um mercado saturado.</li>
+                    <li><span class="text-gold-400 mr-2">✦</span> Uma narrativa poderosa que vende antes de você falar.</li>
+                </ul>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="font-serif text-gold-400 text-2xl">R$ 32.000 <span class="text-xs text-neutral-600 font-sans tracking-widest uppercase block mt-1">Investimento Base</span></div>
+                <a href="iniciar-tratativas.html" class="bg-gold-400 text-black px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-300 text-center">Reposicionar Marca</a>
+            </div>
+        </div>
     </dialog>
 
     <script>
