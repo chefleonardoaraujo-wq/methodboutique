@@ -7,42 +7,27 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
-    </script>
+    <script> tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } } </script>
     <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUR - Jurídico | Boutique Method</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } </style>
-</head>
-<body class="antialiased flex flex-col min-h-screen">
-    <nav class="fixed w-full z-50 bg-black/90 border-b border-white/5 p-6 flex justify-between items-center">
-        <a href="licenciamento.html" class="text-xs uppercase tracking-widest text-neutral-400 hover:text-white">&larr; Voltar</a>
-        <a href="index.html" class="font-serif text-lg text-white">Boutique Method</a>
-    </nav>
-
-    <main class="flex-grow pt-40 pb-20 px-6">
-        <div class="max-w-4xl mx-auto space-y-8">
-            <h1 class="font-serif text-5xl md:text-7xl text-white italic border-l-2 border-gold-400 pl-6">JUR</h1>
-            <p class="text-neutral-300 font-light text-lg leading-relaxed text-justify">
-                A vertente JUR do Método Boutique foi desenhada para estruturar a comunicação jurídica como um ativo operacional — com clareza, consistência e previsibilidade.
-            </p>
-            <div class="pt-10 text-center">
-                <a href="iniciar-tratativas.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">Solicitar Licenciamento JUR</a>
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="servicos.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Serviços</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
             </div>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
         </div>
-    </main>
-</body>
-</html>
     </nav>
 
     <header class="pt-52 pb-16 px-6 text-center">
@@ -50,71 +35,52 @@
         <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">
             Áreas de <span class="italic text-neutral-500">Expertise</span>
         </h1>
-        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            Eliminamos o ruído para que a sua mensagem — e sua operação — cheguem ao estado da arte.
+        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-base leading-relaxed">
+            Eliminamos o ruído para que a sua mensagem — e sua operação — cheguem ao estado da arte através de métodos proprietários.
         </p>
     </header>
 
     <main class="flex-grow px-6 pb-32">
-        <div class="max-w-6xl mx-auto space-y-8">
-
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            
             <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
-                <div class="flex flex-col md:flex-row md:items-start gap-8">
-                    <div class="md:w-1/3">
-                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Comunicação Pública</span>
-                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Scripts & Cerimoniais</h2>
-                    </div>
-                    <div class="md:w-2/3 space-y-6">
-                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
-                            Desenvolvemos roteiros precisos para todas as esferas e ocasiões solenes. Do protocolo governamental a eventos corporativos de luxo.
-                        </p>
-                        <div class="pt-4">
-                            <a href="solucoes.html" class="inline-block border border-gold-400/50 px-6 py-3 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">
-                                Ver Produtos Avulsos &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="font-serif text-2xl text-white mb-4">Implementação de Método</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                    Acompanhamento consultivo para instalação dos pilares do Método Boutique na sua estrutura atual, focando em SOPs, manuais e cultura operacional.
+                </p>
+                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
             </div>
 
             <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
-                <div class="flex flex-col md:flex-row md:items-start gap-8">
-                    <div class="md:w-1/3">
-                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Gestão & Processos</span>
-                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Organização Interna</h2>
-                    </div>
-                    <div class="md:w-2/3 space-y-6">
-                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
-                            Estruturação dos fluxos de comunicação interna para eliminar ruídos, alinhar equipes e garantir eficiência operacional.
-                        </p>
-                        <div class="pt-4">
-                            <a href="solucoes.html" class="inline-block border border-gold-400/50 px-6 py-3 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">
-                                Ver Produtos Avulsos &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="font-serif text-2xl text-white mb-4">Arquitetura de IP</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                    Transformação de conhecimento tácito em ativos de propriedade intelectual (IP) auditáveis e protegidos juridicamente para ganho de equity.
+                </p>
+                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
             </div>
 
             <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
-                <div class="flex flex-col md:flex-row md:items-start gap-8">
-                    <div class="md:w-1/3">
-                        <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Posicionamento</span>
-                        <h2 class="font-serif text-3xl text-white group-hover:text-gold-400 transition duration-500">Estratégia & Branding</h2>
-                    </div>
-                    <div class="md:w-2/3 space-y-6">
-                        <p class="text-neutral-400 font-light leading-relaxed text-sm">
-                            Alinhamos a percepção externa com a realidade interna. Diagnóstico, Branding e Gestão de Crise.
-                        </p>
-                        <div class="pt-4">
-                            <a href="solucoes.html" class="inline-block border border-gold-400/50 px-6 py-3 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">
-                                Ver Produtos Avulsos &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="font-serif text-2xl text-white mb-4">Legal Design</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                    Reformulação de documentos e fluxos jurídicos para alta performance, utilizando clareza visual e acessibilidade para reduzir atritos de contrato.
+                </p>
+                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
             </div>
 
+            <div class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
+                <h3 class="font-serif text-2xl text-white mb-4">Governança Reputacional</h3>
+                <p class="text-neutral-500 text-sm leading-relaxed mb-6">
+                    Gestão de crises e blindagem de imagem institucional para figuras públicas e grandes corporações através de protocolos de comunicação.
+                </p>
+                <div class="w-12 h-px bg-gold-400/30 group-hover:w-full transition-all duration-700"></div>
+            </div>
+
+        </div>
+
+        <div class="mt-20 text-center">
+            <a href="iniciar-tratativas.html" class="inline-block px-12 py-4 border border-gold-400 text-gold-400 text-xs uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500 font-bold">
+                Agendar Diagnóstico
+            </a>
         </div>
     </main>
 
