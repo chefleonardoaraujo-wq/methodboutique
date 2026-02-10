@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licenciamento | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
+    </script>
+    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
+            </div>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-40 pb-32 px-6">
+        <div class="max-w-4xl mx-auto space-y-16">
+            
+            <header class="space-y-6 text-center border-b border-white/10 pb-16">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Pilar 02</span>
+                <h1 class="font-serif text-4xl md:text-6xl text-white">Licenciamento de <span class="italic text-neutral-500">Método</span></h1>
+                <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+                    Escalar sem inchar. Transformar seu know-how em produtos que outros podem aplicar.
+                </p>
+            </header>
+
+            <div class="space-y-12 text-neutral-300 font-light leading-relaxed text-justify">
+                <div>
+                    <h2 class="font-serif text-2xl text-white mb-4">O Poder da Escala</h2>
+                    <p>
+                        O modelo tradicional de consultoria ou serviço exige sua presença física. O modelo de Licenciamento permite que você "clone" sua inteligência. Ao criar um método proprietário, você pode licenciar o uso dele para outros profissionais, empresas ou filiais, recebendo royalties sem precisar estar lá.
+                    </p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 p-8">
+                    <h3 class="text-white font-serif text-xl mb-4 text-center">Do Serviço ao Produto</h3>
+                    <div class="grid md:grid-cols-3 gap-6 text-center text-sm">
+                        <div class="space-y-2">
+                            <span class="block text-neutral-500 uppercase tracking-widest text-[10px]">Antes</span>
+                            <p>"Eu atendo o cliente"</p>
+                        </div>
+                        <div class="text-gold-400 font-serif text-lg">→</div>
+                        <div class="space-y-2">
+                            <span class="block text-neutral-500 uppercase tracking-widest text-[10px]">Depois</span>
+                            <p>"Meu método atende o cliente"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="font-serif text-2xl text-white mb-4">O que Entregamos</h2>
+                    <ul class="list-disc list-inside space-y-2 pl-4 text-neutral-400">
+                        <li><strong>Codificação do Tácito:</strong> Extraímos o conhecimento da sua cabeça e colocamos no papel.</li>
+                        <li><strong>Arquitetura do Produto:</strong> Definimos o que é entregue, como é vendido e qual o preço.</li>
+                        <li><strong>Kits de Aplicação:</strong> Criamos os manuais, templates e ferramentas que o licenciado vai usar.</li>
+                        <li><strong>Contratos de Licença:</strong> A base jurídica para proteger sua IP enquanto ela escala.</li>
+                    </ul>
+                </div>
+
+                <div class="pt-8 text-center">
+                    <a href="iniciar-tratativas.html" class="inline-block px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                        Quero Licenciar meu Método
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest"><p>Boutique Method IP Holding Ltda © 2026</p></footer>
+</body>
+</html>
