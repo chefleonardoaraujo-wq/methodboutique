@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Valuation | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+        input, textarea, select {
+            background-color: transparent;
+            border-bottom: 1px solid #333;
+            color: #d4af37;
+            width: 100%;
+            padding: 10px 0;
+            outline: none;
+            transition: border-color 0.3s;
+            border-radius: 0;
+        }
+        input:focus, textarea:focus, select:focus { border-bottom-color: #d4af37; }
+        label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: #666; display: block; margin-top: 1.5rem; }
+    </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+            </div>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-40 pb-20 px-6 flex items-center justify-center">
+        <div class="w-full max-w-5xl grid md:grid-cols-2 gap-20">
+            
+            <div class="flex flex-col justify-center">
+                <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
+                    Análise de <span class="text-gold-400 italic">Valuation</span>
+                </h1>
+                <p class="text-neutral-400 font-light text-lg leading-relaxed max-w-md">
+                    Preencha os dados preliminares da sua operação. Nossos analistas entrarão em contato para agendar a auditoria de ativos intangíveis.
+                </p>
+                
+                <div class="mt-12 space-y-4">
+                    <div class="flex items-center gap-4 text-xs text-gold-400 uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
+                        Confidencialidade Garantida (NDA)
+                    </div>
+                    <div class="flex items-center gap-4 text-xs text-gold-400 uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
+                        Retorno em 48h úteis
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#0a0a0a] p-10 border border-white/5 shadow-2xl">
+                <form action="https://formsubmit.co/SEU_EMAIL_AQUI" method="POST" class="space-y-6">
+                    
+                    <input type="hidden" name="_subject" value="NOVO LEAD: Pedido de Valuation">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+
+                    <div>
+                        <label>Nome do Responsável</label>
+                        <input type="text" name="nome" required placeholder="Digite seu nome completo">
+                    </div>
+
+                    <div>
+                        <label>E-mail Corporativo</label>
+                        <input type="email" name="email" required placeholder="seu@empresa.com.br">
+                    </div>
+
+                    <div>
+                        <label>Nome da Empresa</label>
+                        <input type="text" name="empresa" required placeholder="Razão Social ou Nome Fantasia">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label>Faturamento Anual (Estimado)</label>
+                            <select name="faturamento" class="text-neutral-400">
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="Ate 1M">Até R$ 1 Milhão</option>
+                                <option value="1M a 10M">R$ 1M a R$ 10M</option>
+                                <option value="10M a 50M">R$ 10M a R$ 50M</option>
+                                <option value="Acima de 50M">Acima de R$ 50 Milhões</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Número de Colaboradores</label>
+                            <input type="number" name="funcionarios" placeholder="Ex: 15">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Principal Objetivo do Valuation</label>
+                        <select name="objetivo" class="text-neutral-400">
+                            <option value="Preparacao para Venda (Exit)">Preparação para Venda (Exit)</option>
+                            <option value="Entrada de Socios">Entrada de Sócios/Investidores</option>
+                            <option value="Organizacao Interna">Organização e Governança</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full mt-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">
+                        Solicitar Análise
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+    
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+</body>
+</html>
