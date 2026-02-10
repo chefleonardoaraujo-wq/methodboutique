@@ -6,102 +6,71 @@
     <title>A Origem | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                        signature: ['"Pinyon Script"', 'cursive']
-                    },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
                     colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
                 }
             }
         }
     </script>
-    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+    </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-<nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-            Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-        </a>
-        <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-            <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-            <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-            <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-            <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-            <a href="store.html" class="text-white hover:text-gold-400 transition">Store</a>
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">A Origem</a>
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+            </div>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
         </div>
-        <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-            Iniciar Tratativas
-        </a>
-    </div>
-    
-</nav>
     </nav>
-    
+
     <main class="flex-grow pt-52 pb-32 px-6">
         <div class="max-w-3xl mx-auto space-y-16">
             
             <div class="space-y-6 border-l-2 border-gold-400 pl-8">
                 <span class="text-neutral-500 text-xs tracking-[0.3em] uppercase">Por que a Boutique Method IP Holding existe</span>
                 <h1 class="font-serif text-3xl md:text-5xl text-white leading-tight">
-                    Algumas empresas nascem de uma oportunidade. <br>
-                    <span class="italic text-gold-400">A nossa nasceu de uma cicatriz.</span>
+                    "Clareza é <span class="italic text-gold-400">Dignidade</span>."
                 </h1>
             </div>
 
-            <div class="space-y-8 text-neutral-300 font-light leading-relaxed text-lg text-justify">
+            <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
                 <p>
-                    A Boutique Method não foi desenhada em uma sala de reuniões. Ela foi concebida no silêncio de uma sala de espera, no momento mais vulnerável da minha vida.
+                    O caos é o estado natural das coisas. Sem uma força intencional de organização, empresas, processos e reputações tendem à desordem (entropia).
                 </p>
                 <p>
-                    Durante meu tratamento oncológico, aprendi uma lição dura: <strong>excelência técnica não basta quando a alma do paciente está perdida na tradução.</strong> Eu estava cercado por médicos brilhantes e tecnologia de ponta, mas muitas vezes me sentia isolado pela linguagem. Termos frios, processos burocráticos para garantir direitos, palavras que erguiam muros em vez de pontes.
+                    A Boutique Method nasceu de uma constatação simples, porém brutal: <strong class="text-white font-normal">o talento sem método é refém do próprio esforço.</strong> Vi profissionais brilhantes e empresas promissoras colapsarem não por falta de competência, mas por falta de clareza.
                 </p>
                 <p>
-                    Naquele cenário de incerteza, percebi que quando a comunicação falha, a dignidade diminui. O ruído gera medo, e o medo paralisa.
+                    Entendemos que a verdadeira propriedade intelectual não é apenas uma ideia registrada. É um sistema. É a capacidade de transformar o intangível (o que você sabe) em algo tangível (o que a empresa vale).
                 </p>
                 <p>
-                    Mas também vi a luz. Vi profissionais de Terapia Ocupacional, Psicologia e Serviço Social que não apenas "atendiam", mas <em>traduziam</em>. Eles pegavam o complexo e o tornavam humano. Eles organizavam o caos e me devolviam a autonomia para decidir. Ali, entendi que clareza não é apenas um detalhe estético — <strong>clareza é uma forma de amor.</strong>
+                    Não vendemos apenas consultoria. Vendemos a arquitetura da sua liberdade. Porque quando você tem um método, você deixa de ser insubstituível na operação para se tornar inesquecível na estratégia.
                 </p>
                 
-                <div class="border-l-2 border-white/10 pl-6 py-6 my-8 bg-neutral-900/20">
-                    <p class="text-white font-serif italic text-xl">
-                        "Transformei essa vivência em arquitetura. Decidi que nenhuma empresa deveria deixar seu cliente sentir a desorientação que eu senti."
-                    </p>
-                </div>
-
-                <p>
-                    Foi dessa superação que nasceu o <strong>Método Boutique™</strong>. Não é apenas um manual de comunicação; é um sistema desenhado para garantir que a técnica (o rigor) chegue ao outro lado como acolhimento (a humanidade).
-                </p>
-                <p>
-                    Hoje, ajudamos organizações a transformar complexidade em confiança. Nossos processos, scripts e governança existem para garantir que, independentemente de quem atenda, a experiência seja segura, compreensível e digna.
-                </p>
-                <p>
-                    Criei o que muitos precisam e não encontram: uma estrutura onde a excelência técnica anda de mãos dadas com a clareza humana. Este é o legado da BMIP.
-                </p>
-            </div>
-
-            <div class="text-center pt-12 border-t border-white/10">
-                <p class="text-white font-serif text-2xl italic leading-relaxed">
-                    "Boutique Method IP Holding: <br>
-                    Da dor à estrutura. Da complexidade à dignidade."
-                </p>
-            </div>
-
-            <div class="bg-neutral-900/30 p-12 border border-white/5 text-center space-y-8 mt-12">
-                <span class="text-gold-400 text-xs uppercase tracking-widest">Nossa Visão</span>
-                <p class="font-serif text-xl md:text-2xl text-white italic">
-                    "Criar um novo padrão: comunicação inclusiva, executiva e replicável, que respeite o tempo e a vida das pessoas."
-                </p>
                 <div class="pt-8">
-                    <p class="font-signature text-4xl md:text-5xl text-gold-400 rotate-[-5deg] inline-block mb-4">Leonardo Chaves Araujo</p>
-                    <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Fundador & CEO — Boutique Method IP Holding LTDA</p>
+                    <p class="font-serif text-xl text-white italic">
+                        Boutique Method.<br>
+                        <span class="text-sm text-gold-400 not-italic uppercase tracking-widest">Auctoritas. Claritas. Perpetuitas.</span>
+                    </p>
                 </div>
             </div>
 
