@@ -20,7 +20,6 @@
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        /* Animação suave para o modal */
         .modal { transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; }
         .modal-content { transform: scale(0.95); transition: transform 0.3s ease-out; }
         .modal.active .modal-content { transform: scale(1); }
@@ -46,159 +45,222 @@
         </div>
     </nav>
 
-    <header class="pt-52 pb-24 px-6 text-center">
-        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Ferramentas Proprietárias</span>
+    <header class="pt-52 pb-16 px-6 text-center">
+        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Ecossistema de Ativos</span>
         <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">
             Acervo <span class="italic text-neutral-500">Digital</span>
         </h1>
         <p class="text-neutral-400 font-light max-w-xl mx-auto text-sm leading-relaxed">
-            Protocolos e frameworks validados. O segredo da nossa operação, disponível para a sua.
+            Protocolos, contratos e frameworks validados. A inteligência da nossa Holding disponível para sua operação.
         </p>
     </header>
 
     <main class="flex-grow px-6 pb-32">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 md:gap-16">
+        <div class="max-w-6xl mx-auto space-y-24">
             
-            <div class="group relative cursor-pointer" onclick="openModal('modal-tom-voz')">
-                <div class="aspect-[3/4] bg-neutral-900/20 border border-white/5 mb-8 overflow-hidden relative flex items-center justify-center group-hover:border-gold-400/30 transition-all duration-700">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700"></div>
-                    <svg class="w-20 h-20 text-gold-400/20 group-hover:text-gold-400/50 transition duration-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+            <section>
+                <div class="border-b border-white/10 pb-4 mb-12 flex items-end justify-between">
+                    <h2 class="font-serif text-2xl text-white">Blindagem & Jurídico <span class="text-gold-400 text-sm italic ml-2">(JUR)</span></h2>
+                    <span class="text-neutral-600 text-[10px] uppercase tracking-widest">Segurança Operacional</span>
                 </div>
-                <div class="space-y-4 text-center md:text-left">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase">Framework Estratégico</span>
-                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition duration-500">Manual de Tom de Voz</h3>
-                    <p class="text-neutral-500 text-xs leading-relaxed line-clamp-3">Padronize a comunicação verbal e escrita da sua marca.</p>
-                    <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-                        <p class="font-serif text-lg text-gold-400 italic">R$ 497</p>
-                        <span class="text-[10px] uppercase tracking-widest text-white group-hover:text-gold-400 transition">Ver Detalhes &rarr;</span>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-nda')">
+                        <div class="aspect-video bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">IP</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Pack de NDAs</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Acordos de confidencialidade para proteger suas ideias.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
+                    </div>
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-contratos')">
+                        <div class="aspect-video bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">Law</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Kit de Contratos de Serviço</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Modelos blindados para contratar freelancers e agências.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="group relative cursor-pointer" onclick="openModal('modal-legal-design')">
-                <div class="aspect-[3/4] bg-neutral-900/20 border border-white/5 mb-8 overflow-hidden relative flex items-center justify-center group-hover:border-gold-400/30 transition-all duration-700">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700"></div>
-                    <svg class="w-20 h-20 text-gold-400/20 group-hover:text-gold-400/50 transition duration-700" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            <section>
+                <div class="border-b border-white/10 pb-4 mb-12 flex items-end justify-between">
+                    <h2 class="font-serif text-2xl text-white">Saúde & Médicos <span class="text-gold-400 text-sm italic ml-2">(HC)</span></h2>
+                    <span class="text-neutral-600 text-[10px] uppercase tracking-widest">Nicho Premium</span>
                 </div>
-                <div class="space-y-4 text-center md:text-left">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase">Kit de Modelos</span>
-                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition duration-500">Master Kit: Legal Design</h3>
-                    <p class="text-neutral-500 text-xs leading-relaxed line-clamp-3">Contratos visuais editáveis para fechar negócios mais rápido.</p>
-                    <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-                        <p class="font-serif text-lg text-gold-400 italic">R$ 890</p>
-                        <span class="text-[10px] uppercase tracking-widest text-white group-hover:text-gold-400 transition">Ver Detalhes &rarr;</span>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-termo')">
+                        <div class="aspect-video bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">Visual</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Termo de Consentimento (Visual Law)</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Documentos médicos redesenhados para segurança jurídica.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
+                    </div>
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-script')">
+                        <div class="aspect-video bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">Sales</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Script de Atendimento Premium</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Roteiros para secretárias converterem pacientes particulares.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="group relative cursor-pointer" onclick="openModal('modal-crise')">
-                <div class="aspect-[3/4] bg-neutral-900/20 border border-white/5 mb-8 overflow-hidden relative flex items-center justify-center group-hover:border-gold-400/30 transition-all duration-700">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700"></div>
-                    <svg class="w-20 h-20 text-gold-400/20 group-hover:text-gold-400/50 transition duration-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            <section>
+                <div class="border-b border-white/10 pb-4 mb-12 flex items-end justify-between">
+                    <h2 class="font-serif text-2xl text-white">Política & Imagem <span class="text-gold-400 text-sm italic ml-2">(POL)</span></h2>
+                    <span class="text-neutral-600 text-[10px] uppercase tracking-widest">Reputação</span>
                 </div>
-                <div class="space-y-4 text-center md:text-left">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase">Protocolo Operacional</span>
-                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition duration-500">SOP de Gestão de Crise</h3>
-                    <p class="text-neutral-500 text-xs leading-relaxed line-clamp-3">Protocolo de resposta imediata para proteger a reputação.</p>
-                    <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-                        <p class="font-serif text-lg text-gold-400 italic">R$ 1.250</p>
-                        <span class="text-[10px] uppercase tracking-widest text-white group-hover:text-gold-400 transition">Ver Detalhes &rarr;</span>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-redes')">
+                        <div class="aspect-video bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">Rep</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Manual de Redes Sociais</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Regras de conduta digital para gabinetes e figuras públicas.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section>
+                <div class="border-b border-white/10 pb-4 mb-12 flex items-end justify-between">
+                    <h2 class="font-serif text-2xl text-white">Gestão & Cultura <span class="text-gold-400 text-sm italic ml-2">(HOLDING)</span></h2>
+                    <span class="text-neutral-600 text-[10px] uppercase tracking-widest">Governança</span>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-cultura')">
+                        <div class="aspect-square bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">Cult</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Código de Cultura</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Template para definir regras e ética da empresa.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
+                    </div>
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-onboarding')">
+                        <div class="aspect-square bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">Team</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Playbook de Onboarding</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Processo de integração de novos sócios e executivos.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
+                    </div>
+                    <div class="group relative cursor-pointer" onclick="openModal('modal-exit')">
+                        <div class="aspect-square bg-neutral-900/20 border border-white/5 mb-6 flex items-center justify-center group-hover:border-gold-400/30 transition duration-700">
+                            <span class="text-gold-400/20 font-serif italic text-4xl">Exit</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-white group-hover:text-gold-400 transition">Checklist de Pré-Exit</h3>
+                        <p class="text-neutral-500 text-xs mt-2 mb-4">Preparação da empresa para M&A e Valuation.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-white border-b border-white/20 pb-1 group-hover:text-gold-400 group-hover:border-gold-400 transition">Ver Dossiê &rarr;</span>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </main>
 
-    <div id="modal-tom-voz" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
-        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-tom-voz')"></div>
-        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-3xl w-full p-8 md:p-12 shadow-2xl shadow-gold-900/10">
-            <button onclick="closeModal('modal-tom-voz')" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition">&times; Fechar</button>
-            
-            <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase block mb-4">Dossiê 01: Comunicação</span>
-            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Manual de Tom de Voz</h2>
-            
-            <div class="space-y-6 text-neutral-400 font-light text-sm leading-relaxed text-justify border-l border-gold-400/30 pl-6">
-                <p><strong class="text-white block mb-2">Por que sua marca é ignorada?</strong><br>
-                Porque ela soa como todo mundo. A autoridade morre na inconsistência. Se cada e-mail, post ou proposta da sua empresa tem um "tom" diferente, o mercado percebe amadorismo, não sofisticação.</p>
-                
-                <p><strong class="text-white block mb-2">O que este manual faz por você:</strong><br>
-                Este não é um ebook genérico. É o <strong>Framework Proprietário</strong> que usamos na Holding para definir a personalidade verbal de marcas de elite. Ele entrega regras claras de "Como Falamos" vs "Como NÃO Falamos", vocabulário proibido e estrutura de autoridade.</p>
-                
-                <p><strong class="text-white block mb-2">O resultado:</strong><br>
-                Sua equipe inteira escrevendo como se fosse você. Coerência radical em todos os canais. Uma marca que abre a boca e o mercado para para ouvir.</p>
-            </div>
-
-            <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
-                <div>
-                    <span class="block text-xs text-neutral-500 uppercase">Investimento Único</span>
-                    <span class="font-serif text-2xl text-white">R$ 497,00</span>
-                </div>
-                <a href="https://wa.me/SEU_NUMERO?text=Quero%20adquirir%20o%20Manual%20de%20Tom%20de%20Voz" target="_blank" class="w-full md:w-auto text-center px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
-                    Baixar Framework Agora
-                </a>
+    <div id="modal-nda" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-nda')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-nda')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Pack de NDAs</h2>
+            <p class="text-neutral-400 text-sm mb-6">Sua ideia vale milhões até alguém copiá-la. Este pacote contém acordos de confidencialidade blindados para sócios, funcionários e parceiros.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 297</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
             </div>
         </div>
     </div>
 
-    <div id="modal-legal-design" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
-        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-legal-design')"></div>
-        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-3xl w-full p-8 md:p-12 shadow-2xl shadow-gold-900/10">
-            <button onclick="closeModal('modal-legal-design')" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition">&times; Fechar</button>
-            
-            <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase block mb-4">Dossiê 02: Jurídico</span>
-            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Master Kit: Legal Design</h2>
-            
-            <div class="space-y-6 text-neutral-400 font-light text-sm leading-relaxed text-justify border-l border-gold-400/30 pl-6">
-                <p><strong class="text-white block mb-2">Contratos tradicionais destroem vendas.</strong><br>
-                Você gasta horas encantando o cliente, e na hora de assinar, envia um bloco de texto jurídico ilegível que gera medo e desconfiança. O "juridiquês" é o maior ponto de atrito comercial hoje.</p>
-                
-                <p><strong class="text-white block mb-2">A Solução Visual:</strong><br>
-                Este Kit entrega modelos de contratos e propostas redesenhados com técnicas de <strong>Visual Law</strong>. Layout limpo, ícones estratégicos e linguagem humana, sem perder a segurança jurídica.</p>
-                
-                <p><strong class="text-white block mb-2">Para quem é:</strong><br>
-                Para quem quer enviar um contrato e receber um "uau" em vez de um "vou ver com meu advogado". Aumente sua taxa de conversão e feche negócios mais rápido.</p>
-            </div>
-
-            <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
-                <div>
-                    <span class="block text-xs text-neutral-500 uppercase">Investimento Único</span>
-                    <span class="font-serif text-2xl text-white">R$ 890,00</span>
-                </div>
-                <a href="https://wa.me/SEU_NUMERO?text=Quero%20adquirir%20o%20Kit%20Legal%20Design" target="_blank" class="w-full md:w-auto text-center px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
-                    Acessar Modelos
-                </a>
+    <div id="modal-contratos" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-contratos')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-contratos')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Kit de Contratos</h2>
+            <p class="text-neutral-400 text-sm mb-6">Pare de contratar no "boca a boca". Tenha contratos de prestação de serviço seguros para agências, freelancers e terceiros.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 597</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
             </div>
         </div>
     </div>
 
-    <div id="modal-crise" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
-        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-crise')"></div>
-        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-3xl w-full p-8 md:p-12 shadow-2xl shadow-gold-900/10">
-            <button onclick="closeModal('modal-crise')" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition">&times; Fechar</button>
-            
-            <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase block mb-4">Dossiê 03: Governança</span>
-            <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">SOP de Gestão de Crise</h2>
-            
-            <div class="space-y-6 text-neutral-400 font-light text-sm leading-relaxed text-justify border-l border-gold-400/30 pl-6">
-                <p><strong class="text-white block mb-2">O custo do pânico é a falência.</strong><br>
-                Sua reputação leva anos para ser construída e segundos para ser destruída. Quando um erro acontece (e vai acontecer), sua equipe sabe exatamente o que dizer? Ou eles improvisam?</p>
-                
-                <p><strong class="text-white block mb-2">Blindagem Operacional:</strong><br>
-                Este é o Procedimento Operacional Padrão (SOP) que usamos em grandes corporações. Um roteiro passo-a-passo do que fazer nos primeiros 15 minutos, 1 hora e 24 horas de uma crise de imagem.</p>
-                
-                <p><strong class="text-white block mb-2">Segurança Imediata:</strong><br>
-                Tenha os scripts de resposta, a hierarquia de decisão e os modelos de nota oficial prontos na gaveta. Não espere a casa pegar fogo para comprar o extintor.</p>
+    <div id="modal-termo" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-termo')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-termo')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Termo de Consentimento (HC)</h2>
+            <p class="text-neutral-400 text-sm mb-6">O documento nº 1 para evitar processos médicos, redesenhado com Visual Law para que o paciente entenda e assine com segurança.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 997</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
             </div>
+        </div>
+    </div>
 
-            <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
-                <div>
-                    <span class="block text-xs text-neutral-500 uppercase">Investimento Único</span>
-                    <span class="font-serif text-2xl text-white">R$ 1.250,00</span>
-                </div>
-                <a href="https://wa.me/SEU_NUMERO?text=Quero%20adquirir%20o%20SOP%20de%20Crise" target="_blank" class="w-full md:w-auto text-center px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
-                    Proteger Minha Reputação
-                </a>
+    <div id="modal-script" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-script')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-script')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Script de Atendimento Premium</h2>
+            <p class="text-neutral-400 text-sm mb-6">Transforme sua recepção. Roteiros prontos para agendar consultas particulares e contornar objeções de preço.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 497</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-redes" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-redes')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-redes')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Manual de Redes Sociais</h2>
+            <p class="text-neutral-400 text-sm mb-6">Regras claras de conduta digital para evitar crises de imagem causadas pela equipe ou assessoria.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 697</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-cultura" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-cultura')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-cultura')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Código de Cultura</h2>
+            <p class="text-neutral-400 text-sm mb-6">Defina as regras do jogo. Um template completo para estabelecer ética, dress code e comportamento na sua empresa.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 790</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-onboarding" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-onboarding')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-onboarding')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Playbook de Onboarding</h2>
+            <p class="text-neutral-400 text-sm mb-6">Não perca tempo treinando o básico. Um processo estruturado para integrar novos sócios e executivos em 7 dias.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 890</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-exit" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 invisible">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal('modal-exit')"></div>
+        <div class="modal-content relative bg-[#0a0a0a] border border-white/10 max-w-2xl w-full p-10 shadow-2xl">
+            <button onclick="closeModal('modal-exit')" class="absolute top-4 right-4 text-neutral-500 hover:text-white">&times;</button>
+            <h2 class="font-serif text-3xl text-white mb-4">Checklist de Pré-Exit</h2>
+            <p class="text-neutral-400 text-sm mb-6">Quer vender sua empresa um dia? Comece a prepará-la hoje. A lista definitiva de governança para M&A.</p>
+            <div class="flex justify-between items-center border-t border-white/10 pt-6">
+                <span class="text-gold-400 font-serif text-2xl">R$ 1.500</span>
+                <a href="#" class="px-6 py-2 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest">Adquirir</a>
             </div>
         </div>
     </div>
@@ -208,17 +270,14 @@
             const modal = document.getElementById(modalId);
             modal.classList.remove('invisible', 'opacity-0');
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Bloqueia scroll da página
+            document.body.style.overflow = 'hidden';
         }
-
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('active');
             modal.classList.add('invisible', 'opacity-0');
-            document.body.style.overflow = ''; // Libera scroll da página
+            document.body.style.overflow = '';
         }
-
-        // Fechar com ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 document.querySelectorAll('.modal').forEach(modal => {
