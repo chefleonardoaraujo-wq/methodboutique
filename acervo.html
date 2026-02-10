@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acervo | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+    </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="store.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Acervo</a>
+            </div>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
+        </div>
+    </nav>
+
+    <header class="pt-52 pb-24 px-6 text-center">
+        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Ferramentas Proprietárias</span>
+        <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">
+            Acervo <span class="italic text-neutral-500">Digital</span>
+        </h1>
+        <p class="text-neutral-400 font-light max-w-xl mx-auto text-sm leading-relaxed">
+            Protocolos e frameworks validados, disponíveis para aplicação imediata na sua operação.
+        </p>
+    </header>
+
+    <main class="flex-grow px-6 pb-32">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 md:gap-16">
+            
+            <div class="group relative">
+                <div class="aspect-[3/4] bg-neutral-900/20 border border-white/5 mb-8 overflow-hidden relative flex items-center justify-center group-hover:border-gold-400/30 transition-all duration-700">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-700"></div>
+                    <svg class="w-24 h-24 text-gold-400/20 group-hover:text-gold-400/40 transition duration-700" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                </div>
+                <div class="space-y-4">
+                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase">Framework Estratégico</span>
+                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition duration-500">Manual de Tom de Voz</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed line-clamp-3">
+                        Guia definitivo para padronizar a comunicação verbal e escrita da sua marca, garantindo autoridade e consistência em todos os pontos de contato.
+                    </p>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+                        <p class="font-serif text-lg text-gold-400 italic">R$ 497</p>
+                        <a href="#" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition duration-300 group-hover:translate-x-2">
+                            Solicitar Acesso &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <div class="aspect-[3/4] bg-neutral-900/20 border border-white/5 mb-8 overflow-hidden relative flex items-center justify-center group-hover:border-gold-400/30 transition-all duration-700">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-700"></div>
+                    <svg class="w-24 h-24 text-gold-400/20 group-hover:text-gold-400/40 transition duration-700" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                    </svg>
+                </div>
+                <div class="space-y-4">
+                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase">Kit de Modelos</span>
+                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition duration-500">Master Kit: Legal Design</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed line-clamp-3">
+                        Pacote com modelos de contratos e documentos jurídicos redesenhados com técnicas de Legal Design, prontos para edição e uso imediato.
+                    </p>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+                        <p class="font-serif text-lg text-gold-400 italic">R$ 890</p>
+                        <a href="#" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition duration-300 group-hover:translate-x-2">
+                            Solicitar Acesso &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <div class="aspect-[3/4] bg-neutral-900/20 border border-white/5 mb-8 overflow-hidden relative flex items-center justify-center group-hover:border-gold-400/30 transition-all duration-700">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-700"></div>
+                    <svg class="w-24 h-24 text-gold-400/20 group-hover:text-gold-400/40 transition duration-700" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                    </svg>
+                </div>
+                <div class="space-y-4">
+                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase">Protocolo Operacional</span>
+                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition duration-500">SOP de Gestão de Crise</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed line-clamp-3">
+                        Procedimento Operacional Padrão (SOP) detalhado para identificar, conter e responder a crises de imagem e reputação corporativa.
+                    </p>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between">
+                        <p class="font-serif text-lg text-gold-400 italic">R$ 1.250</p>
+                        <a href="#" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition duration-300 group-hover:translate-x-2">
+                            Solicitar Acesso &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+</body>
+</html>
