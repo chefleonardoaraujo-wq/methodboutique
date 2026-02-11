@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+        
+        /* Audio Player Styling */
+        .audio-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 20%; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+    </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                    <a href="servicos-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Services</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
+                    <a href="servicos.html" class="text-neutral-500 hover:text-white transition">PT</a>
+                    <span class="text-white/30">|</span>
+                    <span class="text-gold-400 cursor-default">EN</span>
+                </div>
+            </div>
+            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Initiate Protocols
+            </a>
+        </div>
+    </nav>
+
+    <header class="pt-52 pb-20 px-6 text-center">
+        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Our Expertise</span>
+        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
+            Services & <span class="italic text-neutral-500">Solutions</span>
+        </h1>
+        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+            A comprehensive suite of intellectual property services designed to protect, scale, and value your business.
+        </p>
+    </header>
+
+    <main class="flex-grow px-6 pb-32">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+            
+            <a href="valuation-en.html" class="group relative bg-neutral-900/30 border border-white/10 p-12 hover:border-gold-400 transition duration-500 overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition">
+                    <span class="font-serif text-8xl text-white">01</span>
+                </div>
+                <h3 class="font-serif text-3xl text-white mb-4 group-hover:text-gold-400 transition">Valuation & Equity</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-8 max-w-sm">
+                    Transform tacit knowledge into auditable assets. We calculate the real value of your company by adding the Intellectual Property variable.
+                </p>
+                <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:translate-x-2 transition duration-300 inline-block">Explore Valuation &rarr;</span>
+            </a>
+
+            <a href="legal-design-en.html" class="group relative bg-neutral-900/30 border border-white/10 p-12 hover:border-gold-400 transition duration-500 overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition">
+                    <span class="font-serif text-8xl text-white">02</span>
+                </div>
+                <h3 class="font-serif text-3xl text-white mb-4 group-hover:text-gold-400 transition">Legal Design</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-8 max-w-sm">
+                    Visual Law and Legal Operations. We transform dense contracts into functional, user-centric documents that speed up deal-closing.
+                </p>
+                <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:translate-x-2 transition duration-300 inline-block">Explore Legal Design &rarr;</span>
+            </a>
+
+            <a href="solucoes-en.html" class="group relative bg-neutral-900/30 border border-white/10 p-12 hover:border-gold-400 transition duration-500 overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition">
+                    <span class="font-serif text-8xl text-white">03</span>
+                </div>
+                <h3 class="font-serif text-3xl text-white mb-4 group-hover:text-gold-400 transition">Corporate Solutions</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-8 max-w-sm">
+                    Deep diagnosis, process architecture, and board setup. The complete journey from operational chaos to organized governance.
+                </p>
+                <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:translate-x-2 transition duration-300 inline-block">Explore Solutions &rarr;</span>
+            </a>
+
+            <a href="licenciamento-en.html" class="group relative bg-neutral-900/30 border border-white/10 p-12 hover:border-gold-400 transition duration-500 overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition">
+                    <span class="font-serif text-8xl text-white">04</span>
+                </div>
+                <h3 class="font-serif text-3xl text-white mb-4 group-hover:text-gold-400 transition">Method Licensing</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-8 max-w-sm">
+                    Scale your know-how. We package your expertise into a franchise-like model (JUR, HC, POL) that generates recurring revenue.
+                </p>
+                <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:translate-x-2 transition duration-300 inline-block">Explore Licensing &rarr;</span>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+    </button>
+
+    <script>
+        const audioBtn = document.getElementById('globalAudioBtn');
+        const audioLabel = document.getElementById('audioLabel');
+        let synth = window.speechSynthesis;
+        let utterance = new SpeechSynthesisUtterance();
+        let isRunning = false;
+
+        function getContent() {
+            return "Services and Solutions. A comprehensive suite of intellectual property services. 1. Valuation and Equity: Transform tacit knowledge into assets. 2. Legal Design: Visual Law and Legal Operations. 3. Corporate Solutions: Diagnosis and Governance. 4. Method Licensing: Scale your know-how. Explore our services.";
+        }
+
+        function toggleGlobalAudio() {
+            if (synth.speaking && isRunning) {
+                synth.cancel();
+                isRunning = false;
+                audioBtn.classList.add('paused');
+                audioLabel.innerText = "Listen";
+            } else {
+                synth.cancel();
+                utterance.text = getContent();
+                utterance.lang = 'en-US';
+                utterance.rate = 1;
+                synth.speak(utterance);
+                isRunning = true;
+                audioBtn.classList.remove('paused');
+                audioLabel.innerText = "Stop";
+            }
+        }
+
+        utterance.onend = function() {
+            isRunning = false;
+            audioBtn.classList.add('paused');
+            audioLabel.innerText = "Listen";
+        };
+    </script>
+
+</body>
+</html>
