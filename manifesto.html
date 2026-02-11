@@ -100,16 +100,17 @@
 
                 <p class="text-neutral-400 font-light leading-relaxed">
                     Nosso trabalho é capturar a inteligência do negócio e transformá-la em um Sistema Operacional replicável, seguro e valioso. Onde há improviso, nós colocamos método. Onde há complexidade, nós instalamos clareza.
-                    
-                    A Boutique Method IP Holding nasceu em Santa Maria, no Rio Grande do Sul, a partir de uma vivência prática em ambientes de alta complexidade, onde a clareza não é um diferencial — é uma necessidade operacional.
-
-                    
-                    
-                    Desde a sua origem, a empresa foi estruturada com uma visão nacional: desenvolver métodos proprietários capazes de transformar conhecimento em ativos intelectuais sólidos, aplicáveis em diferentes setores, regiões e escalas.
-
-                    O que começou localmente foi concebido para operar em todo o país, com o mesmo padrão de rigor, governança e previsibilidade que orienta cada decisão da holding.
                 </p>
-                
+
+                <div class="my-10 pl-6 border-l-2 border-gold-400">
+                    <p class="font-serif text-xl md:text-2xl text-white leading-relaxed italic">
+                        "A Boutique Method IP Holding nasceu em Santa Maria, no Rio Grande do Sul, a partir de uma vivência prática em ambientes de alta complexidade, onde a clareza não é um diferencial — é uma necessidade operacional. 
+                    </p>
+                    <p class="font-serif text-lg md:text-xl text-neutral-300 leading-relaxed mt-4">
+                        Desde a sua origem, a empresa foi estruturada com uma visão nacional: desenvolver métodos proprietários capazes de transformar conhecimento em ativos intelectuais sólidos, aplicáveis em diferentes setores, regiões e escalas. O que começou localmente foi concebido para operar em todo o país, com o mesmo padrão de rigor, governança e previsibilidade que orienta cada decisão da holding."
+                    </p>
+                </div>
+
                 <p class="text-neutral-400 font-light leading-relaxed">
                     Não somos uma agência. Não somos uma consultoria comum. Somos arquitetos de legado.
                 </p>
@@ -220,13 +221,19 @@
         let synth = window.speechSynthesis;
         let utterance = new SpeechSynthesisUtterance();
         
+        // Incluímos a nova parte no texto de leitura também
         let textoParaLer = `
             Do Caos ao Patrimônio.
             Vivemos a era do ruído. Todo mundo fala, mas poucos constroem algo que dure.
             Acreditamos que o conhecimento de um especialista não deve morrer com ele.
             A Boutique Method existe para transformar conhecimento tácito em ativo proprietário.
+            
+            A Boutique Method IP Holding nasceu em Santa Maria, no Rio Grande do Sul, a partir de uma vivência prática em ambientes de alta complexidade.
+            Desde a sua origem, a empresa foi estruturada com uma visão nacional.
+            
             Nosso trabalho é capturar a inteligência do negócio e transformá-la em um Sistema Operacional replicável.
             Não somos uma agência. Não somos uma consultoria comum. Somos arquitetos de legado.
+            
             Dogmas da Holding:
             Um: Auctoritas. Autoridade Real. Não gritamos para ser ouvidos.
             Dois: Claritas. Clareza Radical. A simplicidade é o auge da sofisticação.
