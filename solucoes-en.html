@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solutions | Boutique Method</title>
+    <title>Corporate Solutions | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
     </script>
-    <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
-        .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Audio Player Styling */
+    <style> 
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
+        .gold-selection::selection { background: #d4af37; color: black; } 
+
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -51,179 +47,176 @@
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
+    <a href="#main-content" class="skip-link">Skip to catalog</a>
+
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
                     <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
                     <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Store</a>
                 </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
+                
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
                     <a href="solucoes.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
                     <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <header class="pt-52 pb-20 px-6 text-center">
-        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Integrated Ecosystem</span>
-        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
-            Corporate <span class="italic text-neutral-500">Solutions</span>
-        </h1>
-        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-            We don't just solve problems; we redesign the ecosystem. From diagnosis to exit strategy.
-        </p>
-    </header>
-
-    <main class="flex-grow px-6 pb-32">
-        <div class="max-w-6xl mx-auto space-y-32">
+    <main id="main-content" class="flex-grow pt-52 pb-32 px-6">
+        <div class="max-w-7xl mx-auto space-y-16">
             
-            <div class="grid md:grid-cols-2 gap-16 items-start">
-                <div class="space-y-8">
-                    <h2 class="font-serif text-3xl text-white">The Intervention Protocol</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed">
-                        Our approach is surgical. We don't believe in generic "best practices". We believe in custom architecture based on your specific context and goals.
-                    </p>
-                    <div class="space-y-6">
-                        <div class="flex gap-6 group">
-                            <span class="text-gold-400 font-serif text-2xl group-hover:scale-110 transition">01</span>
-                            <div>
-                                <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-2">Deep Diagnosis</h3>
-                                <p class="text-neutral-500 text-xs leading-relaxed">We map the invisible cracks in your operation. Interviews, process mining, and financial auditing to find the "silent leaks".</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 group">
-                            <span class="text-gold-400 font-serif text-2xl group-hover:scale-110 transition">02</span>
-                            <div>
-                                <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-2">Process Architecture</h3>
-                                <p class="text-neutral-500 text-xs leading-relaxed">Designing the new Operating System. We create the flowcharts, playbooks, and decision matrices that will govern the company.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6 group">
-                            <span class="text-gold-400 font-serif text-2xl group-hover:scale-110 transition">03</span>
-                            <div>
-                                <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-2">Immersive Implementation</h3>
-                                <p class="text-neutral-500 text-xs leading-relaxed">Paper accepts everything; people don't. We train your team "on the job" to ensure the new culture sticks.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="text-center space-y-4">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Product Catalog</span>
+                <h1 class="font-serif text-4xl md:text-5xl text-white">
+                    Corporate <span class="italic text-neutral-500">Solutions</span>
+                </h1>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 border-y border-white/10 py-8 text-center">
+                <div class="space-y-2">
+                    <h3 class="text-white font-serif text-lg">Public Communication</h3>
+                    <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Ceremonials • Speeches • Spokesperson</p>
                 </div>
-                
-                <div class="bg-neutral-900/30 border border-white/10 p-12 h-full flex items-center justify-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-gold-400/10 to-transparent"></div>
-                    <blockquote class="relative z-10 text-center">
-                        <p class="font-serif text-2xl text-white italic mb-6">"Strategy without process is little more than a wish list."</p>
-                        <cite class="text-gold-400 text-xs uppercase tracking-widest not-italic">— Robert Filek</cite>
-                    </blockquote>
+                <div class="space-y-2 md:border-x border-white/10">
+                    <h3 class="text-white font-serif text-lg">Management & Processes</h3>
+                    <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Internal Org. • Governance • Training</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-white font-serif text-lg">Positioning</h3>
+                    <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Diagnosis • Branding • Reputation</p>
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-24">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Areas of Expertise</span>
-                    <h2 class="font-serif text-4xl text-white">Specific Solutions</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Protection</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Crisis & Reputation</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            We structure responses, positioning, and protocols to mitigate reputational risk.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Rapid response plan</li>
+                            <li>• Official statements & press releases</li>
+                            <li>• Q&A (tough questions)</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas-en.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Hire</a>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    
-                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400/50 transition duration-500">
-                        <span class="text-gold-400 text-xs tracking-widest block mb-4">M&A & EQUITY</span>
-                        <h3 class="font-serif text-2xl text-white mb-4">Exit Preparation</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
-                            Preparing the company for sale. Organizing data rooms, legal due diligence, and valuation maximization strategies.
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Systems</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Governance & Protocols</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Rules and workflows to ensure the company's message is consistent and secure.
                         </p>
-                        <a href="iniciar-tratativas.html" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Consult &rarr;</a>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Channel matrix</li>
+                            <li>• Editorial standards</li>
+                            <li>• Approval workflow</li>
+                        </ul>
                     </div>
-
-                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400/50 transition duration-500">
-                        <span class="text-gold-400 text-xs tracking-widest block mb-4">GOVERNANCE</span>
-                        <h3 class="font-serif text-2xl text-white mb-4">Board Setup</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
-                            Implementing professional advisory boards. Selecting members, defining bylaws, and structuring quarterly meetings.
-                        </p>
-                        <a href="iniciar-tratativas.html" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Consult &rarr;</a>
-                    </div>
-
-                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400/50 transition duration-500">
-                        <span class="text-gold-400 text-xs tracking-widest block mb-4">TURNAROUND</span>
-                        <h3 class="font-serif text-2xl text-white mb-4">Crisis Recovery</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
-                            Emergency intervention for companies in distress. Cash flow stabilization, cost cutting, and operational restructuring.
-                        </p>
-                        <a href="iniciar-tratativas.html" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Consult &rarr;</a>
-                    </div>
-
+                    <a href="iniciar-tratativas-en.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Hire</a>
                 </div>
-            </div>
 
-            <div class="pt-12 text-center">
-                <a href="iniciar-tratativas.html" class="inline-block px-10 py-4 border border-gold-400 text-gold-400 text-xs uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500 font-bold">
-                    Schedule a Diagnosis
-                </a>
-            </div>
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Analysis</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Strategic Diagnosis</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            Objective reading of the scenario: noise, risks, waste, and opportunities.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Noise & bottleneck map</li>
+                            <li>• Compliance risks</li>
+                            <li>• Step-by-step action plan</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas-en.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Hire</a>
+                </div>
 
+                <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Brand</span>
+                        <h3 class="font-serif text-xl text-white mb-2">Premium Positioning</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-4">
+                            We align the external narrative with the internal reality of the business.
+                        </p>
+                        <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
+                            <li>• Value proposition</li>
+                            <li>• Core narrative</li>
+                            <li>• Institutional pitch</li>
+                        </ul>
+                    </div>
+                    <a href="iniciar-tratativas-en.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Hire</a>
+                </div>
+
+            </div>
         </div>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
+    <script src="accessibility.js"></script>
+
     <script>
-        const audioBtn = document.getElementById('globalAudioBtn');
-        const audioLabel = document.getElementById('audioLabel');
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        let isRunning = false;
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-        function getContent() {
-            return "Corporate Solutions. From diagnosis to exit strategy. Our approach is surgical. Deep Diagnosis, Process Architecture, Immersive Implementation. Specific Solutions: Exit Preparation, Board Setup, Crisis Recovery. Schedule a diagnosis today.";
-        }
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-        function toggleGlobalAudio() {
-            if (synth.speaking && isRunning) {
+            if (isPlaying) {
                 synth.cancel();
-                isRunning = false;
-                audioBtn.classList.add('paused');
-                audioLabel.innerText = "Listen";
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen to Page";
             } else {
-                synth.cancel();
-                utterance.text = getContent();
-                utterance.lang = 'en-US';
-                utterance.rate = 1;
-                synth.speak(utterance);
-                isRunning = true;
-                audioBtn.classList.remove('paused');
-                audioLabel.innerText = "Stop";
+                const text = "Boutique Method Corporate Solutions Page. Product catalog divided into Public Communication, Management and Processes, and Positioning. We offer solutions such as Crisis and Reputation, Governance and Protocols, Strategic Diagnosis, Premium Positioning, and Legal Design. All services aim for operational efficiency and brand protection.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Page";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
             }
         }
-
-        utterance.onend = function() {
-            isRunning = false;
-            audioBtn.classList.add('paused');
-            audioLabel.innerText = "Listen";
-        };
     </script>
-
 </body>
 </html>
