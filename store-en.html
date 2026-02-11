@@ -3,25 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collection | Boutique Method</title>
+    <title>Digital Collection | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
     </script>
+
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* Audio Player Styling */
+        /* MODAL STYLES */
+        dialog::backdrop { background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); }
+        dialog { 
+            background: transparent;
+            padding: 0;
+            max-width: 900px; 
+            width: 95%; 
+            border: none;
+            outline: none;
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        dialog[open] { opacity: 1; }
+
+        /* Asset List Hover Effect */
+        .asset-row { transition: all 0.4s ease; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .asset-row:hover { background-color: rgba(212, 175, 55, 0.03); padding-left: 20px; border-bottom-color: rgba(212, 175, 55, 0.3); }
+        .asset-row:hover .asset-title { color: #d4af37; }
+        .asset-row:hover .asset-arrow { opacity: 1; transform: translateX(0); }
+
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -51,215 +74,225 @@
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
+    <a href="#main-content" class="skip-link">Skip to collection</a>
+
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">Holding</a>
                     <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
                     <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
                     <a href="store-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Collection</a>
                 </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
                     <a href="store.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
                     <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <header class="pt-52 pb-20 px-6 text-center">
-        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Intellectual Capital</span>
-        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
-            The <span class="italic text-neutral-500">Collection</span>
+    <header class="pt-40 md:pt-52 pb-16 px-6 text-center">
+        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Asset Ecosystem</span>
+        <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">
+            Digital <span class="italic text-neutral-500">Collection</span>
         </h1>
-        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-            Access Boutique Method's proprietary tools. Templates, manuals, and protocols ready for immediate implementation.
+        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            Immediate access to playbooks, templates, and protocols that shield and scale large operations.
         </p>
     </header>
 
-    <main class="flex-grow px-6 pb-32">
-        <div class="max-w-6xl mx-auto">
-            
-            <div class="flex justify-center gap-8 mb-16 text-[10px] uppercase tracking-widest text-neutral-500 border-b border-white/10 pb-4">
-                <span class="text-white cursor-pointer border-b border-gold-400 pb-4 -mb-4.5">All</span>
-                <span class="hover:text-white cursor-pointer transition">Management</span>
-                <span class="hover:text-white cursor-pointer transition">Legal</span>
-                <span class="hover:text-white cursor-pointer transition">Culture</span>
-            </div>
+    <main id="main-content" class="flex-grow px-6 pb-24">
+        <div class="max-w-5xl mx-auto space-y-20">
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <section>
+                <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
+                    <h2 class="font-serif text-2xl text-white">Shielding & Risk <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(RISK)</span></h2>
+                </div>
                 
-                <div class="group border border-white/10 bg-neutral-900/30 hover:border-gold-400 transition duration-500">
-                    <div class="h-48 bg-neutral-900 border-b border-white/5 flex items-center justify-center relative overflow-hidden">
-                        <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition duration-500">SOP</span>
+                <div class="flex flex-col">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-crisis').showModal()">
+                        <div class="flex-1">
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2 group-hover:text-gold-400 transition">Asset Code: RISK-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition duration-300">Crisis & Reputation Kit</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Rapid response playbook ("Golden Hour"), ready-to-use official statements, and decision matrix.</p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <span class="text-white text-lg font-light">R$ 997</span>
+                            <span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition duration-300">→</span>
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <span class="text-gold-400 text-[9px] uppercase tracking-widest block mb-2">Operations</span>
-                        <h3 class="text-white font-serif text-xl mb-3">Standard Operating Procedures</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-6">
-                            The definitive framework for mapping processes. Includes flowcharts, checklists, and video tutorial script.
-                        </p>
-                        <div class="flex justify-between items-center border-t border-white/10 pt-4">
-                            <span class="text-white text-sm">US$ 197</span>
-                            <a href="#" class="text-[10px] uppercase tracking-widest text-gold-400 hover:text-white transition">Acquire &rarr;</a>
+
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-gov').showModal()">
+                        <div class="flex-1">
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2 group-hover:text-gold-400 transition">Asset Code: GOV-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition duration-300">Governance & Protocols</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">The "Constitution" of internal communication: approval workflows, hierarchy, and response SLAs.</p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <span class="text-white text-lg font-light">R$ 597</span>
+                            <span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition duration-300">→</span>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="group border border-white/10 bg-neutral-900/30 hover:border-gold-400 transition duration-500">
-                    <div class="h-48 bg-neutral-900 border-b border-white/5 flex items-center justify-center relative overflow-hidden">
-                        <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition duration-500">CODE</span>
-                    </div>
-                    <div class="p-8">
-                        <span class="text-gold-400 text-[9px] uppercase tracking-widest block mb-2">Culture</span>
-                        <h3 class="text-white font-serif text-xl mb-3">Culture Code Manual</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-6">
-                            Template to document your company's DNA. Defines rituals, taboos, values, and behavioral expectations.
-                        </p>
-                        <div class="flex justify-between items-center border-t border-white/10 pt-4">
-                            <span class="text-white text-sm">US$ 149</span>
-                            <a href="#" class="text-[10px] uppercase tracking-widest text-gold-400 hover:text-white transition">Acquire &rarr;</a>
+            <section>
+                <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
+                    <h2 class="font-serif text-2xl text-white">Strategy & Brand <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(STRAT)</span></h2>
+                </div>
+                
+                <div class="flex flex-col">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-diag').showModal()">
+                        <div class="flex-1">
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2 group-hover:text-gold-400 transition">Asset Code: STRAT-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition duration-300">Strategic Diagnosis</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Framework to audit bottlenecks, noise, and hidden opportunities in the current scenario.</p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <span class="text-white text-lg font-light">R$ 497</span>
+                            <span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition duration-300">→</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="group border border-white/10 bg-neutral-900/30 hover:border-gold-400 transition duration-500">
-                    <div class="h-48 bg-neutral-900 border-b border-white/5 flex items-center justify-center relative overflow-hidden">
-                        <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition duration-500">VEST</span>
-                    </div>
-                    <div class="p-8">
-                        <span class="text-gold-400 text-[9px] uppercase tracking-widest block mb-2">Legal</span>
-                        <h3 class="text-white font-serif text-xl mb-3">Vesting Agreement</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-6">
-                            Smart contract for partnership entry. Includes cliff clauses, milestones, and bad leaver/good leaver rules.
-                        </p>
-                        <div class="flex justify-between items-center border-t border-white/10 pt-4">
-                            <span class="text-white text-sm">US$ 297</span>
-                            <a href="#" class="text-[10px] uppercase tracking-widest text-gold-400 hover:text-white transition">Acquire &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group border border-white/10 bg-neutral-900/30 hover:border-gold-400 transition duration-500">
-                    <div class="h-48 bg-neutral-900 border-b border-white/5 flex items-center justify-center relative overflow-hidden">
-                        <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition duration-500">BOARD</span>
-                    </div>
-                    <div class="p-8">
-                        <span class="text-gold-400 text-[9px] uppercase tracking-widest block mb-2">Governance</span>
-                        <h3 class="text-white font-serif text-xl mb-3">Advisory Board Setup</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-6">
-                            Guide to forming your first advisory board. Meeting agendas, minutes templates, and advisor compensation models.
-                        </p>
-                        <div class="flex justify-between items-center border-t border-white/10 pt-4">
-                            <span class="text-white text-sm">US$ 249</span>
-                            <a href="#" class="text-[10px] uppercase tracking-widest text-gold-400 hover:text-white transition">Acquire &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group border border-white/10 bg-neutral-900/30 hover:border-gold-400 transition duration-500">
-                    <div class="h-48 bg-neutral-900 border-b border-white/5 flex items-center justify-center relative overflow-hidden">
-                        <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition duration-500">NDA</span>
-                    </div>
-                    <div class="p-8">
-                        <span class="text-gold-400 text-[9px] uppercase tracking-widest block mb-2">Legal</span>
-                        <h3 class="text-white font-serif text-xl mb-3">Bulletproof NDA</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-6">
-                            Non-Disclosure Agreement focused on IP protection. Designed to be intimidating to violators but fair to partners.
-                        </p>
-                        <div class="flex justify-between items-center border-t border-white/10 pt-4">
-                            <span class="text-white text-sm">US$ 99</span>
-                            <a href="#" class="text-[10px] uppercase tracking-widest text-gold-400 hover:text-white transition">Acquire &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group border border-white/10 bg-neutral-900/30 hover:border-gold-400 transition duration-500">
-                    <div class="h-48 bg-neutral-900 border-b border-white/5 flex items-center justify-center relative overflow-hidden">
-                        <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition duration-500">CRISIS</span>
-                    </div>
-                    <div class="p-8">
-                        <span class="text-gold-400 text-[9px] uppercase tracking-widest block mb-2">Reputation</span>
-                        <h3 class="text-white font-serif text-xl mb-3">Crisis Management Kit</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-6">
-                            Pre-written press release templates, internal memos, and decision trees for PR crises.
-                        </p>
-                        <div class="flex justify-between items-center border-t border-white/10 pt-4">
-                            <span class="text-white text-sm">US$ 197</span>
-                            <a href="#" class="text-[10px] uppercase tracking-widest text-gold-400 hover:text-white transition">Acquire &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="pt-24 text-center">
-                <p class="text-neutral-500 text-sm mb-6">Need a custom solution for your holding?</p>
-                <a href="iniciar-tratativas.html" class="inline-block px-10 py-4 border border-gold-400 text-gold-400 text-xs uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500 font-bold">
-                    Contact Licensing Team
-                </a>
-            </div>
+            </section>
 
         </div>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+    <dialog id="modal-crisis">
+        <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
+            <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()" aria-label="Close">✕</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">RISK-01</span>
+                    <h2 class="font-serif text-4xl text-white leading-tight">Crisis & Reputation Kit</h2>
+                    <p class="text-neutral-400 font-light leading-relaxed">Don't wait for the fire to start. This kit contains everything to control the narrative in the first 60 minutes of a crisis.</p>
+                    <ul class="text-sm text-neutral-500 space-y-2">
+                        <li>✦ Official Statement and Holding Statement Templates</li>
+                        <li>✦ "Golden Hour" Checklist</li>
+                        <li>✦ Risk Decision Matrix</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 997,00</div>
+                    <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Purchase Now</a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal-gov">
+        <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
+            <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()" aria-label="Close">✕</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">GOV-01</span>
+                    <h2 class="font-serif text-4xl text-white leading-tight">Governance & Protocols</h2>
+                    <p class="text-neutral-400 font-light leading-relaxed">End the "he-said-she-said." Centralize communication rules and ensure no one speaks for the company without authorization.</p>
+                    <ul class="text-sm text-neutral-500 space-y-2">
+                        <li>✦ Communication Magna Carta</li>
+                        <li>✦ Channels & Responsibilities Matrix</li>
+                        <li>✦ Approval Workflow</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 597,00</div>
+                    <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Purchase Now</a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal-diag">
+        <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
+            <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()" aria-label="Close">✕</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">STRAT-01</span>
+                    <h2 class="font-serif text-4xl text-white leading-tight">Strategic Diagnosis</h2>
+                    <p class="text-neutral-400 font-light leading-relaxed">Understand where your communication is failing. A complete framework to audit your channels and find where money is leaking.</p>
+                    <ul class="text-sm text-neutral-500 space-y-2">
+                        <li>✦ Noise & Bottleneck Map</li>
+                        <li>✦ Image Audit</li>
+                        <li>✦ Communication SWOT Matrix</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 497,00</div>
+                    <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Purchase Now</a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
+    <script src="accessibility.js"></script>
+
     <script>
-        const audioBtn = document.getElementById('globalAudioBtn');
-        const audioLabel = document.getElementById('audioLabel');
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        let isRunning = false;
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-        function getContent() {
-            return "The Collection. Proprietary Tools. Access Boutique Method's intellectual capital. Available products: Standard Operating Procedures, Culture Code Manual, Vesting Agreement, Advisory Board Setup, Bulletproof NDA, and Crisis Management Kit. Acquire tools to professionalize your business.";
-        }
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-        function toggleGlobalAudio() {
-            if (synth.speaking && isRunning) {
+            if (isPlaying) {
                 synth.cancel();
-                isRunning = false;
-                audioBtn.classList.add('paused');
-                audioLabel.innerText = "Listen";
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen to Page";
             } else {
-                synth.cancel();
-                utterance.text = getContent();
-                utterance.lang = 'en-US';
-                utterance.rate = 1;
-                synth.speak(utterance);
-                isRunning = true;
-                audioBtn.classList.remove('paused');
-                audioLabel.innerText = "Stop";
+                const text = "Boutique Method Digital Collection. Immediate access to playbooks and protocols. Categories: Shielding and Risk with crisis and governance kits; Strategy and Brand with diagnosis tools. Each asset has a unique code and set price. Click on items to view details and purchase.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Page";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
             }
         }
 
-        utterance.onend = function() {
-            isRunning = false;
-            audioBtn.classList.add('paused');
-            audioLabel.innerText = "Listen";
-        };
+        // Close modal on outside click
+        document.querySelectorAll('dialog').forEach(d => {
+            d.addEventListener('click', e => {
+                const rect = d.getBoundingClientRect();
+                if (e.clientX < rect.left || e.clientX > rect.right || 
+                    e.clientY < rect.top || e.clientY > rect.bottom) {
+                    d.close();
+                }
+            });
+        });
     </script>
-
 </body>
 </html>
