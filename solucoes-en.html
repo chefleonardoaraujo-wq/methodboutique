@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+        
+        /* Audio Player Styling */
+        .audio-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 20%; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+    </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                    <a href="servicos-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Services</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
+                    <a href="solucoes.html" class="text-neutral-500 hover:text-white transition">PT</a>
+                    <span class="text-white/30">|</span>
+                    <span class="text-gold-400 cursor-default">EN</span>
+                </div>
+            </div>
+            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Initiate Protocols
+            </a>
+        </div>
+    </nav>
+
+    <header class="pt-52 pb-20 px-6 text-center">
+        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Integrated Ecosystem</span>
+        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
+            Corporate <span class="italic text-neutral-500">Solutions</span>
+        </h1>
+        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+            We don't just solve problems; we redesign the ecosystem. From diagnosis to exit strategy.
+        </p>
+    </header>
+
+    <main class="flex-grow px-6 pb-32">
+        <div class="max-w-6xl mx-auto space-y-32">
+            
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div class="space-y-8">
+                    <h2 class="font-serif text-3xl text-white">The Intervention Protocol</h2>
+                    <p class="text-neutral-400 font-light leading-relaxed">
+                        Our approach is surgical. We don't believe in generic "best practices". We believe in custom architecture based on your specific context and goals.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-6 group">
+                            <span class="text-gold-400 font-serif text-2xl group-hover:scale-110 transition">01</span>
+                            <div>
+                                <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-2">Deep Diagnosis</h3>
+                                <p class="text-neutral-500 text-xs leading-relaxed">We map the invisible cracks in your operation. Interviews, process mining, and financial auditing to find the "silent leaks".</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 group">
+                            <span class="text-gold-400 font-serif text-2xl group-hover:scale-110 transition">02</span>
+                            <div>
+                                <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-2">Process Architecture</h3>
+                                <p class="text-neutral-500 text-xs leading-relaxed">Designing the new Operating System. We create the flowcharts, playbooks, and decision matrices that will govern the company.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 group">
+                            <span class="text-gold-400 font-serif text-2xl group-hover:scale-110 transition">03</span>
+                            <div>
+                                <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-2">Immersive Implementation</h3>
+                                <p class="text-neutral-500 text-xs leading-relaxed">Paper accepts everything; people don't. We train your team "on the job" to ensure the new culture sticks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-900/30 border border-white/10 p-12 h-full flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-gold-400/10 to-transparent"></div>
+                    <blockquote class="relative z-10 text-center">
+                        <p class="font-serif text-2xl text-white italic mb-6">"Strategy without process is little more than a wish list."</p>
+                        <cite class="text-gold-400 text-xs uppercase tracking-widest not-italic">— Robert Filek</cite>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-24">
+                <div class="text-center mb-16">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Areas of Expertise</span>
+                    <h2 class="font-serif text-4xl text-white">Specific Solutions</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400/50 transition duration-500">
+                        <span class="text-gold-400 text-xs tracking-widest block mb-4">M&A & EQUITY</span>
+                        <h3 class="font-serif text-2xl text-white mb-4">Exit Preparation</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                            Preparing the company for sale. Organizing data rooms, legal due diligence, and valuation maximization strategies.
+                        </p>
+                        <a href="iniciar-tratativas.html" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Consult &rarr;</a>
+                    </div>
+
+                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400/50 transition duration-500">
+                        <span class="text-gold-400 text-xs tracking-widest block mb-4">GOVERNANCE</span>
+                        <h3 class="font-serif text-2xl text-white mb-4">Board Setup</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                            Implementing professional advisory boards. Selecting members, defining bylaws, and structuring quarterly meetings.
+                        </p>
+                        <a href="iniciar-tratativas.html" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Consult &rarr;</a>
+                    </div>
+
+                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400/50 transition duration-500">
+                        <span class="text-gold-400 text-xs tracking-widest block mb-4">TURNAROUND</span>
+                        <h3 class="font-serif text-2xl text-white mb-4">Crisis Recovery</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                            Emergency intervention for companies in distress. Cash flow stabilization, cost cutting, and operational restructuring.
+                        </p>
+                        <a href="iniciar-tratativas.html" class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Consult &rarr;</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="pt-12 text-center">
+                <a href="iniciar-tratativas.html" class="inline-block px-10 py-4 border border-gold-400 text-gold-400 text-xs uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500 font-bold">
+                    Schedule a Diagnosis
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+    </button>
+
+    <script>
+        const audioBtn = document.getElementById('globalAudioBtn');
+        const audioLabel = document.getElementById('audioLabel');
+        let synth = window.speechSynthesis;
+        let utterance = new SpeechSynthesisUtterance();
+        let isRunning = false;
+
+        function getContent() {
+            return "Corporate Solutions. From diagnosis to exit strategy. Our approach is surgical. Deep Diagnosis, Process Architecture, Immersive Implementation. Specific Solutions: Exit Preparation, Board Setup, Crisis Recovery. Schedule a diagnosis today.";
+        }
+
+        function toggleGlobalAudio() {
+            if (synth.speaking && isRunning) {
+                synth.cancel();
+                isRunning = false;
+                audioBtn.classList.add('paused');
+                audioLabel.innerText = "Listen";
+            } else {
+                synth.cancel();
+                utterance.text = getContent();
+                utterance.lang = 'en-US';
+                utterance.rate = 1;
+                synth.speak(utterance);
+                isRunning = true;
+                audioBtn.classList.remove('paused');
+                audioLabel.innerText = "Stop";
+            }
+        }
+
+        utterance.onend = function() {
+            isRunning = false;
+            audioBtn.classList.add('paused');
+            audioLabel.innerText = "Listen";
+        };
+    </script>
+
+</body>
+</html>
