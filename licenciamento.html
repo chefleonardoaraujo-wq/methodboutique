@@ -20,6 +20,25 @@
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
+        
+        /* ESTILO DOS MODALS */
+        dialog::backdrop { background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); }
+        dialog { 
+            background: transparent;
+            padding: 0;
+            max-width: 800px; 
+            width: 95%; 
+            border: none;
+            outline: none;
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        dialog[open] { opacity: 1; }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -85,12 +104,13 @@
                 <div class="text-center mb-16">
                     <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Modelos de Negócio</span>
                     <h2 class="font-serif text-4xl text-white">Planos de Licenciamento</h2>
+                    <p class="text-neutral-500 text-xs mt-4 uppercase tracking-widest">Clique nos cards para ver detalhes</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6 items-start">
                     
-                    <div class="border border-white/10 p-8 bg-neutral-900/20 hover:border-gold-400/30 transition duration-500">
-                        <h3 class="font-serif text-2xl text-white mb-2">Essential</h3>
+                    <button onclick="document.getElementById('modal-essential').showModal()" class="w-full text-left border border-white/10 p-8 bg-neutral-900/20 hover:border-gold-400/50 hover:bg-neutral-900/40 transition duration-500 group cursor-pointer h-full">
+                        <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-gold-400 transition">Essential</h3>
                         <p class="text-[10px] tracking-widest uppercase text-neutral-500 mb-6">Licença de Uso</p>
                         <p class="text-neutral-400 text-sm leading-relaxed mb-8 min-h-[80px]">
                             Ideal para quem deseja apenas utilizar a marca e os manuais básicos sem suporte estratégico avançado.
@@ -100,9 +120,10 @@
                             <li class="flex items-center gap-3"><span class="text-gold-400">●</span> Direito de Uso de Marca</li>
                             <li class="flex items-center gap-3"><span class="text-neutral-600">●</span> Sem exclusividade territorial</li>
                         </ul>
-                    </div>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 opacity-60 group-hover:opacity-100 transition">Ver Detalhes &rarr;</span>
+                    </button>
 
-                    <div class="border border-gold-400 p-8 bg-neutral-900/80 relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+                    <button onclick="document.getElementById('modal-professional').showModal()" class="w-full text-left border border-gold-400 p-8 bg-neutral-900/80 relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:shadow-[0_0_50px_rgba(212,175,55,0.2)] transition duration-500 group cursor-pointer h-full">
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[9px] font-bold uppercase tracking-widest px-3 py-1">Recomendado</div>
                         <h3 class="font-serif text-3xl text-gold-400 mb-2">Professional</h3>
                         <p class="text-[10px] tracking-widest uppercase text-white mb-6">Certificação & Suporte</p>
@@ -113,12 +134,12 @@
                             <li class="flex items-center gap-3"><span class="text-gold-400">●</span> Tudo do Essential</li>
                             <li class="flex items-center gap-3"><span class="text-gold-400">●</span> Treinamento de Equipe (Online)</li>
                             <li class="flex items-center gap-3"><span class="text-gold-400">●</span> Suporte Comercial</li>
-                            <li class="flex items-center gap-3"><span class="text-gold-400">●</span> Templates de Contratos</li>
                         </ul>
-                    </div>
+                        <span class="text-[10px] uppercase tracking-widest text-white opacity-80 group-hover:opacity-100 transition">Ver Detalhes &rarr;</span>
+                    </button>
 
-                    <div class="border border-white/10 p-8 bg-neutral-900/20 hover:border-gold-400/30 transition duration-500">
-                        <h3 class="font-serif text-2xl text-white mb-2">Enterprise</h3>
+                    <button onclick="document.getElementById('modal-enterprise').showModal()" class="w-full text-left border border-white/10 p-8 bg-neutral-900/20 hover:border-gold-400/50 hover:bg-neutral-900/40 transition duration-500 group cursor-pointer h-full">
+                        <h3 class="font-serif text-2xl text-white mb-2 group-hover:text-gold-400 transition">Enterprise</h3>
                         <p class="text-[10px] tracking-widest uppercase text-neutral-500 mb-6">Master & Equity</p>
                         <p class="text-neutral-400 text-sm leading-relaxed mb-8 min-h-[80px]">
                             Modelo para grandes operações ou sócios regionais. Customização total do método e exclusividade.
@@ -128,7 +149,8 @@
                             <li class="flex items-center gap-3"><span class="text-gold-400">●</span> Território Exclusivo</li>
                             <li class="flex items-center gap-3"><span class="text-gold-400">●</span> Consultoria "In Company"</li>
                         </ul>
-                    </div>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 opacity-60 group-hover:opacity-100 transition">Ver Detalhes &rarr;</span>
+                    </button>
 
                 </div>
             </div>
@@ -175,6 +197,132 @@
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
+
+    <dialog id="modal-essential">
+        <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
+            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <div class="text-center mb-8">
+                <span class="text-[10px] tracking-widest uppercase text-neutral-500 block mb-2">Licença Básica</span>
+                <h2 class="font-serif text-3xl text-white">Plano Essential</h2>
+            </div>
+            
+            <div class="space-y-6 text-neutral-300 font-light text-sm leading-relaxed border-t border-white/10 pt-6">
+                <p>O plano Essential é a porta de entrada para quem já possui estrutura operacional mas precisa da "roupa" e dos processos da marca para se posicionar melhor.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h4 class="text-gold-400 text-xs uppercase tracking-widest mb-3">O que está incluso:</h4>
+                        <ul class="space-y-2 text-xs text-neutral-400">
+                            <li>• Manual de Identidade Visual</li>
+                            <li>• Manual Operacional Básico (POP)</li>
+                            <li>• Kit de Marketing Digital</li>
+                            <li>• Acesso à Plataforma de EAD (Sem tutor)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-neutral-500 text-xs uppercase tracking-widest mb-3">Limitações:</h4>
+                        <ul class="space-y-2 text-xs text-neutral-500">
+                            <li>• Sem exclusividade de território</li>
+                            <li>• Sem suporte de consultoria ativa</li>
+                            <li>• Sem customização de material</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <a href="selecao-vertente.html" class="inline-block px-6 py-3 bg-white/5 hover:bg-gold-400 hover:text-black text-white text-[10px] uppercase tracking-widest border border-white/10 transition duration-300">Contratar Essential</a>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal-professional">
+        <div class="bg-[#0a0a0a] border border-gold-400 p-10 md:p-14 relative shadow-[0_0_50px_rgba(212,175,55,0.15)]">
+            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <div class="text-center mb-8">
+                <span class="text-[10px] tracking-widest uppercase text-gold-400 block mb-2">Mais Escolhido</span>
+                <h2 class="font-serif text-4xl text-white">Plano Professional</h2>
+            </div>
+            
+            <div class="space-y-6 text-neutral-300 font-light text-sm leading-relaxed border-t border-white/10 pt-6">
+                <p>Desenhado para quem quer crescer com segurança. Além da marca, entregamos a inteligência de gestão e o suporte necessário para treinar sua equipe.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h4 class="text-gold-400 text-xs uppercase tracking-widest mb-3">Entregáveis Premium:</h4>
+                        <ul class="space-y-2 text-xs text-neutral-400">
+                            <li><strong class="text-white">ONBOARDING:</strong> Treinamento de imersão de 2 dias.</li>
+                            <li><strong class="text-white">SUPORTE:</strong> Canal direto com consultor sênior.</li>
+                            <li><strong class="text-white">DOCUMENTOS:</strong> Pack Jurídico completo editável.</li>
+                            <li><strong class="text-white">COMERCIAL:</strong> Script de Vendas e Quebra de Objeções.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-gold-400 text-xs uppercase tracking-widest mb-3">Diferenciais:</h4>
+                        <ul class="space-y-2 text-xs text-neutral-400">
+                            <li>• Certificação Oficial da Equipe</li>
+                            <li>• Auditoria de Qualidade Semestral</li>
+                            <li>• Preferência na escolha de território</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <a href="selecao-vertente.html" class="inline-block px-8 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition duration-300">Contratar Professional</a>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal-enterprise">
+        <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
+            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
+            
+            <div class="text-center mb-8">
+                <span class="text-[10px] tracking-widest uppercase text-neutral-500 block mb-2">Parceria Estratégica</span>
+                <h2 class="font-serif text-3xl text-white">Plano Enterprise</h2>
+            </div>
+            
+            <div class="space-y-6 text-neutral-300 font-light text-sm leading-relaxed border-t border-white/10 pt-6">
+                <p>O nível mais alto de parceria. Aqui, não tratamos você apenas como licenciado, mas como um sócio regional estratégico. Customização total para dominar o mercado local.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h4 class="text-gold-400 text-xs uppercase tracking-widest mb-3">Exclusividade & Customização:</h4>
+                        <ul class="space-y-2 text-xs text-neutral-400">
+                            <li>• "Tropicalização" do método para sua realidade.</li>
+                            <li>• Exclusividade Territorial (Raio protegido).</li>
+                            <li>• Desenvolvimento de novos produtos conjuntos.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-gold-400 text-xs uppercase tracking-widest mb-3">Equity & Board:</h4>
+                        <ul class="space-y-2 text-xs text-neutral-400">
+                            <li>• Acesso direto aos sócios fundadores.</li>
+                            <li>• Possibilidade de conversão em Equity (Sociedade).</li>
+                            <li>• Reuniões de Board Trimestrais.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <a href="selecao-vertente.html" class="inline-block px-6 py-3 bg-white/5 hover:bg-gold-400 hover:text-black text-white text-[10px] uppercase tracking-widest border border-white/10 transition duration-300">Aplicar para Enterprise</a>
+            </div>
+        </div>
+    </dialog>
+
+    <script>
+        // Lógica para fechar ao clicar fora do modal
+        document.querySelectorAll('dialog').forEach(d => {
+            d.addEventListener('click', e => {
+                const rect = d.getBoundingClientRect();
+                if (e.clientX < rect.left || e.clientX > rect.right || 
+                    e.clientY < rect.top || e.clientY > rect.bottom) {
+                    d.close();
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
