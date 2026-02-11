@@ -6,8 +6,9 @@
     <title>Iniciar Tratativas | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="accessibility.css">
     
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <script>
@@ -15,7 +16,7 @@
     </script>
 
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
         /* Estilo dos Inputs */
@@ -45,20 +46,56 @@
             appearance: none;
             border-radius: 0;
         }
+
+        /* Botão de Audiodescrição */
+        .audio-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 20%; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <a href="#main-content" class="skip-link">Pular para o formulário</a>
 
     <nav class="w-full py-8 px-8 flex justify-between items-center bg-transparent relative z-20">
         <a href="index.html" class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition">
             ← Voltar
         </a>
-        <div class="font-serif text-xl tracking-widest text-white uppercase">
-            Boutique Method
+        <div class="flex items-center gap-6">
+            <div class="font-serif text-xl tracking-widest text-white uppercase">
+                Boutique Method
+            </div>
+            <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
+                <span class="text-gold-400 cursor-default">PT</span>
+                <span class="text-white/30">|</span>
+                <a href="iniciar-tratativas-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+            </div>
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center px-6 py-12">
+    <main id="main-content" class="flex-grow flex items-center justify-center px-6 py-12">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
             
             <div class="space-y-8 pt-10">
@@ -87,15 +124,18 @@
                 <form action="https://formsubmit.co/seuemail@aqui.com" method="POST" class="space-y-8">
                     
                     <div>
-                        <input type="text" name="nome" class="input-minimal" placeholder="Nome Completo / Cargo" required>
+                        <label for="nome" class="sr-only">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" class="input-minimal" placeholder="Nome Completo / Cargo" required>
                     </div>
 
                     <div>
-                        <input type="email" name="email" class="input-minimal" placeholder="E-mail Corporativo" required>
+                        <label for="email" class="sr-only">E-mail Corporativo</label>
+                        <input type="email" id="email" name="email" class="input-minimal" placeholder="E-mail Corporativo" required>
                     </div>
 
                     <div class="relative">
-                        <select name="pauta" class="input-minimal text-neutral-400" required>
+                        <label for="pauta" class="sr-only">Selecione a Pauta</label>
+                        <select id="pauta" name="pauta" class="input-minimal text-neutral-400" required>
                             <option value="" disabled selected>SELECIONE A PAUTA</option>
                             <option value="licenciamento" style="background:#000;">Licenciamento de Método</option>
                             <option value="servicos" style="background:#000;">Contratação de Serviços</option>
@@ -108,7 +148,8 @@
                     </div>
 
                     <div>
-                        <textarea name="mensagem" rows="3" class="input-minimal" placeholder="Breve descrição da demanda" required></textarea>
+                        <label for="mensagem" class="sr-only">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="3" class="input-minimal" placeholder="Breve descrição da demanda" required></textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-gold-400 text-black font-bold text-xs uppercase tracking-[0.2em] py-5 hover:bg-white transition duration-500 mt-4">
@@ -123,9 +164,53 @@
         </div>
     </main>
 
-    <footer class="py-8 text-center text-[10px] text-neutral-600 uppercase tracking-widest">
+    <footer class="py-8 text-center text-[10px] text-neutral-600 uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+    </button>
+
+    <script src="accessibility.js"></script>
+
+    <script>
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
+
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
+
+            if (isPlaying) {
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Ouvir Página";
+            } else {
+                const text = "Protocolo de Iniciação da Boutique Method. Para garantir sigilo, todas as tratativas começam por este canal. O formulário solicita seu nome, e-mail corporativo, pauta de interesse e uma breve descrição da demanda. O atendimento é feito sob acordo de confidencialidade e respondido em até 24 horas.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'pt-BR';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Ouvir Página";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Parar Áudio";
+            }
+        }
+    </script>
 </body>
 </html>
