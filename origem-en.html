@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Origin | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <script>
@@ -24,8 +27,8 @@
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Audio Player Styling */
+
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -55,40 +58,31 @@
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">The Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
-                </div>
-                
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
-                    <a href="origem.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                    <span class="text-white/30">|</span>
-                    <span class="text-gold-400 cursor-default">EN</span>
-                </div>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">The Origin</a>
+                <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
             </div>
-            
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <main class="flex-grow pt-52 pb-32 px-6">
-        <div class="max-w-4xl mx-auto space-y-32">
-            
+    <main id="main-content" class="flex-grow pt-52 pb-32 px-6">
+        <div class="max-w-4xl mx-auto space-y-32"> 
             <div class="max-w-3xl mx-auto space-y-12">
-                
                 <div class="space-y-6 border-l-2 border-gold-400 pl-8">
-                    <span class="text-neutral-500 text-xs tracking-[0.3em] uppercase block">Why Boutique Method Exists</span>
+                    <span class="text-neutral-500 text-xs tracking-[0.3em] uppercase block">Why Boutique Method IP Holding Exists</span>
                     <h1 class="font-serif text-4xl md:text-5xl text-white leading-tight">
                         "Clarity is <span class="italic text-gold-400">Dignity</span>."
                     </h1>
@@ -99,7 +93,7 @@
                         Chaos is the natural state of things. Without an intentional force of organization, companies, processes, and reputations tend toward disorder (entropy).
                     </p>
                     <p>
-                        Boutique Method was born from a simple yet brutal realization: <strong class="text-white font-normal">talent without method is held hostage by its own effort.</strong> We have seen brilliant professionals and promising ventures collapse not due to a lack of competence, but due to a lack of clarity.
+                        Boutique Method was born from a simple yet brutal realization: <strong class="text-white font-normal">talent without method is a hostage to its own effort.</strong> I have seen brilliant professionals and promising companies collapse not for lack of competence, but for lack of clarity.
                     </p>
                     <p>
                         We understand that true intellectual property is not just a registered idea. It is a system. It is the ability to transform the intangible (what you know) into something tangible (what the company is worth).
@@ -109,82 +103,78 @@
 
             <div class="max-w-3xl mx-auto border-t border-white/10 pt-24">
                 <div class="space-y-12">
-                    
-                    <div class="space-y-6 border-l-2 border-white/20 pl-8">
+                    <div class="space-y-6 border-l-2 border-white/20 pl-8"> 
                         <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block">LEONARDO CHAVES ARAUJO - Founder & CEO</span>
                         <h2 class="font-serif text-4xl md:text-5xl text-white leading-tight">The Science Behind the Method</h2>
                     </div>
 
                     <div class="space-y-8 text-neutral-300 font-light text-xl leading-relaxed text-justify">
                         <p>
-                            For Leonardo Araujo, excellence is not an act; it is a habit built upon obsessive processes. His trajectory is marked by the relentless pursuit of order in high-complexity environments.
+                            For Leonardo Araujo, excellence is not an act, it is a habit built on obsessive processes. His trajectory is marked by the relentless pursuit of order in high-complexity environments.
                         </p>
                         <p>
-                            With a Master's in <span class="text-white font-normal">Nanotechnology</span>, Leonardo applies the same surgical precision used to manipulate matter at the atomic scale to the corporate world. He identified that, just as materials fail due to microscopic fractures invisible to the naked eye, companies collapse due to structural failures in their most basic processes. It is not the market that destroys a business; it is the lack of internal cohesion.
+                            As a Master in <span class="text-white font-normal">Nanotechnology</span>, Leonardo applies the same surgical precision used to manipulate matter at the atomic scale to the corporate world. He identified that just as materials fail due to micro-fissures invisible to the naked eye, companies collapse due to structural flaws in their most basic processes. It is not the market that brings down a business; it is the lack of internal cohesion.
                         </p>
                         <p>
-                            He founded <strong>Boutique Method IP Holding</strong> with a clear mission: to apply this scientific rigor to management. To transform the intuitive "know-how" of great leaders into solid Intellectual Property assets, generating value, scalable replicability, and above all, freedom.
+                            He founded <strong>Boutique Method IP Holding</strong> with a clear mission: to apply this scientific rigor to management. Transforming the intuitive "way of doing" of great leaders into solid Intellectual Property assets, generating value, replicable scale, and, above all, freedom.
                         </p>
                     </div>
 
                     <div class="pt-8 pl-8">
                         <p class="font-signature text-5xl text-gold-400 opacity-90">Leonardo Chaves Araujo</p>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to brand story">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
+    <script src="accessibility.js"></script>
+
     <script>
-        const audioBtn = document.getElementById('globalAudioBtn');
-        const audioLabel = document.getElementById('audioLabel');
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        let isRunning = false;
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-        function getContent() {
-            return "Clarity is Dignity. Chaos is the natural state of things. Boutique Method was born to organize talent. The Science Behind the Method. Leonardo Araujo applies Nanotechnology precision to corporate management.";
-        }
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-        function toggleGlobalAudio() {
-            if (synth.speaking && isRunning) {
+            if (isPlaying) {
                 synth.cancel();
-                isRunning = false;
-                audioBtn.classList.add('paused');
-                audioLabel.innerText = "Listen";
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen to Page";
             } else {
-                synth.cancel();
-                utterance.text = getContent();
-                utterance.lang = 'en-US';
-                utterance.rate = 1;
-                synth.speak(utterance);
-                isRunning = true;
-                audioBtn.classList.remove('paused');
-                audioLabel.innerText = "Stop";
+                const text = "The Origin of Boutique Method IP Holding. Clarity is Dignity. Leonardo Chaves Araujo, Founder and C-E-O, master in nanotechnology, applies surgical precision from science to corporate management to transform talent into replicable methods.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Page";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
             }
         }
-
-        utterance.onend = function() {
-            isRunning = false;
-            audioBtn.classList.add('paused');
-            audioLabel.innerText = "Listen";
-        };
     </script>
-
 </body>
 </html>
