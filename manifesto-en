@@ -173,11 +173,13 @@
         <div class="bg-[#0a0a0a] border border-gold-400 p-10 md:p-14 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <span class="text-gold-400 text-6xl font-serif opacity-20 absolute top-4 left-6">I</span>
+            
             <h2 class="font-serif text-3xl text-white mb-2 mt-4 relative z-10">The Weight of Invisibility</h2>
             <hr class="border-gold-400 w-12 mb-6 opacity-50">
+            
             <div class="space-y-4 text-neutral-300 font-light leading-relaxed text-lg">
                 <p>Many confuse "Fame" with "Authority". Fame is about who knows you; Authority is about who respects you.</p>
-                <p>At Boutique Method, we believe that true Auctoritas does not come from aggressive marketing, but from <strong class="text-white">unquestionable intellectual property</strong>. When you own the method, you own the market.</p>
+                <p>At Boutique Method, we believe that true <em class="text-white">Auctoritas</em> does not come from aggressive marketing, but from <strong class="text-white">unquestionable intellectual property</strong>. When you own the method, you own the market.</p>
                 <p class="text-gold-400 italic">"If you are good, you don't need to shout. Your excellence whispers, and the world goes silent to listen."</p>
             </div>
         </div>
@@ -187,8 +189,10 @@
         <div class="bg-[#0a0a0a] border border-gold-400 p-10 md:p-14 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <span class="text-gold-400 text-6xl font-serif opacity-20 absolute top-4 left-6">II</span>
+            
             <h2 class="font-serif text-3xl text-white mb-2 mt-4 relative z-10">Complexity is Cost</h2>
             <hr class="border-gold-400 w-12 mb-6 opacity-50">
+            
             <div class="space-y-4 text-neutral-300 font-light leading-relaxed text-lg">
                 <p>Mediocre companies hide their inefficiency behind big words and bureaucratic processes. They create mazes to justify their prices.</p>
                 <p>We operate under <strong class="text-white">Radical Clarity</strong>. If a contract, a process, or an idea cannot be explained on one page, it is not ready yet.</p>
@@ -201,11 +205,13 @@
         <div class="bg-[#0a0a0a] border border-gold-400 p-10 md:p-14 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <span class="text-gold-400 text-6xl font-serif opacity-20 absolute top-4 left-6">III</span>
+            
             <h2 class="font-serif text-3xl text-white mb-2 mt-4 relative z-10">Build to Exit</h2>
             <hr class="border-gold-400 w-12 mb-6 opacity-50">
+            
             <div class="space-y-4 text-neutral-300 font-light leading-relaxed text-lg">
                 <p>A business that depends 100% on the owner is not a company; it is a stressful job. And jobs cannot be sold.</p>
-                <p>Our focus on Perpetuitas means creating <strong class="text-white">Equity</strong>. We transform chaotic operations into auditable assets, ready for an M&A (merger/sale) or to run for generations without your daily interference.</p>
+                <p>Our focus on <em class="text-white">Perpetuitas</em> means creating <strong class="text-white">Equity</strong>. We transform chaotic operations into auditable assets, ready for an M&A (merger/sale) or to run for generations without your daily interference.</p>
                 <p class="text-gold-400 italic">"You don't build a company to work in it forever. You build it so it works without you."</p>
             </div>
         </div>
@@ -233,16 +239,14 @@
             We believe that an expert's knowledge should not die with them.
             Boutique Method IP Holding exists to transform tacit knowledge into proprietary assets.
             
-            Boutique Method was born in Santa Maria, Rio Grande do Sul, from practical experience in high-complexity environments.
-            From its origin, the company was structured with a national vision.
-            
+            Boutique Method was born in Santa Maria, Rio Grande do Sul.
             Our work is to capture business intelligence and transform it into a replicable Operating System.
-            We are not an agency. We are not a common consultancy. We are architects of legacy.
+            We are architects of legacy.
             
             Holding Dogmas:
-            One: Auctoritas. True Authority. We don't shout to be heard.
-            Two: Claritas. Radical Clarity. Simplicity is the height of sophistication.
-            Three: Perpetuitas. Legacy and Equity. We ignore short-term easy profit.
+            One: Auctoritas. True Authority.
+            Two: Claritas. Radical Clarity.
+            Three: Perpetuitas. Legacy and Equity.
         `;
 
         utterance.text = textoParaLer;
