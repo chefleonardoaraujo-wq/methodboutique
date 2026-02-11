@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POL | Boutique Method</title>
+    <title>POL - Politics & Institutional | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
-        .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Audio Player Styling */
+    <script> tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } } </script>
+    <style> 
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
+        .gold-selection::selection { background: #d4af37; color: black; } 
+
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -50,159 +44,117 @@
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
+    
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                    <a href="licenciamento-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
-                </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
-                    <a href="licenciamento-pol.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                    <span class="text-white/30">|</span>
-                    <span class="text-gold-400 cursor-default">EN</span>
-                </div>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                <a href="licenciamento-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licensing</a>
+                <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <header class="pt-52 pb-20 px-6 text-center">
-        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Vertical Specialization</span>
-        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
-            POL <span class="italic text-neutral-500">Method</span>
-        </h1>
-        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-            Reputation Management & Cabinet Governance for Public Figures.
-        </p>
-    </header>
-
-    <main class="flex-grow px-6 pb-32">
-        <div class="max-w-5xl mx-auto space-y-24">
+    <main id="main-content" class="flex-grow pt-40 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
             
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="border-l-2 border-gold-400 pl-8">
-                    <h2 class="font-serif text-3xl text-white mb-6">The "Amateur Cabinet"</h2>
-                    <p class="text-neutral-300 font-light text-lg leading-relaxed">
-                        In politics, power abhors a vacuum. An unstructured office creates voids that are quickly filled by crises, leaks, and opportunistic adversaries. Mandates fail not due to lack of votes, but due to lack of method.
-                    </p>
-                </div>
-                <div class="bg-neutral-900/50 p-8 border border-white/5">
-                    <ul class="space-y-4 text-sm text-neutral-400">
-                        <li class="flex items-start gap-3">
-                            <span class="text-red-500">✕</span> Communication always reacting to crises instead of setting the agenda.
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-red-500">✕</span> Team leaks and lack of information hierarchy.
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-red-500">✕</span> Inability to translate technical projects into votes (Political Capital).
-                        </li>
+            <div class="mb-12">
+                <a href="licenciamento-en.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Back to Overview</a>
+            </div>
+
+            <div class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+                <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">POL</h1>
+                <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Politics & Institutional</p>
+            </div>
+
+            <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
+                <p>
+                    The POL vertical of the Boutique Method was built to elevate institutional communication to a standard of governance and credibility. In public contexts, reputation is not aesthetic: it is a direct consequence of consistency, transparency, and the ability to explain decisions in understandable language.
+                </p>
+                <p>
+                    The work organizes the institutional narrative (what is said, how it is said, and when it is said), standardizes responses and flows, defines protocols for crisis situations, and creates a communication base that reduces noise, avoids improvisation, and strengthens citizen trust.
+                </p>
+
+                <div class="bg-neutral-900/50 p-8 border border-white/10 my-10">
+                    <h3 class="font-serif text-2xl text-white mb-6">What this vertical usually organizes:</h3>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li class="flex gap-3"><span class="text-gold-400">►</span> Accountability and public communication by themes and priorities</li>
+                        <li class="flex gap-3"><span class="text-gold-400">►</span> Language standards (clarity, accessibility, and institutional tone)</li>
+                        <li class="flex gap-3"><span class="text-gold-400">►</span> Crisis and positioning protocols (response governance)</li>
+                        <li class="flex gap-3"><span class="text-gold-400">►</span> Image risk monitoring (risk map + internal routines)</li>
                     </ul>
                 </div>
-            </div>
 
-            <div class="border-t border-white/10 pt-24">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Our Methodology</span>
-                    <h2 class="font-serif text-4xl text-white">The "War Room" Protocol</h2>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400 transition duration-500 group">
-                        <span class="text-4xl text-gold-400 font-serif block mb-4">01</span>
-                        <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-4">Cabinet OS</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-neutral-300 transition">
-                            Operating System for the mandate. Flowcharts for decision-making, access levels, and agenda management to prevent bottlenecks.
-                        </p>
-                    </div>
-                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400 transition duration-500 group">
-                        <span class="text-4xl text-gold-400 font-serif block mb-4">02</span>
-                        <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-4">Crisis Shield</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-neutral-300 transition">
-                            Pre-approved defense protocols. When a crisis hits, the team doesn't panic; they execute the manual. Silence, denial, or counter-attack? The method decides.
-                        </p>
-                    </div>
-                    <div class="bg-[#0a0a0a] p-8 border border-white/10 hover:border-gold-400 transition duration-500 group">
-                        <span class="text-4xl text-gold-400 font-serif block mb-4">03</span>
-                        <h3 class="text-white text-sm uppercase tracking-widest font-bold mb-4">Legacy Narrative</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-neutral-300 transition">
-                            Transitioning from "Politician" to "Statesman". We structure the historical narrative so that every action builds long-term institutional equity.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-gold-400/10 border border-gold-400/30 p-12 text-center mt-12">
-                <h3 class="font-serif text-2xl text-white mb-4">Professionalize your Mandate</h3>
-                <p class="text-neutral-400 text-sm mb-8 max-w-xl mx-auto">
-                    License the POL method and install a blindage system for your political reputation.
+                <p class="text-white font-medium italic">
+                    Expected result: more mature, reliable, and predictable communication — with less vulnerability to noise, misinterpretations, and avoidable crises.
                 </p>
-                <a href="selecao-vertente-en.html" class="inline-block px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-300">
-                    License POL Method
-                </a>
-            </div>
 
+                <div class="pt-10 text-center">
+                    <a href="iniciar-tratativas-en.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                        Request POL Licensing
+                    </a>
+                </div>
+            </div>
         </div>
     </main>
-
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+    
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
+    <script src="accessibility.js"></script>
+
     <script>
-        const audioBtn = document.getElementById('globalAudioBtn');
-        const audioLabel = document.getElementById('audioLabel');
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        let isRunning = false;
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-        function getContent() {
-            return "POL Method. Reputation Management and Cabinet Governance. The Amateur Cabinet Problem. Mandates fail due to lack of method. Our Solution: Cabinet Operating System, Crisis Shield, and Legacy Narrative. Professionalize your Mandate today.";
-        }
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-        function toggleGlobalAudio() {
-            if (synth.speaking && isRunning) {
+            if (isPlaying) {
                 synth.cancel();
-                isRunning = false;
-                audioBtn.classList.add('paused');
-                audioLabel.innerText = "Listen";
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen to Page";
             } else {
-                synth.cancel();
-                utterance.text = getContent();
-                utterance.lang = 'en-US';
-                utterance.rate = 1;
-                synth.speak(utterance);
-                isRunning = true;
-                audioBtn.classList.remove('paused');
-                audioLabel.innerText = "Stop";
+                const text = "POL Vertical: Politics and Institutional. Elevating communication to a standard of governance and credibility. Focusing on accountability, institutional clarity, and crisis protocols to strengthen public trust.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Page";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
             }
         }
-
-        utterance.onend = function() {
-            isRunning = false;
-            audioBtn.classList.add('paused');
-            audioLabel.innerText = "Listen";
-        };
     </script>
-
 </body>
 </html>
