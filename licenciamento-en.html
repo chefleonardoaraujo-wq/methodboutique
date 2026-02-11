@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Licensing | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
@@ -21,6 +24,7 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -47,11 +51,14 @@
         .paused .bar { animation: none; height: 20%; }
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
 
+        /* Modal Animation */
         .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -81,122 +88,123 @@
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 px-6 text-center">
-        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
-            Licensing of the <span class="italic text-neutral-500">Method</span>
-        </h1>
-        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-            Scale without swelling. Transform your know-how into products that others can apply.
-        </p>
-    </header>
+    <main id="main-content">
+        <header class="pt-40 pb-20 px-6 text-center">
+            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
+                Licensing of the <span class="italic text-neutral-500">Method</span>
+            </h1>
+            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+                Scale without swelling. Transform your know-how into products that others can apply.
+            </p>
+        </header>
 
-    <section class="py-20 px-6 border-t border-white/5 bg-neutral-900/20">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-left mb-12">
-                <h2 class="font-serif text-3xl text-white">The Intellectual Asset</h2>
-                <p class="text-[10px] uppercase tracking-widest text-neutral-500">Comparison of delivery models and value</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-8">
-                <div>
-                    <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Standard Consulting</h3>
-                    <p class="text-neutral-400 text-sm font-light">Sells hours. Hard to scale. Depends 100% on the owner.</p>
+        <section class="py-20 px-6 border-t border-white/5 bg-neutral-900/20">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-left mb-12">
+                    <h2 class="font-serif text-3xl text-white">The Intellectual Asset</h2>
+                    <p class="text-[10px] uppercase tracking-widest text-neutral-500">Comparison of delivery models and value</p>
                 </div>
-                <div>
-                    <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Executive Education</h3>
-                    <p class="text-neutral-400 text-sm font-light">Sells courses. Low barrier to entry. High competition.</p>
-                </div>
-                <div class="relative">
-                    <h3 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Boutique Method™</h3>
-                    <p class="text-white text-sm font-medium">Sells system. High barrier to entry. Generates Equity and Royalties.</p>
-                    <div class="absolute -left-6 top-0 bottom-0 w-px bg-gold-400/30 hidden md:block"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Specializations</span>
-                <h2 class="font-serif text-4xl text-white">Our <span class="italic text-neutral-500">Verticals</span></h2>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <a href="licenciamento-jur-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                    <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">JUR</span>
-                    <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Legal & Legal Design</h3>
-                    <p class="text-neutral-500 text-xs leading-relaxed mb-8">Document standardization for elite law firms.</p>
-                    <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
-                </a>
-
-                <a href="hc-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                    <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">HC</span>
-                    <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Health Care & Experience</h3>
-                    <p class="text-neutral-500 text-xs leading-relaxed mb-8">Patient experience protocols for clinics.</p>
-                    <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
-                </a>
-
-                <a href="pol-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                    <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">POL</span>
-                    <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Political & Institutional</h3>
-                    <p class="text-neutral-500 text-xs leading-relaxed mb-8">Cabinet management and public reputation.</p>
-                    <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Business Models</span>
-                <h2 class="font-serif text-4xl text-white">Licensing <span class="italic text-neutral-500">Plans</span></h2>
-                <p class="text-neutral-500 text-xs mt-4 uppercase tracking-widest">Click on cards for details</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 items-center">
                 
-                <button onclick="openModal('essential')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
-                    <h3 class="font-serif text-3xl text-white mb-2">Essential</h3>
-                    <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">License to Use</span>
-                    <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Ideal for those who just want to use the brand and basic manuals without advanced strategic support.</p>
-                    <ul class="text-left text-neutral-500 text-xs space-y-4 mb-8">
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Access to Standard Manuals</li>
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Right to Brand Use</li>
-                        <li class="flex items-center"><span class="text-neutral-700 mr-2">•</span> No territorial exclusivity</li>
-                    </ul>
-                    <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
-                </button>
-
-                <button onclick="openModal('professional')" class="bg-[#0a0a0a] border-2 border-gold-400 p-12 text-center relative transform scale-105 z-10 w-full shadow-2xl shadow-gold-400/10">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[10px] uppercase tracking-widest px-4 py-1 font-bold">Recommended</span>
-                    <h3 class="font-serif text-4xl text-gold-400 mb-2">Professional</h3>
-                    <span class="text-neutral-400 text-[10px] uppercase tracking-widest block mb-8">Certification & Support</span>
-                    <p class="text-white text-sm font-light leading-relaxed mb-8">For partners looking to scale. Includes team training and implementation monitoring.</p>
-                    <ul class="text-left text-neutral-300 text-xs space-y-4 mb-8">
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Everything in Essential</li>
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Team Training (Online)</li>
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Commercial Support</li>
-                    </ul>
-                    <span class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">View Details &rarr;</span>
-                </button>
-
-                <button onclick="openModal('enterprise')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
-                    <h3 class="font-serif text-3xl text-white mb-2">Enterprise</h3>
-                    <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master & Equity</span>
-                    <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Model for large operations. Total method customization and exclusivity.</p>
-                    <ul class="text-left text-neutral-500 text-xs space-y-4 mb-8">
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Method Customization</li>
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Exclusive Territory</li>
-                        <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> "In Company" Consulting</li>
-                    </ul>
-                    <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
-                </button>
-
+                <div class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-8">
+                    <div>
+                        <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Standard Consulting</h3>
+                        <p class="text-neutral-400 text-sm font-light">Sells hours. Hard to scale. Depends 100% on the owner.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Executive Education</h3>
+                        <p class="text-neutral-400 text-sm font-light">Sells courses. Low barrier to entry. High competition.</p>
+                    </div>
+                    <div class="relative">
+                        <h3 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Boutique Method™</h3>
+                        <p class="text-white text-sm font-medium">Sells system. High barrier to entry. Generates Equity and Royalties.</p>
+                        <div class="absolute -left-6 top-0 bottom-0 w-px bg-gold-400/30 hidden md:block"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="py-32 px-6 border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Specializations</span>
+                    <h2 class="font-serif text-4xl text-white">Our <span class="italic text-neutral-500">Verticals</span></h2>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <a href="licenciamento-jur-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
+                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">JUR</span>
+                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Legal & Legal Design</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Document standardization for elite law firms.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
+                    </a>
+
+                    <a href="hc-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
+                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">HC</span>
+                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Health Care & Experience</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Patient experience protocols for clinics.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
+                    </a>
+
+                    <a href="pol-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
+                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">POL</span>
+                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Political & Institutional</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Cabinet management and public reputation.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 px-6 border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Business Models</span>
+                    <h2 class="font-serif text-4xl text-white">Licensing <span class="italic text-neutral-500">Plans</span></h2>
+                    <p class="text-neutral-500 text-xs mt-4 uppercase tracking-widest">Click on cards for details</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    
+                    <button onclick="openModal('essential')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
+                        <h3 class="font-serif text-3xl text-white mb-2">Essential</h3>
+                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">License to Use</span>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Ideal for those who just want to use the brand and basic manuals without advanced strategic support.</p>
+                        <ul class="text-left text-neutral-500 text-xs space-y-4 mb-8">
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Access to Standard Manuals</li>
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Right to Brand Use</li>
+                            <li class="flex items-center"><span class="text-neutral-700 mr-2">•</span> No territorial exclusivity</li>
+                        </ul>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
+                    </button>
+
+                    <button onclick="openModal('professional')" class="bg-[#0a0a0a] border-2 border-gold-400 p-12 text-center relative transform scale-105 z-10 w-full shadow-2xl shadow-gold-400/10">
+                        <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[10px] uppercase tracking-widest px-4 py-1 font-bold">Recommended</span>
+                        <h3 class="font-serif text-4xl text-gold-400 mb-2">Professional</h3>
+                        <span class="text-neutral-400 text-[10px] uppercase tracking-widest block mb-8">Certification & Support</span>
+                        <p class="text-white text-sm font-light leading-relaxed mb-8">For partners looking to scale. Includes team training and implementation monitoring.</p>
+                        <ul class="text-left text-neutral-300 text-xs space-y-4 mb-8">
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Everything in Essential</li>
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Team Training (Online)</li>
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Commercial Support</li>
+                        </ul>
+                        <span class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">View Details &rarr;</span>
+                    </button>
+
+                    <button onclick="openModal('enterprise')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
+                        <h3 class="font-serif text-3xl text-white mb-2">Enterprise</h3>
+                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master & Equity</span>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Model for large operations. Total method customization and exclusivity.</p>
+                        <ul class="text-left text-neutral-500 text-xs space-y-4 mb-8">
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Method Customization</li>
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Exclusive Territory</li>
+                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> "In Company" Consulting</li>
+                        </ul>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter">
         <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
@@ -218,23 +226,25 @@
         <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
+    <script src="accessibility.js"></script>
+
     <script>
-        // --- PLAN DATA (ENGLISH) ---
+        // --- MODAL DATA (ENGLISH VERSION) ---
         const modalData = {
             essential: {
                 label: "Individual Model",
                 title: "Essential",
-                text: "Full access to the methodological framework for individual application. Ideal for freelance professionals seeking to differentiate their delivery through validated processes. Includes brand manual, access to training platform, and personal certification."
+                text: "Full access to the methodological framework for individual application. Ideal for freelance professionals seeking to differentiate their delivery through validated processes."
             },
             professional: {
                 label: "Business Model",
                 title: "Professional",
-                text: "Robust structure for team standardization. Allows offices and clinics to install the 'Boutique Operating System' into their culture. Includes in-company training (online), implementation support, and user licenses for collaborators."
+                text: "Robust structure for team standardization. Allows offices and clinics to install the 'Boutique Operating System' into their culture. Includes in-company training and implementation support."
             },
             enterprise: {
                 label: "Master Model",
                 title: "Enterprise",
-                text: "The highest level of partnership. Guarantees territorial exclusivity and the right to resell and sublicense the method in your region. Includes strategic equity consulting, innovation board participation, and royalties on the network created."
+                text: "The highest level of partnership. Guarantees territorial exclusivity and the right to resell and sublicense the method in your region. Includes strategic equity consulting and royalties."
             }
         };
 
@@ -283,7 +293,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Licensing of the Method. Scale without swelling. The Intellectual Asset. Our Verticals: JUR, HC, and POL. Click to explore. Licensing Plans: Essential, Professional, and Enterprise. Click to view details.";
+                const text = "Method Licensing Page. Scale without swelling. The Intellectual Asset. Our Verticals: J-U-R, H-C, and P-O-L (click to explore). Our Licensing Plans: Essential, Professional, and Enterprise (click to view details).";
                 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
@@ -302,6 +312,5 @@
             }
         }
     </script>
-
 </body>
 </html>
