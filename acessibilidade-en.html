@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility & Integrity | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, 
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } 
+                } 
+            } 
+        }
+    </script>
+    <style> 
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
+        .gold-selection::selection { background: #d4af37; color: black; }
+        
+        /* Standards Table */
+        .tech-table th { @apply py-4 px-6 text-left text-gold-400 uppercase tracking-widest text-[10px] border-b border-white/10; }
+        .tech-table td { @apply py-4 px-6 text-sm border-b border-white/5 font-light; }
+        .tech-table tr:hover { background: rgba(212, 175, 55, 0.02); }
+
+        /* Founder's Note Style */
+        .founder-note {
+            background: linear-gradient(to bottom right, #0a0a0a, #050505);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+        .founder-note::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: #d4af37;
+            opacity: 0.1;
+        }
+
+        .audio-fab {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px;
+            padding: 12px 24px; display: flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+    </style>
+</head>
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex justify-between items-center">
+            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-r border-white/20 pr-6 mr-2">
+                    <a href="acessibilidade.html" class="text-neutral-500 hover:text-white transition">PT</a>
+                    <span class="text-white/30">|</span>
+                    <span class="text-gold-400 cursor-default">EN</span>
+                </div>
+                <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                    Initiate Protocols
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="pt-40 pb-24 px-6">
+        <div class="max-w-5xl mx-auto space-y-24">
+            
+            <header class="text-center space-y-6">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">BMIP Standard</span>
+                <h1 class="font-serif text-4xl md:text-6xl text-white">Accessibility <span class="italic text-neutral-500">as an Asset</span></h1>
+                <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+                    We do not treat inclusion as charity, but as **process engineering**. If a method cannot be accessed by everyone, it is not a method; it is a limitation.
+                </p>
+            </header>
+
+            <section class="founder-note p-10 md:p-16">
+                <div class="grid md:grid-cols-12 gap-12 items-center">
+                    <div class="md:col-span-8 space-y-6">
+                        <h2 class="font-serif text-3xl text-white italic">Founder's Commitment</h2>
+                        <div class="text-neutral-300 font-light leading-relaxed space-y-4 text-justify">
+                            <p>
+                                My background in **Nanotechnology** taught me that atomic-scale precision defines the success of any complex structure. At Boutique Method, I apply that same obsession to human service.
+                            </p>
+                            <p>
+                                To me, excellence is not an act; it is a habit built upon obsessive processes. I decided our Holding would be the first to encode accessibility within its IP. We shield not only brands but the right of every partner and client — neurodivergent, deaf, or blind — to operate with the elite results we deliver.
+                            </p>
+                        </div>
+                        <div class="pt-4">
+                            <span class="text-white font-serif text-xl">Leonardo Araujo</span><br>
+                            <span class="text-gold-400 text-[10px] uppercase tracking-widest">Founder & Master in Nanotechnology</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 flex justify-center">
+                        <div class="w-48 h-48 border border-gold-400/20 rounded-full p-2">
+                            <div class="w-full h-full bg-neutral-900 rounded-full flex items-center justify-center">
+                                <span class="font-serif text-5xl text-gold-400/20 italic">LA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="space-y-8">
+                <div class="border-b border-white/10 pb-4">
+                    <h2 class="font-serif text-3xl text-white leading-tight">Technical <span class="italic text-neutral-500">Specifications</span></h2>
+                    <p class="text-neutral-500 text-sm mt-2 uppercase tracking-widest">Web Compliance Protocol (WCAG 2.1 AA)</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full tech-table">
+                        <thead>
+                            <tr>
+                                <th>Pillar</th>
+                                <th>Technical Criterion</th>
+                                <th>BMIP Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-neutral-400">
+                            <tr>
+                                <td class="font-bold text-white">Navigation</td>
+                                <td>Full support for Skip Links and keyboard navigation (Tab indexing).</td>
+                                <td class="text-gold-400">✔ Active</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">Visual</td>
+                                <td>Minimum 4.5:1 contrast ratio for text and UI elements.</td>
+                                <td class="text-gold-400">✔ Audited</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">Interaction</td>
+                                <td>Absence of time-dependent workflows (low friction).</td>
+                                <td class="text-gold-400">✔ Compliant</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-white">Content</td>
+                                <td>Audio description via SpeechSynthesis for critical assets.</td>
+                                <td class="text-gold-400">✔ Installed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="font-serif text-2xl text-white">Sign Language Protocol</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Our video service channel in Sign Language (Libras) operates with immediate scheduling for strategic protocols. The licensing of our methodologies includes an application manual for specific signs related to technical IP terminology.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="font-serif text-2xl text-white">Neurodivergent Shielding</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        We implement the **Plain Language** protocol. All our Legal Design contracts are reviewed to eliminate ambiguity, ensuring predictability and cognitive security for clients on the spectrum or with ADHD.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
+
+    <button id="globalAudioBtn" class="audio-fab" onclick="toggleAudioDescription()" aria-label="Listen to accessibility policy">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
+    </button>
+
+    <script src="accessibility.js"></script>
+
+    <script>
+        const synth = window.speechSynthesis;
+        function toggleAudioDescription() {
+            const text = "Boutique Method Accessibility and Integrity page. We present the commitment of founder Leonardo Araujo, Master in Nanotechnology, to technical inclusion. We detail our WCAG compliance standards, including keyboard support, audited contrast, and audio description. We explain our exclusive Sign Language protocols for business inquiries and cognitive shielding for neurodivergent individuals through Plain Language.";
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = 'en-US';
+            synth.speak(utter);
+        }
+    </script>
+</body>
+</html>
