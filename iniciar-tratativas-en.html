@@ -5,36 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Initiate Protocols | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
     </script>
+
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* Form Styling */
-        input, select, textarea {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Minimalist Input Styles */
+        .input-minimal {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             color: #fff;
-            transition: all 0.3s ease;
-        }
-        input:focus, select:focus, textarea:focus {
+            width: 100%;
+            padding: 12px 0;
             outline: none;
-            border-color: #d4af37;
-            background-color: rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+        .input-minimal:focus {
+            border-bottom-color: #d4af37;
+        }
+        .input-minimal::placeholder {
+            color: #555;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        
+        select.input-minimal {
+            appearance: none;
+            border-radius: 0;
         }
 
-        /* Audio Player Styling */
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -64,157 +77,140 @@
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-            </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
-                </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
-                    <a href="iniciar-tratativas.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                    <span class="text-white/30">|</span>
-                    <span class="text-gold-400 cursor-default">EN</span>
-                </div>
+    <a href="#main-content" class="skip-link">Skip to initiation form</a>
+
+    <nav class="w-full py-8 px-8 flex justify-between items-center bg-transparent relative z-20">
+        <a href="index-en.html" class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition">
+            ← Back
+        </a>
+        <div class="flex items-center gap-6">
+            <div class="font-serif text-xl tracking-widest text-white uppercase">
+                Boutique Method
             </div>
-            <div class="hidden md:block px-6 py-2 border border-gold-400 bg-gold-400 text-black text-[10px] md:text-xs uppercase tracking-widest font-bold">
-                Application Open
+            <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
+                <a href="iniciar-tratativas.html" class="text-neutral-500 hover:text-white transition">PT</a>
+                <span class="text-white/30">|</span>
+                <span class="text-gold-400 cursor-default">EN</span>
             </div>
         </div>
     </nav>
 
-    <header class="pt-52 pb-12 px-6 text-center">
-        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Official Channel</span>
-        <h1 class="font-serif text-5xl md:text-6xl text-white mb-6">
-            Initiate <span class="italic text-neutral-500">Protocols</span>
-        </h1>
-        <p class="text-neutral-400 font-light max-w-xl mx-auto text-lg leading-relaxed">
-            We are selective with our partners. Please provide details so our board can analyze synergy.
-        </p>
-    </header>
-
-    <main class="flex-grow px-6 pb-32">
-        <div class="max-w-2xl mx-auto bg-[#0a0a0a] border border-white/10 p-8 md:p-12 shadow-2xl">
+    <main id="main-content" class="flex-grow flex items-center justify-center px-6 py-12">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
             
-            <form class="space-y-8">
+            <div class="space-y-8 pt-10">
+                <h1 class="font-serif text-5xl md:text-6xl text-white leading-tight">
+                    Initiation <br>
+                    <span class="italic text-neutral-500">Protocol</span>
+                </h1>
                 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Full Name</label>
-                        <input type="text" class="w-full p-4 text-sm" placeholder="Your Name">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Corporate Email</label>
-                        <input type="email" class="w-full p-4 text-sm" placeholder="name@company.com">
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Company Name</label>
-                        <input type="text" class="w-full p-4 text-sm" placeholder="Holding / LLC">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Role / Position</label>
-                        <input type="text" class="w-full p-4 text-sm" placeholder="CEO / Founder">
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Primary Interest</label>
-                        <select class="w-full p-4 text-sm bg-black">
-                            <option>Method Licensing (JUR/HC/POL)</option>
-                            <option>Corporate Solutions (Consulting)</option>
-                            <option>Valuation & Equity</option>
-                            <option>Mentorship (High-Ticket)</option>
-                            <option>Press / Speaking</option>
-                        </select>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Annual Revenue (Range)</label>
-                        <select class="w-full p-4 text-sm bg-black">
-                            <option>Still Pre-Revenue</option>
-                            <option>Up to $1M / year</option>
-                            <option>$1M - $10M / year</option>
-                            <option>$10M - $50M / year</option>
-                            <option>Over $50M / year</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-[10px] uppercase tracking-widest text-gold-400">Strategic Context</label>
-                    <textarea rows="4" class="w-full p-4 text-sm" placeholder="Briefly describe your current challenge and what you expect from Boutique Method..."></textarea>
-                </div>
-
-                <button type="submit" class="w-full py-5 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-400 transition duration-500">
-                    Submit Application
-                </button>
-
-                <p class="text-center text-neutral-600 text-[10px] uppercase tracking-widest pt-4">
-                    Your data is protected under strict NDA protocols.
+                <p class="text-neutral-400 font-light leading-relaxed max-w-md">
+                    To ensure the integrity of our operations and the confidentiality of our clients, all protocols begin through this secure channel.
                 </p>
 
-            </form>
+                <ul class="space-y-3 mt-8">
+                    <li class="flex items-center text-sm text-neutral-300">
+                        <span class="w-1.5 h-1.5 bg-gold-400 rounded-full mr-3"></span>
+                        Service under NDA
+                    </li>
+                    <li class="flex items-center text-sm text-neutral-300">
+                        <span class="w-1.5 h-1.5 bg-gold-400 rounded-full mr-3"></span>
+                        Response within 24 business hours
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 shadow-2xl">
+                <form action="https://formsubmit.co/youremail@here.com" method="POST" class="space-y-8">
+                    
+                    <div>
+                        <label for="name" class="sr-only">Full Name / Position</label>
+                        <input type="text" id="name" name="name" class="input-minimal" placeholder="Full Name / Position" required>
+                    </div>
+
+                    <div>
+                        <label for="email" class="sr-only">Corporate Email</label>
+                        <input type="email" id="email" name="email" class="input-minimal" placeholder="Corporate Email" required>
+                    </div>
+
+                    <div class="relative">
+                        <label for="subject" class="sr-only">Select Matter</label>
+                        <select id="subject" name="subject" class="input-minimal text-neutral-400" required>
+                            <option value="" disabled selected>SELECT MATTER</option>
+                            <option value="licensing" style="background:#000;">Method Licensing</option>
+                            <option value="services" style="background:#000;">Service Engagement</option>
+                            <option value="partnership" style="background:#000;">Strategic Partnership</option>
+                            <option value="media" style="background:#000;">Press / Media</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea id="message" name="message" rows="3" class="input-minimal" placeholder="Brief description of the demand" required></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gold-400 text-black font-bold text-xs uppercase tracking-[0.2em] py-5 hover:bg-white transition duration-500 mt-4">
+                        Initiate Protocol
+                    </button>
+
+                    <input type="hidden" name="_next" value="https://boutiquemethodip.com/thanks.html">
+                    <input type="hidden" name="_captcha" value="false">
+                </form>
+            </div>
 
         </div>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+    <footer class="py-8 text-center text-[10px] text-neutral-600 uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
+    <script src="accessibility.js"></script>
+
     <script>
-        const audioBtn = document.getElementById('globalAudioBtn');
-        const audioLabel = document.getElementById('audioLabel');
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        let isRunning = false;
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-        function getContent() {
-            return "Initiate Protocols. Official Channel. We are selective with our partners. Please fill out the form with your corporate details: Name, Email, Role, Company, and Annual Revenue. Our board will analyze synergy. Your data is protected.";
-        }
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-        function toggleGlobalAudio() {
-            if (synth.speaking && isRunning) {
+            if (isPlaying) {
                 synth.cancel();
-                isRunning = false;
-                audioBtn.classList.add('paused');
-                audioLabel.innerText = "Listen";
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen to Page";
             } else {
-                synth.cancel();
-                utterance.text = getContent();
-                utterance.lang = 'en-US';
-                utterance.rate = 1;
-                synth.speak(utterance);
-                isRunning = true;
-                audioBtn.classList.remove('paused');
-                audioLabel.innerText = "Stop";
+                const text = "Boutique Method Initiation Protocol. To ensure confidentiality, all inquiries begin through this channel. The form requires your name, corporate email, subject of interest, and a brief description of your demand. Service is provided under NDA and responded to within 24 business hours.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Page";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
             }
         }
-
-        utterance.onend = function() {
-            isRunning = false;
-            audioBtn.classList.add('paused');
-            audioLabel.innerText = "Listen";
-        };
     </script>
-
 </body>
 </html>
