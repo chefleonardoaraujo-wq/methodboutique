@@ -5,42 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Holding | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
     </script>
-
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* MODAL STYLES (PREMIUM DARK) */
-        dialog::backdrop { background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); }
-        
-        dialog { 
-            background: transparent;
-            padding: 0;
-            max-width: 700px; 
-            width: 90%; 
-            border: none;
-            outline: none;
-            position: fixed; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        /* Audio Description Button Styling */
+        .audio-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        dialog[open] { opacity: 1; }
-
-        .dogma-item { transition: all 0.4s ease; border-left: 2px solid transparent; padding-left: 20px; cursor: pointer; }
-        .dogma-item:hover { border-left: 2px solid #d4af37; padding-left: 30px; background: linear-gradient(90deg, rgba(212,175,55,0.05) 0%, transparent 100%); }
-        .dogma-item:hover h3 { color: #d4af37; }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 20%; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -50,115 +56,112 @@
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+            
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
                     <a href="manifesto-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">The Holding</a>
                     <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
                     <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
                     <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
                 </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
+                
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
                     <a href="manifesto.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
                     <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <header class="pt-40 md:pt-52 pb-12 px-6 text-center">
+    <header class="pt-40 pb-20 px-6 text-center">
         <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Corporate Manifesto</span>
-        <h1 class="font-serif text-4xl md:text-6xl text-white mb-8">
-            From Chaos to <span class="italic text-neutral-500">Legacy</span>.
+        <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
+            From Chaos to <span class="italic text-neutral-500">Equity.</span>
         </h1>
-
-        <div class="flex justify-center">
-            <button onclick="lerManifesto()" id="btnAudio" class="group flex items-center gap-4 px-6 py-3 border border-white/10 hover:border-gold-400/50 bg-neutral-900/50 rounded-full transition-all duration-500 cursor-pointer">
-                <div class="relative w-3 h-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75 hidden" id="pingAudio"></span>
-                    <svg id="iconPlay" class="w-3 h-3 text-gold-400 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    <svg id="iconPause" class="w-3 h-3 text-gold-400 fill-current hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                </div>
-                <span id="textAudio" class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 group-hover:text-gold-400 transition">
-                    Listen to Manifesto
-                </span>
-            </button>
-        </div>
+        <button onclick="toggleAudioDescription()" class="mt-8 px-6 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition flex items-center gap-2 mx-auto">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            Listen to Manifesto
+        </button>
     </header>
 
-    <main class="flex-grow px-6 pb-20">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <main class="flex-grow px-6 pb-32">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
             
-            <div class="space-y-8 pt-4">
-                <p class="text-lg md:text-xl text-neutral-300 font-light leading-relaxed">
-                    We live in the era of noise. Everyone speaks, but few build something that lasts. We believe that an expert's knowledge should not die with them, nor depend on their physical presence to generate value.
+            <div class="space-y-8 text-lg font-light leading-relaxed text-neutral-300 text-justify">
+                <p>
+                    We live in the era of noise. Many speak. Few build something that lasts.
+                    We believe that an expert's knowledge should not die with them — nor depend on their physical presence to generate value.
+                    <strong class="text-white">Structured knowledge is equity.</strong>
                 </p>
 
-                <blockquote class="border-l-2 border-gold-400 pl-6 py-2 my-8">
-                    <p class="font-serif text-2xl text-white italic">
-                        "Boutique Method IP Holding exists to transform tacit knowledge into proprietary assets."
-                    </p>
-                </blockquote>
+                <div class="border-l-2 border-gold-400 pl-6 my-8 italic text-white font-serif text-xl">
+                    "Boutique Method IP Holding exists to transform tacit knowledge into proprietary assets."
+                </div>
 
-                <p class="text-neutral-400 font-light leading-relaxed">
-                    Our work is to capture business intelligence and transform it into a replicable, secure, and valuable Operating System. Where there is improvisation, we place method. Where there is complexity, we install clarity.
+                <p>
+                    We capture business intelligence and organize it into replicable, secure, and valuable operating systems.
+                    <br><br>
+                    Where there is improvisation, we institute method.
+                    <br>
+                    Where there is complexity, we install clarity.
                 </p>
 
-                <div class="my-10 pl-6 border-l-2 border-gold-400">
-                    <p class="font-serif text-xl md:text-2xl text-white leading-relaxed italic">
-                        "Boutique Method IP Holding was born in Santa Maria, Rio Grande do Sul, from practical experience in high-complexity environments, where clarity is not a differentiator — it is an operational necessity.
+                <div class="pt-8">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Origin</span>
+                    <p>
+                        Boutique Method IP Holding was born in <strong>Santa Maria, Rio Grande do Sul</strong>, from practical experience in high-complexity environments — where clarity is not a differentiator, it is an operational requirement.
                     </p>
-                    <p class="font-serif text-lg md:text-xl text-neutral-300 leading-relaxed mt-4">
-                        From its origin, the company was structured with a national vision: to develop proprietary methods capable of transforming knowledge into solid intellectual assets, applicable across different sectors, regions, and scales. What started locally was conceived to operate nationwide, with the same standard of rigor, governance, and predictability that guides every decision of the holding."
+                    <p class="mt-4">
+                        From the beginning, it was structured with a national vision: to develop proprietary methods capable of converting knowledge into solid intellectual assets, applicable across different sectors, regions, and scales.
+                    </p>
+                    <p class="mt-4">
+                        What started locally was conceived to operate nationwide — under the same standard of rigor, governance, and predictability that guides every decision of the holding.
                     </p>
                 </div>
 
-                <p class="text-neutral-400 font-light leading-relaxed">
-                    We are not an agency. We are not a common consultancy. We are architects of legacy.
+                <p class="pt-8 font-serif italic text-2xl text-white text-center border-t border-white/10 mt-8">
+                    We are not an agency.<br>
+                    We are not a common consultancy.<br>
+                    <span class="text-gold-400">We are architects of legacy.</span>
                 </p>
             </div>
 
-            <div class="bg-[#0f0f0f] border border-white/10 p-8 md:p-12 relative">
-                <div class="absolute top-0 right-0 w-20 h-20 border-t border-r border-gold-400/30"></div>
-
-                <h2 class="font-serif text-3xl text-white mb-10">Holding <span class="italic text-gold-400">Dogmas</span></h2>
-
-                <div class="space-y-10">
-                    
-                    <div class="dogma-item group" onclick="document.getElementById('dogma1').showModal()">
-                        <h3 class="font-serif text-xl text-white mb-2 group-hover:translate-x-2 transition duration-300">
-                            <span class="text-gold-400 italic mr-2">I.</span> AUCTORITAS
-                        </h3>
-                        <p class="text-[10px] tracking-[0.2em] text-gold-400 uppercase mb-2">True Authority</p>
-                        <p class="text-sm text-neutral-500 font-light group-hover:text-white transition duration-300">
-                            We don't shout to be heard. Technical competence is our megaphone. <span class="text-gold-400 text-xs ml-2 opacity-0 group-hover:opacity-100 transition">[ Read + ]</span>
+            <div class="bg-[#0a0a0a] border border-white/5 p-12 h-fit sticky top-32">
+                <h3 class="font-serif text-3xl text-white mb-12">Holding <span class="text-gold-400 italic">Dogmas</span></h3>
+                
+                <div class="space-y-12">
+                    <div class="group">
+                        <span class="text-gold-400 font-serif text-xl italic mr-2">I.</span>
+                        <span class="text-white text-sm uppercase tracking-[0.2em] font-bold">Auctoritas</span>
+                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mt-1 mb-2">Real Authority</p>
+                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition duration-500">
+                            We don't shout to be heard. Technical competence is our megaphone.
                         </p>
                     </div>
 
-                    <div class="dogma-item group" onclick="document.getElementById('dogma2').showModal()">
-                        <h3 class="font-serif text-xl text-white mb-2 group-hover:translate-x-2 transition duration-300">
-                            <span class="text-gold-400 italic mr-2">II.</span> CLARITAS
-                        </h3>
-                        <p class="text-[10px] tracking-[0.2em] text-gold-400 uppercase mb-2">Radical Clarity</p>
-                        <p class="text-sm text-neutral-500 font-light group-hover:text-white transition duration-300">
-                            Complexity is the refuge of the insecure. Simplicity is the height of sophistication. <span class="text-gold-400 text-xs ml-2 opacity-0 group-hover:opacity-100 transition">[ Read + ]</span>
+                    <div class="group">
+                        <span class="text-gold-400 font-serif text-xl italic mr-2">II.</span>
+                        <span class="text-white text-sm uppercase tracking-[0.2em] font-bold">Claritas</span>
+                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mt-1 mb-2">Radical Clarity</p>
+                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition duration-500">
+                            Complexity is the refuge of the insecure. Simplicity is the height of sophistication.
                         </p>
                     </div>
 
-                    <div class="dogma-item group" onclick="document.getElementById('dogma3').showModal()">
-                        <h3 class="font-serif text-xl text-white mb-2 group-hover:translate-x-2 transition duration-300">
-                            <span class="text-gold-400 italic mr-2">III.</span> PERPETUITAS
-                        </h3>
-                        <p class="text-[10px] tracking-[0.2em] text-gold-400 uppercase mb-2">Legacy & Equity</p>
-                        <p class="text-sm text-neutral-500 font-light group-hover:text-white transition duration-300">
-                            We ignore short-term easy profit. We build structures to last generations. <span class="text-gold-400 text-xs ml-2 opacity-0 group-hover:opacity-100 transition">[ Read + ]</span>
+                    <div class="group">
+                        <span class="text-gold-400 font-serif text-xl italic mr-2">III.</span>
+                        <span class="text-white text-sm uppercase tracking-[0.2em] font-bold">Perpetuitas</span>
+                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mt-1 mb-2">Legacy & Equity</p>
+                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition duration-500">
+                            We ignore easy short-term profit. We build structures to last generations.
                         </p>
                     </div>
-
                 </div>
             </div>
 
@@ -169,127 +172,48 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <dialog id="dogma1">
-        <div class="bg-[#0a0a0a] border border-gold-400 p-10 md:p-14 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
-            <span class="text-gold-400 text-6xl font-serif opacity-20 absolute top-4 left-6">I</span>
-            
-            <h2 class="font-serif text-3xl text-white mb-2 mt-4 relative z-10">The Weight of Invisibility</h2>
-            <hr class="border-gold-400 w-12 mb-6 opacity-50">
-            
-            <div class="space-y-4 text-neutral-300 font-light leading-relaxed text-lg">
-                <p>Many confuse "Fame" with "Authority". Fame is about who knows you; Authority is about who respects you.</p>
-                <p>At Boutique Method, we believe that true <em class="text-white">Auctoritas</em> does not come from aggressive marketing, but from <strong class="text-white">unquestionable intellectual property</strong>. When you own the method, you own the market.</p>
-                <p class="text-gold-400 italic">"If you are good, you don't need to shout. Your excellence whispers, and the world goes silent to listen."</p>
-            </div>
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
-    </dialog>
-
-    <dialog id="dogma2">
-        <div class="bg-[#0a0a0a] border border-gold-400 p-10 md:p-14 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
-            <span class="text-gold-400 text-6xl font-serif opacity-20 absolute top-4 left-6">II</span>
-            
-            <h2 class="font-serif text-3xl text-white mb-2 mt-4 relative z-10">Complexity is Cost</h2>
-            <hr class="border-gold-400 w-12 mb-6 opacity-50">
-            
-            <div class="space-y-4 text-neutral-300 font-light leading-relaxed text-lg">
-                <p>Mediocre companies hide their inefficiency behind big words and bureaucratic processes. They create mazes to justify their prices.</p>
-                <p>We operate under <strong class="text-white">Radical Clarity</strong>. If a contract, a process, or an idea cannot be explained on one page, it is not ready yet.</p>
-                <p class="text-gold-400 italic">"Confusion buys time. Clarity buys results."</p>
-            </div>
-        </div>
-    </dialog>
-
-    <dialog id="dogma3">
-        <div class="bg-[#0a0a0a] border border-gold-400 p-10 md:p-14 relative shadow-[0_0_50px_rgba(212,175,55,0.1)]">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
-            <span class="text-gold-400 text-6xl font-serif opacity-20 absolute top-4 left-6">III</span>
-            
-            <h2 class="font-serif text-3xl text-white mb-2 mt-4 relative z-10">Build to Exit</h2>
-            <hr class="border-gold-400 w-12 mb-6 opacity-50">
-            
-            <div class="space-y-4 text-neutral-300 font-light leading-relaxed text-lg">
-                <p>A business that depends 100% on the owner is not a company; it is a stressful job. And jobs cannot be sold.</p>
-                <p>Our focus on <em class="text-white">Perpetuitas</em> means creating <strong class="text-white">Equity</strong>. We transform chaotic operations into auditable assets, ready for an M&A (merger/sale) or to run for generations without your daily interference.</p>
-                <p class="text-gold-400 italic">"You don't build a company to work in it forever. You build it so it works without you."</p>
-            </div>
-        </div>
-    </dialog>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
+    </button>
 
     <script>
-        // Modal Logic
-        document.querySelectorAll('dialog').forEach(d => {
-            d.addEventListener('click', e => {
-                const rect = d.getBoundingClientRect();
-                if (e.clientX < rect.left || e.clientX > rect.right || 
-                    e.clientY < rect.top || e.clientY > rect.bottom) {
-                    d.close();
-                }
-            });
-        });
-
-        // Audio Logic (English)
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        
-        let textoParaLer = `
-            From Chaos to Legacy.
-            We live in the era of noise. Everyone speaks, but few build something that lasts.
-            We believe that an expert's knowledge should not die with them.
-            Boutique Method IP Holding exists to transform tacit knowledge into proprietary assets.
-            
-            Boutique Method was born in Santa Maria, Rio Grande do Sul.
-            Our work is to capture business intelligence and transform it into a replicable Operating System.
-            We are architects of legacy.
-            
-            Holding Dogmas:
-            One: Auctoritas. True Authority.
-            Two: Claritas. Radical Clarity.
-            Three: Perpetuitas. Legacy and Equity.
-        `;
-
-        utterance.text = textoParaLer;
-        utterance.lang = 'en-US'; // Set to English
-        utterance.rate = 0.9;
-        utterance.pitch = 0.8;
-
+        const synth = window.speechSynthesis;
         let isPlaying = false;
+        let currentUtterance = null;
 
-        function lerManifesto() {
-            const btn = document.getElementById('btnAudio');
-            const iconPlay = document.getElementById('iconPlay');
-            const iconPause = document.getElementById('iconPause');
-            const textLabel = document.getElementById('textAudio');
-            const ping = document.getElementById('pingAudio');
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-            if (synth.speaking && isPlaying) {
+            if (isPlaying) {
                 synth.cancel();
                 isPlaying = false;
-                iconPlay.classList.remove('hidden');
-                iconPause.classList.add('hidden');
-                ping.classList.add('hidden');
-                textLabel.innerText = "Listen to Manifesto";
-                textLabel.classList.remove('text-gold-400');
+                btn.classList.add('paused');
+                label.innerText = "Listen to Page";
             } else {
-                synth.cancel();
-                synth.speak(utterance);
-                isPlaying = true;
-                iconPlay.classList.add('hidden');
-                iconPause.classList.remove('hidden');
-                ping.classList.remove('hidden');
-                textLabel.innerText = "Playing...";
-                textLabel.classList.add('text-gold-400');
-            }
+                // Translated text for audio description
+                const text = "Corporate Manifesto. From Chaos to Equity. We live in the era of noise. We believe that structured knowledge is equity. Boutique Method exists to transform tacit knowledge into proprietary assets. Where there is improvisation, we institute method. Born in Santa Maria, Rio Grande do Sul, with a national vision. We are not an agency, we are architects of legacy.";
+                
+                currentUtterance = new SpeechSynthesisUtterance(text);
+                currentUtterance.lang = 'en-US';
+                currentUtterance.rate = 0.9;
 
-            utterance.onend = function() {
-                isPlaying = false;
-                iconPlay.classList.remove('hidden');
-                iconPause.classList.add('hidden');
-                ping.classList.add('hidden');
-                textLabel.innerText = "Listen to Manifesto";
-                textLabel.classList.remove('text-gold-400');
-            };
+                currentUtterance.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Page";
+                };
+
+                synth.speak(currentUtterance);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
+            }
         }
     </script>
 
