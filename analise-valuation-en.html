@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valuation Analysis | Boutique Method</title>
+    <title>Valuation Protocol | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
@@ -18,23 +21,24 @@
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* Form Styles */
-        input, select, textarea {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-        input:focus, select:focus, textarea:focus {
+        /* Form field styling */
+        input, textarea, select {
+            background-color: transparent;
+            border-bottom: 1px solid #333;
+            color: #d4af37;
+            width: 100%;
+            padding: 10px 0;
             outline: none;
-            border-color: #d4af37;
-            background-color: rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s;
+            border-radius: 0;
         }
+        input:focus, textarea:focus, select:focus { border-bottom-color: #d4af37; }
+        label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: #666; display: block; margin-top: 1.5rem; }
 
-        /* Audio Player Styling */
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -46,10 +50,8 @@
             border-radius: 50px;
             padding: 12px 24px;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            align-items: center; gap: 10px;
+            cursor: pointer; transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
@@ -64,164 +66,154 @@
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
+    <a href="#main-content" class="skip-link">Skip to analysis form</a>
+
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
-                </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
-                    <a href="analise-valuation.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                    <span class="text-white/30">|</span>
-                    <span class="text-gold-400 cursor-default">EN</span>
-                </div>
+            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
             </div>
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <header class="pt-52 pb-12 px-6 text-center">
-        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Equity & M&A</span>
-        <h1 class="font-serif text-5xl md:text-6xl text-white mb-6">
-            Valuation <span class="italic text-neutral-500">Analysis</span>
-        </h1>
-        <p class="text-neutral-400 font-light max-w-xl mx-auto text-lg leading-relaxed">
-            Provide preliminary data so our Equity team can design the valuation scenario for your business.
-        </p>
-    </header>
-
-    <main class="flex-grow px-6 pb-32">
-        <div class="max-w-3xl mx-auto bg-[#0a0a0a] border border-white/10 p-8 md:p-12 shadow-2xl relative">
+    <main id="main-content" class="flex-grow pt-40 pb-20 px-6 flex items-center justify-center">
+        <div class="w-full max-w-5xl grid md:grid-cols-2 gap-20">
             
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-gold-400"></div>
-
-            <form class="space-y-8">
+            <div class="flex flex-col justify-center">
+                <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
+                    Valuation <span class="text-gold-400 italic">Analysis</span>
+                </h1>
+                <p class="text-neutral-400 font-light text-lg leading-relaxed max-w-md">
+                    Provide the preliminary data of your operation. Our analysts will contact you to schedule an audit of intangible assets.
+                </p>
                 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Founder/Partner Name</label>
-                        <input type="text" class="w-full p-4 text-sm" placeholder="Full Name">
+                <div class="mt-12 space-y-4">
+                    <div class="flex items-center gap-4 text-xs text-gold-400 uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
+                        Guaranteed Confidentiality (NDA)
                     </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Corporate Email</label>
-                        <input type="email" class="w-full p-4 text-sm" placeholder="name@company.com">
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Company Name</label>
-                        <input type="text" class="w-full p-4 text-sm" placeholder="Entity Name">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gold-400">Industry / Sector</label>
-                        <select class="w-full p-4 text-sm bg-black">
-                            <option>Select...</option>
-                            <option>B2B Services</option>
-                            <option>Health / Clinics</option>
-                            <option>Technology / SaaS</option>
-                            <option>Retail / Franchise</option>
-                            <option>Industry</option>
-                            <option>Other</option>
-                        </select>
+                    <div class="flex items-center gap-4 text-xs text-gold-400 uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
+                        Response within 48 business hours
                     </div>
                 </div>
+            </div>
 
-                <div class="p-6 border border-white/5 bg-white/5">
-                    <h3 class="font-serif text-white text-lg mb-6">Financial Indicators</h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase tracking-widest text-gold-400">Annual Revenue (USD/EUR)</label>
-                            <select class="w-full p-4 text-sm bg-black">
-                                <option>Up to $1 Million</option>
-                                <option>$1M - $5M</option>
-                                <option>$5M - $20M</option>
-                                <option>$20M - $50M</option>
-                                <option>Over $50M</option>
+            <div class="bg-[#0a0a0a] p-10 border border-white/5 shadow-2xl">
+                <form action="https://formsubmit.co/SEU_EMAIL_AQUI" method="POST" class="space-y-6">
+                    
+                    <input type="hidden" name="_subject" value="NEW LEAD: Valuation Request">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div>
+                        <label for="nome">Representative Name</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Full name">
+                    </div>
+
+                    <div>
+                        <label for="email">Corporate Email</label>
+                        <input type="email" id="email" name="email" required placeholder="you@company.com">
+                    </div>
+
+                    <div>
+                        <label for="empresa">Company Name</label>
+                        <input type="text" id="empresa" name="empresa" required placeholder="Legal Entity or Brand Name">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label for="faturamento">Annual Revenue (Est.)</label>
+                            <select id="faturamento" name="faturamento" class="text-neutral-400">
+                                <option value="" disabled selected>Select</option>
+                                <option value="Up to 1M">Up to R$ 1 Million</option>
+                                <option value="1M to 10M">R$ 1M to R$ 10M</option>
+                                <option value="10M to 50M">R$ 10M to R$ 50M</option>
+                                <option value="Above 50M">Above R$ 50 Million</option>
                             </select>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase tracking-widest text-neutral-500">Approximate EBITDA (Optional)</label>
-                            <input type="text" class="w-full p-4 text-sm bg-black" placeholder="Ex: 15%">
+                        <div>
+                            <label for="funcionarios">No. of Employees</label>
+                            <input type="number" id="funcionarios" name="funcionarios" placeholder="e.g.: 15">
                         </div>
                     </div>
-                </div>
 
-                <div class="space-y-2">
-                    <label class="text-[10px] uppercase tracking-widest text-gold-400">Existing IP Assets</label>
-                    <textarea rows="3" class="w-full p-4 text-sm" placeholder="Do you have registered trademarks? Documented processes? Briefly describe your intellectual assets..."></textarea>
-                </div>
+                    <div>
+                        <label for="objetivo">Primary Valuation Goal</label>
+                        <select id="objetivo" name="objetivo" class="text-neutral-400">
+                            <option value="Preparation for Sale (Exit)">Preparation for Sale (Exit)</option>
+                            <option value="Partner/Investor Entry">Partner/Investor Entry</option>
+                            <option value="Internal Organization">Internal Governance</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
 
-                <button type="submit" class="w-full py-5 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]">
-                    Request Pre-Analysis
-                </button>
+                    <button type="submit" class="w-full mt-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">
+                        Request Analysis
+                    </button>
 
-                <p class="text-center text-neutral-600 text-[10px] uppercase tracking-widest pt-4">
-                    Your data is protected under strict NDA protocols.
-                </p>
-
-            </form>
+                </form>
+            </div>
 
         </div>
     </main>
-
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+    
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Listen to page">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
+    <script src="accessibility.js"></script>
+
     <script>
-        const audioBtn = document.getElementById('globalAudioBtn');
-        const audioLabel = document.getElementById('audioLabel');
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        let isRunning = false;
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-        function getContent() {
-            return "Valuation Analysis. Equity and M&A. Provide preliminary data so our Equity team can design the valuation scenario. We request Name, Email, Annual Revenue, and EBITDA. Your data is protected.";
-        }
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-        function toggleGlobalAudio() {
-            if (synth.speaking && isRunning) {
+            if (isPlaying) {
                 synth.cancel();
-                isRunning = false;
-                audioBtn.classList.add('paused');
-                audioLabel.innerText = "Listen";
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen to Page";
             } else {
-                synth.cancel();
-                utterance.text = getContent();
-                utterance.lang = 'en-US';
-                utterance.rate = 1;
-                synth.speak(utterance);
-                isRunning = true;
-                audioBtn.classList.remove('paused');
-                audioLabel.innerText = "Stop";
+                const text = "Valuation Analysis Page. Please provide preliminary data for your business to schedule an intangible asset audit. We require your name, corporate email, company name, estimated revenue, and primary goal. Confidentiality is guaranteed.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Page";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
             }
         }
-
-        utterance.onend = function() {
-            isRunning = false;
-            audioBtn.classList.add('paused');
-            audioLabel.innerText = "Listen";
-        };
     </script>
-
 </body>
 </html>
