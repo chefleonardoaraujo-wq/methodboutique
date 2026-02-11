@@ -21,7 +21,6 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* Botão de Audiodescrição */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -47,6 +46,9 @@
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
         .paused .bar { animation: none; height: 20%; }
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+
+        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -84,10 +86,6 @@
         <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
             Do Caos ao <span class="italic text-neutral-500">Patrimônio.</span>
         </h1>
-        <button onclick="toggleAudioDescription()" class="mt-8 px-6 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition flex items-center gap-2 mx-auto">
-            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            Ouvir o Manifesto
-        </button>
     </header>
 
     <main class="flex-grow px-6 pb-32">
@@ -101,7 +99,7 @@
                 </p>
 
                 <div class="border-l-2 border-gold-400 pl-6 my-8 italic text-white font-serif text-xl">
-                    "A Boutique Method IP Holding existe para transformar conhecimento tácito em ativo proprietário."
+                    “A Boutique Method IP Holding existe para transformar conhecimento tácito em ativo proprietário.”
                 </div>
 
                 <p>
@@ -112,20 +110,21 @@
                     Onde há complexidade, instalamos clareza.
                 </p>
 
-                <div class="pt-8">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Origem</span>
-                    <p>
-                        A Boutique Method IP Holding nasceu em <strong>Santa Maria, no Rio Grande do Sul</strong>, a partir de uma vivência prática em ambientes de alta complexidade — onde clareza não é diferencial, é requisito operacional.
-                    </p>
-                    <p class="mt-4">
-                        Desde o início, foi estruturada com visão nacional: desenvolver métodos proprietários capazes de converter conhecimento em ativos intelectuais sólidos, aplicáveis em diferentes setores, regiões e escalas.
-                    </p>
-                    <p class="mt-4">
-                        O que começou local foi concebido para operar em todo o país — sob o mesmo padrão de rigor, governança e previsibilidade que orienta cada decisão da holding.
-                    </p>
-                </div>
+                <button onclick="openModal('modalOrigem')" class="w-full text-left group border border-white/10 bg-white/5 p-8 mt-8 hover:border-gold-400 transition duration-500">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">Capítulo I</span>
+                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition">Origem</h3>
+                    <p class="text-sm text-neutral-500 mt-2">Nascida em Santa Maria, RS, com visão nacional.</p>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler História +</span>
+                </button>
 
-                <p class="pt-8 font-serif italic text-2xl text-white text-center border-t border-white/10 mt-8">
+                <button onclick="openModal('modalBoutique')" class="w-full text-left group border border-white/10 bg-white/5 p-8 mt-4 hover:border-gold-400 transition duration-500">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">Capítulo II</span>
+                    <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition">Boutique</h3>
+                    <p class="text-sm text-neutral-500 mt-2">Profundidade antes de volume. Governança antes de escala.</p>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler Conceito +</span>
+                </button>
+
+                <p class="pt-12 font-serif italic text-2xl text-white text-center border-t border-white/10 mt-12">
                     Não somos uma agência.<br>
                     Não somos uma consultoria comum.<br>
                     <span class="text-gold-400">Somos arquitetos de legado.</span>
@@ -136,43 +135,56 @@
                 <h3 class="font-serif text-3xl text-white mb-12">Dogmas da <span class="text-gold-400 italic">Holding</span></h3>
                 
                 <div class="space-y-12">
-                    <div class="group">
-                        <span class="text-gold-400 font-serif text-xl italic mr-2">I.</span>
-                        <span class="text-white text-sm uppercase tracking-[0.2em] font-bold">Auctoritas</span>
-                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mt-1 mb-2">Autoridade Real</p>
-                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition duration-500">
+                    <button onclick="openModal('dogma1')" class="group text-left w-full hover:translate-x-2 transition duration-500">
+                        <div class="flex items-center mb-2">
+                            <span class="text-gold-400 font-serif text-xl italic mr-2">I.</span>
+                            <span class="text-white text-sm uppercase tracking-[0.2em] font-bold group-hover:text-gold-400 transition">Auctoritas</span>
+                        </div>
+                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mb-2">Autoridade Real</p>
+                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition">
                             Não gritamos para ser ouvidos. A competência técnica é o nosso megafone.
                         </p>
-                    </div>
+                    </button>
 
-                    <div class="group">
-                        <span class="text-gold-400 font-serif text-xl italic mr-2">II.</span>
-                        <span class="text-white text-sm uppercase tracking-[0.2em] font-bold">Claritas</span>
-                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mt-1 mb-2">Clareza Radical</p>
-                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition duration-500">
+                    <button onclick="openModal('dogma2')" class="group text-left w-full hover:translate-x-2 transition duration-500">
+                        <div class="flex items-center mb-2">
+                            <span class="text-gold-400 font-serif text-xl italic mr-2">II.</span>
+                            <span class="text-white text-sm uppercase tracking-[0.2em] font-bold group-hover:text-gold-400 transition">Claritas</span>
+                        </div>
+                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mb-2">Clareza Radical</p>
+                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition">
                             A complexidade é o refúgio do inseguro. A simplicidade é o auge da sofisticação.
                         </p>
-                    </div>
+                    </button>
 
-                    <div class="group">
-                        <span class="text-gold-400 font-serif text-xl italic mr-2">III.</span>
-                        <span class="text-white text-sm uppercase tracking-[0.2em] font-bold">Perpetuitas</span>
-                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mt-1 mb-2">Legado & Equity</p>
-                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition duration-500">
+                    <button onclick="openModal('dogma3')" class="group text-left w-full hover:translate-x-2 transition duration-500">
+                        <div class="flex items-center mb-2">
+                            <span class="text-gold-400 font-serif text-xl italic mr-2">III.</span>
+                            <span class="text-white text-sm uppercase tracking-[0.2em] font-bold group-hover:text-gold-400 transition">Perpetuitas</span>
+                        </div>
+                        <p class="text-[10px] text-gold-400 uppercase tracking-widest mb-2">Legado & Equity</p>
+                        <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition">
                             Ignoramos o lucro fácil de curto prazo. Construímos estruturas para durar gerações.
                         </p>
-                    </div>
+                    </button>
                 </div>
             </div>
 
         </div>
     </main>
 
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter">
+        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Fechar">&times;</button>
+            <div id="modal-content" class="space-y-6"></div>
+        </div>
+    </div>
+
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo da página">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -182,9 +194,69 @@
     </button>
 
     <script>
+        // --- DADOS DOS MODAIS (AGORA INCLUINDO DOGMAS) ---
+        const modalData = {
+            modalOrigem: {
+                label: "Capítulo I",
+                title: "ORIGEM",
+                text: "A Boutique Method IP Holding nasceu em Santa Maria, no Rio Grande do Sul, a partir de uma vivência prática em ambientes de alta complexidade — onde clareza não é diferencial; é requisito operacional.<br><br>Desde o início, foi estruturada com visão nacional: desenvolver métodos proprietários capazes de converter conhecimento em ativos intelectuais sólidos, aplicáveis em diferentes setores, regiões e escalas.<br><br>O que começou local foi concebido para operar em todo o país — sob o mesmo padrão de rigor, governança e previsibilidade que orienta cada decisão da holding."
+            },
+            modalBoutique: {
+                label: "Capítulo II",
+                title: "BOUTIQUE",
+                text: "“Boutique” não define porte. Define padrão.<br><br>Escolhemos profundidade antes de volume. Curadoria antes de expansão. Governança antes de escala.<br><br>Não produzimos em massa. Estruturamos com precisão.<br>Cada método desenvolvido é tratado como ativo proprietário — não como serviço descartável."
+            },
+            dogma1: {
+                label: "Dogma I",
+                title: "AUCTORITAS",
+                text: "Autoridade Real.<br><br>Não gritamos para ser ouvidos. A competência técnica é o nosso megafone. Em um mercado saturado de promessas vazias, a Boutique Method se destaca pela entrega de substância técnica e rigor metodológico."
+            },
+            dogma2: {
+                label: "Dogma II",
+                title: "CLARITAS",
+                text: "Clareza Radical.<br><br>A complexidade é o refúgio do inseguro. A simplicidade é o auge da sofisticação.<br>Nosso trabalho é remover o ruído e revelar a essência dos processos, tornando o complexo acessível e o caótico organizado."
+            },
+            dogma3: {
+                label: "Dogma III",
+                title: "PERPETUITAS",
+                text: "Legado & Equity.<br><br>Ignoramos o lucro fácil de curto prazo. Construímos estruturas para durar gerações.<br>O objetivo final de todo método que criamos não é apenas resolver um problema hoje, mas valorizar o patrimônio da marca para sempre."
+            }
+        };
+
+        function openModal(id) {
+            const content = modalData[id];
+            const overlay = document.getElementById('modal-overlay');
+            const container = document.getElementById('modal-content');
+            
+            container.innerHTML = `
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">${content.label}</span>
+                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight">${content.title}</h3>
+                <div class="w-12 h-px bg-gold-400 mb-6"></div>
+                <p class="text-neutral-300 font-light text-lg leading-relaxed text-justify">${content.text}</p>
+                <div class="pt-8 flex justify-end">
+                    <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Fechar</button>
+                </div>
+            `;
+            
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // --- AUDIODESCRIÇÃO ---
         const synth = window.speechSynthesis;
         let isPlaying = false;
-        let currentUtterance = null;
 
         function toggleAudioDescription() {
             const btn = document.getElementById('globalAudioBtn');
@@ -196,20 +268,19 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                // Texto atualizado conforme o novo conteúdo
-                const text = "Manifesto Corporativo. Do Caos ao Patrimônio. Vivemos na era do ruído. Acreditamos que conhecimento estruturado é patrimônio. A Boutique Method existe para transformar conhecimento tácito em ativo proprietário. Onde há improviso, instituímos método. Nascida em Santa Maria, Rio Grande do Sul, com visão nacional. Não somos uma agência, somos arquitetos de legado.";
+                const text = "Manifesto Corporativo. Do Caos ao Patrimônio. Vivemos na era do ruído. Acreditamos que o conhecimento estruturado é patrimônio. A Boutique Method existe para transformar conhecimento tácito em ativo proprietário. Origem: Nascida em Santa Maria. Boutique define padrão, não porte. Dogmas da Holding: Auctoritas, Autoridade Real. Claritas, Clareza Radical. Perpetuitas, Legado e Equity.";
                 
-                currentUtterance = new SpeechSynthesisUtterance(text);
-                currentUtterance.lang = 'pt-BR';
-                currentUtterance.rate = 0.9;
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'pt-BR';
+                utter.rate = 0.95;
 
-                currentUtterance.onend = () => {
+                utter.onend = () => {
                     isPlaying = false;
                     btn.classList.add('paused');
                     label.innerText = "Ouvir Página";
                 };
 
-                synth.speak(currentUtterance);
+                synth.speak(utter);
                 isPlaying = true;
                 btn.classList.remove('paused');
                 label.innerText = "Parar Áudio";
