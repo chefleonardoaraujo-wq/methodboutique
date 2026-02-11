@@ -3,44 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique Method | IP Holding</title>
+    <title>Boutique Method | IP Holding & Methodologies</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="accessibility.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, 
+                    colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } } 
+                } 
+            } 
         }
     </script>
-    <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
+    <style> 
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
+        .gold-selection::selection { background: #d4af37; color: black; } 
         
-        /* Audio Description Button */
+        .trustbar {
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
         .audio-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50px;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px;
+            padding: 12px 24px; display: flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
         .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
@@ -50,113 +45,120 @@
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
         .paused .bar { animation: none; height: 20%; }
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
-
-        /* Modal Animation */
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex justify-between items-center">
+            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex space-x-8 text-[10px] tracking-[0.2em] uppercase font-light">
+                    <a href="origem-en.html" class="hover:text-gold-400 transition">Origin</a>
+                    <a href="manifesto-en.html" class="hover:text-gold-400 transition">Holding</a>
+                    <a href="licenciamento-en.html" class="hover:text-gold-400 transition">Licensing</a>
+                    <a href="store-en.html" class="hover:text-gold-400 transition">Collection</a>
                 </div>
-                
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
                     <a href="index.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
                     <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
-
-            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <main id="main-content">
-        <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-48 md:pt-0">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 via-black to-black opacity-50"></div>
-            <div class="relative z-10 max-w-5xl text-center space-y-8">
-                <p class="text-gold-400 text-xs tracking-[0.4em] uppercase font-light animate-pulse">Intellectual Property Holding</p>
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight">From Intellect <br> to <span class="italic text-gold-400">Equity.</span></h1>
-                <p class="text-neutral-400 text-sm md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-                    We are an Intellectual Property Holding dedicated to the architecture of methods that protect reputation. Our role is to encode your organization's culture into tangible processes.
-                </p>
-                <div class="pt-8 flex flex-col md:flex-row gap-6 justify-center">
-                    <a href="origem-en.html" class="px-8 py-3 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-gold-400 transition duration-500">Discover the Origin</a>
-                    <a href="manifesto-en.html" class="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">Meet the Holding</a>
-                </div>
+    <main id="main-content" class="flex-grow">
+        
+        <section class="min-h-[85vh] flex flex-col items-center justify-center text-center px-6 pt-20">
+            <h1 class="font-serif text-5xl md:text-8xl text-white mb-6 leading-tight">
+                Obsessive <span class="italic text-neutral-500">Processes.</span><br>
+                Elite <span class="text-gold-400">Results.</span>
+            </h1>
+            
+            <p class="text-neutral-400 text-lg md:text-xl font-light max-w-2xl mb-8">
+                <strong>Inclusive Service as a method.</strong><br>
+                <span class="text-sm uppercase tracking-widest">Sign Language • Neurodivergence • Blind/Low Vision Accessibility</span>
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6">
+                <a href="#inclusive-service" class="px-10 py-4 border border-white/20 text-white text-xs uppercase tracking-widest hover:bg-white hover:text-black transition duration-500">
+                    See How It Works
+                </a>
+                <a href="manifesto-en.html" class="px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                    The Manifesto
+                </a>
             </div>
-        </header>
+        </section>
 
-        <section class="py-32 px-6 border-t border-white/5 relative overflow-hidden bg-black">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Our Pillars</span>
+        <div class="trustbar w-full py-4 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-neutral-500">
+                <div class="flex items-center gap-3">
+                    <span class="text-gold-400 font-bold">Inclusive Service:</span>
+                    <span>Sign Language (Libras)</span>
                 </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <button onclick="openModal('modal1')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
-                        <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">01</span>
-                        <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">High-Complexity Strategic Communication</h3>
-                            <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">We translate technical environments into intelligible language without losing legal or institutional density.</p>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Read more +</span>
-                        </div>
-                    </button>
+                <span class="hidden md:block opacity-20">|</span>
+                <span>Neurodivergence Protocols</span>
+                <span class="hidden md:block opacity-20">|</span>
+                <span>Blind/Low Vision Accessibility</span>
+                <a href="acessibilidade-en.html" class="text-gold-400 border-b border-gold-400/30 hover:border-gold-400 transition">View Policy</a>
+            </div>
+        </div>
 
-                    <button onclick="openModal('modal2')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
-                        <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">02</span>
-                        <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Systemic Architecture & Governance</h3>
-                            <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">We structure processes, protocols, and internal flows to transform knowledge into replicable methods.</p>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Read more +</span>
-                        </div>
-                    </button>
+        <section id="inclusive-service" class="py-32 px-6 bg-neutral-900/20">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-8 leading-tight text-center md:text-left">
+                        Inclusive Service — <span class="italic text-gold-400">BMIP Standard</span>
+                    </h2>
+                    <p class="text-neutral-300 text-xl font-light leading-relaxed max-w-4xl text-justify">
+                        A pioneer among IP holdings and licensable methodologies in structuring an inclusive service program 
+                        that integrates: Sign Language + protocols for neurodivergence + accessibility for blind/low vision individuals.
+                    </p>
+                </div>
 
-                    <button onclick="openModal('modal3')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
-                        <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">03</span>
-                        <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Licensable Intellectual Property</h3>
-                            <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Converting expertise into protected legal assets through registrable frameworks.</p>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Read more +</span>
-                        </div>
-                    </button>
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="border border-white/10 p-8 hover:border-gold-400/50 transition-all duration-500 bg-black/40">
+                        <h3 class="font-serif text-2xl text-white mb-4">Sign Language</h3>
+                        <p class="text-neutral-500 text-sm leading-relaxed">Structured channel, dedicated flow, and technical SLA for service in Brazilian Sign Language (Libras).</p>
+                    </div>
+
+                    <div class="border border-white/10 p-8 hover:border-gold-400/50 transition-all duration-500 bg-black/40">
+                        <h3 class="font-serif text-2xl text-white mb-4">Neurodivergence</h3>
+                        <p class="text-neutral-500 text-sm leading-relaxed">Clear language protocols, sensory noise reduction, and full predictability in support workflows.</p>
+                    </div>
+
+                    <div class="border border-white/10 p-8 hover:border-gold-400/50 transition-all duration-500 bg-black/40">
+                        <h3 class="font-serif text-2xl text-white mb-4">Blind / Low Vision</h3>
+                        <p class="text-neutral-500 text-sm leading-relaxed">Rigorous digital accessibility standards (WCAG) and materials structured for screen readers.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-6 justify-center md:justify-start">
+                    <a href="acessibilidade-en.html" class="px-8 py-4 bg-gold-400 text-black text-[10px] font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                        Policy & Evidence
+                    </a>
+                    <a href="iniciar-tratativas-en.html" class="px-8 py-4 border border-white/20 text-white text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition duration-500">
+                        Request Service
+                    </a>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter">
-        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Close Modal">&times;</button>
-            <div id="modal-content" class="space-y-6"></div>
-        </div>
-    </div>
-
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+    <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page introduction">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -166,56 +168,7 @@
     </button>
 
     <script src="accessibility.js"></script>
-
     <script>
-        // --- MODAL LOGIC ---
-        const modalData = {
-            modal1: {
-                title: "High-Complexity Strategic Communication",
-                text: "We translate technical environments into intelligible language without losing legal or institutional density.<br><br>We reduce noise, elevate authority, and organize decision-making in critical contexts."
-            },
-            modal2: {
-                title: "Systemic Architecture & Governance",
-                text: "Structuring processes, protocols, and internal flows to transform knowledge into replicable methods.<br><br>Operational clarity, standardization, and strategic control as the foundation for sustainable growth."
-            },
-            modal3: {
-                title: "Licensable Intellectual Property",
-                text: "Converting expertise into protected legal assets.<br><br>Registrable methods, frameworks, and structures that generate scale, recurring revenue, and asset valuation."
-            }
-        };
-
-        function openModal(id) {
-            const content = modalData[id];
-            const overlay = document.getElementById('modal-overlay');
-            const container = document.getElementById('modal-content');
-            
-            container.innerHTML = `
-                <h3 class="font-serif text-3xl md:text-4xl text-gold-400 mb-6 leading-tight">${content.title}</h3>
-                <p class="text-neutral-300 font-light text-lg leading-relaxed">${content.text}</p>
-                <div class="pt-8 flex justify-end">
-                    <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Close</button>
-                </div>
-            `;
-            
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const overlay = document.getElementById('modal-overlay');
-            overlay.classList.add('hidden');
-            overlay.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('modal-overlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // --- AUDIO DESCRIPTION LOGIC ---
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
@@ -229,7 +182,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Boutique Method. From Intellect to Equity. Our Pillars: 1. High-Complexity Strategic Communication. 2. Systemic Architecture and Governance. 3. Licensable Intellectual Property.";
+                const text = "Boutique Method IP Holding. Obsessive processes, elite results. We present our pioneering Inclusive Service program, integrating Sign Language, neurodivergence protocols, and total digital accessibility for the blind and low vision. Our intelligence is for everyone.";
                 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
