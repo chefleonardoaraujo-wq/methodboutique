@@ -12,17 +12,16 @@
             theme: {
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 500: '#c5a028' } }
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        .hero-gradient { background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%); }
         
-        /* Audio Player Styling */
+        /* Audio Description Button Styling */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -34,7 +33,8 @@
             border-radius: 50px;
             padding: 12px 24px;
             display: flex;
-            align-items: center; gap: 10px;
+            align-items: center;
+            gap: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -47,110 +47,87 @@
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
         .paused .bar { animation: none; height: 20%; }
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
-
-        .card-pilar {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .card-pilar:hover {
-            border-color: #d4af37;
-            background-color: rgba(212, 175, 55, 0.02);
-            transform: translateY(-10px);
-        }
     </style>
 </head>
-<body class="antialiased gold-selection">
+<body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+            
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
                     <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
                     <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
                     <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
                     <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
                 </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
+                
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
                     <a href="index.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
                     <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
-            <a href="iniciar-tratativas-en.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
         </div>
     </nav>
 
-    <main>
-        <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-gradient">
-            <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
-                <span class="text-gold-400 text-xs md:text-sm tracking-[0.4em] uppercase block mb-6 animate-pulse">Intellectual Property Holding</span>
-                
-                <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 leading-tight">
-                    From Intellect <br>to <span class="italic text-gold-400">Equity.</span>
-                </h1>
-                
-                <p class="text-neutral-400 font-light text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-                    We are an IP Holding dedicated to the architecture of methods that protect reputation. Our role is to encode your organization's culture into tangible, scalable processes.
-                </p>
-
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                    <a href="origem-en.html" class="w-full md:w-auto px-10 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-400 transition duration-500 shadow-xl">
-                        Discover the Origin
-                    </a>
-                    <a href="manifesto-en.html" class="w-full md:w-auto px-10 py-4 border border-gold-400 text-gold-400 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500">
-                        Meet the Holding
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-32 px-6 bg-black">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Core Verticals</span>
-                    <h2 class="font-serif text-4xl md:text-5xl text-white">Our Strategic <span class="italic text-neutral-500">Pillars</span></h2>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    
-                    <a href="licenciamento-jur-en.html" class="card-pilar p-10 bg-neutral-900/10 text-center group">
-                        <span class="text-gold-400 font-serif italic text-6xl block mb-6 group-hover:scale-110 transition duration-500">JUR</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Legal Design & Operations</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed">Process standardization and visual communication for elite law firms.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-8 inline-block opacity-0 group-hover:opacity-100 transition">Explore Pillar &rarr;</span>
-                    </a>
-
-                    <a href="hc-en.html" class="card-pilar p-10 bg-neutral-900/10 text-center group">
-                        <span class="text-gold-400 font-serif italic text-6xl block mb-6 group-hover:scale-110 transition duration-500">HC</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Health Care & Experience</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed">Hospitality protocols and patient experience for premium clinics.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-8 inline-block opacity-0 group-hover:opacity-100 transition">Explore Pillar &rarr;</span>
-                    </a>
-
-                    <a href="pol-en.html" class="card-pilar p-10 bg-neutral-900/10 text-center group">
-                        <span class="text-gold-400 font-serif italic text-6xl block mb-6 group-hover:scale-110 transition duration-500">POL</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Political & Institutional</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed">Cabinet governance, reputation shielding, and political capital management.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-8 inline-block opacity-0 group-hover:opacity-100 transition">Explore Pillar &rarr;</span>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-black py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-[10px] text-neutral-600 uppercase tracking-[0.3em]">
-                Boutique Method IP Holding Ltda © 2026 | Santa Maria, Brazil
+    <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-48 md:pt-0">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 via-black to-black opacity-50"></div>
+        <div class="relative z-10 max-w-5xl text-center space-y-8">
+            <p class="text-gold-400 text-xs tracking-[0.4em] uppercase font-light animate-pulse">Intellectual Property Holding</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight">From Intellect <br> to <span class="italic text-gold-400">Equity.</span></h1>
+            <p class="text-neutral-400 text-sm md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
+                We are an IP Holding dedicated to the architecture of methods that protect reputation. Our role is to encode your organization's culture into tangible, scalable processes.
             </p>
+            <div class="pt-8 flex flex-col md:flex-row gap-6 justify-center">
+                <a href="origem-en.html" class="px-8 py-3 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-gold-400 transition duration-500">Discover the Origin</a>
+                <a href="manifesto-en.html" class="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">Meet the Holding</a>
+            </div>
         </div>
+    </header>
+
+    <section class="py-32 px-6 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16"><span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Our Pillars</span></div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="licenciamento-en.html" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block">
+                    <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">01</span>
+                    <div class="relative z-10 space-y-4">
+                        <h3 class="text-2xl text-white font-serif group-hover:text-gold-400 transition duration-300">Licensing</h3>
+                        <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed">Transforming your service into scalable products that can be sold to multiple clients.</p>
+                    </div>
+                </a>
+                <a href="legal-design-en.html" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block">
+                    <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">02</span>
+                    <div class="relative z-10 space-y-4">
+                        <h3 class="text-2xl text-white font-serif group-hover:text-gold-400 transition duration-300">Legal Design</h3>
+                        <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed">Legal protection with executive aesthetics to generate immediate authority.</p>
+                    </div>
+                </a>
+                <a href="valuation-en.html" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block">
+                    <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">03</span>
+                    <div class="relative z-10 space-y-4">
+                        <h3 class="text-2xl text-white font-serif group-hover:text-gold-400 transition duration-300">Valuation & Equity</h3>
+                        <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed">Identifying the real value of your method to elevate your brand's valuation.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
@@ -177,12 +154,12 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const title = document.querySelector('h1')?.innerText || "";
+                const title = document.querySelector('h1')?.innerText || "Boutique Method";
                 const description = document.querySelector('p')?.innerText || "";
-                const fullText = `Homepage of Boutique Method. ${title}. ${description}. Our Strategic Pillars are: JUR, Legal Design and Operations. HC, Health Care and Experience. And POL, Political and Institutional.`;
+                const fullText = `Homepage of Boutique Method. ${title}. ${description}`;
                 
                 currentUtterance = new SpeechSynthesisUtterance(fullText);
-                currentUtterance.lang = 'en-US';
+                currentUtterance.lang = 'en-US'; // Set to US English
                 currentUtterance.rate = 0.9;
 
                 currentUtterance.onend = () => {
@@ -198,6 +175,5 @@
             }
         }
     </script>
-
 </body>
 </html>
