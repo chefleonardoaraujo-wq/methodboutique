@@ -5,14 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mentoria Executiva | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="accessibility.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } }
     </script>
-    <style> body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } .gold-selection::selection { background: #d4af37; color: black; } </style>
+    <style> 
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
+        .gold-selection::selection { background: #d4af37; color: black; } 
+
+        /* Botão de Audiodescrição */
+        .audio-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 20%; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+    </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -32,7 +67,7 @@
         </div>
     </nav>
 
-    <main class="flex-grow pt-52 pb-32 px-6">
+    <main id="main-content" class="flex-grow pt-52 pb-32 px-6">
         <div class="max-w-4xl mx-auto space-y-16">
             
             <div class="space-y-6 text-center md:text-left">
@@ -51,35 +86,35 @@
                     <h3 class="font-serif text-2xl text-white">O que você <span class="italic text-gold-400">Recebe</span></h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-4">
-                            <span class="text-gold-400 mt-1">✓</span>
+                            <span class="text-gold-400 mt-1" aria-hidden="true">✓</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">Diagnóstico de Cenário</strong>
                                 <p class="text-neutral-500 text-xs">Definição clara de prioridades: o que fazer agora vs. o que pode esperar.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <span class="text-gold-400 mt-1">✓</span>
+                            <span class="text-gold-400 mt-1" aria-hidden="true">✓</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">Plano de Ação Objetivo</strong>
                                 <p class="text-neutral-500 text-xs">Metas claras, responsáveis definidos e checkpoints de validação.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <span class="text-gold-400 mt-1">✓</span>
+                            <span class="text-gold-400 mt-1" aria-hidden="true">✓</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">Ajuste de Posicionamento</strong>
                                 <p class="text-neutral-500 text-xs">Refinamento de narrativa, proposta de valor e estrutura comercial.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <span class="text-gold-400 mt-1">✓</span>
+                            <span class="text-gold-400 mt-1" aria-hidden="true">✓</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">Governança de Execução</strong>
                                 <p class="text-neutral-500 text-xs">Rituais, indicadores e cadência para garantir que o plano não morra.</p>
                             </div>
                         </li>
                          <li class="flex items-start gap-4">
-                            <span class="text-gold-400 mt-1">✓</span>
+                            <span class="text-gold-400 mt-1" aria-hidden="true">✓</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">Revisão de Materiais Críticos</strong>
                                 <p class="text-neutral-500 text-xs">Análise técnica de site, pitch, propostas, contratos e scripts.</p>
@@ -123,9 +158,53 @@
         </div>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+    </button>
+
+    <script src="accessibility.js"></script>
+
+    <script>
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
+
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
+
+            if (isPlaying) {
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Ouvir Página";
+            } else {
+                const text = "Página de Mentoria Executiva. Acompanhamento estratégico direto com os sócios da Holding. Você recebe diagnóstico de cenário, plano de ação objetivo, ajuste de posicionamento, governança de execução e revisão de materiais críticos. Formato de encontros individuais online para sócios e executivos que buscam decisões mais rápidas e execução com direção.";
+                
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'pt-BR';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Ouvir Página";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Parar Áudio";
+            }
+        }
+    </script>
 </body>
 </html>
