@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Boutique Method IP Holding. Arquitetura de métodos e proteção de reputação.">
     <title>Boutique Method | IP Holding</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 500: '#c5a028' } }
+                }
+            }
+        }
     </script>
-
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; scroll-behavior: smooth; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
+        .hero-gradient { background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%); }
         
-        /* Player Fixo Elegante */
+        /* Estilo do Botão de Áudio */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -44,123 +47,157 @@
         .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
         .paused .bar { animation: none; height: 20%; }
-        
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+
+        .card-pilar {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .card-pilar:hover {
+            border-color: #d4af37;
+            background-color: rgba(212, 175, 55, 0.02);
+            transform: translateY(-10px);
+        }
     </style>
 </head>
-<body class="antialiased gold-selection flex flex-col min-h-screen">
+<body class="antialiased gold-selection">
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300" role="navigation" aria-label="Menu Principal">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition" aria-label="Ir para a página inicial">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            
             <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light">
+                <div class="hidden md:flex space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                     <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
                     <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
                 </div>
-
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default" aria-current="page">PT</span>
+                    <span class="text-gold-400 cursor-default">PT</span>
                     <span class="text-white/30">|</span>
-                    <a href="index-en.html" class="text-neutral-500 hover:text-white transition" aria-label="Switch to English">EN</a>
+                    <a href="index-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
                 </div>
             </div>
-
-            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500" aria-label="Iniciar Tratativas comerciais">
+            <a href="iniciar-tratativas.html" class="hidden md:block px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center px-6 relative overflow-hidden" role="main">
-        
-        <div class="absolute inset-0 z-0 opacity-20" aria-hidden="true">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-400/5 rounded-full blur-[100px]"></div>
-        </div>
+    <main>
+        <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-gradient">
+            <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+                <span class="text-gold-400 text-xs md:text-sm tracking-[0.4em] uppercase block mb-6">Holding de Propriedade Intelectual</span>
+                
+                <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 leading-tight">
+                    Do Intelecto <br>ao <span class="italic text-gold-400">Patrimônio.</span>
+                </h1>
+                
+                <p class="text-neutral-400 font-light text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação. Nosso papel é codificar a cultura da sua organização em processos tangíveis.
+                </p>
 
-        <div class="max-w-4xl w-full text-center relative z-10 space-y-8 mt-20">
-            
-            <span class="text-gold-400 text-xs tracking-[0.4em] uppercase block animate-fade-in-up">Intellectual Property Holding</span>
-            
-            <h1 class="font-serif text-5xl md:text-8xl text-white leading-tight">
-                Do Intelecto <br>
-                <span class="italic text-gold-400">ao Patrimônio.</span>
-            </h1>
-
-            <p class="text-neutral-400 font-light text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-                Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação. Nosso papel é codificar a cultura da sua organização em processos tangíveis.
-            </p>
-
-            <div class="flex flex-col md:flex-row gap-6 justify-center pt-8">
-                <a href="origem.html" class="px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-400 transition duration-500">
-                    Conheça a Origem
-                </a>
-                <a href="manifesto.html" class="px-8 py-4 border border-white/20 text-white text-xs font-bold uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
-                    Conheça a Holding
-                </a>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <a href="origem.html" class="w-full md:w-auto px-10 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-400 transition duration-500 shadow-xl">
+                        Conheça a Origem
+                    </a>
+                    <a href="manifesto.html" class="w-full md:w-auto px-10 py-4 border border-gold-400 text-gold-400 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-500">
+                        Conheça a Holding
+                    </a>
+                </div>
             </div>
+        </section>
 
-        </div>
+        <section class="py-32 px-6 bg-black">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20">
+                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Verticais de Atuação</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white">Nossos Pilares <span class="italic text-neutral-500">Estratégicos</span></h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <a href="licenciamento-jur.html" class="card-pilar p-10 bg-neutral-900/10 text-center group">
+                        <span class="text-gold-400 font-serif italic text-6xl block mb-6 group-hover:scale-110 transition duration-500">JUR</span>
+                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Jurídico & Legal Design</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed">Padronização de processos e comunicação visual para bancas de advocacia de elite.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-8 inline-block opacity-0 group-hover:opacity-100 transition">Explorar Pilar &rarr;</span>
+                    </a>
+
+                    <a href="hc.html" class="card-pilar p-10 bg-neutral-900/10 text-center group">
+                        <span class="text-gold-400 font-serif italic text-6xl block mb-6 group-hover:scale-110 transition duration-500">HC</span>
+                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Health Care & Experience</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed">Protocolos de hospitalidade e experiência do paciente para clínicas premium.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-8 inline-block opacity-0 group-hover:opacity-100 transition">Explorar Pilar &rarr;</span>
+                    </a>
+
+                    <a href="pol.html" class="card-pilar p-10 bg-neutral-900/10 text-center group">
+                        <span class="text-gold-400 font-serif italic text-6xl block mb-6 group-hover:scale-110 transition duration-500">POL</span>
+                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Político & Institucional</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed">Governança de gabinete, blindagem de reputação e gestão de capital político.</p>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-8 inline-block opacity-0 group-hover:opacity-100 transition">Explorar Pilar &rarr;</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="relative z-10 bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest" role="contentinfo">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-[10px] text-neutral-600 uppercase tracking-[0.3em]">
+                Boutique Method IP Holding Ltda © 2026 | Santa Maria, RS
+            </p>
+        </div>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleGlobalAudio()" aria-label="Ouvir o conteúdo desta página">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo da página">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
     </button>
 
     <script>
-        const audioBtn = document.getElementById('globalAudioBtn');
-        const audioLabel = document.getElementById('audioLabel');
-        let synth = window.speechSynthesis;
-        let utterance = new SpeechSynthesisUtterance();
-        let isRunning = false;
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
+        let currentUtterance = null;
 
-        // Captura o texto principal da página
-        function getContent() {
-            // Pega o H1 e os parágrafos principais
-            let h1 = document.querySelector('h1').innerText;
-            let p = document.querySelector('p').innerText; // Pega o primeiro parágrafo descritivo
-            return `Bem vindo à Boutique Method. ${h1}. ${p}. Use o menu para navegar.`;
-        }
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-        function toggleGlobalAudio() {
-            if (synth.speaking && isRunning) {
+            if (isPlaying) {
                 synth.cancel();
-                isRunning = false;
-                audioBtn.classList.add('paused');
-                audioLabel.innerText = "Ouvir";
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Ouvir Página";
             } else {
-                synth.cancel();
-                utterance.text = getContent();
-                utterance.lang = 'pt-BR';
-                utterance.rate = 1;
-                synth.speak(utterance);
-                isRunning = true;
-                audioBtn.classList.remove('paused');
-                audioLabel.innerText = "Parar";
+                const title = document.querySelector('h1')?.innerText || "";
+                const description = document.querySelector('p')?.innerText || "";
+                const fullText = `Página Inicial da Boutique Method. ${title}. ${description}. Nossos Pilares Estratégicos são: JUR, Jurídico e Legal Design. HC, Health Care e Experiência. E POL, Político e Institucional.`;
+                
+                currentUtterance = new SpeechSynthesisUtterance(fullText);
+                currentUtterance.lang = 'pt-BR';
+                currentUtterance.rate = 0.9;
+
+                currentUtterance.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Ouvir Página";
+                };
+
+                synth.speak(currentUtterance);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Parar Áudio";
             }
         }
-
-        utterance.onend = function() {
-            isRunning = false;
-            audioBtn.classList.add('paused');
-            audioLabel.innerText = "Ouvir";
-        };
     </script>
 
 </body>
