@@ -1,0 +1,22 @@
+/* accessibility.css */
+a:focus, button:focus, input:focus {
+    outline: 2px solid #d4af37 !important;
+    outline-offset: 4px !important;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #d4af37;
+    color: black;
+    padding: 10px 20px;
+    z-index: 1000;
+    font-weight: bold;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus { top: 10px; }
+
+p { max-width: 75ch; line-height: 1.8; }
