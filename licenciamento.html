@@ -36,8 +36,8 @@
 
         /* FIX PARA CELULAR: Engenharia de Modais */
         .modal-container {
-            max-height: 85vh; /* Ocupa no máximo 85% da altura da tela */
-            overflow-y: auto; /* Permite scroll se o texto for grande */
+            max-height: 85vh;
+            overflow-y: auto;
             width: 95%;
             scrollbar-width: thin;
             scrollbar-color: #d4af37 transparent;
@@ -53,7 +53,8 @@
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+    <!-- NAV (corrigido) -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
@@ -64,6 +65,7 @@
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                     <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                     <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
+                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
                     <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
                 </div>
@@ -116,6 +118,7 @@
             </div>
         </section>
 
+        <!-- Vertentes -->
         <section class="py-32 px-6 border-t border-white/5">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
@@ -148,19 +151,27 @@
             </div>
         </section>
 
+        <!-- Planos -->
         <section class="py-32 px-6 border-t border-white/5">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
                     <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Modelos de Negócio</span>
                     <h2 class="font-serif text-4xl text-white">Planos de <span class="italic text-neutral-500">Licenciamento</span></h2>
-                    <p class="text-neutral-500 text-xs mt-4 uppercase tracking-widest">Clique nos cards para ver detalhes</p>
+
+                    <div class="mt-6 flex flex-col items-center gap-4">
+                        <p class="text-neutral-500 text-xs uppercase tracking-widest">Clique nos cards para ver detalhes</p>
+                        <a href="como-funciona.html"
+                           class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                           Ver Como Funciona →
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <button onclick="openModal('essential')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
                         <h3 class="font-serif text-3xl text-white mb-2">Essential</h3>
                         <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Licença de Uso</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Ideal para utilizar a marca e manuais básicos sem suporte estratégico.</p>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Padronização rápida para sair do improviso e instalar um núcleo de governança.</p>
                         <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Ver Detalhes &rarr;</span>
                     </button>
 
@@ -168,17 +179,91 @@
                         <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[10px] uppercase tracking-widest px-4 py-1 font-bold">Recomendado</span>
                         <h3 class="font-serif text-4xl text-gold-400 mb-2">Professional</h3>
                         <span class="text-neutral-400 text-[10px] uppercase tracking-widest block mb-8">Certificação & Suporte</span>
-                        <p class="text-white text-sm font-light leading-relaxed mb-8">Para parceiros que buscam escalar. Inclui treinamento e acompanhamento.</p>
+                        <p class="text-white text-sm font-light leading-relaxed mb-8">Consistência institucional + performance mensurável, com implantação guiada.</p>
                         <span class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Ver Detalhes &rarr;</span>
                     </button>
 
                     <button onclick="openModal('enterprise')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
                         <h3 class="font-serif text-3xl text-white mb-2">Enterprise</h3>
-                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master & Equity</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Customização total do método e exclusividade territorial.</p>
+                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master</span>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Para multiunidades e alta exposição, com governança, trilhas e auditorias.</p>
                         <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Ver Detalhes &rarr;</span>
                     </button>
                 </div>
+
+                <!-- Tabela de entregáveis (novo) -->
+                <div class="mt-16 border-t border-white/10 pt-10">
+                    <div class="text-center mb-8">
+                        <h3 class="font-serif text-2xl text-white">Entregáveis por Plano</h3>
+                        <p class="text-neutral-500 text-[10px] mt-3 uppercase tracking-widest">
+                            Essential = 2 sprints • Professional = 4 sprints • Enterprise = 8–12 sprints
+                        </p>
+                    </div>
+
+                    <div class="overflow-x-auto border border-white/10 bg-black/20">
+                        <table class="min-w-[980px] w-full text-left">
+                            <caption class="sr-only">Tabela comparativa de entregáveis por plano</caption>
+                            <thead class="bg-white/5">
+                                <tr class="text-[10px] uppercase tracking-widest text-neutral-400">
+                                    <th class="p-4">Plano</th>
+                                    <th class="p-4">Indicado para</th>
+                                    <th class="p-4">Duração</th>
+                                    <th class="p-4">Entregáveis (núcleo)</th>
+                                    <th class="p-4">Implantação & Treinamento</th>
+                                    <th class="p-4">Governança & Sustentação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="text-sm text-neutral-300">
+                                <tr class="border-t border-white/10 align-top">
+                                    <td class="p-4 font-semibold text-white">Essential</td>
+                                    <td class="p-4">Padronização rápida</td>
+                                    <td class="p-4">2 sprints</td>
+                                    <td class="p-4">
+                                        Carta Magna; Tom de Voz por canal; Templates essenciais; Fluxo básico de atendimento e escalonamento
+                                    </td>
+                                    <td class="p-4">
+                                        2 encontros; treino rápido; ajustes finais pós-uso
+                                    </td>
+                                    <td class="p-4">
+                                        Checklist semanal; métricas mínimas; guia de manutenção
+                                    </td>
+                                </tr>
+
+                                <tr class="border-t border-white/10 align-top">
+                                    <td class="p-4 font-semibold text-white">Professional</td>
+                                    <td class="p-4">Consistência + performance</td>
+                                    <td class="p-4">4 sprints</td>
+                                    <td class="p-4">
+                                        Tudo do Essential; scripts ampliados; playbook de crise (tático); padrões por público; respostas para objeções
+                                    </td>
+                                    <td class="p-4">
+                                        4 encontros; treino por função; revisão guiada de canais reais
+                                    </td>
+                                    <td class="p-4">
+                                        RACI; SLA interno; ritual mensal; auditoria leve (baseline)
+                                    </td>
+                                </tr>
+
+                                <tr class="border-t border-white/10 align-top">
+                                    <td class="p-4 font-semibold text-white">Enterprise</td>
+                                    <td class="p-4">Multiunidade e alta exposição</td>
+                                    <td class="p-4">8–12 sprints</td>
+                                    <td class="p-4">
+                                        Tudo do Professional; governança multiunidade; kit robusto de reputação; trilhas formais; customizações por cenário
+                                    </td>
+                                    <td class="p-4">
+                                        Trilhas + reciclagens; multiplicadores; oficina com supervisão; implantação por unidade
+                                    </td>
+                                    <td class="p-4">
+                                        Comitê executivo; auditorias; painel de métricas; manual de sustentação; recertificação
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
@@ -197,16 +282,19 @@
     <script>
         const modalData = {
             essential: {
-                label: "Modelo Individual", title: "Essential",
-                text: "Acesso completo ao framework metodológico para aplicação individual. Ideal para profissionais autônomos que buscam diferenciar sua entrega através de processos validados. Inclui manual de marca, acesso à plataforma de treinamento e certificação pessoal."
+                label: "Plano Essential (2 sprints)",
+                title: "Essential",
+                text: "Para padronizar rapidamente e sair do improviso. Entrega o núcleo do método com governança de comunicação, tom de voz por canal, templates essenciais e um fluxo básico de atendimento com escalonamento. Implantação enxuta em 2 sprints com treinamento rápido e ajustes finais pós-aplicação."
             },
             professional: {
-                label: "Modelo Business", title: "Professional",
-                text: "Estrutura robusta para padronização de equipes. Permite que escritórios e clínicas instalem o 'Sistema Operacional Boutique' em sua cultura. Inclui treinamentos in-company (online), suporte à implementação e licenças de uso para colaboradores."
+                label: "Plano Professional (4 sprints)",
+                title: "Professional",
+                text: "Para operações que exigem consistência institucional e desempenho mensurável. Inclui tudo do Essential, amplia scripts e templates, adiciona playbook de crise tático, padrões por público e treinamento por função. Implantação completa em 4 sprints com revisão guiada de canais reais e auditoria leve de aderência."
             },
             enterprise: {
-                label: "Modelo Master", title: "Enterprise",
-                text: "O nível mais alto de parceria. Garante exclusividade territorial e o direito de revender e sublicenciar o método na sua região. Inclui consultoria estratégica de equity, participação no board de inovação e royalties sobre a rede criada."
+                label: "Plano Enterprise (8–12 sprints)",
+                title: "Enterprise",
+                text: "Para multiunidades e alta exposição. Estrutura governança multiunidade, trilhas formais de treinamento, capacitação de multiplicadores, auditorias periódicas e painel de métricas. Inclui customizações por cenário conforme escopo. Implantação por 8–12 sprints com plano por unidade e recertificação anual estruturada."
             }
         };
 
