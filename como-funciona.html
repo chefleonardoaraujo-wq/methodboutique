@@ -52,12 +52,15 @@
         z-index: 10;
     }
 
-    /* ESTILO LUXO: Tabela Institucional (Ledger) */
+    /* EXECUTIVE LEDGER STYLE */
     .holding-ledger { border-collapse: separate; border-spacing: 0 10px; }
     .holding-ledger thead th { border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 15px; }
     .holding-ledger tbody tr { background: rgba(255, 255, 255, 0.01); transition: all 0.3s ease; }
     .holding-ledger tbody tr:hover { background: rgba(212, 175, 55, 0.03); }
-    .holding-ledger td { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .holding-ledger td { padding: 25px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    
+    .tier-marker { position: relative; padding-left: 20px; }
+    .tier-marker::before { content: ''; position: absolute; left: 0; top: 25%; bottom: 25%; width: 2px; background: #d4af37; opacity: 0.4; }
   </style>
 </head>
 
@@ -95,12 +98,11 @@
 
   <main id="main-content">
     <header class="pt-48 md:pt-60 pb-16 px-6 text-center">
-      <span class="text-gold-400 text-xs tracking-[0.4em] uppercase block mb-6 font-bold">Standard Operating Procedure</span>
       <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
         Como <span class="italic text-neutral-500">Funciona</span>
       </h1>
       <p class="text-neutral-400 font-light max-w-3xl mx-auto text-lg leading-relaxed">
-        O licenciamento Boutique Method é uma transferência de tecnologia processual organizada em sprints de implementação real.
+        Licenciamento por sprints: entregáveis + treinamento + aplicação + revisão. Um sistema replicável — não consultoria por hora.
       </p>
     </header>
 
@@ -108,94 +110,67 @@
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-20">
           <h2 class="font-serif text-3xl text-white">Etapas do Licenciamento</h2>
-          <p class="text-[10px] uppercase tracking-widest text-neutral-500 mt-2">Arquitetura de Transmissão de Método</p>
+          <p class="text-[10px] uppercase tracking-widest text-neutral-500 mt-2">Fluxo completo de ponta a ponta</p>
         </div>
 
         <div class="roadmap-container">
           <div class="roadmap-line hidden md:block"></div>
 
           <div class="space-y-20">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-              <div class="md:w-5/12 text-right hidden md:block">
-                <span class="text-gold-400/10 font-serif text-7xl italic">01</span>
-              </div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+              <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">01</span></div>
               <div class="step-number">I</div>
               <div class="md:w-5/12 step-card p-8">
-                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Iniciação</strong>
-                <h3 class="font-serif text-2xl text-white mb-3 italic">Protocolo de Iniciação</h3>
-                <p class="text-neutral-400 text-sm font-light leading-relaxed">NDA + Briefing. Proteção de informação sensível e alinhamento estratégico inicial.</p>
+                <h3 class="font-serif text-2xl text-white mb-2 italic">Protocolo de Iniciação</h3>
+                <p class="text-neutral-400 text-sm font-light">NDA + Briefing.</p>
               </div>
             </div>
-
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
-              <div class="md:w-5/12 text-left hidden md:block">
-                <span class="text-gold-400/10 font-serif text-7xl italic">02</span>
-              </div>
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 group">
+              <div class="md:w-5/12 text-left hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">02</span></div>
               <div class="step-number">II</div>
               <div class="md:w-5/12 step-card p-8 text-right">
-                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Análise</strong>
-                <h3 class="font-serif text-2xl text-white mb-3 italic">Diagnóstico e Escopo</h3>
-                <p class="text-neutral-400 text-sm font-light leading-relaxed">Mapeamento de canais, riscos e definição de prioridades institucionais.</p>
+                <h3 class="font-serif text-2xl text-white mb-2 italic">Diagnóstico e Escopo</h3>
+                <p class="text-neutral-400 text-sm font-light">Mapeamento e prioridades.</p>
               </div>
             </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-              <div class="md:w-5/12 text-right hidden md:block">
-                <span class="text-gold-400/10 font-serif text-7xl italic">03</span>
-              </div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+              <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">03</span></div>
               <div class="step-number">III</div>
               <div class="md:w-5/12 step-card p-8">
-                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Formalização</strong>
-                <h3 class="font-serif text-2xl text-white mb-3 italic">Contrato + Setup</h3>
-                <p class="text-neutral-400 text-sm font-light leading-relaxed">Definição da governança de marca, calendário de sprints e setup do plano.</p>
+                <h3 class="font-serif text-2xl text-white mb-2 italic">Contrato + Setup</h3>
+                <p class="text-neutral-400 text-sm font-light">Governança de marca, calendário e plano.</p>
               </div>
             </div>
-
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
-              <div class="md:w-5/12 text-left hidden md:block">
-                <span class="text-gold-400/10 font-serif text-7xl italic">04</span>
-              </div>
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 group">
+              <div class="md:w-5/12 text-left hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">04</span></div>
               <div class="step-number">IV</div>
               <div class="md:w-5/12 step-card p-8 text-right">
-                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Execução</strong>
-                <h3 class="font-serif text-2xl text-white mb-3 italic">Implantação por Sprints</h3>
-                <p class="text-neutral-400 text-sm font-light leading-relaxed">Entrega aplicada de ativos, treinamento intensivo e ajustes em tempo real.</p>
+                <h3 class="font-serif text-2xl text-white mb-2 italic">Implantação por Sprints</h3>
+                <p class="text-neutral-400 text-sm font-light">Entrega aplicada + treino + ajustes.</p>
               </div>
             </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-              <div class="md:w-5/12 text-right hidden md:block">
-                <span class="text-gold-400/10 font-serif text-7xl italic">05</span>
-              </div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+              <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">05</span></div>
               <div class="step-number">V</div>
               <div class="md:w-5/12 step-card p-8">
-                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Validação</strong>
-                <h3 class="font-serif text-2xl text-white mb-3 italic">Homologação e Kit de Sustentação</h3>
-                <p class="text-neutral-400 text-sm font-light leading-relaxed">Definição de rotinas, checklists de governança e painéis de métricas.</p>
+                <h3 class="font-serif text-2xl text-white mb-2 italic">Homologação e Kit de Sustentação</h3>
+                <p class="text-neutral-400 text-sm font-light">Rotinas, checklists e métricas.</p>
               </div>
             </div>
-
-            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
-              <div class="md:w-5/12 text-left hidden md:block">
-                <span class="text-gold-400/10 font-serif text-7xl italic">06</span>
-              </div>
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 group">
+              <div class="md:w-5/12 text-left hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">06</span></div>
               <div class="step-number">VI</div>
               <div class="md:w-5/12 step-card p-8 text-right">
-                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Mentoria</strong>
-                <h3 class="font-serif text-2xl text-white mb-3 italic">Operação Assistida</h3>
-                <p class="text-neutral-400 text-sm font-light leading-relaxed">Suporte estratégico e evolução do método conforme o plano de licenciamento.</p>
+                <h3 class="font-serif text-2xl text-white mb-2 italic">Operação Assistida</h3>
+                <p class="text-neutral-400 text-sm font-light">Suporte e evolução (conforme plano).</p>
               </div>
             </div>
-
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-              <div class="md:w-5/12 text-right hidden md:block">
-                <span class="text-gold-400/10 font-serif text-7xl italic">07</span>
-              </div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+              <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">07</span></div>
               <div class="step-number">VII</div>
               <div class="md:w-5/12 step-card p-8">
-                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Longevidade</strong>
-                <h3 class="font-serif text-2xl text-white mb-3 italic">Renovação/Recertificação</h3>
-                <p class="text-neutral-400 text-sm font-light leading-relaxed">Garantia da manutenção do padrão Boutique Method através de auditoria anual.</p>
+                <h3 class="font-serif text-2xl text-white mb-2 italic">Renovação/Recertificação</h3>
+                <p class="text-neutral-400 text-sm font-light">Manutenção anual do padrão.</p>
               </div>
             </div>
           </div>
@@ -203,45 +178,52 @@
       </div>
     </section>
 
-    <section class="py-24 px-6 border-t border-white/5 bg-neutral-900/20">
+    <section class="py-24 px-6 border-t border-white/5 bg-[#080808]">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
           <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4 font-bold">Investment Ledger</span>
           <h2 class="font-serif text-4xl text-white">Entregáveis por <span class="italic text-neutral-500">Plano</span></h2>
+          <p class="text-neutral-500 text-[10px] mt-4 uppercase tracking-widest">
+            Essential = 2 sprints • Professional = 4 sprints • Enterprise = 8–12 sprints
+          </p>
         </div>
 
         <div class="overflow-x-auto">
-          <table class="w-full holding-ledger min-w-[980px]">
-            <thead class="text-[10px] uppercase tracking-widest text-gold-400/60 font-bold">
+          <table class="w-full holding-ledger min-w-[980px] text-left">
+            <thead class="text-[10px] uppercase tracking-widest text-gold-400/40 border-b border-white/10">
               <tr>
-                <th class="text-left">Plano / Categoria</th>
-                <th class="text-left">Duração</th>
-                <th class="text-left">Entregáveis (núcleo)</th>
-                <th class="text-left">Implantação & Treinamento</th>
-                <th class="text-left">Governança & Sustentação</th>
+                <th class="p-6">Plano</th>
+                <th class="p-6">Indicado para</th>
+                <th class="p-6">Duração</th>
+                <th class="p-6">Entregáveis (núcleo)</th>
+                <th class="p-6">Implantação & Treinamento</th>
+                <th class="p-6">Governança & Sustentação</th>
               </tr>
             </thead>
             <tbody class="text-sm text-neutral-300 font-light">
               <tr>
-                <td class="font-serif text-2xl italic text-white p-6">Essential</td>
-                <td>2 sprints</td>
-                <td class="max-w-xs leading-relaxed">Carta Magna; Tom de Voz por canal; Templates essenciais; Fluxo básico de atendimento</td>
-                <td>2 encontros; treino rápido; ajustes finais</td>
-                <td class="italic text-neutral-500">Checklist semanal; métricas mínimas</td>
+                <td class="tier-marker p-8"><span class="font-serif text-2xl italic text-white">Essential</span></td>
+                <td class="p-8">Padronização rápida</td>
+                <td class="p-8 text-neutral-500">2 sprints</td>
+                <td class="p-8 max-w-xs leading-relaxed text-xs">Carta Magna; Tom de Voz por canal; Templates essenciais; Fluxo básico de atendimento e escalonamento</td>
+                <td class="p-8 text-xs">2 encontros; treino rápido; ajustes finais pós-uso</td>
+                <td class="p-8 italic text-neutral-500 text-xs">Checklist semanal; métricas mínimas; guia de manutenção</td>
+              </tr>
+              <tr class="bg-white/[0.01]">
+                <td class="tier-marker p-8"><span class="font-serif text-2xl italic text-gold-400">Professional</span></td>
+                <td class="p-8">Consistência + performance</td>
+                <td class="p-8 text-neutral-500">4 sprints</td>
+                <td class="p-8 max-w-xs leading-relaxed text-xs text-white">Tudo do Essential; scripts ampliados; playbook de crise (tático); padrões por público; respostas para objeções</td>
+                <td class="p-8 text-xs">4 encontros; treino por função; revisão guiada de canais reais</td>
+                <td class="p-8 italic text-xs">RACI; SLA interno; ritual mensal; auditoria leve (baseline)</td>
               </tr>
               <tr>
-                <td class="font-serif text-2xl italic text-gold-400 p-6">Professional</td>
-                <td>4 sprints</td>
-                <td class="max-w-xs leading-relaxed">Tudo do Essential; scripts ampliados; playbook de crise; padrões por público; objeções</td>
-                <td>4 encontros; treino por função; revisão guiada</td>
-                <td class="italic">RACI; SLA interno; ritual mensal; auditoria</td>
-              </tr>
-              <tr class="bg-white/[0.02]">
-                <td class="font-serif text-2xl italic text-white p-6">Enterprise</td>
-                <td>8–12 sprints</td>
-                <td class="max-w-xs leading-relaxed">Tudo do Professional; governança multiunidade; kit robusto de reputação; customizações</td>
-                <td>Trilhas + reciclagens; multiplicadores; oficina</td>
-                <td class="font-bold text-gold-400 uppercase tracking-tighter">Comitê; auditorias; painel; recertificação</td>
+                <td class="tier-marker p-8"><span class="font-serif text-2xl italic text-white">Enterprise</span></td>
+                <td class="p-8">Multiunidade e alta exposição</td>
+                <td class="p-8 text-gold-400 font-bold">8–12 sprints</td>
+                <td class="p-8 max-w-xs leading-relaxed text-xs">Tudo do Professional; governança multiunidade; kit robusto de reputação; trilhas formais; customizações por cenário</td>
+                <td class="p-8 text-xs">Trilhas + reciclagens; multiplicadores; oficina com supervisão; implantação por unidade</td>
+                <td class="p-8 font-bold text-gold-400 uppercase tracking-tighter text-xs">Comitê executivo; auditorias; painel de métricas; manual de sustentação; recertificação</td>
               </tr>
             </tbody>
           </table>
