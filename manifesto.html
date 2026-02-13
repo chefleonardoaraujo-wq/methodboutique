@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Holding | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
@@ -23,7 +23,7 @@
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        
+
         /* BOTÃO AUDIODESCRIÇÃO */
         .audio-fab {
             position: fixed; bottom: 30px; right: 30px; z-index: 100;
@@ -36,8 +36,8 @@
 
         /* FIX PARA CELULAR: Engenharia de Modais */
         .modal-container {
-            max-height: 85vh; /* Ocupa no máximo 85% da altura da tela */
-            overflow-y: auto; /* Permite scroll se o texto for grande */
+            max-height: 85vh;
+            overflow-y: auto;
             width: 95%;
             scrollbar-width: thin;
             scrollbar-color: #d4af37 transparent;
@@ -49,29 +49,35 @@
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+    <!-- NAV (corrigido) -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
+
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                     <a href="manifesto.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">A Holding</a>
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
                     <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
                 </div>
+
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
                     <span class="text-gold-400 cursor-default">PT</span>
                     <span class="text-white/30">|</span>
                     <a href="manifesto-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
                 </div>
             </div>
+
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
@@ -88,11 +94,11 @@
 
         <section class="px-6 pb-32">
             <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
-                
+
                 <div class="space-y-8 text-lg font-light leading-relaxed text-neutral-300 text-justify">
                     <p>
-                        Vivemos na era do ruído. Muitos falam. Poucos constroem algo que permaneça. 
-                        Acreditamos que o conhecimento de um especialista não deve morrer com ele — nem depender da sua presença física para gerar valor. 
+                        Vivemos na era do ruído. Muitos falam. Poucos constroem algo que permaneça.
+                        Acreditamos que o conhecimento de um especialista não deve morrer com ele — nem depender da sua presença física para gerar valor.
                         <strong class="text-white">Conhecimento estruturado é patrimônio.</strong>
                     </p>
 
@@ -122,7 +128,7 @@
 
                 <div class="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 h-fit sticky top-32">
                     <h3 class="font-serif text-3xl text-white mb-12">Dogmas da <span class="text-gold-400 italic">Holding</span></h3>
-                    
+
                     <div class="space-y-10">
                         <button onclick="openModal('dogma1')" class="group text-left w-full hover:translate-x-2 transition duration-500">
                             <div class="flex items-center mb-2">
@@ -193,7 +199,7 @@
             const content = modalData[id];
             const overlay = document.getElementById('modal-overlay');
             const container = document.getElementById('modal-content');
-            
+
             container.innerHTML = `
                 <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">${content.label}</span>
                 <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight italic">${content.title}</h3>
@@ -203,7 +209,7 @@
                     <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Fechar</button>
                 </div>
             `;
-            
+
             overlay.classList.remove('hidden');
             overlay.classList.add('flex');
             document.body.style.overflow = 'hidden';
