@@ -1,334 +1,218 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Licenciamento | Boutique Method</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
-    <link rel="stylesheet" href="accessibility.css">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Botão de Audiodescrição */
-        .audio-fab {
-            position: fixed; bottom: 30px; right: 30px; z-index: 100;
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px;
-            padding: 12px 24px; display: flex; align-items: center; gap: 10px;
-            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licenciamento | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-        /* FIX PARA CELULAR: Engenharia de Modais */
-        .modal-container {
-            max-height: 85vh;
-            overflow-y: auto;
-            width: 95%;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 transparent;
-        }
-        .modal-container::-webkit-scrollbar { width: 4px; }
-        .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+    <link rel="stylesheet" href="accessibility.css">
 
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
+        .gold-selection::selection { background: #d4af37; color: black; }
+
+        /* Botão de Audiodescrição */
+        .audio-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 20%; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+    </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV (corrigido) -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-            </a>
-            
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
-                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
-                </div>
-                
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="licenciamento-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
-                </div>
-            </div>
+    <!-- NAV PADRÃO -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
 
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
-        </div>
-    </nav>
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                    <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
+                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+                </div>
 
-    <main id="main-content">
-        <header class="pt-48 md:pt-52 pb-20 px-6 text-center">
-            <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
-                Licenciamento do <span class="italic text-neutral-500">Método</span>
-            </h1>
-            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-                Escalar sem inchar. Transforme seu know-how em produtos que outros podem aplicar.
-            </p>
-        </header>
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <span class="text-gold-400 cursor-default">PT</span>
+                    <span class="text-white/30">|</span>
+                    <a href="licenciamento-pilares-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                </div>
+            </div>
 
-        <section class="py-20 px-6 border-t border-white/5 bg-neutral-900/20">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-left mb-12">
-                    <h2 class="font-serif text-3xl text-white">O Ativo Intelectual</h2>
-                    <p class="text-[10px] uppercase tracking-widest text-neutral-500">Comparativo de modelos de entrega e valor</p>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-8">
-                    <div>
-                        <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Consultoria Comum</h3>
-                        <p class="text-neutral-400 text-sm font-light text-justify">Vende horas. Difícil de escalar. Depende 100% do dono.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Educação Executiva</h3>
-                        <p class="text-neutral-400 text-sm font-light text-justify">Vende cursos. Baixa barreira de entrada. Muita concorrência.</p>
-                    </div>
-                    <div class="relative">
-                        <h3 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Método Boutique™</h3>
-                        <p class="text-white text-sm font-medium text-justify">Vende sistema. Alta barreira de entrada. Gera Equity e Royalties.</p>
-                        <div class="absolute -left-6 top-0 bottom-0 w-px bg-gold-400/30 hidden md:block"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
+        </div>
+    </nav>
 
-        <!-- Vertentes -->
-        <section class="py-32 px-6 border-t border-white/5">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Especializações</span>
-                    <h2 class="font-serif text-4xl text-white">Nossas <span class="italic text-neutral-500">Vertentes</span></h2>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <a href="licenciamento-jur.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">JUR</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Jurídico & Legal Design</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Padronização de documentos para escritórios de elite.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explorar &rarr;</span>
-                    </a>
+    <!-- pt padrão p/ nav fixo -->
+    <main id="main-content" class="flex-grow pt-52 pb-32 px-6">
+        <div class="max-w-5xl mx-auto space-y-16">
 
-                    <a href="hc.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">HC</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Health Care & Experience</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Protocolos de experiência do paciente para clínicas.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explorar &rarr;</span>
-                    </a>
+            <header class="space-y-6 text-center border-b border-white/10 pb-16">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Pilar 02</span>
+                <h1 class="font-serif text-4xl md:text-6xl text-white">Licenciamento de <span class="italic text-neutral-500">Método</span></h1>
+                <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+                    Escalar sem inchar. Transformar seu know-how em produtos que outros podem aplicar.
+                </p>
+            </header>
 
-                    <a href="pol.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">POL</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Política & Institucional</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Gestão de gabinete e reputação pública.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explorar &rarr;</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+            <div class="space-y-16 text-neutral-300 font-light leading-relaxed">
 
-        <!-- Planos -->
-        <section class="py-32 px-6 border-t border-white/5">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Modelos de Negócio</span>
-                    <h2 class="font-serif text-4xl text-white">Planos de <span class="italic text-neutral-500">Licenciamento</span></h2>
+                <div class="text-justify max-w-3xl mx-auto">
+                    <h2 class="font-serif text-2xl text-white mb-4">O Poder da Escala</h2>
+                    <p>
+                        O modelo tradicional de consultoria ou serviço exige sua presença física. O modelo de Licenciamento permite que você "clone" sua inteligência. Ao criar um método proprietário, você pode licenciar o uso dele para outros profissionais, empresas ou filiais, recebendo royalties sem precisar estar lá.
+                    </p>
+                </div>
 
-                    <div class="mt-6 flex flex-col items-center gap-4">
-                        <p class="text-neutral-500 text-xs uppercase tracking-widest">Clique nos cards para ver detalhes</p>
-                        <a href="como-funciona.html"
-                           class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                           Ver Como Funciona →
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8 items-center">
-                    <button onclick="openModal('essential')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
-                        <h3 class="font-serif text-3xl text-white mb-2">Essential</h3>
-                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Licença de Uso</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Padronização rápida para sair do improviso e instalar um núcleo de governança.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Ver Detalhes &rarr;</span>
-                    </button>
+                <div class="w-full overflow-x-auto">
+                    <div class="space-y-2 mb-6 text-center md:text-left">
+                        <h3 class="text-white font-serif text-xl">O Ativo Intelectual</h3>
+                        <p class="text-sm text-neutral-500">Comparativo de modelos de entrega e valor.</p>
+                    </div>
 
-                    <button onclick="openModal('professional')" class="bg-[#0a0a0a] border-2 border-gold-400 p-12 text-center relative transform scale-100 md:scale-105 z-10 w-full shadow-2xl shadow-gold-400/10">
-                        <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[10px] uppercase tracking-widest px-4 py-1 font-bold">Recomendado</span>
-                        <h3 class="font-serif text-4xl text-gold-400 mb-2">Professional</h3>
-                        <span class="text-neutral-400 text-[10px] uppercase tracking-widest block mb-8">Certificação & Suporte</span>
-                        <p class="text-white text-sm font-light leading-relaxed mb-8">Consistência institucional + performance mensurável, com implantação guiada.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">Ver Detalhes &rarr;</span>
-                    </button>
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="text-gold-400 border-b border-white/20 uppercase tracking-widest text-[10px]">
+                                <th class="py-4 pr-4">Critério</th>
+                                <th class="py-4 pr-4 text-neutral-500">Consultoria Comum</th>
+                                <th class="py-4 pr-4 text-neutral-500">Educação Executiva</th>
+                                <th class="py-4 text-white">Método Boutique™</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-neutral-400">
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                <td class="py-6 text-xs uppercase tracking-widest text-neutral-500">Foco Principal</td>
+                                <td class="py-6">Diagnóstico</td>
+                                <td class="py-6">Ensino Teórico</td>
+                                <td class="py-6 text-white font-bold">Instalação de Processos</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                <td class="py-6 text-xs uppercase tracking-widest text-neutral-500">Dependência</td>
+                                <td class="py-6">Consultor</td>
+                                <td class="py-6">Motivação do Aluno</td>
+                                <td class="py-6 text-white font-bold">Autonomia do Sistema</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                <td class="py-6 text-xs uppercase tracking-widest text-neutral-500">Entregável</td>
+                                <td class="py-6">Relatório PDF</td>
+                                <td class="py-6">Certificado</td>
+                                <td class="py-6 text-white font-bold">Ativo Auditável (IP)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                    <button onclick="openModal('enterprise')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
-                        <h3 class="font-serif text-3xl text-white mb-2">Enterprise</h3>
-                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Para multiunidades e alta exposição, com governança, trilhas e auditorias.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Ver Detalhes &rarr;</span>
-                    </button>
-                </div>
+                <div class="max-w-3xl mx-auto pt-8">
+                    <h2 class="font-serif text-2xl text-white mb-4">O que Entregamos</h2>
+                    <ul class="list-disc list-inside space-y-2 pl-4 text-neutral-400">
+                        <li><strong>Codificação do Tácito:</strong> Extraímos o conhecimento da sua cabeça e colocamos no papel.</li>
+                        <li><strong>Arquitetura do Produto:</strong> Definimos o que é entregue, como é vendido e qual o preço.</li>
+                        <li><strong>Kits de Aplicação:</strong> Criamos os manuais, templates e ferramentas que o licenciado vai usar.</li>
+                        <li><strong>Contratos de Licença:</strong> A base jurídica para proteger sua IP enquanto ela escala.</li>
+                    </ul>
+                </div>
 
-                <!-- Tabela de entregáveis (novo) -->
-                <div class="mt-16 border-t border-white/10 pt-10">
-                    <div class="text-center mb-8">
-                        <h3 class="font-serif text-2xl text-white">Entregáveis por Plano</h3>
-                        <p class="text-neutral-500 text-[10px] mt-3 uppercase tracking-widest">
-                            Essential = 2 sprints • Professional = 4 sprints • Enterprise = 8–12 sprints
-                        </p>
-                    </div>
+                <div class="pt-8 text-center">
+                    <a href="iniciar-tratativas.html" class="inline-block px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                        Quero Licenciar meu Método
+                    </a>
+                </div>
+            </div>
 
-                    <div class="overflow-x-auto border border-white/10 bg-black/20">
-                        <table class="min-w-[980px] w-full text-left">
-                            <caption class="sr-only">Tabela comparativa de entregáveis por plano</caption>
-                            <thead class="bg-white/5">
-                                <tr class="text-[10px] uppercase tracking-widest text-neutral-400">
-                                    <th class="p-4">Plano</th>
-                                    <th class="p-4">Indicado para</th>
-                                    <th class="p-4">Duração</th>
-                                    <th class="p-4">Entregáveis (núcleo)</th>
-                                    <th class="p-4">Implantação & Treinamento</th>
-                                    <th class="p-4">Governança & Sustentação</th>
-                                </tr>
-                            </thead>
+        </div>
+    </main>
 
-                            <tbody class="text-sm text-neutral-300">
-                                <tr class="border-t border-white/10 align-top">
-                                    <td class="p-4 font-semibold text-white">Essential</td>
-                                    <td class="p-4">Padronização rápida</td>
-                                    <td class="p-4">2 sprints</td>
-                                    <td class="p-4">
-                                        Carta Magna; Tom de Voz por canal; Templates essenciais; Fluxo básico de atendimento e escalonamento
-                                    </td>
-                                    <td class="p-4">
-                                        2 encontros; treino rápido; ajustes finais pós-uso
-                                    </td>
-                                    <td class="p-4">
-                                        Checklist semanal; métricas mínimas; guia de manutenção
-                                    </td>
-                                </tr>
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+    </footer>
 
-                                <tr class="border-t border-white/10 align-top">
-                                    <td class="p-4 font-semibold text-white">Professional</td>
-                                    <td class="p-4">Consistência + performance</td>
-                                    <td class="p-4">4 sprints</td>
-                                    <td class="p-4">
-                                        Tudo do Essential; scripts ampliados; playbook de crise (tático); padrões por público; respostas para objeções
-                                    </td>
-                                    <td class="p-4">
-                                        4 encontros; treino por função; revisão guiada de canais reais
-                                    </td>
-                                    <td class="p-4">
-                                        RACI; SLA interno; ritual mensal; auditoria leve (baseline)
-                                    </td>
-                                </tr>
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+    </button>
 
-                                <tr class="border-t border-white/10 align-top">
-                                    <td class="p-4 font-semibold text-white">Enterprise</td>
-                                    <td class="p-4">Multiunidade e alta exposição</td>
-                                    <td class="p-4">8–12 sprints</td>
-                                    <td class="p-4">
-                                        Tudo do Professional; governança multiunidade; kit robusto de reputação; trilhas formais; customizações por cenário
-                                    </td>
-                                    <td class="p-4">
-                                        Trilhas + reciclagens; multiplicadores; oficina com supervisão; implantação por unidade
-                                    </td>
-                                    <td class="p-4">
-                                        Comitê executivo; auditorias; painel de métricas; manual de sustentação; recertificação
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    <script src="accessibility.js"></script>
 
-            </div>
-        </section>
-    </main>
+    <script>
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-4 md:p-6">
-        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-6 md:p-12 relative shadow-2xl modal-container modal-enter">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Fechar">✕</button>
-            <div id="modal-content" class="space-y-6"></div>
-        </div>
-    </div>
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
-    </footer>
+            if (isPlaying) {
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Ouvir Página";
+            } else {
+                const text = "Licenciamento de Método. Pilar zero dois. Escalar sem inchar. Transformar seu know-how em ativos que geram royalties sem depender da sua presença física. Oferecemos codificação do conhecimento tácito, arquitetura do produto, kits de aplicação e contratos de licença.";
 
-    <script>
-        const modalData = {
-            essential: {
-                label: "Plano Essential (2 sprints)",
-                title: "Essential",
-                text: "Para padronizar rapidamente e sair do improviso. Entrega o núcleo do método com governança de comunicação, tom de voz por canal, templates essenciais e um fluxo básico de atendimento com escalonamento. Implantação enxuta em 2 sprints com treinamento rápido e ajustes finais pós-aplicação."
-            },
-            professional: {
-                label: "Plano Professional (4 sprints)",
-                title: "Professional",
-                text: "Para operações que exigem consistência institucional e desempenho mensurável. Inclui tudo do Essential, amplia scripts e templates, adiciona playbook de crise tático, padrões por público e treinamento por função. Implantação completa em 4 sprints com revisão guiada de canais reais e auditoria leve de aderência."
-            },
-            enterprise: {
-                label: "Plano Enterprise (8–12 sprints)",
-                title: "Enterprise",
-                text: "Para multiunidades e alta exposição. Estrutura governança multiunidade, trilhas formais de treinamento, capacitação de multiplicadores, auditorias periódicas e painel de métricas. Inclui customizações por cenário conforme escopo. Implantação por 8–12 sprints com plano por unidade e recertificação anual estruturada."
-            }
-        };
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'pt-BR';
+                utter.rate = 0.95;
 
-        function openModal(id) {
-            const content = modalData[id];
-            const overlay = document.getElementById('modal-overlay');
-            const container = document.getElementById('modal-content');
-            
-            container.innerHTML = `
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2 font-bold">${content.label}</span>
-                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight italic">${content.title}</h3>
-                <div class="w-12 h-px bg-gold-400 mb-6"></div>
-                <p class="text-neutral-300 font-light text-base md:text-lg leading-relaxed text-justify">${content.text}</p>
-                <div class="pt-8 flex justify-end">
-                    <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Fechar</button>
-                </div>
-            `;
-            
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Ouvir Página";
+                };
 
-        function closeModal() {
-            const overlay = document.getElementById('modal-overlay');
-            overlay.classList.add('hidden');
-            overlay.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        window.onclick = function(event) {
-            const overlay = document.getElementById('modal-overlay');
-            if (event.target == overlay) closeModal();
-        }
-    </script>
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Parar Áudio";
+            }
+        }
+    </script>
 </body>
 </html>
