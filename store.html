@@ -19,7 +19,6 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* ESTILO DOS MODALS */
         dialog::backdrop { background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); }
         dialog { 
             background: transparent;
@@ -38,29 +37,17 @@
         }
         dialog[open] { opacity: 1; }
 
-        /* Efeito Hover na Lista de Ativos */
         .asset-row { transition: all 0.4s ease; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .asset-row:hover { background-color: rgba(212, 175, 55, 0.03); padding-left: 20px; border-bottom-color: rgba(212, 175, 55, 0.3); }
         .asset-row:hover .asset-title { color: #d4af37; }
         .asset-row:hover .asset-arrow { opacity: 1; transform: translateX(0); }
 
-        /* Botão de Audiodescrição */
         .audio-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50px;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px;
+            padding: 12px 24px; display: flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
         .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
@@ -89,11 +76,6 @@
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
                     <a href="store.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Acervo</a>
                 </div>
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="store-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
-                </div>
             </div>
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
@@ -103,9 +85,7 @@
 
     <header class="pt-40 md:pt-52 pb-16 px-6 text-center">
         <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Ecossistema de Ativos</span>
-        <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">
-            Acervo <span class="italic text-neutral-500">Digital</span>
-        </h1>
+        <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">Acervo <span class="italic text-neutral-500">Digital</span></h1>
         <p class="text-neutral-400 font-light max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
             Acesso imediato aos playbooks, templates e protocolos que blindam e escalam grandes operações.
         </p>
@@ -118,30 +98,22 @@
                 <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
                     <h2 class="font-serif text-2xl text-white">Blindagem & Risco <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(RISK)</span></h2>
                 </div>
-                
                 <div class="flex flex-col">
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-crise').showModal()">
                         <div class="flex-1">
-                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2 group-hover:text-gold-400 transition">Asset Code: RISK-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition duration-300">Kit Crise & Reputação</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Playbook de resposta rápida ("Golden Hour"), notas oficiais prontas e matriz de decisão.</p>
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: RISK-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Kit Crise & Reputação</h3>
+                            <p class="text-neutral-500 font-light text-sm">Playbook de resposta rápida ("Golden Hour") e matriz de decisão.</p>
                         </div>
-                        <div class="flex items-center gap-6">
-                            <span class="text-white text-lg font-light">R$ 997</span>
-                            <span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition duration-300">→</span>
-                        </div>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 997</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
-
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-gov').showModal()">
                         <div class="flex-1">
-                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2 group-hover:text-gold-400 transition">Asset Code: GOV-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition duration-300">Governança & Protocolos</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">A "Constituição" da comunicação interna: fluxos de aprovação, hierarquia e SLA de resposta.</p>
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: GOV-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Governança & Protocolos</h3>
+                            <p class="text-neutral-500 font-light text-sm">A "Constituição" da comunicação interna e SLA de resposta.</p>
                         </div>
-                        <div class="flex items-center gap-6">
-                            <span class="text-white text-lg font-light">R$ 597</span>
-                            <span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition duration-300">→</span>
-                        </div>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 597</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
                 </div>
             </section>
@@ -150,30 +122,70 @@
                 <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
                     <h2 class="font-serif text-2xl text-white">Estratégia & Marca <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(STRAT)</span></h2>
                 </div>
-                
                 <div class="flex flex-col">
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-diag').showModal()">
                         <div class="flex-1">
-                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2 group-hover:text-gold-400 transition">Asset Code: STRAT-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition duration-300">Diagnóstico Estratégico</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Framework para auditar gargalos, ruídos e oportunidades ocultas no cenário atual.</p>
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: STRAT-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Diagnóstico Estratégico</h3>
+                            <p class="text-neutral-500 font-light text-sm">Framework para auditar gargalos e oportunidades ocultas.</p>
                         </div>
-                        <div class="flex items-center gap-6">
-                            <span class="text-white text-lg font-light">R$ 497</span>
-                            <span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition duration-300">→</span>
-                        </div>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 497</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
-
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pos').showModal()">
                         <div class="flex-1">
-                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2 group-hover:text-gold-400 transition">Asset Code: BRAND-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition duration-300">Posicionamento Premium</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Manual de identidade verbal e narrativa para elevar a percepção de valor da marca.</p>
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: BRAND-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Posicionamento Premium</h3>
+                            <p class="text-neutral-500 font-light text-sm">Manual de identidade verbal e narrativa de alto valor.</p>
                         </div>
-                        <div class="flex items-center gap-6">
-                            <span class="text-white text-lg font-light">R$ 697</span>
-                            <span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition duration-300">→</span>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 697</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
+                    <h2 class="font-serif text-2xl text-white">Operação & Cultura <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(OPS)</span></h2>
+                </div>
+                <div class="flex flex-col">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-org').showModal()">
+                        <div class="flex-1">
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: OPS-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Organização & Padronização</h3>
+                            <p class="text-neutral-500 font-light text-sm">SOPs e rituais de gestão para eliminar o retrabalho.</p>
                         </div>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 397</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
+                    </div>
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-script').showModal()">
+                        <div class="flex-1">
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: OPS-02</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Scripts Operacionais</h3>
+                            <p class="text-neutral-500 font-light text-sm">Mensagens prontas para atendimento, cobrança e suporte.</p>
+                        </div>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 197</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
+                    <h2 class="font-serif text-2xl text-white">Performance & Legal <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(PERF)</span></h2>
+                </div>
+                <div class="flex flex-col">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pv').showModal()">
+                        <div class="flex-1">
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: PERF-01</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Porta-Voz & Autoridade</h3>
+                            <p class="text-neutral-500 font-light text-sm">Guia de oratória e media training para líderes.</p>
+                        </div>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 297</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
+                    </div>
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-legal').showModal()">
+                        <div class="flex-1">
+                            <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: PERF-02</div>
+                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Legal Design Kit</h3>
+                            <p class="text-neutral-500 font-light text-sm">Contratos e propostas visuais de alta conversão.</p>
+                        </div>
+                        <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 497</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
                 </div>
             </section>
@@ -181,106 +193,36 @@
         </div>
     </main>
 
+    <dialog id="modal-crise"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">RISK-01</h2><h3 class="font-serif text-3xl text-white mb-4">Kit Crise & Reputação</h3><p class="text-neutral-400 mb-8">Templates de Nota Oficial e checklist "Golden Hour".</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+    <dialog id="modal-gov"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">GOV-01</h2><h3 class="font-serif text-3xl text-white mb-4">Governança & Protocolos</h3><p class="text-neutral-400 mb-8">Centralize as regras de comunicação interna.</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+    <dialog id="modal-diag"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">STRAT-01</h2><h3 class="font-serif text-3xl text-white mb-4">Diagnóstico Estratégico</h3><p class="text-neutral-400 mb-8">Audite gargalos e descubra vazamentos de capital intelectual.</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+    <dialog id="modal-pos"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">BRAND-01</h2><h3 class="font-serif text-3xl text-white mb-4">Posicionamento Premium</h3><p class="text-neutral-400 mb-8">Ferramentas para alinhar narrativa e percepção de valor.</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+    <dialog id="modal-org"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">OPS-01</h2><h3 class="font-serif text-3xl text-white mb-4">Organização & Padronização</h3><p class="text-neutral-400 mb-8">Modelos de ata e rituais para cultura de eficiência.</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+    <dialog id="modal-script"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">OPS-02</h2><h3 class="font-serif text-3xl text-white mb-4">Scripts Operacionais</h3><p class="text-neutral-400 mb-8">Biblioteca de mensagens prontas para situações de rotina.</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+    <dialog id="modal-pv"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">PERF-01</h2><h3 class="font-serif text-3xl text-white mb-4">Porta-Voz & Autoridade</h3><p class="text-neutral-400 mb-8">Checklist de preparação para vídeos e oratória executiva.</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+    <dialog id="modal-legal"><div class="bg-[#0a0a0a] border border-white/10 p-10 relative"><button class="absolute top-5 right-5 text-neutral-500" onclick="this.closest('dialog').close()">✕</button><h2 class="text-gold-400 text-xs uppercase mb-4">PERF-02</h2><h3 class="font-serif text-3xl text-white mb-4">Legal Design Kit</h3><p class="text-neutral-400 mb-8">Converta contratos técnicos em documentos visuais e elegantes.</p><a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-4 font-bold uppercase tracking-widest">Adquirir Agora</a></div></dialog>
+
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <dialog id="modal-crise">
-        <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()" aria-label="Fechar">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">RISK-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight">Kit Crise & Reputação</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed">Não espere o incêndio começar. Este kit contém tudo para controlar a narrativa nos primeiros 60 minutos de uma crise.</p>
-                    <ul class="text-sm text-neutral-500 space-y-2">
-                        <li>✦ Templates de Nota Oficial e "Holding Statement"</li>
-                        <li>✦ Checklist "Golden Hour"</li>
-                        <li>✦ Matriz de Decisão de Risco</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 997,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Adquirir Agora</a>
-                </div>
-            </div>
-        </div>
-    </dialog>
-
-    <dialog id="modal-gov">
-        <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()" aria-label="Fechar">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">GOV-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight">Governança & Protocolos</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed">Acabe com o "disse-me-disse". Centralize as regras de comunicação e garanta que ninguém fale em nome da empresa sem autorização.</p>
-                    <ul class="text-sm text-neutral-500 space-y-2">
-                        <li>✦ Carta Magna da Comunicação</li>
-                        <li>✦ Matriz de Canais e Responsáveis</li>
-                        <li>✦ Fluxo de Aprovação</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 597,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Adquirir Agora</a>
-                </div>
-            </div>
-        </div>
-    </dialog>
-
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()">
+        <div class="audio-wave"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
         <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
     </button>
 
     <script src="accessibility.js"></script>
-
     <script>
         const synth = window.speechSynthesis;
-        let isPlaying = false;
-
         function toggleAudioDescription() {
-            const btn = document.getElementById('globalAudioBtn');
-            const label = document.getElementById('audioLabel');
-
-            if (isPlaying) {
-                synth.cancel();
-                isPlaying = false;
-                btn.classList.add('paused');
-                label.innerText = "Ouvir Página";
-            } else {
-                const text = "Acervo Digital da Boutique Method. Acesso imediato a playbooks e protocolos. Categorias: Blindagem e Risco com kits de crise e governança; Estratégia e Marca com diagnósticos e posicionamento premium. Cada ativo possui código único e preço definido. Clique nos itens para ver detalhes e adquirir.";
-                
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'pt-BR';
-                utter.rate = 0.95;
-
-                utter.onend = () => {
-                    isPlaying = false;
-                    btn.classList.add('paused');
-                    label.innerText = "Ouvir Página";
-                };
-
-                synth.speak(utter);
-                isPlaying = true;
-                btn.classList.remove('paused');
-                label.innerText = "Parar Áudio";
-            }
+            const utter = new SpeechSynthesisUtterance("Acervo Digital Boutique Method. Playbooks e protocolos divididos em Blindagem, Estratégia, Operação e Performance.");
+            utter.lang = 'pt-BR'; synth.speak(utter);
         }
 
-        // Fechar modal ao clicar fora
         document.querySelectorAll('dialog').forEach(d => {
             d.addEventListener('click', e => {
                 const rect = d.getBoundingClientRect();
-                if (e.clientX < rect.left || e.clientX > rect.right || 
-                    e.clientY < rect.top || e.clientY > rect.bottom) {
-                    d.close();
-                }
+                if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) d.close();
             });
         });
     </script>
