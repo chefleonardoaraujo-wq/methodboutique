@@ -19,12 +19,15 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
+        /* FIX: Engenharia dos Modais para não "comer" conteúdo */
         dialog::backdrop { background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); }
         dialog { 
             background: transparent;
             padding: 0;
             max-width: 900px; 
             width: 95%; 
+            max-height: 90vh; /* Limita a altura para caber na tela */
+            overflow-y: auto; /* Adiciona scroll interno se necessário */
             border: none;
             outline: none;
             position: fixed; 
@@ -35,7 +38,11 @@
             opacity: 0;
             transition: opacity 0.4s ease;
         }
-        dialog[open] { opacity: 1; }
+        dialog[open] { opacity: 1; display: block; }
+        
+        /* Custom Scrollbar para os modais */
+        dialog::-webkit-scrollbar { width: 4px; }
+        dialog::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
 
         .asset-row { transition: all 0.4s ease; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .asset-row:hover { background-color: rgba(212, 175, 55, 0.03); padding-left: 20px; border-bottom-color: rgba(212, 175, 55, 0.3); }
@@ -49,7 +56,6 @@
             padding: 12px 24px; display: flex; align-items: center; gap: 10px;
             cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -89,22 +95,22 @@
 
             <section>
                 <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
-                    <h2 class="font-serif text-2xl text-white italic">Blindagem & Risco <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(RISK)</span></h2>
+                    <h2 class="font-serif text-2xl text-white italic">Blindagem & Risco</h2>
                 </div>
                 <div class="flex flex-col">
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-crise').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: RISK-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Kit Crise & Reputação</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">A "Golden Hour" decide o futuro do seu negócio. Domine a narrativa antes que a crise domine você.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Kit Crise & Reputação</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">A "Golden Hour" decide o futuro do seu negócio.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 997</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-gov').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: GOV-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Governança & Protocolos</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Sua empresa não pode depender do bom senso das pessoas. Ela precisa de uma "Constituição" operacional.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Governança & Protocolos</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Sua empresa precisa de uma "Constituição" operacional.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 597</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
@@ -113,22 +119,22 @@
 
             <section>
                 <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
-                    <h2 class="font-serif text-2xl text-white italic">Estratégia & Marca <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(STRAT)</span></h2>
+                    <h2 class="font-serif text-2xl text-white italic">Estratégia & Marca</h2>
                 </div>
                 <div class="flex flex-col">
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-diag').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: STRAT-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Diagnóstico Estratégico</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Onde seu capital intelectual está vazando? Audite seus ruídos e recupere o controle da sua autoridade.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Diagnóstico Estratégico</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Onde seu capital intelectual está vazando?</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 497</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pos').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: BRAND-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Posicionamento Premium</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Ajuste sua percepção de valor. Ferramentas para parecer (e ser) tão elite quanto o preço que você cobra.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Posicionamento Premium</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Ajuste sua percepção de valor.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 697</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
@@ -137,22 +143,22 @@
 
             <section>
                 <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
-                    <h2 class="font-serif text-2xl text-white italic">Operação & Cultura <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(OPS)</span></h2>
+                    <h2 class="font-serif text-2xl text-white italic">Operação & Cultura</h2>
                 </div>
                 <div class="flex flex-col">
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-org').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: OPS-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Organização & Padronização</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">A liberdade do dono vem da padronização da equipe. Elimine o retrabalho e o caos das reuniões inúteis.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Organização & Padronização</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Elimine o retrabalho e o caos das reuniões inúteis.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 397</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-script').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: OPS-02</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Scripts Operacionais</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Pare de redigir a mesma mensagem 10 vezes. Biblioteca de comandos profissionais para blindar seu tempo.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Scripts Operacionais</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Pare de redigir a mesma mensagem 10 vezes.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 197</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
@@ -161,22 +167,22 @@
 
             <section>
                 <div class="flex items-end justify-between border-b border-white/20 pb-4 mb-6">
-                    <h2 class="font-serif text-2xl text-white italic">Performance & Legal <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(PERF)</span></h2>
+                    <h2 class="font-serif text-2xl text-white italic">Performance & Legal</h2>
                 </div>
                 <div class="flex flex-col">
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pv').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: PERF-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Porta-Voz & Autoridade</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Fale como um estadista, decida como um CEO. Técnicas de oratória para o novo padrão de liderança.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Porta-Voz & Autoridade</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Fale como um estadista, decida como um CEO.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 297</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-legal').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: PERF-02</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Legal Design Kit</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Contratos que vendem e protegem simultaneamente. Transforme burocracia em uma peça de design executivo.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Legal Design Kit</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Contratos que vendem e protegem simultaneamente.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">R$ 497</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
@@ -191,19 +197,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: RISK-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: RISK-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Kit Crise & Reputação</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Uma crise mal gerida nos primeiros 60 minutos pode destruir décadas de construção de marca. Este kit não é apenas um guia; é seu **seguro de sobrevivência**. Ele contém os exatos protocolos de "War Room" usados para estancar sangramentos reputacionais e retomar o controle da narrativa pública. Se você não tem um plano, a crise dita as regras. <strong>Não seja pego de surpresa.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Uma crise mal gerida nos primeiros 60 minutos pode destruir décadas de construção de marca. Este kit não é apenas um guia; é seu **seguro de sobrevivência**. Contém protocolos de "War Room" para estancar sangramentos reputacionais. Se você não tem um plano, a crise dita as regras. <strong>Não seja pego de surpresa.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Protocolo Golden Hour (Ações Imediatas)</li>
-                        <li>• Matriz de Resposta para Redes Sociais</li>
-                        <li>• Holding Statements (Modelos Prontos)</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 997,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 997,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Adquirir Blindagem</a>
                 </div>
             </div>
@@ -215,19 +216,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: GOV-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: GOV-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Governança & Protocolos</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        O "disse-me-disse" é o câncer da produtividade. Sem governança, sua empresa é apenas um grupo de pessoas tentando trabalhar. Este ativo entrega a **Arquitetura da Ordem**: fluxos de aprovação blindados, hierarquia de canais e rituais que garantem que a visão do dono seja executada em cada nível do negócio. <strong>Saia do operacional e deixe o método governar.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        O "disse-me-disse" mata a produtividade. Este ativo entrega a **Arquitetura da Ordem**: fluxos de aprovação blindados e rituais que garantem que a visão do dono seja executada em cada nível. <strong>Saia do operacional e deixe o método governar o seu legado.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Fluxo de Aprovação de Mensagem</li>
-                        <li>• Manual de Gerenciamento de Canais</li>
-                        <li>• SLA de Resposta Institucional</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 597,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 597,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Implantar Governança</a>
                 </div>
             </div>
@@ -239,19 +235,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: STRAT-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: STRAT-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Diagnóstico Estratégico</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Trabalhar muito sem clareza é apenas desperdício de energia. Este framework permite que você faça uma **autópsia estratégica** na sua comunicação atual. Identifique ruídos que destroem sua autoridade, gargalos de processo e onde o dinheiro está vazando. É a ferramenta definitiva para quem cansou de "tentar" e decidiu auditar. <strong>A verdade dói, mas liberta seu lucro.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Trabalhar sem clareza é desperdício de energia. Faça uma **autópsia estratégica** na sua comunicação. Identifique ruídos que destroem sua autoridade e descubra onde o dinheiro está vazando por falha de processo. <strong>A verdade dói, mas liberta o seu lucro.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Mapa de Ruídos de Marca</li>
-                        <li>• Auditoria de Ativos Digitais</li>
-                        <li>• Plano de Ação Prioritário</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 497,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 497,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Fazer Diagnóstico</a>
                 </div>
             </div>
@@ -263,19 +254,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: BRAND-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: BRAND-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Posicionamento Premium</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Quem é visto como "opção" briga por preço. Quem é visto como "elite" briga por agenda. O Posicionamento Premium é a codificação da sua **Superioridade Técnica** em narrativa. Saia da média, eleve seu tom de voz e aprenda a comunicar valor de forma que o preço se torne um detalhe. <strong>Venda para quem compra solução, não barganha.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Quem é visto como "opção" briga por preço. Quem é visto como "elite" briga por agenda. Codifique sua **Superioridade Técnica** em narrativa. Saia da média e aprenda a comunicar valor de forma que o preço se torne um mero detalhe. <strong>Venda para quem compra solução.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Canvas de Valor Boutique</li>
-                        <li>• Manual de Identidade Verbal Executiva</li>
-                        <li>• Arquitetura de Bio e Pitch Institucional</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 697,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 697,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Elevar Patamar</a>
                 </div>
             </div>
@@ -287,19 +273,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: OPS-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: OPS-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Organização & Padronização</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Processos dependentes de pessoas são frágeis. Processos dependentes de métodos são **imparáveis**. Este ativo entrega a estrutura para você parar de "dar o exemplo" e passar a "dar o método". SOPs, modelos de ata pragmática e rituais de gestão que acabam com o retrabalho. <strong>Construa um negócio que funciona, com ou sem você.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Processos dependentes de pessoas são frágeis. Processos dependentes de métodos são **imparáveis**. Pare de dar "exemplo" e passe a dar o método. SOPs e rituais que acabam com o retrabalho. <strong>Construa um negócio que funciona, com ou sem você.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• SOP de Operação Padrão</li>
-                        <li>• Framework de Reuniões de Alta Performance</li>
-                        <li>• Dashboard de Cadência Operacional</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 397,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 397,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Padronizar Agora</a>
                 </div>
             </div>
@@ -311,19 +292,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: OPS-02</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: OPS-02</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Scripts Operacionais</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Quanto tempo você gasta redigindo e-mails ou resolvendo conflitos bobos via WhatsApp? Este arsenal de mensagens pré-formatadas garante uma comunicação de elite em todas as frentes: do fechamento de contrato à cobrança de inadimplentes. <strong>Comunicação padronizada evita má interpretação e economiza horas da sua semana.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Quanto tempo você perde resolvendo conflitos bobos? Este arsenal de mensagens pré-formatadas garante uma comunicação de elite em todas as frentes: do fechamento à cobrança. <strong>Comunicação padronizada evita má interpretação e economiza horas da sua semana.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Biblioteca de Respostas Críticas</li>
-                        <li>• Script de Atendimento via WhatsApp</li>
-                        <li>• Protocolo de Cobrança e Alinhamento</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 197,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 197,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Comprar Tempo</a>
                 </div>
             </div>
@@ -335,19 +311,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: PERF-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: PERF-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Porta-Voz & Autoridade</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Não basta ter razão; é preciso ter autoridade. Este guia é o treinamento definitivo para líderes que precisam dominar a oratória em ambientes de alta pressão: entrevistas, vídeos institucionais e reuniões de conselho. Aprenda técnicas de "Ponte" para perguntas difíceis e postura executiva que transmite **segurança absoluta**. <strong>Sua voz é sua ferramenta de poder mais forte.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Não basta ter razão; é preciso ter autoridade. Este guia é o treinamento para líderes que precisam dominar a oratória em ambientes de alta pressão. Aprenda técnicas de "Ponte" para perguntas difíceis e postura executiva que transmite **segurança absoluta**. <strong>Sua voz é poder.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Guia Prático de Media Training</li>
-                        <li>• Checklist de Preparação para Vídeos</li>
-                        <li>• Técnicas de Enquadramento e Oratória</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 297,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 297,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Dominar a Fala</a>
                 </div>
             </div>
@@ -359,19 +330,14 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: PERF-02</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: PERF-02</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Legal Design Kit</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Contratos de 20 páginas em juridiquês puro são barreiras de venda. O Legal Design Kit transforma documentos densos em **ferramentas de persuasão visual**. Feche negócios mais rápido, transmita profissionalismo e proteja seu IP com contratos que seus clientes realmente conseguem ler e respeitar. <strong>Beleza, clareza e segurança jurídica em um só lugar.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Contratos de 20 páginas em juridiquês são barreiras de venda. O Legal Design Kit transforma documentos densos em **ferramentas de persuasão visual**. Feche negócios mais rápido e proteja seu IP com clareza e elegância. <strong>Segurança jurídica com padrão executivo.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Modelos de Contratos em Legal Design</li>
-                        <li>• Ícones e Elementos Gráficos para Jurídico</li>
-                        <li>• Glossário de Linguagem Simples (Plain Language)</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">R$ 497,00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">R$ 497,00</div>
                     <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Transformar Contratos</a>
                 </div>
             </div>
@@ -382,19 +348,9 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()">
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Acervo</span>
-    </button>
-
     <script src="accessibility.js"></script>
     <script>
-        const synth = window.speechSynthesis;
-        function toggleAudioDescription() {
-            const utter = new SpeechSynthesisUtterance("Acervo Digital Boutique Method. Explore oito ativos exclusivos para blindagem, estratégia, operação e performance do seu capital intelectual.");
-            utter.lang = 'pt-BR'; synth.speak(utter);
-        }
-
-        // Lógica de Fechamento por clique fora para TODOS os modais
+        // Lógica de Fechamento por clique fora do modal
         document.querySelectorAll('dialog').forEach(d => {
             d.addEventListener('click', e => {
                 const rect = d.getBoundingClientRect();
