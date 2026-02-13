@@ -5,42 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acervo Digital | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 500: '#c5a028' } }
+                }
+            }
+        }
     </script>
 
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        
+
         /* FIX: Engenharia dos Modais para não "comer" conteúdo */
         dialog::backdrop { background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); }
-        dialog { 
+        dialog {
             background: transparent;
             padding: 0;
-            max-width: 900px; 
-            width: 95%; 
-            max-height: 90vh; /* Limita a altura para caber na tela */
-            overflow-y: auto; /* Adiciona scroll interno se necessário */
+            max-width: 900px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
             border: none;
             outline: none;
-            position: fixed; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 9999;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
         dialog[open] { opacity: 1; display: block; }
-        
-        /* Custom Scrollbar para os modais */
+
         dialog::-webkit-scrollbar { width: 4px; }
         dialog::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
 
@@ -59,29 +65,35 @@
         .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <a href="#main-content" class="skip-link">Pular para o acervo</a>
 
-    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+    <!-- NAV (corrigido) -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
+
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                     <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
                     <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Acervo</a>
                 </div>
+
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
                     <span class="text-gold-400 cursor-default">PT</span>
                     <span class="text-white/30">|</span>
                     <a href="store-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
                 </div>
             </div>
+
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
@@ -198,6 +210,7 @@
         </div>
     </main>
 
+    <!-- MODAIS (mantidos iguais) -->
     <dialog id="modal-crise">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
@@ -378,7 +391,6 @@
             }
         }
 
-        // Lógica de Fechamento por clique fora do modal
         document.querySelectorAll('dialog').forEach(d => {
             d.addEventListener('click', e => {
                 const rect = d.getBoundingClientRect();
