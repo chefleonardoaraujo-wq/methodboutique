@@ -56,6 +56,7 @@
             padding: 12px 24px; display: flex; align-items: center; gap: 10px;
             cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -71,9 +72,14 @@
                 <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                     <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Acervo</a>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
+                    <span class="text-gold-400 cursor-default">PT</span>
+                    <span class="text-white/30">|</span>
+                    <a href="store-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
                 </div>
             </div>
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
@@ -348,8 +354,30 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()">
+        <div class="audio-wave"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Acervo</span>
+    </button>
+
     <script src="accessibility.js"></script>
     <script>
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
+
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
+            if (isPlaying) {
+                synth.cancel(); isPlaying = false;
+                btn.classList.add('paused'); label.innerText = "Ouvir Acervo";
+            } else {
+                const utter = new SpeechSynthesisUtterance("Acervo Digital Boutique Method. Explore oito ativos exclusivos para blindagem, estratégia, operação e performance do seu capital intelectual. Clique em um item para ver detalhes.");
+                utter.lang = 'pt-BR'; synth.speak(utter);
+                isPlaying = true; btn.classList.remove('paused'); label.innerText = "Parar";
+                utter.onend = () => { isPlaying = false; btn.classList.add('paused'); label.innerText = "Ouvir Acervo"; };
+            }
+        }
+
         // Lógica de Fechamento por clique fora do modal
         document.querySelectorAll('dialog').forEach(d => {
             d.addEventListener('click', e => {
