@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Origem | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <script>
@@ -56,30 +56,39 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+    <!-- NAV (corrigido) -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                <a href="origem.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">A Origem</a>
-                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">A Origem</a>
+                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+                </div>
             </div>
+
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
+
         </div>
     </nav>
 
     <main id="main-content" class="flex-grow pt-52 pb-32 px-6">
-        <div class="max-w-4xl mx-auto space-y-32"> 
+        <div class="max-w-4xl mx-auto space-y-32">
             <div class="max-w-3xl mx-auto space-y-12">
                 <div class="space-y-6 border-l-2 border-gold-400 pl-8">
                     <span class="text-neutral-500 text-xs tracking-[0.3em] uppercase block">Por que a Boutique Method IP Holding existe</span>
@@ -103,7 +112,7 @@
 
             <div class="max-w-3xl mx-auto border-t border-white/10 pt-24">
                 <div class="space-y-12">
-                    <div class="space-y-6 border-l-2 border-white/20 pl-8"> 
+                    <div class="space-y-6 border-l-2 border-white/20 pl-8">
                         <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block">LEONARDO CHAVES ARAUJO - Founder & CEO</span>
                         <h2 class="font-serif text-4xl md:text-5xl text-white leading-tight">A Ciência por Trás do Método</h2>
                     </div>
@@ -157,8 +166,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "A Origem da Boutique Method IP Holding. Clareza é Dignidade. Leonardo Chaves Araujo, Fundador e C-E-O, mestre em nanotecnologia, aplica a precisão cirúrgica da ciência à gestão corporativa para transformar talento em método replicável.";
-                
+                const text = "A Origem da Boutique Method IP Holding. Clareza é Dignidade. Leonardo Chaves Araujo, Fundador e C E O, mestre em nanotecnologia, aplica a precisão cirúrgica da ciência à gestão corporativa para transformar talento em método replicável.";
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
