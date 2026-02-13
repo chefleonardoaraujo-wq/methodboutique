@@ -15,7 +15,7 @@
       theme: {
         extend: {
           fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-          colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+          colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } }
         }
       }
     }
@@ -24,13 +24,46 @@
   <style>
     body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
     .gold-selection::selection { background: #d4af37; color: black; }
+
+    /* ROADMAP DE LUXO */
+    .roadmap-container { position: relative; }
+    .roadmap-line { 
+        position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; 
+        background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.3), transparent); 
+    }
+    @media (max-width: 768px) { .roadmap-line { left: 20px; } }
+
+    .step-card { 
+        position: relative; transition: all 0.5s ease; 
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.01);
+    }
+    .step-card:hover { border-color: rgba(212, 175, 55, 0.4); background: rgba(212, 175, 55, 0.02); }
+    
+    .step-number { 
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        color: #d4af37;
+        font-size: 1.2rem;
+        width: 40px; height: 40px;
+        display: flex; align-items: center; justify-content: center;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        background: #050505;
+        z-index: 10;
+    }
+
+    /* ESTILO LUXO: Tabela Institucional (Ledger) */
+    .holding-ledger { border-collapse: separate; border-spacing: 0 10px; }
+    .holding-ledger thead th { border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 15px; }
+    .holding-ledger tbody tr { background: rgba(255, 255, 255, 0.01); transition: all 0.3s ease; }
+    .holding-ledger tbody tr:hover { background: rgba(212, 175, 55, 0.03); }
+    .holding-ledger td { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
   </style>
 </head>
 
 <body class="antialiased gold-selection flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-  <!-- NAV -->
   <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
       <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
@@ -60,151 +93,164 @@
     </div>
   </nav>
 
-  <!-- MAIN -->
   <main id="main-content">
-    <header class="pt-48 md:pt-52 pb-16 px-6 text-center">
+    <header class="pt-48 md:pt-60 pb-16 px-6 text-center">
+      <span class="text-gold-400 text-xs tracking-[0.4em] uppercase block mb-6 font-bold">Standard Operating Procedure</span>
       <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
         Como <span class="italic text-neutral-500">Funciona</span>
       </h1>
       <p class="text-neutral-400 font-light max-w-3xl mx-auto text-lg leading-relaxed">
-        Licenciamento por sprints: entregáveis + treinamento + aplicação + revisão. Um sistema replicável — não consultoria por hora.
+        O licenciamento Boutique Method é uma transferência de tecnologia processual organizada em sprints de implementação real.
       </p>
     </header>
 
-    <section class="py-20 px-6 border-t border-white/5 bg-neutral-900/20">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-left mb-10">
-          <h2 class="font-serif text-3xl text-white">Visão em 90 segundos</h2>
-          <p class="text-[10px] uppercase tracking-widest text-neutral-500">
-            Clareza operacional, consistência institucional e redução de ruído
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-10 border-t border-white/10 pt-8">
-          <div>
-            <p class="text-neutral-300 font-light leading-relaxed text-justify">
-              O Licenciamento Boutique Method transforma cultura de comunicação em um
-              <strong class="text-white">sistema replicável</strong>: linguagem, governança, templates, rotinas e treinamento.
-              A entrega é organizada em <strong class="text-white">sprints semanais</strong> para garantir implementação real —
-              não apenas documento “bonito”.
-            </p>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="licenciamento.html"
-                 class="inline-flex items-center px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Ver Planos →
-              </a>
-              <a href="iniciar-tratativas.html"
-                 class="inline-flex items-center px-6 py-3 border border-white/15 text-white text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">
-                Iniciar Protocolo →
-              </a>
-            </div>
-          </div>
-
-          <ol class="space-y-4 text-neutral-300 font-light">
-            <li class="border border-white/10 bg-black/20 p-5">
-              <strong class="text-white">1) Protocolo (NDA + Briefing)</strong><br>
-              Proteção de informação sensível e alinhamento inicial.
-            </li>
-            <li class="border border-white/10 bg-black/20 p-5">
-              <strong class="text-white">2) Diagnóstico e Escopo</strong><br>
-              Canais, riscos, padrões e prioridades.
-            </li>
-            <li class="border border-white/10 bg-black/20 p-5">
-              <strong class="text-white">3) Implantação por Sprints</strong><br>
-              Entregáveis aplicados + treinamento + validação + ajustes.
-            </li>
-            <li class="border border-white/10 bg-black/20 p-5">
-              <strong class="text-white">4) Homologação e Sustentação</strong><br>
-              Rotinas, métricas e manutenção do padrão.
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
     <section class="py-24 px-6 border-t border-white/5">
       <div class="max-w-5xl mx-auto">
-        <div class="text-left mb-10">
+        <div class="text-center mb-20">
           <h2 class="font-serif text-3xl text-white">Etapas do Licenciamento</h2>
-          <p class="text-[10px] uppercase tracking-widest text-neutral-500">Fluxo completo de ponta a ponta</p>
+          <p class="text-[10px] uppercase tracking-widest text-neutral-500 mt-2">Arquitetura de Transmissão de Método</p>
         </div>
 
-        <ol class="space-y-4 text-neutral-300 font-light border-t border-white/10 pt-8">
-          <li class="border border-white/10 bg-black/20 p-5"><strong class="text-white">1) Protocolo de Iniciação</strong><br>NDA + Briefing.</li>
-          <li class="border border-white/10 bg-black/20 p-5"><strong class="text-white">2) Diagnóstico e Escopo</strong><br>Mapeamento e prioridades.</li>
-          <li class="border border-white/10 bg-black/20 p-5"><strong class="text-white">3) Contrato + Setup</strong><br>Governança de marca, calendário e plano.</li>
-          <li class="border border-white/10 bg-black/20 p-5"><strong class="text-white">4) Implantação por Sprints</strong><br>Entrega aplicada + treino + ajustes.</li>
-          <li class="border border-white/10 bg-black/20 p-5"><strong class="text-white">5) Homologação e Kit de Sustentação</strong><br>Rotinas, checklists e métricas.</li>
-          <li class="border border-white/10 bg-black/20 p-5"><strong class="text-white">6) Operação Assistida</strong><br>Suporte e evolução (conforme plano).</li>
-          <li class="border border-white/10 bg-black/20 p-5"><strong class="text-white">7) Renovação/Recertificação</strong><br>Manutenção anual do padrão.</li>
-        </ol>
+        <div class="roadmap-container">
+          <div class="roadmap-line hidden md:block"></div>
+
+          <div class="space-y-20">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
+              <div class="md:w-5/12 text-right hidden md:block">
+                <span class="text-gold-400/10 font-serif text-7xl italic">01</span>
+              </div>
+              <div class="step-number">I</div>
+              <div class="md:w-5/12 step-card p-8">
+                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Iniciação</strong>
+                <h3 class="font-serif text-2xl text-white mb-3 italic">Protocolo de Iniciação</h3>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">NDA + Briefing. Proteção de informação sensível e alinhamento estratégico inicial.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
+              <div class="md:w-5/12 text-left hidden md:block">
+                <span class="text-gold-400/10 font-serif text-7xl italic">02</span>
+              </div>
+              <div class="step-number">II</div>
+              <div class="md:w-5/12 step-card p-8 text-right">
+                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Análise</strong>
+                <h3 class="font-serif text-2xl text-white mb-3 italic">Diagnóstico e Escopo</h3>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Mapeamento de canais, riscos e definição de prioridades institucionais.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
+              <div class="md:w-5/12 text-right hidden md:block">
+                <span class="text-gold-400/10 font-serif text-7xl italic">03</span>
+              </div>
+              <div class="step-number">III</div>
+              <div class="md:w-5/12 step-card p-8">
+                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Formalização</strong>
+                <h3 class="font-serif text-2xl text-white mb-3 italic">Contrato + Setup</h3>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Definição da governança de marca, calendário de sprints e setup do plano.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
+              <div class="md:w-5/12 text-left hidden md:block">
+                <span class="text-gold-400/10 font-serif text-7xl italic">04</span>
+              </div>
+              <div class="step-number">IV</div>
+              <div class="md:w-5/12 step-card p-8 text-right">
+                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Execução</strong>
+                <h3 class="font-serif text-2xl text-white mb-3 italic">Implantação por Sprints</h3>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Entrega aplicada de ativos, treinamento intensivo e ajustes em tempo real.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
+              <div class="md:w-5/12 text-right hidden md:block">
+                <span class="text-gold-400/10 font-serif text-7xl italic">05</span>
+              </div>
+              <div class="step-number">V</div>
+              <div class="md:w-5/12 step-card p-8">
+                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Validação</strong>
+                <h3 class="font-serif text-2xl text-white mb-3 italic">Homologação e Kit de Sustentação</h3>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Definição de rotinas, checklists de governança e painéis de métricas.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
+              <div class="md:w-5/12 text-left hidden md:block">
+                <span class="text-gold-400/10 font-serif text-7xl italic">06</span>
+              </div>
+              <div class="step-number">VI</div>
+              <div class="md:w-5/12 step-card p-8 text-right">
+                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Mentoria</strong>
+                <h3 class="font-serif text-2xl text-white mb-3 italic">Operação Assistida</h3>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Suporte estratégico e evolução do método conforme o plano de licenciamento.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
+              <div class="md:w-5/12 text-right hidden md:block">
+                <span class="text-gold-400/10 font-serif text-7xl italic">07</span>
+              </div>
+              <div class="step-number">VII</div>
+              <div class="md:w-5/12 step-card p-8">
+                <strong class="text-gold-400 text-xs uppercase tracking-widest block mb-2 font-bold">Longevidade</strong>
+                <h3 class="font-serif text-2xl text-white mb-3 italic">Renovação/Recertificação</h3>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Garantia da manutenção do padrão Boutique Method através de auditoria anual.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="py-24 px-6 border-t border-white/5 bg-neutral-900/20">
       <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-10">
+        <div class="text-center mb-16">
+          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4 font-bold">Investment Ledger</span>
           <h2 class="font-serif text-4xl text-white">Entregáveis por <span class="italic text-neutral-500">Plano</span></h2>
-          <p class="text-neutral-500 text-[10px] mt-4 uppercase tracking-widest">
-            Essential = 2 sprints • Professional = 4 sprints • Enterprise = 8–12 sprints
-          </p>
         </div>
 
-        <div class="overflow-x-auto border border-white/10 bg-black/20">
-          <table class="min-w-[980px] w-full text-left">
-            <thead class="bg-white/5">
-              <tr class="text-[10px] uppercase tracking-widest text-neutral-400">
-                <th class="p-4">Plano</th>
-                <th class="p-4">Indicado para</th>
-                <th class="p-4">Duração</th>
-                <th class="p-4">Entregáveis (núcleo)</th>
-                <th class="p-4">Implantação & Treinamento</th>
-                <th class="p-4">Governança & Sustentação</th>
+        <div class="overflow-x-auto">
+          <table class="w-full holding-ledger min-w-[980px]">
+            <thead class="text-[10px] uppercase tracking-widest text-gold-400/60 font-bold">
+              <tr>
+                <th class="text-left">Plano / Categoria</th>
+                <th class="text-left">Duração</th>
+                <th class="text-left">Entregáveis (núcleo)</th>
+                <th class="text-left">Implantação & Treinamento</th>
+                <th class="text-left">Governança & Sustentação</th>
               </tr>
             </thead>
-            <tbody class="text-sm text-neutral-300">
-              <tr class="border-t border-white/10 align-top">
-                <td class="p-4 font-semibold text-white">Essential</td>
-                <td class="p-4">Padronização rápida</td>
-                <td class="p-4">2 sprints</td>
-                <td class="p-4">Carta Magna; Tom de Voz por canal; Templates essenciais; Fluxo básico de atendimento e escalonamento</td>
-                <td class="p-4">2 encontros; treino rápido; ajustes finais pós-uso</td>
-                <td class="p-4">Checklist semanal; métricas mínimas; guia de manutenção</td>
+            <tbody class="text-sm text-neutral-300 font-light">
+              <tr>
+                <td class="font-serif text-2xl italic text-white p-6">Essential</td>
+                <td>2 sprints</td>
+                <td class="max-w-xs leading-relaxed">Carta Magna; Tom de Voz por canal; Templates essenciais; Fluxo básico de atendimento</td>
+                <td>2 encontros; treino rápido; ajustes finais</td>
+                <td class="italic text-neutral-500">Checklist semanal; métricas mínimas</td>
               </tr>
-
-              <tr class="border-t border-white/10 align-top">
-                <td class="p-4 font-semibold text-white">Professional</td>
-                <td class="p-4">Consistência + performance</td>
-                <td class="p-4">4 sprints</td>
-                <td class="p-4">Tudo do Essential; scripts ampliados; playbook de crise (tático); padrões por público; respostas para objeções</td>
-                <td class="p-4">4 encontros; treino por função; revisão guiada de canais reais</td>
-                <td class="p-4">RACI; SLA interno; ritual mensal; auditoria leve (baseline)</td>
+              <tr>
+                <td class="font-serif text-2xl italic text-gold-400 p-6">Professional</td>
+                <td>4 sprints</td>
+                <td class="max-w-xs leading-relaxed">Tudo do Essential; scripts ampliados; playbook de crise; padrões por público; objeções</td>
+                <td>4 encontros; treino por função; revisão guiada</td>
+                <td class="italic">RACI; SLA interno; ritual mensal; auditoria</td>
               </tr>
-
-              <tr class="border-t border-white/10 align-top">
-                <td class="p-4 font-semibold text-white">Enterprise</td>
-                <td class="p-4">Multiunidade e alta exposição</td>
-                <td class="p-4">8–12 sprints</td>
-                <td class="p-4">Tudo do Professional; governança multiunidade; kit robusto de reputação; trilhas formais; customizações por cenário</td>
-                <td class="p-4">Trilhas + reciclagens; multiplicadores; oficina com supervisão; implantação por unidade</td>
-                <td class="p-4">Comitê executivo; auditorias; painel de métricas; manual de sustentação; recertificação</td>
+              <tr class="bg-white/[0.02]">
+                <td class="font-serif text-2xl italic text-white p-6">Enterprise</td>
+                <td>8–12 sprints</td>
+                <td class="max-w-xs leading-relaxed">Tudo do Professional; governança multiunidade; kit robusto de reputação; customizações</td>
+                <td>Trilhas + reciclagens; multiplicadores; oficina</td>
+                <td class="font-bold text-gold-400 uppercase tracking-tighter">Comitê; auditorias; painel; recertificação</td>
               </tr>
             </tbody>
           </table>
-        </div>
-
-        <div class="mt-10 text-center">
-          <h3 class="font-serif text-2xl text-white mb-4">Add-ons (quando fizer sentido)</h3>
-          <p class="text-neutral-400 font-light max-w-3xl mx-auto leading-relaxed">
-            Camada de Reputação Avançada • Pacote Legal/Compliance específico (JUR) • Onboarding completo + trilhas • Suporte estendido
-          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+  <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
     <p>Boutique Method IP Holding Ltda © 2026</p>
   </footer>
 </body>
