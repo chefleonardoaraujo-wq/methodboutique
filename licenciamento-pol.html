@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POL - Política & Institucional | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script> tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } } </script>
-    <style> 
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
-        .gold-selection::selection { background: #d4af37; color: black; } 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
+        .gold-selection::selection { background: #d4af37; color: black; }
 
         /* Botão de Audiodescrição */
         .audio-fab {
@@ -43,31 +52,45 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
-    
+
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
+    <!-- NAV PADRÃO -->
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
-                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                    <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
+                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+                </div>
+
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <span class="text-gold-400 cursor-default">PT</span>
+                    <span class="text-white/30">|</span>
+                    <a href="pol-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                </div>
             </div>
+
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
         </div>
     </nav>
 
-    <main id="main-content" class="flex-grow pt-40 pb-20 px-6">
+    <!-- pt padrão p/ nav fixo -->
+    <main id="main-content" class="flex-grow pt-52 pb-20 px-6">
         <div class="max-w-4xl mx-auto">
-            
+
             <div class="mb-12">
                 <a href="licenciamento.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Voltar para Visão Geral</a>
             </div>
@@ -107,7 +130,7 @@
             </div>
         </div>
     </main>
-    
+
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
@@ -138,7 +161,7 @@
                 label.innerText = "Ouvir Página";
             } else {
                 const text = "Vertente P-O-L: Política e Institucional. Elevamos a comunicação a um padrão de governança e credibilidade. Focamos em prestação de contas, clareza institucional e protocolos de crise para fortalecer a confiança pública.";
-                
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
