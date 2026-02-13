@@ -24,10 +24,12 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; } 
         .gold-selection::selection { background: #d4af37; color: black; }
         
+        /* Tabela de Padrões */
         .tech-table th { @apply py-4 px-6 text-left text-gold-400 uppercase tracking-widest text-[10px] border-b border-white/10; }
         .tech-table td { @apply py-4 px-6 text-sm border-b border-white/5 font-light; }
         .tech-table tr:hover { background: rgba(212, 175, 55, 0.02); }
 
+        /* Estilo da Carta do Fundador */
         .founder-note {
             background: linear-gradient(to bottom right, #0a0a0a, #050505);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -62,9 +64,18 @@
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
+            
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-r border-white/20 pr-8">
+                    <span class="text-gold-400 cursor-default">PT</span>
+                    <span class="text-white/30">|</span>
+                    <a href="acessibilidade-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                </div>
+
+                <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                    Iniciar Tratativas
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -177,7 +188,7 @@
     <script>
         const synth = window.speechSynthesis;
         function toggleAudioDescription() {
-            const text = "Página de Acessibilidade e Integridade da Boutique Method. Apresentamos o compromisso do fundador Leonardo Chaves Araujo, mestre em nanotecnologia, com a inclusão técnica. Detalhamos nossos padrões de conformidade WCAG, incluindo suporte a teclado, contraste auditado e audiodescrição. Explicamos nossos protocolos exclusivos de Libras para tratativas e a blindagem cognitiva para neurodivergentes através da Linguagem Clara.";
+            const text = "Página de Acessibilidade e Integridade da Boutique Method. Apresentamos o compromisso do fundador Leonardo Araujo, mestre em nanotecnologia, com a inclusão técnica. Detalhamos nossos padrões de conformidade WCAG, incluindo suporte a teclado, contraste auditado e audiodescrição. Explicamos nossos protocolos exclusivos de Libras para tratativas e a blindagem cognitiva para neurodivergentes através da Linguagem Clara.";
             const utter = new SpeechSynthesisUtterance(text);
             utter.lang = 'pt-BR';
             synth.speak(utter);
