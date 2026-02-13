@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="accessibility.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -21,7 +21,7 @@
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
         /* Audio Description Button */
@@ -51,9 +51,19 @@
         .paused .bar { animation: none; height: 20%; }
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
 
-        /* Modal Animation */
+        /* MOBILE FIX: Modal Engineering */
+        .modal-container {
+            max-height: 85vh; /* Occupies max 85% of screen height */
+            overflow-y: auto; /* Enables scroll if text is long */
+            width: 95%;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 transparent;
+        }
+        .modal-container::-webkit-scrollbar { width: 4px; }
+        .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+
         .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
@@ -89,8 +99,8 @@
     </nav>
 
     <main id="main-content">
-        <header class="pt-40 pb-20 px-6 text-center">
-            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
+        <header class="pt-48 md:pt-52 pb-20 px-6 text-center">
+            <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
                 Licensing of the <span class="italic text-neutral-500">Method</span>
             </h1>
             <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
@@ -108,15 +118,15 @@
                 <div class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-8">
                     <div>
                         <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Standard Consulting</h3>
-                        <p class="text-neutral-400 text-sm font-light">Sells hours. Hard to scale. Depends 100% on the owner.</p>
+                        <p class="text-neutral-400 text-sm font-light text-justify">Sells hours. Hard to scale. Depends 100% on the owner.</p>
                     </div>
                     <div>
                         <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Executive Education</h3>
-                        <p class="text-neutral-400 text-sm font-light">Sells courses. Low barrier to entry. High competition.</p>
+                        <p class="text-neutral-400 text-sm font-light text-justify">Sells courses. Low barrier to entry. High competition.</p>
                     </div>
                     <div class="relative">
                         <h3 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Boutique Method™</h3>
-                        <p class="text-white text-sm font-medium">Sells system. High barrier to entry. Generates Equity and Royalties.</p>
+                        <p class="text-white text-sm font-medium text-justify">Sells system. High barrier to entry. Generates Equity and Royalties.</p>
                         <div class="absolute -left-6 top-0 bottom-0 w-px bg-gold-400/30 hidden md:block"></div>
                     </div>
                 </div>
@@ -164,41 +174,25 @@
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8 items-center">
-                    
                     <button onclick="openModal('essential')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
                         <h3 class="font-serif text-3xl text-white mb-2">Essential</h3>
                         <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">License to Use</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Ideal for those who just want to use the brand and basic manuals without advanced strategic support.</p>
-                        <ul class="text-left text-neutral-500 text-xs space-y-4 mb-8">
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Access to Standard Manuals</li>
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Right to Brand Use</li>
-                            <li class="flex items-center"><span class="text-neutral-700 mr-2">•</span> No territorial exclusivity</li>
-                        </ul>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Ideal for using the brand and basic manuals without strategic support.</p>
                         <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
                     </button>
 
-                    <button onclick="openModal('professional')" class="bg-[#0a0a0a] border-2 border-gold-400 p-12 text-center relative transform scale-105 z-10 w-full shadow-2xl shadow-gold-400/10">
+                    <button onclick="openModal('professional')" class="bg-[#0a0a0a] border-2 border-gold-400 p-12 text-center relative transform scale-100 md:scale-105 z-10 w-full shadow-2xl shadow-gold-400/10">
                         <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[10px] uppercase tracking-widest px-4 py-1 font-bold">Recommended</span>
                         <h3 class="font-serif text-4xl text-gold-400 mb-2">Professional</h3>
                         <span class="text-neutral-400 text-[10px] uppercase tracking-widest block mb-8">Certification & Support</span>
-                        <p class="text-white text-sm font-light leading-relaxed mb-8">For partners looking to scale. Includes team training and implementation monitoring.</p>
-                        <ul class="text-left text-neutral-300 text-xs space-y-4 mb-8">
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Everything in Essential</li>
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Team Training (Online)</li>
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Commercial Support</li>
-                        </ul>
+                        <p class="text-white text-sm font-light leading-relaxed mb-8">For partners looking to scale. Includes training and monitoring.</p>
                         <span class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">View Details &rarr;</span>
                     </button>
 
                     <button onclick="openModal('enterprise')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
                         <h3 class="font-serif text-3xl text-white mb-2">Enterprise</h3>
                         <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master & Equity</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Model for large operations. Total method customization and exclusivity.</p>
-                        <ul class="text-left text-neutral-500 text-xs space-y-4 mb-8">
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Method Customization</li>
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> Exclusive Territory</li>
-                            <li class="flex items-center"><span class="text-gold-400 mr-2">•</span> "In Company" Consulting</li>
-                        </ul>
+                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Total method customization and territorial exclusivity.</p>
                         <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
                     </button>
                 </div>
@@ -206,9 +200,9 @@
         </section>
     </main>
 
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter">
-        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Close Modal">&times;</button>
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-4 md:p-6">
+        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-6 md:p-12 relative shadow-2xl modal-container modal-enter">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Close">✕</button>
             <div id="modal-content" class="space-y-6"></div>
         </div>
     </div>
@@ -217,34 +211,19 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
-        <div class="audio-wave">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
-    </button>
-
-    <script src="accessibility.js"></script>
-
     <script>
-        // --- MODAL DATA (ENGLISH VERSION) ---
         const modalData = {
             essential: {
-                label: "Individual Model",
-                title: "Essential",
-                text: "Full access to the methodological framework for individual application. Ideal for freelance professionals seeking to differentiate their delivery through validated processes."
+                label: "Individual Model", title: "Essential",
+                text: "Full access to the methodological framework for individual application. Ideal for freelance professionals seeking to differentiate their delivery through validated processes. Includes brand manual, access to the training platform, and personal certification."
             },
             professional: {
-                label: "Business Model",
-                title: "Professional",
-                text: "Robust structure for team standardization. Allows offices and clinics to install the 'Boutique Operating System' into their culture. Includes in-company training and implementation support."
+                label: "Business Model", title: "Professional",
+                text: "Robust structure for team standardization. Allows offices and clinics to install the 'Boutique Operating System' into their culture. Includes in-company training (online), implementation support, and usage licenses for collaborators."
             },
             enterprise: {
-                label: "Master Model",
-                title: "Enterprise",
-                text: "The highest level of partnership. Guarantees territorial exclusivity and the right to resell and sublicense the method in your region. Includes strategic equity consulting and royalties."
+                label: "Master Model", title: "Enterprise",
+                text: "The highest level of partnership. Guarantees territorial exclusivity and the right to resell and sublicense the method in your region. Includes strategic equity consulting, participation in the innovation board, and royalties on the network created."
             }
         };
 
@@ -254,10 +233,10 @@
             const container = document.getElementById('modal-content');
             
             container.innerHTML = `
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">${content.label}</span>
-                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight">${content.title}</h3>
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2 font-bold">${content.label}</span>
+                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight italic">${content.title}</h3>
                 <div class="w-12 h-px bg-gold-400 mb-6"></div>
-                <p class="text-neutral-300 font-light text-lg leading-relaxed text-justify">${content.text}</p>
+                <p class="text-neutral-300 font-light text-base md:text-lg leading-relaxed text-justify">${content.text}</p>
                 <div class="pt-8 flex justify-end">
                     <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Close</button>
                 </div>
@@ -275,41 +254,9 @@
             document.body.style.overflow = 'auto';
         }
 
-        document.getElementById('modal-overlay').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-
-        // --- AUDIO DESCRIPTION (ENGLISH) ---
-        const synth = window.speechSynthesis;
-        let isPlaying = false;
-
-        function toggleAudioDescription() {
-            const btn = document.getElementById('globalAudioBtn');
-            const label = document.getElementById('audioLabel');
-
-            if (isPlaying) {
-                synth.cancel();
-                isPlaying = false;
-                btn.classList.add('paused');
-                label.innerText = "Listen to Page";
-            } else {
-                const text = "Method Licensing Page. Scale without swelling. The Intellectual Asset. Our Verticals: J-U-R, H-C, and P-O-L (click to explore). Our Licensing Plans: Essential, Professional, and Enterprise (click to view details).";
-                
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'en-US';
-                utter.rate = 0.95;
-
-                utter.onend = () => {
-                    isPlaying = false;
-                    btn.classList.add('paused');
-                    label.innerText = "Listen to Page";
-                };
-
-                synth.speak(utter);
-                isPlaying = true;
-                btn.classList.remove('paused');
-                label.innerText = "Stop Audio";
-            }
+        window.onclick = function(event) {
+            const overlay = document.getElementById('modal-overlay');
+            if (event.target == overlay) closeModal();
         }
     </script>
 </body>
