@@ -24,230 +24,170 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
-        /* FIX PARA CELULAR: Engenharia de Modais */
-        .modal-container {
-            max-height: 85vh;
-            overflow-y: auto;
-            width: 95%;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 transparent;
+        /* ROADMAP DE LUXO */
+        .roadmap-container { position: relative; }
+        .roadmap-line { 
+            position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; 
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.3), transparent); 
         }
-        .modal-container::-webkit-scrollbar { width: 4px; }
-        .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        @media (max-width: 768px) { .roadmap-line { left: 20px; } }
 
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .step-card { 
+            position: relative; transition: all 0.5s ease; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.01);
+        }
+        .step-card:hover { border-color: rgba(212, 175, 55, 0.4); background: rgba(212, 175, 55, 0.02); }
+        
+        .step-number { 
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #d4af37;
+            font-size: 1.5rem;
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: #050505;
+            z-index: 10;
+        }
 
         /* ESTILO LUXO: Tabela Institucional */
-        .holding-table { border-collapse: separate; border-spacing: 0 10px; }
-        .holding-table thead th { 
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 20px;
-        }
-        .holding-table tbody tr {
-            background: rgba(255, 255, 255, 0.01);
-            transition: all 0.4s ease;
-        }
-        .holding-table tbody tr:hover {
-            background: rgba(212, 175, 55, 0.03);
-            transform: scale(1.005);
-        }
-        .holding-table td {
-            padding: 30px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .plan-title {
-            position: relative;
-            padding-left: 15px;
-        }
-        .plan-title::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 32px; bottom: 32px;
-            width: 2px;
-            background: #d4af37;
-        }
+        .holding-table tbody tr:hover { background: rgba(212, 175, 55, 0.03); }
+        .plan-title::before { content: ''; position: absolute; left: 0; top: 32px; bottom: 32px; width: 2px; background: #d4af37; }
     </style>
 </head>
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
-
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1">Licenciamento</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
-                </div>
-                
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="licenciamento-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
-                </div>
+            <div class="flex items-center space-x-8 text-[10px] tracking-[0.2em] uppercase font-light">
+                <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1">Licenciamento</a>
+                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
             </div>
-
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">Iniciar Tratativas</a>
         </div>
     </nav>
 
-    <main id="main-content">
-        <header class="pt-48 md:pt-60 pb-20 px-6 text-center">
-            <span class="text-gold-400 text-xs tracking-[0.4em] uppercase block mb-6">Asset Scaling</span>
-            <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
-                Licenciamento do <span class="italic text-neutral-500">Método</span>
-            </h1>
-            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-                Transforme sua inteligência tática em um ativo licenciável e proteja sua margem de lucro.
-            </p>
+    <main id="main-content" class="pt-48 md:pt-60">
+        <header class="pb-20 px-6 text-center">
+            <span class="text-gold-400 text-xs tracking-[0.4em] uppercase block mb-6">Procedural Blueprint</span>
+            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6 italic">Workflow <span class="text-neutral-500">de Governança</span></h1>
+            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">As 7 etapas da arquitetura Boutique Method para transformar inteligência em patrimônio replicável.</p>
         </header>
 
-        <section class="py-24 px-6 border-t border-white/5 bg-[#080808]">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-0 border border-white/10 rounded-sm overflow-hidden">
-                    <div class="p-10 border-b md:border-b-0 md:border-r border-white/10 space-y-4">
-                        <h3 class="text-gold-400 text-[10px] font-bold uppercase tracking-[0.3em]">Consultoria Comum</h3>
-                        <p class="text-white text-lg font-serif italic">Venda de Horas</p>
-                        <p class="text-neutral-500 text-sm font-light">Limitada pela agenda física, difícil de escalar e com alta dependência do fundador.</p>
+        <section class="py-20 px-6 relative">
+            <div class="max-w-5xl mx-auto roadmap-container">
+                <div class="roadmap-line hidden md:block"></div>
+
+                <div class="space-y-24">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12 group">
+                        <div class="md:w-5/12 text-right hidden md:block">
+                            <span class="text-gold-400/20 font-serif text-8xl italic">01</span>
+                        </div>
+                        <div class="step-number">I</div>
+                        <div class="md:w-5/12 step-card p-8">
+                            <h3 class="font-serif text-2xl text-white mb-4 italic">Diagnóstico e Auditoria</h3>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Análise profunda do capital intelectual existente e identificação de gargalos operacionais que impedem a escala.</p>
+                        </div>
                     </div>
-                    <div class="p-10 border-b md:border-b-0 md:border-r border-white/10 space-y-4">
-                        <h3 class="text-gold-400 text-[10px] font-bold uppercase tracking-[0.3em]">Educação Executiva</h3>
-                        <p class="text-white text-lg font-serif italic">Venda de Cursos</p>
-                        <p class="text-neutral-500 text-sm font-light">Baixa barreira de entrada, comoditização rápida e dependência de audiência.</p>
+
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-12 group">
+                        <div class="md:w-5/12 text-left hidden md:block">
+                            <span class="text-gold-400/20 font-serif text-8xl italic">02</span>
+                        </div>
+                        <div class="step-number">II</div>
+                        <div class="md:w-5/12 step-card p-8 text-right">
+                            <h3 class="font-serif text-2xl text-white mb-4 italic">Arquitetura do Método</h3>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Codificação do conhecimento tácito em processos tangíveis, criando a base técnica para o licenciamento.</p>
+                        </div>
                     </div>
-                    <div class="p-10 bg-gold-400/5 space-y-4 relative">
-                        <div class="absolute top-0 right-0 p-4"><span class="text-gold-400 text-[8px] border border-gold-400 px-2 py-1 uppercase">IP Asset</span></div>
-                        <h3 class="text-gold-400 text-[10px] font-bold uppercase tracking-[0.3em]">Método Boutique™</h3>
-                        <p class="text-white text-lg font-serif italic">Venda de Sistema</p>
-                        <p class="text-white text-sm font-light">Arquitetura protegida que gera Equity, Royalties e liberdade operacional.</p>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12 group">
+                        <div class="md:w-5/12 text-right hidden md:block">
+                            <span class="text-gold-400/20 font-serif text-8xl italic">03</span>
+                        </div>
+                        <div class="step-number">III</div>
+                        <div class="md:w-5/12 step-card p-8">
+                            <h3 class="font-serif text-2xl text-white mb-4 italic">Blindagem e IP Strategy</h3>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Proteção jurídica do método, registro de marcas e definição das cláusulas de proteção de propriedade intelectual.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-12 group">
+                        <div class="md:w-5/12 text-left hidden md:block">
+                            <span class="text-gold-400/20 font-serif text-8xl italic">04</span>
+                        </div>
+                        <div class="step-number">IV</div>
+                        <div class="md:w-5/12 step-card p-8 text-right">
+                            <h3 class="font-serif text-2xl text-white mb-4 italic">Branding de Autoridade</h3>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Construção da narrativa premium e ajuste do posicionamento visual para elevar o valor percebido do ativo.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12 group">
+                        <div class="md:w-5/12 text-right hidden md:block">
+                            <span class="text-gold-400/20 font-serif text-8xl italic">05</span>
+                        </div>
+                        <div class="step-number">V</div>
+                        <div class="md:w-5/12 step-card p-8">
+                            <h3 class="font-serif text-2xl text-white mb-4 italic">Padronização (SOPs)</h3>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Criação dos Procedimentos Operacionais Padrão e Manuais de aplicação para garantir a consistência na ponta.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-12 group">
+                        <div class="md:w-5/12 text-left hidden md:block">
+                            <span class="text-gold-400/20 font-serif text-8xl italic">06</span>
+                        </div>
+                        <div class="step-number">VI</div>
+                        <div class="md:w-5/12 step-card p-8 text-right">
+                            <h3 class="font-serif text-2xl text-white mb-4 italic">Treinamento e Formação</h3>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Capacitação intensiva da equipe e de parceiros, assegurando que a visão do método seja replicada fielmente.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12 group">
+                        <div class="md:w-5/12 text-right hidden md:block">
+                            <span class="text-gold-400/20 font-serif text-8xl italic">07</span>
+                        </div>
+                        <div class="step-number">VII</div>
+                        <div class="md:w-5/12 step-card p-8">
+                            <h3 class="font-serif text-2xl text-white mb-4 italic">Auditoria e Governança</h3>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Acompanhamento contínuo, rituais de conselho e ajustes táticos para manter a valorização do Equity no longo prazo.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-32 px-6 bg-black relative">
+        <section class="py-32 px-6 bg-black border-t border-white/5">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-16">
                     <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Investment Ledger</span>
-                    <h2 class="font-serif text-4xl text-white">Entregáveis por <span class="italic text-neutral-500">Nível de Ativo</span></h2>
+                    <h2 class="font-serif text-4xl text-white italic">Planos de <span class="text-neutral-500">Licenciamento</span></h2>
                 </div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full holding-table">
-                        <thead>
-                            <tr class="text-[10px] uppercase tracking-[0.2em] text-gold-400/60 font-bold">
-                                <th class="text-left">Plano / Categoria</th>
-                                <th class="text-left">Duração Est.</th>
-                                <th class="text-left">Entregáveis de IP</th>
-                                <th class="text-left">Treinamento</th>
-                                <th class="text-left">Governança</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm">
-                            <tr>
-                                <td class="plan-title">
-                                    <span class="text-white font-serif text-2xl italic">Essential</span>
-                                    <p class="text-neutral-500 text-[9px] uppercase tracking-widest mt-1">Padronização Tática</p>
-                                </td>
-                                <td class="text-neutral-300 font-light">2 Sprints</td>
-                                <td class="text-neutral-300 font-light leading-relaxed">
-                                    <ul class="space-y-1">
-                                        <li>• Carta Magna Institucional</li>
-                                        <li>• Tom de Voz por Canal</li>
-                                        <li>• Templates Estruturais</li>
-                                    </ul>
-                                </td>
-                                <td class="text-neutral-300 font-light">02 Encontros de Alinhamento</td>
-                                <td class="text-neutral-400 font-light italic">Checklist Semanal de Métricas</td>
-                            </tr>
-
-                            <tr>
-                                <td class="plan-title">
-                                    <span class="text-gold-400 font-serif text-2xl italic">Professional</span>
-                                    <p class="text-neutral-500 text-[9px] uppercase tracking-widest mt-1">Performance e Autoridade</p>
-                                </td>
-                                <td class="text-neutral-300 font-light">4 Sprints</td>
-                                <td class="text-neutral-300 font-light leading-relaxed">
-                                    <ul class="space-y-1">
-                                        <li>• Scripts Ampliados de Elite</li>
-                                        <li>• Playbook de Crise (Tático)</li>
-                                        <li>• Matriz de Objeções Premium</li>
-                                    </ul>
-                                </td>
-                                <td class="text-neutral-300 font-light">04 Treinamentos por Função</td>
-                                <td class="text-neutral-400 font-light italic">Matriz RACI e SLA Institucional</td>
-                            </tr>
-
-                            <tr class="bg-white/[0.03]">
-                                <td class="plan-title">
-                                    <span class="text-white font-serif text-2xl italic">Enterprise</span>
-                                    <p class="text-gold-400 text-[9px] uppercase tracking-widest mt-1">Master Legacy</p>
-                                </td>
-                                <td class="text-neutral-300 font-light">8–12 Sprints</td>
-                                <td class="text-neutral-300 font-light leading-relaxed">
-                                    <ul class="space-y-1">
-                                        <li>• Governança Multiunidade</li>
-                                        <li>• Kit de Reputação Robusta</li>
-                                        <li>• Customizações por Cenário</li>
-                                    </ul>
-                                </td>
-                                <td class="text-neutral-300 font-light">Trilhas Formais + Reciclagens</td>
-                                <td class="text-gold-400 font-bold italic">Auditorias & Comitê Executivo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="mt-12 text-center">
-                    <p class="text-neutral-600 text-[10px] uppercase tracking-widest">A Boutique Method IP Holding reserva o direito de auditar a aplicação dos métodos licenciados.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-32 px-6 border-t border-white/5">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                    <div>
-                        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Sectors</span>
-                        <h2 class="font-serif text-4xl text-white">Domínios de <span class="italic text-neutral-500">Expertise</span></h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="step-card p-10 space-y-6">
+                        <h3 class="font-serif text-2xl text-white italic">Essential</h3>
+                        <p class="text-neutral-400 text-sm font-light">Acesso ao núcleo do método para padronização tática.</p>
+                        <div class="text-gold-400 font-serif text-xl border-t border-white/10 pt-4">R$ 4.997,00</div>
                     </div>
-                    <a href="como-funciona.html" class="text-gold-400 text-[10px] uppercase tracking-widest border-b border-gold-400 pb-1 hover:text-white hover:border-white transition">Como funciona o processo →</a>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-12">
-                    <a href="licenciamento-jur.html" class="group block space-y-6">
-                        <div class="aspect-video bg-neutral-900 border border-white/5 flex items-center justify-center group-hover:border-gold-400 transition duration-500">
-                            <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition">JUR</span>
-                        </div>
-                        <h3 class="text-white font-serif text-xl group-hover:text-gold-400 transition">Legal Design & IP Strategy</h3>
-                        <p class="text-neutral-500 text-sm font-light">Para bancas que desejam transformar o jurídico em uma peça de design e autoridade.</p>
-                    </a>
-
-                    <a href="hc.html" class="group block space-y-6">
-                        <div class="aspect-video bg-neutral-900 border border-white/5 flex items-center justify-center group-hover:border-gold-400 transition duration-500">
-                            <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition">HC</span>
-                        </div>
-                        <h3 class="text-white font-serif text-xl group-hover:text-gold-400 transition">Healthcare Experience</h3>
-                        <p class="text-neutral-500 text-sm font-light">Protocolos de hospitalidade e blindagem técnica para clínicas de alto padrão.</p>
-                    </a>
-
-                    <a href="pol.html" class="group block space-y-6">
-                        <div class="aspect-video bg-neutral-900 border border-white/5 flex items-center justify-center group-hover:border-gold-400 transition duration-500">
-                            <span class="font-serif text-6xl text-white/5 group-hover:text-gold-400/20 transition">POL</span>
-                        </div>
-                        <h3 class="text-white font-serif text-xl group-hover:text-gold-400 transition">Political Governance</h3>
-                        <p class="text-neutral-500 text-sm font-light">Arquitetura de imagem e gestão de crise para figuras públicas e gabinetes.</p>
-                    </a>
+                    <div class="step-card p-10 space-y-6 border-gold-400/50">
+                        <h3 class="font-serif text-2xl text-gold-400 italic">Professional</h3>
+                        <p class="text-neutral-400 text-sm font-light">Consistência institucional com treinamento de elite.</p>
+                        <div class="text-gold-400 font-serif text-xl border-t border-white/10 pt-4">R$ 14.997,00</div>
+                    </div>
+                    <div class="step-card p-10 space-y-6">
+                        <h3 class="font-serif text-2xl text-white italic">Enterprise</h3>
+                        <p class="text-neutral-400 text-sm font-light">Customização master para multiunidades e legado.</p>
+                        <div class="text-gold-400 font-serif text-xl border-t border-white/10 pt-4">Sob Consulta</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -257,6 +197,5 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <script src="accessibility.js"></script>
 </body>
 </html>
