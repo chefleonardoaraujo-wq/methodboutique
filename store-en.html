@@ -19,12 +19,15 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
         
+        /* MODAL ENGINEERING: Prevents "eaten" content on smaller screens */
         dialog::backdrop { background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); }
         dialog { 
             background: transparent;
             padding: 0;
             max-width: 900px; 
             width: 95%; 
+            max-height: 90vh; 
+            overflow-y: auto;
             border: none;
             outline: none;
             position: fixed; 
@@ -35,7 +38,10 @@
             opacity: 0;
             transition: opacity 0.4s ease;
         }
-        dialog[open] { opacity: 1; }
+        dialog[open] { opacity: 1; display: block; }
+        
+        dialog::-webkit-scrollbar { width: 4px; }
+        dialog::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
 
         .asset-row { transition: all 0.4s ease; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .asset-row:hover { background-color: rgba(212, 175, 55, 0.03); padding-left: 20px; border-bottom-color: rgba(212, 175, 55, 0.3); }
@@ -84,8 +90,8 @@
     <header class="pt-40 md:pt-52 pb-16 px-6 text-center">
         <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Asset Ecosystem</span>
         <h1 class="font-serif text-4xl md:text-6xl text-white mb-6">Digital <span class="italic text-neutral-500">Collection</span></h1>
-        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-justify">
-            Immediate access to the Holding's procedural intelligence. Stop improvising in high-complexity scenarios and start governing your legacy.
+        <p class="text-neutral-400 font-light max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            Immediate access to the Holding's procedural intelligence. Stop improvising in high-complexity scenarios.
         </p>
     </header>
 
@@ -100,15 +106,15 @@
                     <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-crisis').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: RISK-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Crisis & Reputation Kit</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">The "Golden Hour" decides your business's future. Command the narrative before the crisis commands you.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Crisis & Reputation Kit</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">The "Golden Hour" decides your business future. Command the narrative before the crisis commands you.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 997</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
-                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-gov').showModal()">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-gov-en').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: GOV-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Governance & Protocols</h3>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Governance & Protocols</h3>
                             <p class="text-neutral-500 font-light text-sm max-w-xl">Your company cannot rely on common sense. It requires an operational "Constitution."</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 597</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
@@ -121,19 +127,19 @@
                     <h2 class="font-serif text-2xl text-white italic">Strategy & Brand <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(STRAT)</span></h2>
                 </div>
                 <div class="flex flex-col">
-                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-diag').showModal()">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-diag-en').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: STRAT-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Strategic Diagnosis</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Where is your intellectual capital leaking? Audit the noise and reclaim your authority.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Strategic Diagnosis</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Where is your intellectual capital leaking? Audit the noise and reclaim control.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 497</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
-                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pos').showModal()">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pos-en').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: BRAND-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Premium Positioning</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Shift your value perception. Tools to look (and be) as elite as the fees you command.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Premium Positioning</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Shift your value perception. Tools to be as elite as the price you charge.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 697</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
@@ -145,19 +151,19 @@
                     <h2 class="font-serif text-2xl text-white italic">Operation & Culture <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(OPS)</span></h2>
                 </div>
                 <div class="flex flex-col">
-                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-org').showModal()">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-org-en').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: OPS-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Organization & Standardization</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Owner freedom comes from team standardization. Eliminate rework and meeting chaos.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Organization & Standardization</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Eliminate rework and the chaos of useless meetings.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 397</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
-                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-script').showModal()">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-script-en').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: OPS-02</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Operational Scripts</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Stop redrafting the same message 10 times. Professional command library to shield your time.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Operational Scripts</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Stop drafting the same message 10 times. Command library.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 197</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
@@ -169,19 +175,19 @@
                     <h2 class="font-serif text-2xl text-white italic">Performance & Legal <span class="text-xs text-gold-400 align-top ml-1 font-sans tracking-widest opacity-60">(PERF)</span></h2>
                 </div>
                 <div class="flex flex-col">
-                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pv').showModal()">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-pv-en').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: PERF-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Spokesperson & Authority</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Speak like a statesman, decide like a CEO. Oratory techniques for the new leadership standard.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Spokesperson & Authority</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Speak like a statesman, decide like a CEO.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 297</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
-                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-legal').showModal()">
+                    <div class="asset-row group cursor-pointer py-8 flex flex-col md:flex-row md:items-center justify-between gap-4" onclick="document.getElementById('modal-legal-en').showModal()">
                         <div class="flex-1">
                             <div class="text-[10px] tracking-[0.2em] text-neutral-600 uppercase mb-2">Asset Code: PERF-02</div>
-                            <h3 class="asset-title text-3xl font-serif text-white mb-2 transition">Legal Design Kit</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl">Contracts that sell and protect simultaneously. Turn bureaucracy into executive design pieces.</p>
+                            <h3 class="asset-title text-3xl font-serif text-white transition">Legal Design Kit</h3>
+                            <p class="text-neutral-500 font-light text-sm max-w-xl">Contracts that sell and protect simultaneously.</p>
                         </div>
                         <div class="flex items-center gap-6"><span class="text-white text-lg font-light">$ 497</span><span class="asset-arrow text-gold-400 text-2xl opacity-0 -translate-x-4 transition">→</span></div>
                     </div>
@@ -196,187 +202,147 @@
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: RISK-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: RISK-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Crisis & Reputation Kit</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        A poorly managed crisis in the first 60 minutes can destroy decades of brand building. This kit isn't just a guide; it's your **survival insurance**. It contains the exact "War Room" protocols used to halt reputational bleeding and reclaim the public narrative. If you don't have a plan, the crisis dictates the rules. <strong>Don't be caught off guard.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        A poorly managed crisis in the first 60 minutes can destroy decades of brand building. This kit is your **survival insurance**. It contains the exact "War Room" protocols used to halt reputational bleeding. If you don't have a plan, the crisis dictates the rules. <strong>Don't be caught off guard.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Golden Hour Protocol (Immediate Actions)</li>
-                        <li>• Social Media Response Matrix</li>
-                        <li>• Holding Statements (Ready-to-use Templates)</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 997.00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 997.00</div>
                     <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Acquire Shielding</a>
                 </div>
             </div>
         </div>
     </dialog>
 
-    <dialog id="modal-gov">
+    <dialog id="modal-gov-en">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: GOV-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: GOV-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Governance & Protocols</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Internal rumors are the cancer of productivity. Without governance, your company is just a group of people trying to work. This asset delivers the **Architecture of Order**: shielded approval workflows, channel hierarchy, and rituals that ensure the owner's vision is executed at every level. <strong>Step out of the operational and let the method govern.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Internal rumors are the cancer of productivity. This asset delivers the **Architecture of Order**: shielded approval workflows and rituals that ensure the owner's vision is executed at every level. <strong>Step out of the operational and let the method govern your legacy.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Message Approval Workflow</li>
-                        <li>• Channel Management Manual</li>
-                        <li>• Institutional Response SLA</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 597.00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 597.00</div>
                     <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Deploy Governance</a>
                 </div>
             </div>
         </div>
     </dialog>
 
-    <dialog id="modal-diag">
+    <dialog id="modal-diag-en">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: STRAT-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: STRAT-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Strategic Diagnosis</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Hard work without clarity is just wasted energy. This framework allows you to perform a **strategic autopsy** on your current communication. Identify the noise destroying your authority, process bottlenecks, and where money is leaking. It is the definitive tool for those tired of "trying" and ready to audit. <strong>The truth hurts, but it sets your profit free.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Working without clarity is wasted energy. Perform a **strategic autopsy** on your communication. Identify noise destroying your authority and find where money leaks due to process failure. <strong>The truth hurts, but it sets your profit free.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Brand Noise Map</li>
-                        <li>• Digital Asset Audit</li>
-                        <li>• Priority Action Plan</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 497.00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 497.00</div>
                     <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Audit Strategy</a>
                 </div>
             </div>
         </div>
     </dialog>
 
-    <dialog id="modal-pos">
+    <dialog id="modal-pos-en">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: BRAND-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: BRAND-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Premium Positioning</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        Those seen as an "option" fight over price. Those seen as "elite" fight over availability. Premium Positioning is the encoding of your **Technical Superiority** into narrative. Break away from the average, elevate your voice, and communicate value so that price becomes a detail. <strong>Sell to those who buy solutions, not bargains.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Those seen as an "option" fight over price. Those seen as "elite" fight over availability. Encode your **Technical Superiority** into narrative. Shift from the average and communicate value so price becomes a detail. <strong>Sell to those who buy solutions.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Boutique Value Canvas</li>
-                        <li>• Executive Verbal Identity Manual</li>
-                        <li>• Authority Bio & Pitch Architecture</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 697.00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 697.00</div>
                     <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Elevate Standard</a>
                 </div>
             </div>
         </div>
     </dialog>
 
-    <dialog id="modal-org">
+    <dialog id="modal-org-en">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: OPS-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: OPS-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Organization & Standardization</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        People-dependent processes are fragile. Method-dependent processes are **unstoppable**. This asset provides the structure to stop "leading by example" and start "leading by method." SOPs, pragmatic meeting templates, and management rituals that end rework. <strong>Build a business that works with or without you.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        People-dependent processes are fragile. Method-dependent processes are **unstoppable**. Stop "leading by example" and start providing the method. SOPs and rituals that end rework. <strong>Build a business that works with or without you.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Standard Operating Procedures (SOP)</li>
-                        <li>• High-Performance Meeting Framework</li>
-                        <li>• Operational Cadence Dashboard</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 397.00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 397.00</div>
                     <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Standardize Now</a>
                 </div>
             </div>
         </div>
     </dialog>
 
-    <dialog id="modal-script">
+    <dialog id="modal-script-en">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: OPS-02</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: OPS-02</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Operational Scripts</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        How much time do you waste drafting emails or resolving petty conflicts via WhatsApp? This arsenal of pre-formatted messages ensures elite communication across all fronts: from closing contracts to handling late payments. <strong>Standardized communication prevents misinterpretation and saves hours of your week.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        How much time do you waste on petty conflicts? This arsenal of pre-formatted messages ensures elite communication from closing deals to collections. <strong>Standardized communication prevents misinterpretation and saves hours of your week.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Critical Response Library</li>
-                        <li>• WhatsApp Service Script</li>
-                        <li>• Collection & Alignment Protocol</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 197.00</div>
-                    <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Buy Time</a>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 197.00</div>
+                    <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Buy Back Time</a>
                 </div>
             </div>
         </div>
     </dialog>
 
-    <dialog id="modal-pv">
+    <dialog id="modal-pv-en">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: PERF-01</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: PERF-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Spokesperson & Authority</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        It’s not enough to be right; you must have authority. This guide is the definitive training for leaders who must master oratory in high-pressure environments: interviews, institutional videos, and board meetings. Learn "Bridging" techniques for tough questions and executive posture that conveys **absolute security**. <strong>Your voice is your strongest power tool.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        Being right isn't enough; you need authority. This guide is the ultimate training for leaders mastering high-pressure oratory. Learn "Bridging" techniques for tough questions and executive posture that conveys **absolute security**. <strong>Your voice is your power.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Media Training Practical Guide</li>
-                        <li>• Video Preparation Checklist</li>
-                        <li>• Framing & Oratory Techniques</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 297.00</div>
-                    <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Master Speech</a>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 297.00</div>
+                    <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Master the Speech</a>
                 </div>
             </div>
         </div>
     </dialog>
 
-    <dialog id="modal-legal">
+    <dialog id="modal-legal-en">
         <div class="bg-[#0a0a0a] border border-white/10 p-10 md:p-14 relative shadow-2xl">
             <button class="absolute top-5 right-5 text-neutral-500 hover:text-white transition text-2xl" onclick="this.closest('dialog').close()">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
-                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase">Asset: PERF-02</span>
+                    <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: PERF-02</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Legal Design Kit</h2>
-                    <p class="text-neutral-400 font-light leading-relaxed text-justify">
-                        20-page contracts in pure "legalese" are barriers to sales. The Legal Design Kit transforms dense documents into **visual persuasion tools**. Close deals faster, convey professionalism, and protect your IP with contracts your clients can actually read and respect. <strong>Beauty, clarity, and legal security in one place.</strong>
+                    <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
+                        20-page contracts in "legalese" are sales barriers. The Legal Design Kit transforms dense documents into **visual persuasion tools**. Close deals faster and protect your IP with clarity and elegance. <strong>Legal security with executive standards.</strong>
                     </p>
-                    <ul class="text-[11px] text-neutral-500 uppercase tracking-widest space-y-2 border-t border-white/5 pt-6">
-                        <li>• Legal Design Contract Templates</li>
-                        <li>• Legal Visual Icons & Elements</li>
-                        <li>• Plain Language Glossary</li>
-                    </ul>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-3xl text-gold-400 font-serif mb-2">$ 497.00</div>
+                    <div class="text-3xl text-gold-400 font-serif mb-4">$ 497.00</div>
                     <a href="iniciar-tratativas-en.html" class="bg-gold-400 text-black text-center py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">Transform Contracts</a>
                 </div>
             </div>
@@ -387,19 +353,9 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()">
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Collection</span>
-    </button>
-
     <script src="accessibility.js"></script>
     <script>
-        const synth = window.speechSynthesis;
-        function toggleAudioDescription() {
-            const utter = new SpeechSynthesisUtterance("Boutique Method Digital Collection. Explore eight exclusive assets for shielding, strategy, operations, and performance of your intellectual capital.");
-            utter.lang = 'en-US'; synth.speak(utter);
-        }
-
-        // Close logic on outside click for ALL modals
+        // Modal Closing logic
         document.querySelectorAll('dialog').forEach(d => {
             d.addEventListener('click', e => {
                 const rect = d.getBoundingClientRect();
