@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocolo de Valuation | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
@@ -23,7 +23,7 @@
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        
+
         /* Estilização dos campos do formulário */
         input, textarea, select {
             background-color: transparent;
@@ -66,22 +66,35 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <a href="#main-content" class="skip-link">Pular para a análise</a>
 
+    <!-- NAV (padrão completo + idioma) -->
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
+                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
+                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
+                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
+                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
+                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+                </div>
+
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <span class="text-gold-400 cursor-default">PT</span>
+                    <span class="text-white/30">|</span>
+                    <a href="valuation-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                </div>
             </div>
+
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
@@ -90,7 +103,7 @@
 
     <main id="main-content" class="flex-grow pt-40 pb-20 px-6 flex items-center justify-center">
         <div class="w-full max-w-5xl grid md:grid-cols-2 gap-20">
-            
+
             <div class="flex flex-col justify-center">
                 <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
                     Análise de <span class="text-gold-400 italic">Valuation</span>
@@ -98,7 +111,7 @@
                 <p class="text-neutral-400 font-light text-lg leading-relaxed max-w-md">
                     Preencha os dados preliminares da sua operação. Nossos analistas entrarão em contato para agendar a auditoria de ativos intangíveis.
                 </p>
-                
+
                 <div class="mt-12 space-y-4">
                     <div class="flex items-center gap-4 text-xs text-gold-400 uppercase tracking-widest">
                         <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
@@ -113,7 +126,7 @@
 
             <div class="bg-[#0a0a0a] p-10 border border-white/5 shadow-2xl">
                 <form action="https://formsubmit.co/SEU_EMAIL_AQUI" method="POST" class="space-y-6">
-                    
+
                     <input type="hidden" name="_subject" value="NOVO LEAD: Pedido de Valuation">
                     <input type="hidden" name="_captcha" value="false">
 
@@ -168,7 +181,7 @@
 
         </div>
     </main>
-    
+
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
@@ -198,8 +211,9 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Página de Análise de Valuation. Preencha os dados preliminares da sua operação para agendar a auditoria de ativos intangíveis. O formulário solicita nome, e-mail corporativo, nome da empresa, faturamento estimado e objetivo do valuation. Garantimos total confidencialidade.";
-                
+                const text =
+                    "Página de Análise de Valuation. Preencha os dados preliminares da sua operação para agendar a auditoria de ativos intangíveis. O formulário solicita nome, e-mail corporativo, nome da empresa, faturamento estimado, número de colaboradores e objetivo do valuation. Garantimos total confidencialidade.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
