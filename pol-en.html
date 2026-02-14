@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politics & Integrity (POL) | Boutique Method</title>
-    <meta name="description" content="Reputational risk management, electoral compliance, and integrity protocols for high-level campaigns and mandates.">
+    <meta name="description" content="Reputational risk management, institutional governance, and integrity protocols for public-facing organizations and leadership teams.">
     
     <link rel="stylesheet" href="accessibility.css">
     
@@ -100,7 +100,7 @@
                     Institutional <br><span class="italic text-neutral-500">Shielding</span>
                 </h1>
                 <p class="text-neutral-400 font-light text-lg md:text-xl max-w-2xl mx-auto animate-fade-in">
-                    Crisis containment protocols, reputational intelligence, and compliance for high-level mandates and campaigns.
+                    Crisis containment protocols, reputational intelligence, and communication governance for public-facing operations.
                 </p>
             </div>
         </header>
@@ -114,10 +114,10 @@
                 </div>
                 <div class="md:col-span-8 text-neutral-400 font-light leading-loose space-y-6">
                     <p>
-                        In today's political environment, volatility is the only constant. Public agents and party institutions need more than marketing; they need defense and integrity structures.
+                        In public environments, volatility is the only constant. Leadership teams and institutions need more than messaging — they need integrity structures, clear routines, and predictable response governance.
                     </p>
                     <p>
-                        The <strong>POL</strong> vertical of the Boutique Method does not deal with "vote-seeking," but with image sustainability. We deliver the governance architecture that allows the politician to focus on politics, while we manage the risk.
+                        The <strong>POL</strong> vertical of the Boutique Method does not provide political advertising, persuasion, or vote-seeking services. We design governance architecture for institutional communication: standards, internal flows, and protocols that reduce noise, avoid improvisation, and strengthen public trust.
                     </p>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                     </div>
                     <h3 class="text-xl text-white font-serif mb-4">Crisis Management</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Structured war rooms, reputational risk matrices, and immediate response scripts for damage control across social media and the press.
+                        Structured war rooms, reputational risk matrices, and immediate response scripts for damage containment across social media and press.
                     </p>
                 </div>
 
@@ -139,9 +139,9 @@
                         <span class="text-xs font-bold text-[#d4af37]">02</span>
                         <div class="h-1 w-8 bg-neutral-700 group-hover:bg-[#d4af37] transition"></div>
                     </div>
-                    <h3 class="text-xl text-white font-serif mb-4">Electoral Compliance</h3>
+                    <h3 class="text-xl text-white font-serif mb-4">Institutional Compliance</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Internal auditing of campaign processes, ensuring that fundraising and expenditures strictly follow regulations, preventing legal challenges.
+                        Internal audits of sensitive routines and decision flows, documentation standards, and traceable accountability — reducing exposure, improvisation, and avoidable vulnerabilities.
                     </p>
                 </div>
 
@@ -152,7 +152,7 @@
                     </div>
                     <h3 class="text-xl text-white font-serif mb-4">Legacy Protocols</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Organization of the mandate's intangible assets. We transform legislative/executive performance into intellectual property assets and organized history.
+                        Organization of institutional intangible assets. We structure decisions, projects, and delivery history into auditable memory and documented governance.
                     </p>
                 </div>
             </div>
@@ -175,7 +175,7 @@
 
             <div class="mt-12 text-center opacity-60 hover:opacity-100 transition duration-300">
                 <p class="text-[9px] text-neutral-500 uppercase tracking-wider max-w-3xl mx-auto leading-relaxed border-t border-white/5 pt-6">
-                    <strong>Legal Notice (POL):</strong> Boutique Method IP Holding Ltda provides materials for corporate integrity, compliance, and internal process management. Our services and products <u>do not constitute electoral advertising</u>, political marketing, or contentious electoral legal advice. The responsibility for the final use of materials before the Electoral Court lies with the client.
+                    <strong>Legal Notice (POL):</strong> Boutique Method IP Holding Ltda provides standards, materials, and advisory services in communication governance, institutional integrity, compliance, and internal process management. Our services and products <u>do not constitute electoral advertising</u>, political marketing, vote-seeking, fundraising, paid media, campaign operations, or contentious electoral legal advice. Responsibility for final use, as well as any applicable legal compliance, remains with the client and its representatives.
                 </p>
             </div>
 
@@ -187,7 +187,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -211,8 +211,11 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Boutique Method Political & Integrity Vertical. Institutional Shielding. We offer crisis containment protocols, reputational intelligence, and compliance for mandates and campaigns. Pillars: 1. Crisis Management with structured war rooms. 2. Electoral Compliance for process auditing. 3. Legacy Protocols to transform public performance into organized assets.";
-                
+                const text =
+                    "POL Vertical: Integrity and Institutional Shielding. " +
+                    "Crisis protocols, reputational intelligence, and communication governance. " +
+                    "We structure standards and internal routines to reduce noise and strengthen trust.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
