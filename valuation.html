@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valuation & Equity | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
@@ -20,11 +20,18 @@
             }
         }
     </script>
+
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
-        /* Botão de Audiodescrição */
+        /* Screen-reader only */
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -43,6 +50,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+
         .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
         .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
         .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
@@ -52,95 +60,115 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+
+            <!-- LOGO applied (BMIP) -->
+            <a href="index-en.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
+                <img
+                    src="bmip-logo-dark.png"
+                    alt="Boutique Method IP Holding"
+                    class="h-10 md:h-12 w-auto"
+                    loading="eager"
+                    decoding="async"
+                />
+                <span class="sr-only">Boutique Method®</span>
             </a>
+
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">Holding</a>
+                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
                 </div>
-                
+
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
+                    <a href="valuation.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
-                    <a href="valuation-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                    <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
+
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Initiate Protocols
             </a>
         </div>
     </nav>
 
     <main id="main-content" class="flex-grow pt-40 pb-20 px-6">
         <div class="max-w-4xl mx-auto">
-            
+
             <div class="mb-12">
-                <a href="index.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Voltar para Home</a>
+                <a href="index-en.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Back to Home</a>
             </div>
 
             <div class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
                 <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">Valuation</h1>
-                <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Equity & Ativos Intangíveis</p>
+                <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Equity & Intangible Assets</p>
             </div>
 
             <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
                 <p>
-                    O maior valor de uma empresa moderna não está no seu prédio ou estoque, mas na sua inteligência. Porém, conhecimento tácito (aquele que está apenas na cabeça do dono) vale zero em uma auditoria. Para gerar <strong>Equity</strong>, o conhecimento precisa ser transformado em <strong>Ativo Intelectual</strong>.
+                    The greatest value in a modern company is not in its building or inventory—but in its intelligence.
+                    Yet tacit knowledge (the kind that lives only inside the founder’s mind) is worth zero in a due diligence process.
+                    To generate <strong>equity</strong>, knowledge must be transformed into a <strong>protected intellectual asset</strong>.
                 </p>
+
                 <p>
-                    Na Boutique Method, preparamos sua empresa para valer mais. Identificamos, codificamos e registramos seus processos proprietários, criando um lastro de IP (Propriedade Intelectual) que multiplica o <em>Valuation</em> do negócio em rodadas de investimento ou Exit (venda).
+                    At Boutique Method, we prepare your company to be worth more.
+                    We identify, codify, and register your proprietary processes, creating an IP backbone (Intellectual Property)
+                    that multiplies business valuation in investment rounds or an exit (sale).
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-8 my-12">
                     <div class="bg-neutral-900/50 p-8 border border-white/10">
-                        <h3 class="font-serif text-2xl text-white mb-4">Empresa Comum</h3>
+                        <h3 class="font-serif text-2xl text-white mb-4">Ordinary Company</h3>
                         <p class="text-neutral-500 text-sm">
-                            Depende do fundador para funcionar. Se ele sai, o negócio para. O valor de mercado é baixo porque o risco é alto.
+                            Depends on the founder to function. If they leave, the business stops.
+                            Market value stays low because risk stays high.
                         </p>
                     </div>
+
                     <div class="bg-neutral-900/50 p-8 border border-white/10 border-l-gold-400">
-                        <h3 class="font-serif text-2xl text-white mb-4">Empresa com Método</h3>
+                        <h3 class="font-serif text-2xl text-white mb-4">Company with Method</h3>
                         <p class="text-neutral-300 text-sm">
-                            Possui processos auditáveis e replicáveis. O "know-how" é um ativo da CNPJ, não do CPF. O valor de mercado é multiplicado.
+                            Owns auditable, replicable processes. The know-how is an asset of the company—not the individual.
+                            Market value multiplies.
                         </p>
                     </div>
                 </div>
 
                 <p class="text-white font-medium italic text-center text-xl pt-4">
-                    "Não construímos empresas apenas para operar. Construímos para valer."
+                    “We don’t build companies only to operate. We build them to be worth more.”
                 </p>
 
                 <div class="pt-12 text-center">
-                    <a href="analise-valuation.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
-                        Solicitar Análise de Valuation
+                    <a href="analysis-valuation-en.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                        Request a Valuation Analysis
                     </a>
                 </div>
             </div>
         </div>
     </main>
-    
+
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to content">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
     <script src="accessibility.js"></script>
@@ -157,24 +185,29 @@
                 synth.cancel();
                 isPlaying = false;
                 btn.classList.add('paused');
-                label.innerText = "Ouvir Página";
+                label.innerText = "Listen to Page";
             } else {
-                const text = "Página de Valuation e Equity. O maior valor de uma empresa moderna está na sua inteligência. Transformamos conhecimento tácito em ativos intelectuais auditáveis. Diferenciamos a empresa comum, que depende do fundador, da empresa com método, que possui processos replicáveis e valor de mercado multiplicado. Não construímos empresas apenas para operar, construímos para valer.";
-                
+                const text =
+                    "Valuation and equity page. The greatest value in a modern company is its intelligence. " +
+                    "We transform tacit knowledge into auditable intellectual assets. " +
+                    "We distinguish an ordinary company, dependent on the founder, from a company with method, " +
+                    "with replicable processes and multiplied market value. " +
+                    "We don’t build companies only to operate. We build them to be worth more.";
+
                 const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'pt-BR';
+                utter.lang = 'en-US';
                 utter.rate = 0.95;
 
                 utter.onend = () => {
                     isPlaying = false;
                     btn.classList.add('paused');
-                    label.innerText = "Ouvir Página";
+                    label.innerText = "Listen to Page";
                 };
 
                 synth.speak(utter);
                 isPlaying = true;
                 btn.classList.remove('paused');
-                label.innerText = "Parar Áudio";
+                label.innerText = "Stop Audio";
             }
         }
     </script>
