@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HC - Health Care & Experience | Boutique Method</title>
+    <title>HC | Health Care & Experience | Boutique Method</title>
+    <meta name="description" content="HC vertical: patient journey, clinical institutional communication, and risk-reduction protocols for high-standard health care operations.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="accessibility.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script> tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } } </script>
-    <style> 
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
-        .gold-selection::selection { background: #d4af37; color: black; } 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
+        .gold-selection::selection { background: #d4af37; color: black; }
 
         /* Audio Description Button */
         .audio-fab {
@@ -43,8 +54,9 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
-    
+
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
@@ -52,13 +64,24 @@
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
-            <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                <a href="licenciamento-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licensing</a>
-                <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+                </div>
+
+                <!-- Language Switch -->
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <a href="hc.html" class="text-neutral-500 hover:text-white transition">PT</a>
+                    <span class="text-white/30">|</span>
+                    <span class="text-gold-400 cursor-default">EN</span>
+                </div>
             </div>
+
             <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
@@ -67,40 +90,63 @@
 
     <main id="main-content" class="flex-grow pt-40 pb-20 px-6">
         <div class="max-w-4xl mx-auto">
-            
+
             <div class="mb-12">
-                <a href="licenciamento-en.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Back to Overview</a>
+                <a href="licenciamento-en.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition" aria-label="Back to Licensing overview">
+                    &larr; Back to Overview
+                </a>
             </div>
 
-            <div class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+            <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Vertical</span>
                 <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">HC</h1>
                 <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Health Care & Experience</p>
-            </div>
+            </header>
 
             <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
                 <p>
-                    The HC vertical of the Boutique Method structures health communication as part of the care process — because, in high-complexity environments, confused information becomes risk, insecurity, and rework. The focus here is on transforming technical language into intelligible, guiding, and actionable communication, without losing rigor.
+                    The HC vertical structures communication as a core component of the care process.
+                    In high-complexity environments, unclear information turns into risk: insecurity, conflict, and operational rework.
+                    Our approach transforms technical language into guidance that is intelligible, actionable, and consistent — without sacrificing rigor.
                 </p>
+
                 <p>
-                    We implement standards for the entire patient journey: before, during, and after service. This includes reception, guidance, terms, flows, messaging, and response protocols — with special attention to critical moments (delays, complications, recurring doubts, and crises).
+                    We implement standards across the entire patient journey: before, during, and after service.
+                    This includes reception, orientation, terms, flows, messaging, and response protocols — with special attention to critical moments
+                    (delays, complications, recurring doubts, and reputational pressure).
                 </p>
 
                 <div class="bg-neutral-900/50 p-8 border border-white/10 my-10">
-                    <h3 class="font-serif text-2xl text-white mb-6">What this vertical usually organizes:</h3>
+                    <h2 class="font-serif text-2xl text-white mb-6">What this vertical typically organizes</h2>
+
                     <ul class="space-y-3 text-sm text-neutral-400">
-                        <li class="flex gap-3"><span class="text-gold-400">►</span> Patient journey and stage-by-stage communication (pre, intra, and post)</li>
-                        <li class="flex gap-3"><span class="text-gold-400">►</span> Service protocols and scripts (WhatsApp, phone, front desk)</li>
-                        <li class="flex gap-3"><span class="text-gold-400">►</span> Sensitive documents (guidelines, terms, instructions, announcements)</li>
-                        <li class="flex gap-3"><span class="text-gold-400">►</span> Noise and crisis management (clear communication in delicate situations)</li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Patient journey communication, stage-by-stage (pre, during, post)
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Service protocols and scripts (WhatsApp, phone, front desk)
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Sensitive documents (guidelines, terms, instructions, institutional notices)
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Noise and crisis alignment (clear communication under delicate conditions)
+                        </li>
                     </ul>
                 </div>
 
                 <p class="text-white font-medium italic">
-                    Expected result: more understanding, more trust, less conflict, less rework — and an experience aligned with the level of clinical excellence.
+                    Expected outcome: more understanding, more trust, less friction, and less rework — with an experience aligned to the level of clinical excellence.
                 </p>
 
                 <div class="pt-10 text-center">
-                    <a href="iniciar-tratativas-en.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                    <a href="iniciar-tratativas-en.html"
+                       class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500"
+                       aria-label="Request licensing protocols for the Health Care vertical">
                         Request HC Licensing
                     </a>
                 </div>
@@ -113,7 +159,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -137,8 +183,9 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "HC Vertical: Health Care and Experience. We structure health communication as part of the care process. Transforming technical language into intelligible communication for the entire patient journey, ensuring less conflict and more clinical excellence.";
-                
+                const text =
+                    "HC vertical: Health Care and Experience. This page explains how Boutique Method structures clinical communication as part of the care process. We standardize the patient journey before, during, and after service, including reception scripts, sensitive documents, and crisis-aligned responses, to reduce friction and operational rework while preserving technical rigor.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
