@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
+    <link rel="stylesheet" href="accessibility.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <script>
@@ -22,10 +24,17 @@
     </script>
 
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
-        /* ESTILO DOS MODALS (NOVO PADRÃO STORE) */
+        /* Better focus visibility */
+        :focus-visible { outline: 2px solid rgba(212,175,55,0.6); outline-offset: 4px; }
+
+        /* Card hover polish */
+        .service-card { transition: transform .4s ease, border-color .4s ease, background-color .4s ease; }
+        .service-card:hover { transform: translateY(-4px); }
+
+        /* MODAL (novo padrão store) */
         dialog::backdrop { background: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
 
         dialog {
@@ -41,9 +50,14 @@
             transform: translate(-50%, -50%);
             z-index: 9999;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
         }
         dialog[open] { opacity: 1; }
+
+        /* Mobile modal scroll */
+        .modal-shell { max-height: 85vh; overflow: auto; scrollbar-width: thin; scrollbar-color: #d4af37 transparent; }
+        .modal-shell::-webkit-scrollbar { width: 4px; }
+        .modal-shell::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
     </style>
 </head>
 
@@ -64,7 +78,7 @@
                     <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
                     <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Serviços</a>
+                    <a href="servicos.html" class="text-gold-400 border-b border-gold-400 pb-1 transition" aria-current="page">Serviços</a>
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
                 </div>
 
@@ -95,7 +109,8 @@
     <main class="flex-grow px-6 pb-20">
         <div class="max-w-6xl mx-auto space-y-8">
 
-            <div onclick="document.getElementById('m1').showModal()" style="cursor: pointer;" class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500 hover:transform hover:-translate-y-1">
+            <!-- Card 1 -->
+            <button type="button" onclick="openDialog('m1')" class="service-card group w-full text-left border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
                 <div class="flex flex-col md:flex-row md:items-start gap-8">
                     <div class="md:w-1/3">
                         <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Consultoria & Escala</span>
@@ -108,9 +123,10 @@
                         <span class="text-xs text-gold-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes →</span>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div onclick="document.getElementById('m2').showModal()" style="cursor: pointer;" class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500 hover:transform hover:-translate-y-1">
+            <!-- Card 2 -->
+            <button type="button" onclick="openDialog('m2')" class="service-card group w-full text-left border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
                 <div class="flex flex-col md:flex-row md:items-start gap-8">
                     <div class="md:w-1/3">
                         <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Propriedade Intelectual</span>
@@ -123,9 +139,10 @@
                         <span class="text-xs text-gold-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes →</span>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div onclick="document.getElementById('m3').showModal()" style="cursor: pointer;" class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500 hover:transform hover:-translate-y-1">
+            <!-- Card 3 -->
+            <button type="button" onclick="openDialog('m3')" class="service-card group w-full text-left border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
                 <div class="flex flex-col md:flex-row md:items-start gap-8">
                     <div class="md:w-1/3">
                         <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Jurídico & Visual</span>
@@ -138,9 +155,10 @@
                         <span class="text-xs text-gold-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes →</span>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div onclick="document.getElementById('m4').showModal()" style="cursor: pointer;" class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500 hover:transform hover:-translate-y-1">
+            <!-- Card 4 -->
+            <button type="button" onclick="openDialog('m4')" class="service-card group w-full text-left border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
                 <div class="flex flex-col md:flex-row md:items-start gap-8">
                     <div class="md:w-1/3">
                         <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Gestão de Crise</span>
@@ -153,9 +171,10 @@
                         <span class="text-xs text-gold-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes →</span>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div onclick="document.getElementById('m5').showModal()" style="cursor: pointer;" class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500 hover:transform hover:-translate-y-1">
+            <!-- Card 5 -->
+            <button type="button" onclick="openDialog('m5')" class="service-card group w-full text-left border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
                 <div class="flex flex-col md:flex-row md:items-start gap-8">
                     <div class="md:w-1/3">
                         <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Comunicação Pública</span>
@@ -168,9 +187,10 @@
                         <span class="text-xs text-gold-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes →</span>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div onclick="document.getElementById('m6').showModal()" style="cursor: pointer;" class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500 hover:transform hover:-translate-y-1">
+            <!-- Card 6 -->
+            <button type="button" onclick="openDialog('m6')" class="service-card group w-full text-left border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
                 <div class="flex flex-col md:flex-row md:items-start gap-8">
                     <div class="md:w-1/3">
                         <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Gestão & Processos</span>
@@ -183,9 +203,10 @@
                         <span class="text-xs text-gold-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes →</span>
                     </div>
                 </div>
-            </div>
+            </button>
 
-            <div onclick="document.getElementById('m7').showModal()" style="cursor: pointer;" class="group border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500 hover:transform hover:-translate-y-1">
+            <!-- Card 7 -->
+            <button type="button" onclick="openDialog('m7')" class="service-card group w-full text-left border border-white/5 bg-neutral-900/20 p-8 md:p-12 hover:border-gold-400/30 transition duration-500">
                 <div class="flex flex-col md:flex-row md:items-start gap-8">
                     <div class="md:w-1/3">
                         <span class="text-gold-400 text-xs tracking-[0.2em] uppercase mb-2 block">Posicionamento</span>
@@ -198,7 +219,7 @@
                         <span class="text-xs text-gold-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition duration-300">Ver Detalhes →</span>
                     </div>
                 </div>
-            </div>
+            </button>
 
         </div>
 
@@ -241,10 +262,10 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <!-- MODAIS (mantidos iguais) -->
-    <dialog id="m1">
-        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
-            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+    <!-- MODAIS -->
+    <dialog id="m1" aria-label="Implementação de Método">
+        <div class="modal-shell bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button type="button" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="closeDialog('m1')" aria-label="Fechar">✕</button>
             <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Implementação de Método</h2>
             <div class="space-y-6">
                 <div>
@@ -264,9 +285,9 @@
         </div>
     </dialog>
 
-    <dialog id="m2">
-        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
-            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+    <dialog id="m2" aria-label="Arquitetura de IP">
+        <div class="modal-shell bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button type="button" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="closeDialog('m2')" aria-label="Fechar">✕</button>
             <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Arquitetura de IP</h2>
             <div class="space-y-6">
                 <div>
@@ -286,9 +307,9 @@
         </div>
     </dialog>
 
-    <dialog id="m3">
-        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
-            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+    <dialog id="m3" aria-label="Legal Design">
+        <div class="modal-shell bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button type="button" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="closeDialog('m3')" aria-label="Fechar">✕</button>
             <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Legal Design</h2>
             <div class="space-y-6">
                 <div>
@@ -308,9 +329,9 @@
         </div>
     </dialog>
 
-    <dialog id="m4">
-        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
-            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+    <dialog id="m4" aria-label="Governança Reputacional">
+        <div class="modal-shell bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button type="button" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="closeDialog('m4')" aria-label="Fechar">✕</button>
             <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Governança Reputacional</h2>
             <div class="space-y-6">
                 <div>
@@ -330,9 +351,9 @@
         </div>
     </dialog>
 
-    <dialog id="m5">
-        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
-            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+    <dialog id="m5" aria-label="Scripts e Cerimoniais">
+        <div class="modal-shell bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button type="button" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="closeDialog('m5')" aria-label="Fechar">✕</button>
             <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Scripts & Cerimoniais</h2>
             <div class="space-y-6">
                 <div>
@@ -352,9 +373,9 @@
         </div>
     </dialog>
 
-    <dialog id="m6">
-        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
-            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+    <dialog id="m6" aria-label="Organização Interna">
+        <div class="modal-shell bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button type="button" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="closeDialog('m6')" aria-label="Fechar">✕</button>
             <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Organização Interna</h2>
             <div class="space-y-6">
                 <div>
@@ -374,9 +395,9 @@
         </div>
     </dialog>
 
-    <dialog id="m7">
-        <div class="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
-            <button class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="this.closest('dialog').close()">✕</button>
+    <dialog id="m7" aria-label="Estratégia e Branding">
+        <div class="modal-shell bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative shadow-2xl">
+            <button type="button" class="absolute top-4 right-4 text-neutral-500 hover:text-white transition text-xl" onclick="closeDialog('m7')" aria-label="Fechar">✕</button>
             <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">Estratégia & Branding</h2>
             <div class="space-y-6">
                 <div>
@@ -397,13 +418,38 @@
     </dialog>
 
     <script>
+        let lastFocus = null;
+
+        function openDialog(id) {
+            const d = document.getElementById(id);
+            if (!d) return;
+            lastFocus = document.activeElement;
+            d.showModal();
+            const closeBtn = d.querySelector('button[aria-label="Fechar"]');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeDialog(id) {
+            const d = document.getElementById(id);
+            if (!d) return;
+            d.close();
+            if (lastFocus) lastFocus.focus();
+        }
+
+        // Close on outside click (robust)
         document.querySelectorAll('dialog').forEach(d => {
-            d.addEventListener('click', e => {
+            d.addEventListener('click', (e) => {
                 const rect = d.getBoundingClientRect();
-                if (e.clientX < rect.left || e.clientX > rect.right ||
-                    e.clientY < rect.top || e.clientY > rect.bottom) {
-                    d.close();
-                }
+                const inDialog = (
+                    e.clientX >= rect.left && e.clientX <= rect.right &&
+                    e.clientY >= rect.top && e.clientY <= rect.bottom
+                );
+                if (!inDialog) d.close();
+            });
+
+            // ESC restore focus
+            d.addEventListener('close', () => {
+                if (lastFocus) lastFocus.focus();
             });
         });
     </script>
