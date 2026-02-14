@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POL - Politics & Institutional | Boutique Method</title>
+    <meta name="description" content="POL vertical by Boutique Method: institutional communication governance, accountability standards, language protocols and crisis response frameworks to strengthen public trust.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="accessibility.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script> tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } } } } </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
+        }
+    </script>
     <style> 
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
         .gold-selection::selection { background: #d4af37; color: black; } 
@@ -69,29 +79,32 @@
         <div class="max-w-4xl mx-auto">
             
             <div class="mb-12">
-                <a href="licenciamento-en.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Back to Overview</a>
+                <a href="licenciamento-en.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">
+                    &larr; Back to Overview
+                </a>
             </div>
 
-            <div class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+            <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Licensing Vertical</span>
                 <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">POL</h1>
                 <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Politics & Institutional</p>
-            </div>
+            </header>
 
             <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
                 <p>
                     The POL vertical of the Boutique Method was built to elevate institutional communication to a standard of governance and credibility. In public contexts, reputation is not aesthetic: it is a direct consequence of consistency, transparency, and the ability to explain decisions in understandable language.
                 </p>
                 <p>
-                    The work organizes the institutional narrative (what is said, how it is said, and when it is said), standardizes responses and flows, defines protocols for crisis situations, and creates a communication base that reduces noise, avoids improvisation, and strengthens citizen trust.
+                    Our work organizes the institutional narrative (what is said, how it is said, and when it is said), standardizes responses and workflows, defines protocols for crisis situations, and builds a communication base that reduces noise, avoids improvisation, and strengthens citizen trust.
                 </p>
 
                 <div class="bg-neutral-900/50 p-8 border border-white/10 my-10">
-                    <h3 class="font-serif text-2xl text-white mb-6">What this vertical usually organizes:</h3>
+                    <h2 class="font-serif text-2xl text-white mb-6">What this vertical usually organizes:</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
                         <li class="flex gap-3"><span class="text-gold-400">►</span> Accountability and public communication by themes and priorities</li>
                         <li class="flex gap-3"><span class="text-gold-400">►</span> Language standards (clarity, accessibility, and institutional tone)</li>
                         <li class="flex gap-3"><span class="text-gold-400">►</span> Crisis and positioning protocols (response governance)</li>
-                        <li class="flex gap-3"><span class="text-gold-400">►</span> Image risk monitoring (risk map + internal routines)</li>
+                        <li class="flex gap-3"><span class="text-gold-400">►</span> Reputation risk monitoring (risk map + internal routines)</li>
                     </ul>
                 </div>
 
@@ -104,6 +117,14 @@
                         Request POL Licensing
                     </a>
                 </div>
+
+                <!-- Legal Notice POL -->
+                <div class="mt-16 pt-8 border-t border-white/5 text-center">
+                    <p class="text-[10px] text-neutral-600 uppercase tracking-wider max-w-3xl mx-auto leading-relaxed">
+                        <strong>Legal Notice (POL):</strong> Boutique Method provides consultancy in institutional communication governance, operational processes, and standardization. We do not provide electoral advisory services, campaign messaging, propaganda, vote solicitation, or political fundraising strategies. Responsibility for decisions, public statements, and legal compliance remains exclusively with the client and its representatives.
+                    </p>
+                </div>
+
             </div>
         </div>
     </main>
@@ -113,7 +134,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -137,8 +158,10 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "POL Vertical: Politics and Institutional. Elevating communication to a standard of governance and credibility. Focusing on accountability, institutional clarity, and crisis protocols to strengthen public trust.";
-                
+                const text =
+                    "POL Vertical: Politics and Institutional. We elevate institutional communication to a governance and credibility standard. " +
+                    "We organize narrative, language standards, crisis protocols, and internal routines to reduce noise and strengthen public trust.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
