@@ -17,6 +17,12 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
         .gold-selection::selection { background: #d4af37; color: black; } 
 
+        /* SR-only */
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
         /* Audio Description Button */
         .audio-fab {
             position: fixed;
@@ -51,16 +57,29 @@
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+
+            <!-- LOGO (BMIP) -->
+            <a href="index-en.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
+                <img
+                    src="bmip-logo-dark.png"
+                    alt="Boutique Method IP Holding"
+                    class="h-10 md:h-12 w-auto"
+                    loading="eager"
+                    decoding="async"
+                />
+                <span class="sr-only">Boutique Method®</span>
             </a>
+
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
                     <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+
+                    <!-- mark Services active (Solutions = services portfolio) -->
+                    <a href="servicos-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Services</a>
+
                     <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Store</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
                 </div>
                 
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
@@ -69,6 +88,7 @@
                     <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
+
             <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
@@ -91,7 +111,7 @@
                     <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Ceremonials • Speeches • Spokesperson</p>
                 </div>
                 <div class="space-y-2 md:border-x border-white/10">
-                    <h3 class="text-white font-serif text-lg">Management & Processes</h3>
+                    <h3 class="text-white font-serif text-lg">Management &amp; Processes</h3>
                     <p class="text-neutral-500 text-[10px] uppercase tracking-widest">Internal Org. • Governance • Training</p>
                 </div>
                 <div class="space-y-2">
@@ -105,14 +125,14 @@
                 <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
                     <div>
                         <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Protection</span>
-                        <h3 class="font-serif text-xl text-white mb-2">Crisis & Reputation</h3>
+                        <h3 class="font-serif text-xl text-white mb-2">Crisis &amp; Reputation</h3>
                         <p class="text-neutral-500 text-xs leading-relaxed mb-4">
                             We structure responses, positioning, and protocols to mitigate reputational risk.
                         </p>
                         <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
                             <li>• Rapid response plan</li>
-                            <li>• Official statements & press releases</li>
-                            <li>• Q&A (tough questions)</li>
+                            <li>• Official statements &amp; press releases</li>
+                            <li>• Q&amp;A (tough questions)</li>
                         </ul>
                     </div>
                     <a href="iniciar-tratativas-en.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Hire</a>
@@ -121,9 +141,9 @@
                 <div class="border border-white/5 bg-neutral-900/20 p-6 hover:border-gold-400/30 transition duration-500 flex flex-col justify-between">
                     <div>
                         <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Systems</span>
-                        <h3 class="font-serif text-xl text-white mb-2">Governance & Protocols</h3>
+                        <h3 class="font-serif text-xl text-white mb-2">Governance &amp; Protocols</h3>
                         <p class="text-neutral-500 text-xs leading-relaxed mb-4">
-                            Rules and workflows to ensure the company's message is consistent and secure.
+                            Rules and workflows to keep the company's message consistent and secure.
                         </p>
                         <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
                             <li>• Channel matrix</li>
@@ -139,10 +159,10 @@
                         <span class="text-gold-400 text-[10px] uppercase tracking-widest mb-2 block">Analysis</span>
                         <h3 class="font-serif text-xl text-white mb-2">Strategic Diagnosis</h3>
                         <p class="text-neutral-500 text-xs leading-relaxed mb-4">
-                            Objective reading of the scenario: noise, risks, waste, and opportunities.
+                            Objective scenario reading: noise, risks, waste, and opportunities.
                         </p>
                         <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
-                            <li>• Noise & bottleneck map</li>
+                            <li>• Noise &amp; bottleneck map</li>
                             <li>• Compliance risks</li>
                             <li>• Step-by-step action plan</li>
                         </ul>
@@ -175,7 +195,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -199,7 +219,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Boutique Method Corporate Solutions Page. Product catalog divided into Public Communication, Management and Processes, and Positioning. We offer solutions such as Crisis and Reputation, Governance and Protocols, Strategic Diagnosis, Premium Positioning, and Legal Design. All services aim for operational efficiency and brand protection.";
+                const text = "Boutique Method Corporate Solutions page. Product catalog divided into Public Communication, Management and Processes, and Positioning. Featured solutions: Crisis and Reputation, Governance and Protocols, Strategic Diagnosis, and Premium Positioning.";
                 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
