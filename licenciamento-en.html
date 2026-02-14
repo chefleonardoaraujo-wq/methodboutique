@@ -1,263 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Licensing | Boutique Method</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
-    <link rel="stylesheet" href="accessibility.css">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Audio Description Button */
-        .audio-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50px;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
-        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
-        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
-        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
-        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
-        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 20%; }
-        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Licensing | Boutique Method</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-        /* MOBILE FIX: Modal Engineering */
-        .modal-container {
-            max-height: 85vh; /* Occupies max 85% of screen height */
-            overflow-y: auto; /* Enables scroll if text is long */
-            width: 95%;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 transparent;
-        }
-        .modal-container::-webkit-scrollbar { width: 4px; }
-        .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+  <link rel="stylesheet" href="accessibility.css" />
 
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ['"Playfair Display"', "serif"], sans: ['"Lato"', "sans-serif"] },
+          colors: { gold: { 400: "#d4af37", 900: "#8a6d1f" } }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
+    .gold-selection::selection { background: #d4af37; color: black; }
+
+    /* MOBILE FIX: Modal Engineering */
+    .modal-container {
+      max-height: 85vh;
+      overflow-y: auto;
+      width: 95%;
+      scrollbar-width: thin;
+      scrollbar-color: #d4af37 transparent;
+    }
+    .modal-container::-webkit-scrollbar { width: 4px; }
+    .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+    .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+    /* Audio Description Button (site standard) */
+    .audio-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+    .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+    .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+    .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+    .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+    .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+    .paused .bar { animation: none; height: 20%; }
+    @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+  </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- STANDARD NAV + "How It Works" + PT|EN -->
+  <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+        Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+      </a>
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-            </a>
-            
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                    <a href="licenciamento-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
-                </div>
-                
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <a href="licenciamento.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                    <span class="text-white/30">|</span>
-                    <span class="text-gold-400 cursor-default">EN</span>
-                </div>
-            </div>
-
-            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Initiate Protocols
-            </a>
+      <div class="flex items-center space-x-4 md:space-x-8">
+        <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+          <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+          <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+          <a href="licenciamento-en.html" class="text-gold-400 transition border-b border-gold-400 pb-1">Licensing</a>
+          <a href="como-funciona-en.html" class="text-white hover:text-gold-400 transition">How It Works</a>
+          <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+          <a href="store-en.html" class="text-white hover:text-gold-400 transition">Archive</a>
         </div>
-    </nav>
 
-    <main id="main-content">
-        <header class="pt-48 md:pt-52 pb-20 px-6 text-center">
-            <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
-                Licensing of the <span class="italic text-neutral-500">Method</span>
-            </h1>
-            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-                Scale without swelling. Transform your know-how into products that others can apply.
-            </p>
-        </header>
-
-        <section class="py-20 px-6 border-t border-white/5 bg-neutral-900/20">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-left mb-12">
-                    <h2 class="font-serif text-3xl text-white">The Intellectual Asset</h2>
-                    <p class="text-[10px] uppercase tracking-widest text-neutral-500">Comparison of delivery models and value</p>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-8">
-                    <div>
-                        <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Standard Consulting</h3>
-                        <p class="text-neutral-400 text-sm font-light text-justify">Sells hours. Hard to scale. Depends 100% on the owner.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Executive Education</h3>
-                        <p class="text-neutral-400 text-sm font-light text-justify">Sells courses. Low barrier to entry. High competition.</p>
-                    </div>
-                    <div class="relative">
-                        <h3 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Boutique Method™</h3>
-                        <p class="text-white text-sm font-medium text-justify">Sells system. High barrier to entry. Generates Equity and Royalties.</p>
-                        <div class="absolute -left-6 top-0 bottom-0 w-px bg-gold-400/30 hidden md:block"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-32 px-6 border-t border-white/5">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Specializations</span>
-                    <h2 class="font-serif text-4xl text-white">Our <span class="italic text-neutral-500">Verticals</span></h2>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <a href="licenciamento-jur-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">JUR</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Legal & Legal Design</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Document standardization for elite law firms.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
-                    </a>
-
-                    <a href="hc-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">HC</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Health Care & Experience</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Patient experience protocols for clinics.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
-                    </a>
-
-                    <a href="pol-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
-                        <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">POL</span>
-                        <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Political & Institutional</h3>
-                        <p class="text-neutral-500 text-xs leading-relaxed mb-8">Cabinet management and public reputation.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-32 px-6 border-t border-white/5">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Business Models</span>
-                    <h2 class="font-serif text-4xl text-white">Licensing <span class="italic text-neutral-500">Plans</span></h2>
-                    <p class="text-neutral-500 text-xs mt-4 uppercase tracking-widest">Click on cards for details</p>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8 items-center">
-                    <button onclick="openModal('essential')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
-                        <h3 class="font-serif text-3xl text-white mb-2">Essential</h3>
-                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">License to Use</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Ideal for using the brand and basic manuals without strategic support.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
-                    </button>
-
-                    <button onclick="openModal('professional')" class="bg-[#0a0a0a] border-2 border-gold-400 p-12 text-center relative transform scale-100 md:scale-105 z-10 w-full shadow-2xl shadow-gold-400/10">
-                        <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[10px] uppercase tracking-widest px-4 py-1 font-bold">Recommended</span>
-                        <h3 class="font-serif text-4xl text-gold-400 mb-2">Professional</h3>
-                        <span class="text-neutral-400 text-[10px] uppercase tracking-widest block mb-8">Certification & Support</span>
-                        <p class="text-white text-sm font-light leading-relaxed mb-8">For partners looking to scale. Includes training and monitoring.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">View Details &rarr;</span>
-                    </button>
-
-                    <button onclick="openModal('enterprise')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
-                        <h3 class="font-serif text-3xl text-white mb-2">Enterprise</h3>
-                        <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master & Equity</span>
-                        <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Total method customization and territorial exclusivity.</p>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-4 md:p-6">
-        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-6 md:p-12 relative shadow-2xl modal-container modal-enter">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Close">✕</button>
-            <div id="modal-content" class="space-y-6"></div>
+        <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+          <a href="licenciamento.html" class="text-neutral-500 hover:text-white transition">PT</a>
+          <span class="text-white/30">|</span>
+          <span class="text-gold-400 cursor-default">EN</span>
         </div>
+      </div>
+
+      <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+        Start Discussions
+      </a>
     </div>
+  </nav>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
-    </footer>
+  <main id="main-content" class="flex-grow">
+    <header class="pt-48 md:pt-52 pb-20 px-6 text-center">
+      <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
+        Method <span class="italic text-neutral-500">Licensing</span>
+      </h1>
+      <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+        Scale without bloat. Turn your know-how into products others can apply.
+      </p>
+    </header>
 
-    <script>
-        const modalData = {
-            essential: {
-                label: "Individual Model", title: "Essential",
-                text: "Full access to the methodological framework for individual application. Ideal for freelance professionals seeking to differentiate their delivery through validated processes. Includes brand manual, access to the training platform, and personal certification."
-            },
-            professional: {
-                label: "Business Model", title: "Professional",
-                text: "Robust structure for team standardization. Allows offices and clinics to install the 'Boutique Operating System' into their culture. Includes in-company training (online), implementation support, and usage licenses for collaborators."
-            },
-            enterprise: {
-                label: "Master Model", title: "Enterprise",
-                text: "The highest level of partnership. Guarantees territorial exclusivity and the right to resell and sublicense the method in your region. Includes strategic equity consulting, participation in the innovation board, and royalties on the network created."
-            }
+    <section class="py-20 px-6 border-t border-white/5 bg-neutral-900/20">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-left mb-12">
+          <h2 class="font-serif text-3xl text-white">The Intellectual Asset</h2>
+          <p class="text-[10px] uppercase tracking-widest text-neutral-500">A comparison of delivery models and value</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12 border-t border-white/10 pt-8">
+          <div>
+            <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Traditional Consulting</h3>
+            <p class="text-neutral-400 text-sm font-light text-justify">Sells hours. Hard to scale. 100% dependent on the owner.</p>
+          </div>
+          <div>
+            <h3 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">Executive Education</h3>
+            <p class="text-neutral-400 text-sm font-light text-justify">Sells courses. Low barrier to entry. High competition.</p>
+          </div>
+          <div class="relative">
+            <h3 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Boutique Method™</h3>
+            <p class="text-white text-sm font-medium text-justify">Sells a system. High barrier to entry. Builds equity and royalties.</p>
+            <div class="absolute -left-6 top-0 bottom-0 w-px bg-gold-400/30 hidden md:block"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-32 px-6 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Specializations</span>
+          <h2 class="font-serif text-4xl text-white">Our <span class="italic text-neutral-500">Verticals</span></h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <a href="licenciamento-jur-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
+            <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">JUR</span>
+            <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Legal & Legal Design</h3>
+            <p class="text-neutral-500 text-xs leading-relaxed mb-8">Document standardization for elite firms.</p>
+            <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
+          </a>
+
+          <a href="hc-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
+            <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">HC</span>
+            <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Health Care & Experience</h3>
+            <p class="text-neutral-500 text-xs leading-relaxed mb-8">Patient experience protocols for clinics.</p>
+            <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
+          </a>
+
+          <a href="pol-en.html" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 block">
+            <span class="text-gold-400 font-serif text-5xl italic mb-6 block group-hover:scale-110 transition duration-500">POL</span>
+            <h3 class="text-white text-sm uppercase tracking-[0.2em] font-bold mb-4">Politics & Institutional</h3>
+            <p class="text-neutral-500 text-xs leading-relaxed mb-8">Office management and public reputation.</p>
+            <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">Explore &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-32 px-6 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Business Models</span>
+          <h2 class="font-serif text-4xl text-white">Licensing <span class="italic text-neutral-500">Plans</span></h2>
+          <p class="text-neutral-500 text-xs mt-4 uppercase tracking-widest">Click the cards to see details</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <button onclick="openModal('essential')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
+            <h3 class="font-serif text-3xl text-white mb-2">Essential</h3>
+            <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Usage License</span>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Ideal for using the brand and core manuals without strategic support.</p>
+            <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
+          </button>
+
+          <button onclick="openModal('professional')" class="bg-[#0a0a0a] border-2 border-gold-400 p-12 text-center relative transform scale-100 md:scale-105 z-10 w-full shadow-2xl shadow-gold-400/10">
+            <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold-400 text-black text-[10px] uppercase tracking-widest px-4 py-1 font-bold">Recommended</span>
+            <h3 class="font-serif text-4xl text-gold-400 mb-2">Professional</h3>
+            <span class="text-neutral-400 text-[10px] uppercase tracking-widest block mb-8">Certification & Support</span>
+            <p class="text-white text-sm font-light leading-relaxed mb-8">For partners who want to scale. Includes training and implementation guidance.</p>
+            <span class="text-[10px] uppercase tracking-widest text-white hover:text-gold-400 transition">View Details &rarr;</span>
+          </button>
+
+          <button onclick="openModal('enterprise')" class="bg-[#0a0a0a] border border-white/5 p-10 text-center group hover:border-gold-400 transition duration-500 h-fit w-full">
+            <h3 class="font-serif text-3xl text-white mb-2">Enterprise</h3>
+            <span class="text-neutral-500 text-[10px] uppercase tracking-widest block mb-8">Master & Equity</span>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-8">Full method customization and territorial exclusivity.</p>
+            <span class="text-[10px] uppercase tracking-widest text-gold-400 group-hover:text-white transition">View Details &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-4 md:p-6">
+    <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-6 md:p-12 relative shadow-2xl modal-container modal-enter">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Close">✕</button>
+      <div id="modal-content" class="space-y-6"></div>
+    </div>
+  </div>
+
+  <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+    <p>Boutique Method IP Holding Ltda © 2026</p>
+  </footer>
+
+  <!-- AUDIO -->
+  <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to content">
+    <div class="audio-wave">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen Page</span>
+  </button>
+
+  <script src="accessibility.js"></script>
+
+  <script>
+    // MODALS
+    const modalData = {
+      essential: {
+        label: "Individual Model",
+        title: "Essential",
+        text: "Full access to the methodological framework for individual application. Ideal for independent professionals who want to differentiate their delivery through validated processes. Includes brand manual, access to the training platform, and personal certification."
+      },
+      professional: {
+        label: "Business Model",
+        title: "Professional",
+        text: "A robust structure for team standardization. Enables firms and clinics to install the 'Boutique Operating System' into their culture. Includes online in-company training, implementation support, and usage licenses for staff members."
+      },
+      enterprise: {
+        label: "Master Model",
+        title: "Enterprise",
+        text: "The highest partnership level. Provides territorial exclusivity and the right to resell and sublicense the method in your region. Includes strategic equity consulting, participation in the innovation board, and royalties on the network you build."
+      }
+    };
+
+    function openModal(id) {
+      const content = modalData[id];
+      const overlay = document.getElementById("modal-overlay");
+      const container = document.getElementById("modal-content");
+
+      container.innerHTML = `
+        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2 font-bold">${content.label}</span>
+        <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight italic">${content.title}</h3>
+        <div class="w-12 h-px bg-gold-400 mb-6"></div>
+        <p class="text-neutral-300 font-light text-base md:text-lg leading-relaxed text-justify">${content.text}</p>
+        <div class="pt-8 flex justify-end">
+          <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Close</button>
+        </div>
+      `;
+
+      overlay.classList.remove("hidden");
+      overlay.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      const overlay = document.getElementById("modal-overlay");
+      overlay.classList.add("hidden");
+      overlay.classList.remove("flex");
+      document.body.style.overflow = "auto";
+    }
+
+    window.addEventListener("click", function (event) {
+      const overlay = document.getElementById("modal-overlay");
+      if (event.target === overlay) closeModal();
+    });
+
+    // AUDIO (site standard)
+    const synth = window.speechSynthesis;
+    let isPlaying = false;
+
+    function toggleAudioDescription() {
+      const btn = document.getElementById("globalAudioBtn");
+      const label = document.getElementById("audioLabel");
+
+      if (isPlaying) {
+        synth.cancel();
+        isPlaying = false;
+        btn.classList.add("paused");
+        label.innerText = "Listen Page";
+      } else {
+        const text =
+          "Method Licensing page. It explains the intellectual asset by comparing traditional consulting, executive education, and the Boutique Method. It presents the verticals JUR, HC, and POL. It shows Essential, Professional, and Enterprise plans with modal details.";
+
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = "en-US";
+        utter.rate = 0.95;
+
+        utter.onend = () => {
+          isPlaying = false;
+          btn.classList.add("paused");
+          label.innerText = "Listen Page";
         };
 
-        function openModal(id) {
-            const content = modalData[id];
-            const overlay = document.getElementById('modal-overlay');
-            const container = document.getElementById('modal-content');
-            
-            container.innerHTML = `
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2 font-bold">${content.label}</span>
-                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight italic">${content.title}</h3>
-                <div class="w-12 h-px bg-gold-400 mb-6"></div>
-                <p class="text-neutral-300 font-light text-base md:text-lg leading-relaxed text-justify">${content.text}</p>
-                <div class="pt-8 flex justify-end">
-                    <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Close</button>
-                </div>
-            `;
-            
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const overlay = document.getElementById('modal-overlay');
-            overlay.classList.add('hidden');
-            overlay.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        window.onclick = function(event) {
-            const overlay = document.getElementById('modal-overlay');
-            if (event.target == overlay) closeModal();
-        }
-    </script>
+        synth.speak(utter);
+        isPlaying = true;
+        btn.classList.remove("paused");
+        label.innerText = "Stop Audio";
+      }
+    }
+  </script>
 </body>
 </html>
