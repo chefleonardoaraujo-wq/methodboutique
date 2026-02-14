@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política & Integridade (POL) | Boutique Method</title>
-    <meta name="description" content="Gestão de risco reputacional, conformidade eleitoral e protocolos de integridade para campanhas e mandatos.">
+    <meta name="description" content="Gestão de risco reputacional, governança institucional e protocolos de integridade para agentes públicos e organizações.">
     
     <link rel="stylesheet" href="accessibility.css">
     
@@ -100,7 +100,7 @@
                     A Blindagem <br><span class="italic text-neutral-500">Institucional</span>
                 </h1>
                 <p class="text-neutral-400 font-light text-lg md:text-xl max-w-2xl mx-auto animate-fade-in">
-                    Protocolos de contenção de crise, inteligência reputacional e conformidade para mandatos e campanhas de alto nível.
+                    Protocolos de contenção de crise, inteligência reputacional e governança de comunicação para estruturas públicas e institucionais.
                 </p>
             </div>
         </header>
@@ -114,10 +114,10 @@
                 </div>
                 <div class="md:col-span-8 text-neutral-400 font-light leading-loose space-y-6">
                     <p>
-                        No ambiente político atual, a volatilidade é a única constante. Agentes públicos e instituições partidárias precisam de mais do que marketing; precisam de estruturas de defesa e integridade.
+                        No ambiente público atual, a volatilidade é a única constante. Agentes, equipes e instituições precisam de mais do que narrativa; precisam de estruturas de defesa, consistência e integridade operacional.
                     </p>
                     <p>
-                        A vertente <strong>POL</strong> do Boutique Method não lida com a "pedição de votos", mas com a sustentação da imagem. Entregamos a arquitetura de governança que permite ao político focar na política, enquanto nós cuidamos do risco.
+                        A vertente <strong>POL</strong> do Boutique Method não lida com propaganda, persuasão eleitoral ou “pedição de votos”. Nós estruturamos governança de comunicação, padrões internos e protocolos de resposta — para que a atuação institucional seja sustentada com clareza, previsibilidade e controle de risco.
                     </p>
                 </div>
             </div>
@@ -139,9 +139,9 @@
                         <span class="text-xs font-bold text-[#d4af37]">02</span>
                         <div class="h-1 w-8 bg-neutral-700 group-hover:bg-[#d4af37] transition"></div>
                     </div>
-                    <h3 class="text-xl text-white font-serif mb-4">Compliance Eleitoral</h3>
+                    <h3 class="text-xl text-white font-serif mb-4">Conformidade Institucional</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Auditoria interna de processos de campanha, garantindo que a captação e o gasto de recursos sigam estritamente as normativas, evitando cassações.
+                        Auditoria interna de rotinas e fluxos sensíveis, padronização de registros e trilhas de decisão para reduzir exposição, improviso e vulnerabilidades evitáveis.
                     </p>
                 </div>
 
@@ -152,7 +152,7 @@
                     </div>
                     <h3 class="text-xl text-white font-serif mb-4">Protocolos de Legado</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Organização do acervo intangível do mandato. Transformamos a atuação legislativa/executiva em ativos de propriedade intelectual e histórico organizado.
+                        Organização do acervo intangível de atuação pública. Transformamos entregas, decisões e projetos em ativos de memória institucional e histórico organizado.
                     </p>
                 </div>
             </div>
@@ -175,7 +175,7 @@
 
             <div class="mt-12 text-center opacity-60 hover:opacity-100 transition duration-300">
                 <p class="text-[9px] text-neutral-500 uppercase tracking-wider max-w-3xl mx-auto leading-relaxed border-t border-white/5 pt-6">
-                    <strong>Aviso Legal (POL):</strong> A Boutique Method IP Holding Ltda fornece materiais de integridade corporativa, conformidade (compliance) e gestão de processos internos. Nossos serviços e produtos <u>não configuram propaganda eleitoral</u>, marketing político ou consultoria jurídica contenciosa eleitoral. A responsabilidade pelo uso final dos materiais perante a Justiça Eleitoral é do contratante.
+                    <strong>Aviso Legal (POL):</strong> A Boutique Method IP Holding Ltda fornece padrões, materiais e consultoria em governança de comunicação, integridade institucional, conformidade (compliance) e gestão de processos internos. Nossos serviços e produtos <u>não configuram propaganda eleitoral</u>, marketing político, pedido de voto, captação de recursos, impulsionamento de campanha, nem consultoria jurídico-contenciosa eleitoral. A responsabilidade pelo uso final dos materiais, bem como pela conformidade legal aplicável, é do contratante e de seus representantes.
                 </p>
             </div>
 
@@ -187,7 +187,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -211,8 +211,11 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Vertente Política e Integridade da Boutique Method. A Blindagem Institucional. Oferecemos protocolos de contenção de crise, inteligência reputacional e conformidade para mandatos e campanhas. Pilares: 1. Gestão de Crise com war rooms estruturados. 2. Compliance Eleitoral para auditoria de processos. 3. Protocolos de Legado para transformar atuação pública em ativos organizados.";
-                
+                const text =
+                    "Vertente POL: Integridade e Blindagem Institucional. " +
+                    "Protocolos de crise, inteligência reputacional e governança de comunicação. " +
+                    "Estruturamos padrões internos, resposta pública e rotinas para reduzir ruído e fortalecer confiança.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
