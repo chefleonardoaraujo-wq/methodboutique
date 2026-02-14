@@ -28,6 +28,12 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
+        /* Acessibilidade (texto apenas para leitores de tela) */
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
         /* Botão de Audiodescrição */
         .audio-fab {
             position: fixed;
@@ -65,8 +71,16 @@
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
 
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            <!-- LOGO aplicado (sem alterar conteúdo do site) -->
+            <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
+                <img
+                    src="bmip-logo-dark.png"
+                    alt="Boutique Method IP Holding"
+                    class="h-10 md:h-12 w-auto"
+                    loading="eager"
+                    decoding="async"
+                />
+                <span class="sr-only">Boutique Method®</span>
             </a>
 
             <div class="flex items-center space-x-4 md:space-x-8">
