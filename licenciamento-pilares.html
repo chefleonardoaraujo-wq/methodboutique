@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Licenciamento | Boutique Method</title>
+    <meta name="description" content="Licenciamento de Método (Pilar 02): transforme know-how em ativo intelectual replicável, com kits, governança e contratos para escalar com royalties.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="accessibility.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -20,6 +22,7 @@
             }
         }
     </script>
+
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
@@ -77,11 +80,14 @@
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
                     <span class="text-gold-400 cursor-default">PT</span>
                     <span class="text-white/30">|</span>
-                    <a href="licenciamento-pilares-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                    <!-- padrão EN: overview -->
+                    <a href="licenciamento-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
                 </div>
             </div>
 
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+            <a href="iniciar-tratativas.html"
+               class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500"
+               aria-label="Iniciar tratativas de licenciamento">
                 Iniciar Tratativas
             </a>
         </div>
@@ -92,72 +98,99 @@
         <div class="max-w-5xl mx-auto space-y-16">
 
             <header class="space-y-6 text-center border-b border-white/10 pb-16">
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Pilar 02</span>
-                <h1 class="font-serif text-4xl md:text-6xl text-white">Licenciamento de <span class="italic text-neutral-500">Método</span></h1>
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Pilar 02 • Licenciamento</span>
+                <h1 class="font-serif text-4xl md:text-6xl text-white">
+                    Licenciamento de <span class="italic text-neutral-500">Método</span>
+                </h1>
                 <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-                    Escalar sem inchar. Transformar seu know-how em produtos que outros podem aplicar.
+                    Escalar sem inchar. Transformar seu know-how em produtos que outros podem aplicar — com padrão, governança e proteção.
                 </p>
             </header>
 
             <div class="space-y-16 text-neutral-300 font-light leading-relaxed">
 
-                <div class="text-justify max-w-3xl mx-auto">
+                <section class="text-justify max-w-3xl mx-auto">
                     <h2 class="font-serif text-2xl text-white mb-4">O Poder da Escala</h2>
                     <p>
-                        O modelo tradicional de consultoria ou serviço exige sua presença física. O modelo de Licenciamento permite que você "clone" sua inteligência. Ao criar um método proprietário, você pode licenciar o uso dele para outros profissionais, empresas ou filiais, recebendo royalties sem precisar estar lá.
+                        O modelo tradicional de consultoria ou serviço exige sua presença. O Licenciamento permite “clonar” sua inteligência:
+                        ao criar um método proprietário, você licencia a aplicação para outros profissionais, empresas ou filiais, gerando
+                        recorrência (royalties) sem depender da sua agenda.
                     </p>
-                </div>
+                </section>
 
-                <div class="w-full overflow-x-auto">
+                <section class="w-full overflow-x-auto">
                     <div class="space-y-2 mb-6 text-center md:text-left">
-                        <h3 class="text-white font-serif text-xl">O Ativo Intelectual</h3>
+                        <h2 class="text-white font-serif text-xl">O Ativo Intelectual</h2>
                         <p class="text-sm text-neutral-500">Comparativo de modelos de entrega e valor.</p>
                     </div>
 
                     <table class="w-full text-left text-sm border-collapse">
+                        <caption class="sr-only">
+                            Tabela comparativa entre consultoria comum, educação executiva e o Método Boutique: foco, dependência, entregável, escalabilidade e proteção de propriedade intelectual.
+                        </caption>
+
                         <thead>
                             <tr class="text-gold-400 border-b border-white/20 uppercase tracking-widest text-[10px]">
-                                <th class="py-4 pr-4">Critério</th>
-                                <th class="py-4 pr-4 text-neutral-500">Consultoria Comum</th>
-                                <th class="py-4 pr-4 text-neutral-500">Educação Executiva</th>
-                                <th class="py-4 text-white">Método Boutique™</th>
+                                <th scope="col" class="py-4 pr-4">Critério</th>
+                                <th scope="col" class="py-4 pr-4 text-neutral-500">Consultoria Comum</th>
+                                <th scope="col" class="py-4 pr-4 text-neutral-500">Educação Executiva</th>
+                                <th scope="col" class="py-4 text-white">Método Boutique™</th>
                             </tr>
                         </thead>
+
                         <tbody class="text-neutral-400">
                             <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                                <td class="py-6 text-xs uppercase tracking-widest text-neutral-500">Foco Principal</td>
+                                <th scope="row" class="py-6 text-xs uppercase tracking-widest text-neutral-500 pr-4">Foco Principal</th>
                                 <td class="py-6">Diagnóstico</td>
                                 <td class="py-6">Ensino Teórico</td>
                                 <td class="py-6 text-white font-bold">Instalação de Processos</td>
                             </tr>
+
                             <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                                <td class="py-6 text-xs uppercase tracking-widest text-neutral-500">Dependência</td>
+                                <th scope="row" class="py-6 text-xs uppercase tracking-widest text-neutral-500 pr-4">Dependência</th>
                                 <td class="py-6">Consultor</td>
                                 <td class="py-6">Motivação do Aluno</td>
                                 <td class="py-6 text-white font-bold">Autonomia do Sistema</td>
                             </tr>
+
                             <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                                <td class="py-6 text-xs uppercase tracking-widest text-neutral-500">Entregável</td>
+                                <th scope="row" class="py-6 text-xs uppercase tracking-widest text-neutral-500 pr-4">Entregável</th>
                                 <td class="py-6">Relatório PDF</td>
                                 <td class="py-6">Certificado</td>
                                 <td class="py-6 text-white font-bold">Ativo Auditável (IP)</td>
                             </tr>
+
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                <th scope="row" class="py-6 text-xs uppercase tracking-widest text-neutral-500 pr-4">Escalabilidade</th>
+                                <td class="py-6">Limitada</td>
+                                <td class="py-6">Média</td>
+                                <td class="py-6 text-white font-bold">Alta (Replicável)</td>
+                            </tr>
+
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                <th scope="row" class="py-6 text-xs uppercase tracking-widest text-neutral-500 pr-4">Proteção de IP</th>
+                                <td class="py-6">Baixa</td>
+                                <td class="py-6">Variável</td>
+                                <td class="py-6 text-white font-bold">Alta (Contrato + Marca + Obra)</td>
+                            </tr>
                         </tbody>
                     </table>
-                </div>
+                </section>
 
-                <div class="max-w-3xl mx-auto pt-8">
+                <section class="max-w-3xl mx-auto pt-8">
                     <h2 class="font-serif text-2xl text-white mb-4">O que Entregamos</h2>
                     <ul class="list-disc list-inside space-y-2 pl-4 text-neutral-400">
-                        <li><strong>Codificação do Tácito:</strong> Extraímos o conhecimento da sua cabeça e colocamos no papel.</li>
-                        <li><strong>Arquitetura do Produto:</strong> Definimos o que é entregue, como é vendido e qual o preço.</li>
-                        <li><strong>Kits de Aplicação:</strong> Criamos os manuais, templates e ferramentas que o licenciado vai usar.</li>
-                        <li><strong>Contratos de Licença:</strong> A base jurídica para proteger sua IP enquanto ela escala.</li>
+                        <li><strong>Codificação do Tácito:</strong> extraímos o conhecimento da sua cabeça e colocamos em formato aplicável.</li>
+                        <li><strong>Arquitetura do Produto:</strong> definimos o que é entregue, como é vendido e qual o preço.</li>
+                        <li><strong>Kits de Aplicação:</strong> manuais, templates e ferramentas para execução padronizada.</li>
+                        <li><strong>Contratos de Licença:</strong> a base jurídica para proteger sua IP enquanto ela escala.</li>
                     </ul>
-                </div>
+                </section>
 
                 <div class="pt-8 text-center">
-                    <a href="iniciar-tratativas.html" class="inline-block px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                    <a href="iniciar-tratativas.html"
+                       class="inline-block px-8 py-3 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500"
+                       aria-label="Iniciar tratativas para licenciar meu método">
                         Quero Licenciar meu Método
                     </a>
                 </div>
@@ -171,7 +204,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -195,7 +228,11 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Licenciamento de Método. Pilar zero dois. Escalar sem inchar. Transformar seu know-how em ativos que geram royalties sem depender da sua presença física. Oferecemos codificação do conhecimento tácito, arquitetura do produto, kits de aplicação e contratos de licença.";
+                const text =
+                    "Licenciamento de Método, Pilar zero dois. Esta página explica como transformar know-how em um ativo intelectual replicável. " +
+                    "Mostramos o poder da escala via royalties e um comparativo entre consultoria comum, educação executiva e o Método Boutique, " +
+                    "destacando instalação de processos, autonomia do sistema, escalabilidade alta e proteção de propriedade intelectual. " +
+                    "Também detalhamos os entregáveis: codificação do tácito, arquitetura do produto, kits de aplicação e contratos de licença.";
 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
