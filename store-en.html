@@ -5,41 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Collection | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 500: '#c5a028' } }
+                }
+            }
+        }
     </script>
 
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        
+
+        /* Screen-reader only */
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
         /* MODAL ENGINEERING: Prevents "eaten" content on smaller screens */
         dialog::backdrop { background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); }
-        dialog { 
+        dialog {
             background: transparent;
             padding: 0;
-            max-width: 900px; 
-            width: 95%; 
-            max-height: 90vh; 
+            max-width: 900px;
+            width: 95%;
+            max-height: 90vh;
             overflow-y: auto;
             border: none;
             outline: none;
-            position: fixed; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 9999;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
         dialog[open] { opacity: 1; display: block; }
-        
+
         dialog::-webkit-scrollbar { width: 4px; }
         dialog::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
 
@@ -56,17 +69,37 @@
             cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+
+        /* Optional: if your accessibility.css doesn't include it */
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 20%; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <a href="#main-content" class="skip-link">Skip to collection</a>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+
+            <!-- LOGO applied (BMIP) -->
+            <a href="index-en.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
+                <img
+                    src="bmip-logo-dark.png"
+                    alt="Boutique Method IP Holding"
+                    class="h-10 md:h-12 w-auto"
+                    loading="eager"
+                    decoding="async"
+                />
+                <span class="sr-only">Boutique Method®</span>
             </a>
+
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem-en.html" class="text-white hover:text-gold-400 transition">Origin</a>
@@ -75,12 +108,14 @@
                     <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
                     <a href="store-en.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Collection</a>
                 </div>
+
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
                     <a href="store.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
                     <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
+
             <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Initiate Protocols
             </a>
@@ -205,7 +240,7 @@
                     <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: RISK-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Crisis & Reputation Kit</h2>
                     <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
-                        A poorly managed crisis in the first 60 minutes can destroy decades of brand building. This kit is your **survival insurance**. It contains the exact "War Room" protocols used to halt reputational bleeding and reclaim the public narrative. If you don't have a plan, the crisis dictates the rules. <strong>Don't be caught off guard.</strong>
+                        A poorly managed crisis in the first 60 minutes can destroy decades of brand building. This kit is your <strong>survival insurance</strong>. It contains the exact "War Room" protocols used to halt reputational bleeding and reclaim the public narrative. If you don't have a plan, the crisis dictates the rules. <strong>Don't be caught off guard.</strong>
                     </p>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
@@ -224,7 +259,7 @@
                     <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: GOV-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Governance & Protocols</h2>
                     <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
-                        Internal rumors are the cancer of productivity. Without governance, your company is just a group of people trying to work. This asset delivers the **Architecture of Order**: shielded approval workflows and rituals that ensure the owner's vision is executed at every level. <strong>Step out of the operational and let the method govern.</strong>
+                        Internal rumors are the cancer of productivity. Without governance, your company is just a group of people trying to work. This asset delivers the <strong>Architecture of Order</strong>: shielded approval workflows and rituals that ensure the owner's vision is executed at every level. <strong>Step out of the operational and let the method govern.</strong>
                     </p>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
@@ -243,7 +278,7 @@
                     <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: STRAT-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Strategic Diagnosis</h2>
                     <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
-                        Hard work without clarity is just wasted energy. This framework allows you to perform a **strategic autopsy** on your current communication. Identify the noise destroying your authority and find where money is leaking. <strong>The truth hurts, but it sets your profit free.</strong>
+                        Hard work without clarity is just wasted energy. This framework allows you to perform a <strong>strategic autopsy</strong> on your current communication. Identify the noise destroying your authority and find where money is leaking. <strong>The truth hurts, but it sets your profit free.</strong>
                     </p>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
@@ -262,7 +297,7 @@
                     <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: BRAND-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Premium Positioning</h2>
                     <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
-                        Those seen as an "option" fight over price. Those seen as "elite" fight over availability. Encode your **Technical Superiority** into narrative. Shift from the average and communicate value so price becomes a detail. <strong>Sell to those who buy solutions, not bargains.</strong>
+                        Those seen as an "option" fight over price. Those seen as "elite" fight over availability. Encode your <strong>Technical Superiority</strong> into narrative. Shift from the average and communicate value so price becomes a detail. <strong>Sell to those who buy solutions, not bargains.</strong>
                     </p>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
@@ -281,7 +316,7 @@
                     <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: OPS-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Organization & Standardization</h2>
                     <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
-                        People-dependent processes are fragile. Method-dependent processes are **unstoppable**. Stop "leading by example" and start providing the method. SOPs and rituals that end rework. <strong>Build a business that works with or without you.</strong>
+                        People-dependent processes are fragile. Method-dependent processes are <strong>unstoppable</strong>. Stop "leading by example" and start providing the method. SOPs and rituals that end rework. <strong>Build a business that works with or without you.</strong>
                     </p>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
@@ -319,7 +354,7 @@
                     <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: PERF-01</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Spokesperson & Authority</h2>
                     <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
-                        Being right isn't enough; you need authority. This guide is the ultimate training for leaders mastering high-pressure environments. Learn "Bridging" techniques and executive posture that conveys **absolute security**. <strong>Your voice is your strongest power tool.</strong>
+                        Being right isn't enough; you need authority. This guide is the ultimate training for leaders mastering high-pressure environments. Learn "Bridging" techniques and executive posture that conveys <strong>absolute security</strong>. <strong>Your voice is your strongest power tool.</strong>
                     </p>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
@@ -338,7 +373,7 @@
                     <span class="text-gold-400 text-xs tracking-[0.2em] uppercase font-bold">Asset: PERF-02</span>
                     <h2 class="font-serif text-4xl text-white leading-tight italic">Legal Design Kit</h2>
                     <p class="text-neutral-400 font-light leading-relaxed text-justify text-sm">
-                        20-page contracts in pure "legalese" are sales barriers. The Legal Design Kit transforms dense documents into **visual persuasion tools**. Close deals faster and protect your IP with clarity and elegance. <strong>Beauty, clarity, and legal security in one place.</strong>
+                        20-page contracts in pure "legalese" are sales barriers. The Legal Design Kit transforms dense documents into <strong>visual persuasion tools</strong>. Close deals faster and protect your IP with clarity and elegance. <strong>Beauty, clarity, and legal security in one place.</strong>
                     </p>
                 </div>
                 <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
@@ -353,6 +388,14 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
+    <!-- Audio Description (EN) -->
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to collection">
+        <div class="audio-wave" aria-hidden="true">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Collection</span>
+    </button>
+
     <script src="accessibility.js"></script>
     <script>
         // Modal Closing logic on clicking outside
@@ -362,6 +405,37 @@
                 if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) d.close();
             });
         });
+
+        // Audio Description (EN)
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
+
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
+
+            if (isPlaying) {
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen to Collection";
+            } else {
+                const utter = new SpeechSynthesisUtterance(
+                    "Boutique Method Digital Collection. Explore exclusive assets for shielding, strategy, operations, and performance of your intellectual capital. Select any item to view details and pricing."
+                );
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen to Collection";
+                };
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop Audio";
+            }
+        }
     </script>
 </body>
 </html>
