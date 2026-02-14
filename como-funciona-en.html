@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works | Boutique Method</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="accessibility.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+          colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
+    .gold-selection::selection { background: #d4af37; color: black; }
+
+    /* ROADMAP DESIGN */
+    .roadmap-container { position: relative; }
+    .roadmap-line { 
+        position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; 
+        background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.3), transparent); 
+    }
+    @media (max-width: 768px) { .roadmap-line { left: 20px; } }
+
+    .step-card { 
+        position: relative; transition: all 0.5s ease; 
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.01);
+    }
+    .step-card:hover { border-color: rgba(212, 175, 55, 0.4); background: rgba(212, 175, 55, 0.02); }
+    
+    .step-number { 
+        font-family: 'Playfair Display', serif; font-style: italic; color: #d4af37;
+        font-size: 1.2rem; width: 40px; height: 40px;
+        display: flex; align-items: center; justify-content: center;
+        border: 1px solid rgba(212, 175, 55, 0.3); background: #050505; z-index: 10;
+    }
+
+    /* MODAL FIX FOR MOBILE */
+    .modal-container {
+        max-height: 85vh;
+        overflow-y: auto;
+        width: 95%;
+        scrollbar-width: thin;
+        scrollbar-color: #d4af37 transparent;
+    }
+    .modal-container::-webkit-scrollbar { width: 4px; }
+    .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+
+    .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+  </style>
+</head>
+
+<body class="antialiased gold-selection flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+        Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+      </a>
+
+      <div class="flex items-center space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+          <a href="origem-en.html" class="text-white hover:text-gold-400 transition">Origin</a>
+          <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">Holding</a>
+          <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+          <a href="como-funciona-en.html" class="text-gold-400 border-b border-gold-400 pb-1">How It Works</a>
+          <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+          <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+          <div class="flex items-center gap-2 border-l border-white/20 pl-4">
+            <a href="como-funciona.html" class="text-neutral-500 hover:text-white transition">PT</a>
+            <span class="text-white/30">|</span>
+            <span class="text-gold-400 cursor-default">EN</span>
+          </div>
+      </div>
+
+      <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">
+        Initiate Protocols
+      </a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <header class="pt-48 md:pt-60 pb-16 px-6 text-center">
+      <h1 class="font-serif text-4xl md:text-7xl text-white mb-6 italic">How It <span class="text-neutral-500">Works</span></h1>
+      <p class="text-neutral-400 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+        Licensing by sprints: deliverables + training + application + review. A replicable system — not hourly consulting.
+      </p>
+    </header>
+
+    <section class="py-24 px-6 border-t border-white/5">
+      <div class="max-w-5xl mx-auto text-center mb-20">
+          <h2 class="font-serif text-3xl text-white italic">Licensing Stages</h2>
+          <p class="text-[10px] uppercase tracking-widest text-neutral-500 mt-2">End-to-end full workflow</p>
+      </div>
+
+      <div class="max-w-5xl mx-auto roadmap-container">
+        <div class="roadmap-line hidden md:block"></div>
+        <div class="space-y-20">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+            <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">01</span></div>
+            <div class="step-number">I</div>
+            <div class="md:w-5/12 step-card p-8">
+              <h3 class="font-serif text-2xl text-white mb-2 italic">Initiation Protocol</h3>
+              <p class="text-neutral-400 text-sm font-light leading-relaxed">NDA + Briefing.</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 group">
+            <div class="md:w-5/12 text-left hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">02</span></div>
+            <div class="step-number">II</div>
+            <div class="md:w-5/12 step-card p-8 text-right">
+              <h3 class="font-serif text-2xl text-white mb-2 italic">Diagnosis and Scope</h3>
+              <p class="text-neutral-400 text-sm font-light">Mapping and priorities.</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+            <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">03</span></div>
+            <div class="step-number">III</div>
+            <div class="md:w-5/12 step-card p-8">
+              <h3 class="font-serif text-2xl text-white mb-2 italic">Contract + Setup</h3>
+              <p class="text-neutral-400 text-sm font-light">Brand governance, calendar, and plan.</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 group">
+            <div class="md:w-5/12 text-left hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">04</span></div>
+            <div class="step-number">IV</div>
+            <div class="md:w-5/12 step-card p-8 text-right">
+              <h3 class="font-serif text-2xl text-white mb-2 italic">Implementation by Sprints</h3>
+              <p class="text-neutral-400 text-sm font-light">Applied delivery + training + adjustments.</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+            <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">05</span></div>
+            <div class="step-number">V</div>
+            <div class="md:w-5/12 step-card p-8">
+              <h3 class="font-serif text-2xl text-white mb-2 italic">Validation & Sustenance Kit</h3>
+              <p class="text-neutral-400 text-sm font-light">Routines, checklists, and metrics.</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 group">
+            <div class="md:w-5/12 text-left hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">06</span></div>
+            <div class="step-number">VI</div>
+            <div class="md:w-5/12 step-card p-8 text-right">
+              <h3 class="font-serif text-2xl text-white mb-2 italic">Assisted Operation</h3>
+              <p class="text-neutral-400 text-sm font-light">Support and evolution (according to plan).</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
+            <div class="md:w-5/12 text-right hidden md:block"><span class="text-gold-400/10 font-serif text-7xl italic">07</span></div>
+            <div class="step-number">VII</div>
+            <div class="md:w-5/12 step-card p-8">
+              <h3 class="font-serif text-2xl text-white mb-2 italic">Renewal/Recertification</h3>
+              <p class="text-neutral-400 text-sm font-light">Annual standard maintenance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-32 px-6 border-t border-white/5 bg-[#080808]">
+      <div class="max-w-7xl mx-auto text-center">
+        <div class="mb-16 space-y-4">
+          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold">Investment Ledger</span>
+          <h2 class="font-serif text-4xl text-white italic">Deliverables by Plan</h2>
+          <p class="text-neutral-500 text-sm">Select a plan to audit the full scope of assets.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <button onclick="openPlanModal('essential')" class="group p-10 border border-white/10 bg-white/[0.02] hover:border-gold-400 transition duration-500 text-left">
+            <h3 class="text-2xl text-white font-serif italic mb-4">Essential</h3>
+            <p class="text-neutral-500 text-xs uppercase tracking-widest mb-8">2 Sprints • Fast standardization</p>
+            <span class="text-gold-400 text-[10px] uppercase tracking-[0.2em] border-b border-gold-400/30 pb-1 group-hover:text-white transition">Audit Assets →</span>
+          </button>
+
+          <button onclick="openPlanModal('professional')" class="group p-10 border-2 border-gold-400 bg-gold-400/[0.03] shadow-2xl transition duration-500 text-left relative">
+            <div class="absolute top-0 right-0 p-4"><span class="text-gold-400 text-[8px] border border-gold-400 px-2 py-1 uppercase font-bold">Recommended</span></div>
+            <h3 class="text-2xl text-gold-400 font-serif italic mb-4">Professional</h3>
+            <p class="text-neutral-400 text-xs uppercase tracking-widest mb-8">4 Sprints • Consistency + Performance</p>
+            <span class="text-white text-[10px] uppercase tracking-[0.2em] border-b border-white/30 pb-1 group-hover:text-gold-400 transition">Audit Assets →</span>
+          </button>
+
+          <button onclick="openPlanModal('enterprise')" class="group p-10 border border-white/10 bg-white/[0.02] hover:border-gold-400 transition duration-500 text-left">
+            <h3 class="text-2xl text-white font-serif italic mb-4">Enterprise</h3>
+            <p class="text-neutral-500 text-xs uppercase tracking-widest mb-8">8–12 Sprints • Multi-unit</p>
+            <span class="text-gold-400 text-[10px] uppercase tracking-[0.2em] border-b border-gold-400/30 pb-1 group-hover:text-white transition">Audit Assets →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal-overlay" class="fixed inset-0 bg-black/98 backdrop-blur-xl z-[100] hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 border border-gold-400/30 max-w-3xl w-full p-8 md:p-16 relative shadow-2xl modal-container modal-enter">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl">✕</button>
+        <div id="modal-content" class="space-y-10"></div>
+    </div>
+  </div>
+
+  <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+    <p>Boutique Method IP Holding Ltda © 2026</p>
+  </footer>
+
+  <script>
+    const planDetails = {
+      essential: {
+        title: "Essential", duration: "2 Sprints", indicado: "Fast standardization",
+        entregaveis: "Magna Carta; Tone of Voice by channel; Essential templates; Basic flow of service and escalation",
+        implatacao: "2 meetings; fast training; final adjustments post-use",
+        governanca: "Weekly checklist; minimum metrics; maintenance guide"
+      },
+      professional: {
+        title: "Professional", duration: "4 Sprints", indicado: "Consistency + performance",
+        entregaveis: "Everything in Essential; expanded scripts; tactical crisis playbook; standards by audience; responses for objections",
+        implatacao: "4 meetings; training by function; guided review of real channels",
+        governanca: "RACI; internal SLA; monthly ritual; light audit (baseline)"
+      },
+      enterprise: {
+        title: "Enterprise", duration: "8–12 Sprints", indicado: "Multi-unit and high exposure",
+        entregaveis: "Everything in Professional; multi-unit governance; robust reputation kit; formal tracks; customizations by scenario",
+        implatacao: "Tracks + refreshers; multipliers; workshop with supervision; implementation by unit",
+        governanca: "Executive committee; audits; metrics dashboard; sustenance manual; recertification"
+      }
+    };
+
+    function openPlanModal(id) {
+      const data = planDetails[id];
+      const overlay = document.getElementById('modal-overlay');
+      const container = document.getElementById('modal-content');
+      
+      container.innerHTML = `
+        <div class="space-y-2">
+            <h3 class="font-serif text-4xl md:text-5xl text-white italic">${data.title}</h3>
+            <p class="text-gold-400 text-xs uppercase tracking-[0.2em] font-bold">${data.indicado} • ${data.duration}</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 pt-4">
+            <div class="space-y-4">
+                <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold">Core Deliverables</h4>
+                <p class="text-neutral-300 font-light leading-relaxed text-base">${data.entregaveis}</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold">Implementation & Training</h4>
+                <p class="text-neutral-300 font-light leading-relaxed text-base">${data.implatacao}</p>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-white/5">
+            <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold mb-4">Governance & Sustenance</h4>
+            <p class="text-white font-serif text-xl md:text-2xl italic leading-relaxed">${data.governanca}</p>
+        </div>
+        <div class="pt-8">
+            <a href="iniciar-tratativas-en.html" class="block w-full bg-gold-400 text-black text-center py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-white transition duration-500">
+                Initiate Plan Protocols
+            </a>
+        </div>
+      `;
+      overlay.classList.remove('hidden'); overlay.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const overlay = document.getElementById('modal-overlay');
+      overlay.classList.add('hidden'); overlay.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(e) { if (e.target == document.getElementById('modal-overlay')) closeModal(); }
+  </script>
+</body>
+</html>
