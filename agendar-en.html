@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule Presentation | Boutique Method</title>
+    <title>Schedule a Presentation | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = { 
-            theme: { 
-                extend: { 
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, 
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } } 
-                } 
-            } 
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                }
+            }
         }
     </script>
-    <style> 
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
-        .gold-selection::selection { background: #d4af37; color: black; } 
+
+    <style>
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
+        .gold-selection::selection { background: #d4af37; color: black; }
 
         /* Audio Description Button */
         .audio-fab {
@@ -52,17 +53,21 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
     <a href="#main-content" class="skip-link">Skip to form</a>
 
+    <!-- NAV (compact, consistent) -->
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex justify-between items-center">
             <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
+
             <div class="flex items-center gap-6">
                 <a href="licenciamento-en.html" class="text-[10px] uppercase tracking-widest text-neutral-400 hover:text-white transition">&larr; Back</a>
+
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
                     <a href="agendar.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
@@ -74,38 +79,47 @@
 
     <main id="main-content" class="flex-grow flex items-center justify-center pt-32 pb-20 px-6">
         <div class="w-full max-w-lg">
-            
+
             <div class="text-center mb-10 space-y-4">
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Institutional Agenda</span>
-                <h1 class="font-serif text-3xl md:text-4xl text-white">Request <span class="italic text-neutral-500">Presentation</span></h1>
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase">Institutional Calendar</span>
+                <h1 class="font-serif text-3xl md:text-4xl text-white">
+                    Request a <span class="italic text-neutral-500">Presentation</span>
+                </h1>
                 <p class="text-neutral-400 text-xs leading-relaxed max-w-sm mx-auto">
-                    Exclusive channel for investors and entrepreneurs interested in the Holding's Equity and Licensing models.
+                    Exclusive channel for investors and business leaders interested in the Holding’s Equity and Licensing models.
                 </p>
             </div>
 
-            <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST" class="bg-neutral-900/30 border border-white/10 p-8 space-y-6 backdrop-blur-sm">
-                
+            <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST" class="bg-neutral-900/30 border border-white/10 p-8 space-y-6 backdrop-blur-sm">
+
                 <div class="space-y-1">
                     <label class="text-[10px] uppercase tracking-widest text-gold-400">Executive Name</label>
-                    <input type="text" name="name" required class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition placeholder-white/20" placeholder="Full name">
+                    <input type="text" name="name" required
+                           class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition placeholder-white/20"
+                           placeholder="Full name">
                 </div>
 
                 <div class="space-y-1">
-                    <label class="text-[10px] uppercase tracking-widest text-gold-400">Company / Position</label>
-                    <input type="text" name="company" required class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition placeholder-white/20" placeholder="e.g.: CEO of Company X">
+                    <label class="text-[10px] uppercase tracking-widest text-gold-400">Company / Role</label>
+                    <input type="text" name="company" required
+                           class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition placeholder-white/20"
+                           placeholder="e.g., CEO at Company X">
                 </div>
 
                 <div class="space-y-1">
                     <label class="text-[10px] uppercase tracking-widest text-gold-400">Corporate Email</label>
-                    <input type="email" name="email" required class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition placeholder-white/20" placeholder="your@email.com">
+                    <input type="email" name="email" required
+                           class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition placeholder-white/20"
+                           placeholder="you@company.com">
                 </div>
 
                 <div class="space-y-1">
                     <label class="text-[10px] uppercase tracking-widest text-gold-400">Primary Interest</label>
-                    <select name="interest" class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition appearance-none cursor-pointer">
+                    <select name="interest"
+                            class="w-full bg-black/50 border border-white/10 px-4 py-3 text-white text-sm focus:border-gold-400 focus:outline-none transition appearance-none cursor-pointer">
                         <option value="Valuation">Valuation & Equity</option>
                         <option value="Licensing">Method Licensing</option>
-                        <option value="Holding">Meet the Holding (Institutional)</option>
+                        <option value="Institutional">Institutional Overview (Holding)</option>
                     </select>
                 </div>
 
@@ -116,14 +130,14 @@
                 </div>
 
                 <p class="text-[10px] text-neutral-600 text-center pt-2">
-                    * Your request will be analyzed by our committee. Response within 24 hours.
+                    * Your request will be reviewed by our committee. Reply within 24 business hours.
                 </p>
 
             </form>
 
         </div>
     </main>
-    
+
     <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
@@ -153,8 +167,9 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Scheduling page. Request Institutional Presentation. Exclusive channel for investors and entrepreneurs. Please provide your name, company, corporate email, and primary interest so our committee can review your request.";
-                
+                const text =
+                    "Scheduling page. Request an institutional presentation. This is an exclusive channel for investors and business leaders. Please provide your name, company or role, corporate email, and primary interest so our committee can review your request.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
