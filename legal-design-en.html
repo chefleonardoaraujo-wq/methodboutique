@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Design | Boutique Method</title>
+    <title>Legal Design | Services | Boutique Method</title>
+    <meta name="description" content="Visual Law and contractual engineering to increase clarity, reduce friction, and improve conversion with an institutional, high-standard delivery.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="accessibility.css">
@@ -89,40 +90,49 @@
                 <a href="index-en.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Back to Home</a>
             </div>
 
-            <div class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+            <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Services</span>
                 <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">Legal Design</h1>
                 <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Visual Law & Contractual Engineering</p>
-            </div>
+            </header>
 
             <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
                 <p>
-                    Traditional Law fails in communication. Dense, unreadable, and intimidating contracts generate friction, distrust, and slow down business closings. <strong>Legal Design</strong> is not about "making a contract pretty." It is about functionality, clarity, and conversion.
+                    Traditional legal drafting often fails at delivery. Dense, unreadable, and intimidating contracts create friction, uncertainty, and slower deal cycles.
+                    <strong>Legal Design</strong> is not about “making contracts look pretty.” It is about functionality, comprehension, and conversion — with an institutional standard.
                 </p>
+
                 <p>
-                    At Boutique Method, we apply <strong>Visual Law</strong> and User Experience (UX) techniques to transform legal documents into tools for sales and authority. A well-designed contract not only protects; it demonstrates sophistication and respect for the client's time.
+                    At Boutique Method, we apply <strong>Visual Law</strong> and user experience (UX) techniques to turn legal documents into decision and closing instruments.
+                    A well-designed contract does not only protect — it signals sophistication, governance, and respect for the client’s time.
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-8 my-12">
                     <div class="bg-neutral-900/50 p-8 border border-white/10">
                         <h3 class="font-serif text-2xl text-white mb-4">The Problem</h3>
                         <p class="text-neutral-500 text-sm">
-                            Documents made by lawyers for lawyers. Hermetic language ("legalese"), massive blocks of text, and hostile design that alienate the client.
+                            Documents written by lawyers for lawyers. Hermetic “legalese,” massive text blocks, and hostile layout that alienate clients and increase interpretation risk.
                         </p>
                     </div>
-                    <div class="bg-neutral-900/50 p-8 border border-white/10 border-l-gold-400">
+
+                    <!-- FIX: tailwind class border-l-gold-400 does not exist -->
+                    <div class="bg-neutral-900/50 p-8 border border-white/10 border-l-2 border-gold-400">
                         <h3 class="font-serif text-2xl text-white mb-4">Our Solution</h3>
                         <p class="text-neutral-300 text-sm">
-                            Documents made for humans. Strategic use of icons, flowcharts, hierarchical typography, and direct language. Legal security with user experience.
+                            Documents designed for humans. Strategic use of icons, flows, hierarchy typography, and direct language.
+                            Legal safety with user experience — without losing technical rigor.
                         </p>
                     </div>
                 </div>
 
                 <p class="text-white font-medium italic text-center text-xl pt-4">
-                    "Clarity is the new authority. If the client understands, they trust. If they trust, they sign."
+                    “Clarity is the new authority. If the client understands, they trust. If they trust, they sign.”
                 </p>
 
                 <div class="pt-12 text-center">
-                    <a href="iniciar-tratativas-en.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500">
+                    <a href="iniciar-tratativas-en.html"
+                       class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500"
+                       aria-label="Request contractual restructuring with Legal Design">
                         Request Contractual Restructuring
                     </a>
                 </div>
@@ -159,8 +169,8 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Legal Design Page. Visual Law and Contractual Engineering. We transform dense contracts into tools for clarity and conversion. We solve the problem of hermetic legalese with documents made for humans, merging legal security with user experience. Clarity is the new authority.";
-                
+                const text = "Legal Design page. Visual Law and contractual engineering. We transform dense contracts into clarity and conversion instruments. We replace hermetic legalese with documents designed for humans, combining legal safety and user experience without losing technical rigor. Clarity is the new authority.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
