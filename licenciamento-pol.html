@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POL - Política & Institucional | Boutique Method</title>
+    <meta name="description" content="Vertente POL do Método Boutique: governança de comunicação institucional, prestação de contas, padrões de linguagem e protocolos de crise para credibilidade pública.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="accessibility.css">
@@ -92,24 +93,27 @@
         <div class="max-w-4xl mx-auto">
 
             <div class="mb-12">
-                <a href="licenciamento.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">&larr; Voltar para Visão Geral</a>
+                <a href="licenciamento.html" class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition">
+                    &larr; Voltar para a Visão Geral
+                </a>
             </div>
 
-            <div class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+            <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Vertente de Licenciamento</span>
                 <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">POL</h1>
                 <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Política & Institucional</p>
-            </div>
+            </header>
 
             <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
                 <p>
-                    A vertente POL do Método Boutique foi construída para elevar comunicação institucional a um padrão de governança e credibilidade. Em contextos públicos, a reputação não é estética: é consequência direta de consistência, transparência e capacidade de explicar decisões com linguagem compreensível.
+                    A vertente POL do Método Boutique foi construída para elevar a comunicação institucional a um padrão de governança e credibilidade. Em contextos públicos, reputação não é estética: é consequência direta de consistência, transparência e capacidade de explicar decisões com linguagem compreensível.
                 </p>
                 <p>
                     O trabalho organiza a narrativa institucional (o que é dito, como é dito e quando é dito), padroniza respostas e fluxos, define protocolos para situações de crise e cria uma base de comunicação que reduz ruído, evita improviso e fortalece a confiança do cidadão.
                 </p>
 
                 <div class="bg-neutral-900/50 p-8 border border-white/10 my-10">
-                    <h3 class="font-serif text-2xl text-white mb-6">O que essa vertente costuma organizar:</h3>
+                    <h2 class="font-serif text-2xl text-white mb-6">O que essa vertente costuma organizar:</h2>
                     <ul class="space-y-3 text-sm text-neutral-400">
                         <li class="flex gap-3"><span class="text-gold-400">►</span> Prestação de contas e comunicação pública por temas e prioridades</li>
                         <li class="flex gap-3"><span class="text-gold-400">►</span> Padrões de linguagem (clareza, acessibilidade e tom institucional)</li>
@@ -127,6 +131,14 @@
                         Solicitar Licenciamento POL
                     </a>
                 </div>
+
+                <!-- Legal Notice POL -->
+                <div class="mt-16 pt-8 border-t border-white/5 text-center">
+                    <p class="text-[10px] text-neutral-600 uppercase tracking-wider max-w-3xl mx-auto leading-relaxed">
+                        <strong>Legal Notice (POL):</strong> a Boutique Method atua com consultoria em governança de comunicação institucional, processos e padronização. Não realizamos assessoria eleitoral, propaganda, campanha, pedido de voto ou estratégias de captação política. A responsabilidade por decisões, posicionamentos e conformidade legal permanece com o cliente e seus representantes.
+                    </p>
+                </div>
+
             </div>
         </div>
     </main>
@@ -135,8 +147,8 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo da página">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -160,7 +172,9 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Vertente P-O-L: Política e Institucional. Elevamos a comunicação a um padrão de governança e credibilidade. Focamos em prestação de contas, clareza institucional e protocolos de crise para fortalecer a confiança pública.";
+                const text =
+                    "Vertente P-O-L: Política e Institucional. Estruturamos a comunicação institucional como padrão de governança e credibilidade. " +
+                    "Organizamos narrativa, padrões de linguagem, protocolos de crise e rotinas internas para reduzir ruído e fortalecer a confiança pública.";
 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
