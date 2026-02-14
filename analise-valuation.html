@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Valuation | Boutique Method</title>
+    <title>Valuation Protocol | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="accessibility.css">
@@ -20,11 +20,12 @@
             }
         }
     </script>
+
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
-        /* Estilização dos campos do formulário */
+        /* Form fields */
         input, textarea, select {
             background-color: transparent;
             border-bottom: 1px solid #333;
@@ -36,9 +37,16 @@
             border-radius: 0;
         }
         input:focus, textarea:focus, select:focus { border-bottom-color: #d4af37; }
-        label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: #666; display: block; margin-top: 1.5rem; }
+        label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #666;
+            display: block;
+            margin-top: 1.5rem;
+        }
 
-        /* Botão de Audiodescrição */
+        /* Audio Description Button */
         .audio-fab {
             position: fixed;
             bottom: 30px;
@@ -69,34 +77,34 @@
 
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <a href="#main-content" class="skip-link">Pular para a análise</a>
+    <a href="#main-content" class="skip-link">Skip to assessment</a>
 
-    <!-- NAV (padrão completo + idioma) -->
+    <!-- NAV (full standard + language switch) -->
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
                 Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
             </a>
 
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                    <a href="como-funciona-en.html" class="text-white hover:text-gold-400 transition">How It Works</a>
+                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Archive</a>
                 </div>
 
                 <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
+                    <a href="valuation.html" class="text-neutral-500 hover:text-white transition">PT</a>
                     <span class="text-white/30">|</span>
-                    <a href="valuation-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                    <span class="text-gold-400 cursor-default">EN</span>
                 </div>
             </div>
 
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Start Discussions
             </a>
         </div>
     </nav>
@@ -106,74 +114,75 @@
 
             <div class="flex flex-col justify-center">
                 <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">
-                    Análise de <span class="text-gold-400 italic">Valuation</span>
+                    <span class="text-gold-400 italic">Valuation</span> Assessment
                 </h1>
+
                 <p class="text-neutral-400 font-light text-lg leading-relaxed max-w-md">
-                    Preencha os dados preliminares da sua operação. Nossos analistas entrarão em contato para agendar a auditoria de ativos intangíveis.
+                    Submit the preliminary details of your operation. Our analysts will contact you to schedule an audit of intangible assets.
                 </p>
 
                 <div class="mt-12 space-y-4">
                     <div class="flex items-center gap-4 text-xs text-gold-400 uppercase tracking-widest">
                         <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        Confidencialidade Garantida (NDA)
+                        Confidentiality Guaranteed (NDA)
                     </div>
                     <div class="flex items-center gap-4 text-xs text-gold-400 uppercase tracking-widest">
                         <span class="w-2 h-2 bg-gold-400 rounded-full"></span>
-                        Retorno em 48h úteis
+                        Reply within 48 business hours
                     </div>
                 </div>
             </div>
 
             <div class="bg-[#0a0a0a] p-10 border border-white/5 shadow-2xl">
-                <form action="https://formsubmit.co/SEU_EMAIL_AQUI" method="POST" class="space-y-6">
+                <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" class="space-y-6">
 
-                    <input type="hidden" name="_subject" value="NOVO LEAD: Pedido de Valuation">
+                    <input type="hidden" name="_subject" value="NEW LEAD: Valuation Request">
                     <input type="hidden" name="_captcha" value="false">
 
                     <div>
-                        <label for="nome">Nome do Responsável</label>
-                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                        <label for="name">Point of Contact</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
                     </div>
 
                     <div>
-                        <label for="email">E-mail Corporativo</label>
-                        <input type="email" id="email" name="email" required placeholder="seu@empresa.com.br">
+                        <label for="email">Corporate Email</label>
+                        <input type="email" id="email" name="email" required placeholder="you@company.com">
                     </div>
 
                     <div>
-                        <label for="empresa">Nome da Empresa</label>
-                        <input type="text" id="empresa" name="empresa" required placeholder="Razão Social ou Nome Fantasia">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" required placeholder="Legal name or brand name">
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
                         <div>
-                            <label for="faturamento">Faturamento Anual (Estimado)</label>
-                            <select id="faturamento" name="faturamento" class="text-neutral-400">
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="Ate 1M">Até R$ 1 Milhão</option>
-                                <option value="1M a 10M">R$ 1M a R$ 10M</option>
-                                <option value="10M a 50M">R$ 10M a R$ 50M</option>
-                                <option value="Acima de 50M">Acima de R$ 50 Milhões</option>
+                            <label for="revenue">Estimated Annual Revenue</label>
+                            <select id="revenue" name="revenue" class="text-neutral-400">
+                                <option value="" disabled selected>Select</option>
+                                <option value="Up to 1M">Up to $1M</option>
+                                <option value="1M to 10M">$1M to $10M</option>
+                                <option value="10M to 50M">$10M to $50M</option>
+                                <option value="50M+">Above $50M</option>
                             </select>
                         </div>
                         <div>
-                            <label for="funcionarios">Número de Colaboradores</label>
-                            <input type="number" id="funcionarios" name="funcionarios" placeholder="Ex: 15">
+                            <label for="employees">Number of Employees</label>
+                            <input type="number" id="employees" name="employees" placeholder="e.g., 15">
                         </div>
                     </div>
 
                     <div>
-                        <label for="objetivo">Principal Objetivo do Valuation</label>
-                        <select id="objetivo" name="objetivo" class="text-neutral-400">
-                            <option value="Preparacao para Venda (Exit)">Preparação para Venda (Exit)</option>
-                            <option value="Entrada de Socios">Entrada de Sócios/Investidores</option>
-                            <option value="Organizacao Interna">Organização e Governança</option>
-                            <option value="Outro">Outro</option>
+                        <label for="objective">Primary Valuation Objective</label>
+                        <select id="objective" name="objective" class="text-neutral-400">
+                            <option value="Exit Preparation">Exit Preparation (Sale)</option>
+                            <option value="Investors">New Partners / Investors</option>
+                            <option value="Governance">Internal Organization & Governance</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
 
                     <button type="submit" class="w-full mt-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition duration-500">
-                        Solicitar Análise
+                        Request Assessment
                     </button>
 
                 </form>
@@ -186,13 +195,13 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
     <script src="accessibility.js"></script>
@@ -209,25 +218,25 @@
                 synth.cancel();
                 isPlaying = false;
                 btn.classList.add('paused');
-                label.innerText = "Ouvir Página";
+                label.innerText = "Listen to Page";
             } else {
                 const text =
-                    "Página de Análise de Valuation. Preencha os dados preliminares da sua operação para agendar a auditoria de ativos intangíveis. O formulário solicita nome, e-mail corporativo, nome da empresa, faturamento estimado, número de colaboradores e objetivo do valuation. Garantimos total confidencialidade.";
+                    "Valuation assessment page. Provide preliminary details to schedule an intangible assets audit. The form asks for contact name, corporate email, company name, estimated annual revenue, number of employees, and the primary valuation objective. Full confidentiality is guaranteed.";
 
                 const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'pt-BR';
+                utter.lang = 'en-US';
                 utter.rate = 0.95;
 
                 utter.onend = () => {
                     isPlaying = false;
                     btn.classList.add('paused');
-                    label.innerText = "Ouvir Página";
+                    label.innerText = "Listen to Page";
                 };
 
                 synth.speak(utter);
                 isPlaying = true;
                 btn.classList.remove('paused');
-                label.innerText = "Parar Áudio";
+                label.innerText = "Stop Audio";
             }
         }
     </script>
