@@ -3,36 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Care (HC) | Boutique Method</title>
-    <meta name="description" content="Premium reception protocols, patient journey, and clinical institutional communication for high-standard health care.">
-    
+
+    <title>HC — Health Care & Hospitality | Boutique Method</title>
+    <meta name="description" content="Premium reception protocols, patient journey design, documentation security, and institutional communication for high-standard clinics and hospitals.">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            400: '#d4af37',
-                        }
-                    }
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
                 }
             }
         }
     </script>
+
     <style>
-        body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
+        body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; font-family: 'Lato', sans-serif; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
         /* Audio Description Button */
@@ -63,44 +59,70 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
-    
+
     <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <nav class="fixed w-full z-50 p-8 flex justify-between items-center mix-blend-difference text-white/80">
-        <a href="index-en.html" class="uppercase tracking-[0.2em] text-xs hover:text-white transition">← Back to Home</a>
-        <span class="hidden md:block text-[10px] uppercase tracking-widest border border-white/20 px-3 py-1 rounded-full">HC Vertical</span>
+    <!-- STANDARD NAV (EN pattern) -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                    <a href="como-funciona-en.html" class="text-white hover:text-gold-400 transition">How It Works</a>
+                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Archive</a>
+                </div>
+
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <a href="hc.html" class="text-neutral-500 hover:text-white transition">PT</a>
+                    <span class="text-white/30">|</span>
+                    <span class="text-gold-400 cursor-default">EN</span>
+                </div>
+            </div>
+
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Initiate Protocols
+            </a>
+        </div>
     </nav>
 
     <main id="main-content">
-        <header class="h-[65vh] flex items-center justify-center bg-neutral-950 border-b border-white/5 relative overflow-hidden">
+        <header class="h-[65vh] flex items-center justify-center bg-neutral-950 border-b border-white/5 relative overflow-hidden pt-24 md:pt-0">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-black opacity-50"></div>
             <div class="absolute text-[25vw] opacity-[0.03] font-serif italic select-none pointer-events-none transform -translate-y-10">HC</div>
-            
+
             <div class="text-center z-10 px-6 max-w-4xl mx-auto">
                 <span class="text-[#d4af37] uppercase tracking-[0.3em] text-[10px] mb-6 block">Health Care & Hospitality</span>
                 <h1 class="font-serif text-5xl md:text-7xl text-white mb-8 leading-tight">
                     The Experience of <br><span class="italic text-neutral-500">Care</span>
                 </h1>
                 <p class="text-neutral-400 font-light text-lg md:text-xl max-w-2xl mx-auto">
-                    We transform clinics and hospitals into high-value brands through hospitality protocols, risk management, and service design.
+                    We help clinics and hospitals become high-value brands through hospitality protocols, risk management, and service design.
                 </p>
             </div>
         </header>
 
         <section class="max-w-5xl mx-auto py-24 px-6">
-            
+
             <div class="grid md:grid-cols-12 gap-12 mb-24 items-start">
                 <div class="md:col-span-4">
-                    <h2 class="font-serif text-3xl text-white leading-normal">Excellence in medicine demands impeccable backstage.</h2>
+                    <h2 class="font-serif text-3xl text-white leading-normal">Excellence in medicine requires impeccable operations.</h2>
                     <div class="w-12 h-px bg-[#d4af37] mt-6"></div>
                 </div>
                 <div class="md:col-span-8 text-neutral-400 font-light leading-loose space-y-6">
                     <p>
-                        In a saturated health care market, technical competence is the bare minimum expected. The competitive edge lies in the "Patient Journey."
+                        In a saturated health care market, technical competence is the baseline. The competitive edge lives in the patient journey: clarity, predictability, and experience.
                     </p>
                     <p>
-                        The <strong>HC</strong> vertical of the Boutique Method acts at the intersection of legal security (terms, contracts, GDPR) and hospitality (reception, service scripts, post-consultation), ensuring that the patient's perception of value matches the quality of the medical act.
+                        The <strong>HC</strong> vertical operates at the intersection of documentation security (terms, contracts, and <strong>LGPD</strong>) and hospitality (reception, service scripts, and post-consultation), ensuring that perceived value matches clinical quality.
                     </p>
                 </div>
             </div>
@@ -110,36 +132,38 @@
                     <span class="text-xs font-bold text-[#d4af37] mb-2 block">01</span>
                     <h3 class="text-xl text-white font-serif mb-4">Premium Reception</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Training and scripting for secretaries to act as <em>concierges</em>. Scheduling, confirmation, and welcoming scripts that eliminate noise and raise the average ticket.
+                        Training and scripting for front-desk teams to operate as <em>concierges</em>. Scheduling, confirmation, and welcoming scripts that reduce friction and elevate perceived value.
                     </p>
                 </div>
+
                 <div class="group border-l border-white/10 pl-8 hover:border-[#d4af37] transition duration-500">
                     <span class="text-xs font-bold text-[#d4af37] mb-2 block">02</span>
-                    <h3 class="text-xl text-white font-serif mb-4">Documentary Security</h3>
+                    <h3 class="text-xl text-white font-serif mb-4">Documentation Security</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Informed Consent Forms (ICF) and contracts designed with <em>Legal Design</em>. Documents that the patient truly understands and that legally protect the professional.
+                        Informed consent and service agreements designed with <em>Legal Design</em>. Documents patients understand — and that protect professionals.
                     </p>
                 </div>
+
                 <div class="group border-l border-white/10 pl-8 hover:border-[#d4af37] transition duration-500">
                     <span class="text-xs font-bold text-[#d4af37] mb-2 block">03</span>
                     <h3 class="text-xl text-white font-serif mb-4">Patient Journey</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
-                        Complete mapping of touchpoints: from the first click on the website to the post-operative stage or return. Identification and elimination of experience bottlenecks.
+                        Full mapping of touchpoints: from the first click to post-op follow-up. Identification and removal of experience bottlenecks.
                     </p>
                 </div>
             </div>
 
             <div class="bg-neutral-900/50 border border-white/5 p-12 text-center relative overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[#d4af37] opacity-[0.03] blur-3xl -z-10"></div>
-                
-                <h3 class="font-serif text-2xl text-white mb-6">Elevate your institution's standard</h3>
+
+                <h3 class="font-serif text-2xl text-white mb-6">Elevate your institution’s standard</h3>
                 <p class="text-sm text-neutral-400 mb-8 max-w-lg mx-auto">
-                    You can acquire isolated protocols in our Store or hire a complete consultancy for institutional restructuring.
+                    You can acquire standalone protocols in our Archive, or engage a full consultancy for institutional restructuring.
                 </p>
-                
+
                 <div class="flex flex-col md:flex-row justify-center gap-6">
                     <a href="store-en.html" class="px-8 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black hover:border-white transition duration-300">
-                        Access HC Store
+                        Access HC Archive
                     </a>
                     <a href="iniciar-tratativas-en.html" class="px-8 py-4 bg-[#d4af37] text-neutral-900 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#b38f2d] transition duration-300">
                         Request Diagnosis
@@ -149,7 +173,7 @@
 
             <div class="mt-16 pt-8 border-t border-white/5 text-center">
                 <p class="text-[10px] text-neutral-600 uppercase tracking-wider max-w-2xl mx-auto leading-relaxed">
-                    <strong>Legal Notice (HC):</strong> Boutique Method provides consultancy in management, operational processes, and institutional communication. Our materials do not constitute medical advice, diagnosis, or prescription. Technical responsibility remains exclusively with qualified health care professionals.
+                    <strong>Legal Notice (HC):</strong> Boutique Method provides consultancy in management, operational processes, and institutional communication. Our materials do not constitute medical advice, diagnosis, or prescription. Clinical responsibility remains exclusively with qualified health care professionals.
                 </p>
             </div>
 
@@ -170,7 +194,6 @@
     </button>
 
     <script src="accessibility.js"></script>
-
     <script>
         const synth = window.speechSynthesis;
         let isPlaying = false;
@@ -185,8 +208,9 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Health Care Vertical. The Experience of Care. We transform clinics into high-value brands through hospitality protocols. Pillars: 1. Premium Reception for concierge secretaries. 2. Documentary Security with Legal Design. 3. Patient Journey without experience bottlenecks.";
-                
+                const text =
+                    "HC Vertical: Health Care and Hospitality. Boutique Method structures hospitality protocols, documentation security, and patient journey design. The objective is to reduce friction, increase predictability, and elevate perceived value in clinics and hospitals. Pillars: premium reception, legal design documentation, and end-to-end patient journey mapping.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
