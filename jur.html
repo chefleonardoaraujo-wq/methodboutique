@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JUR | Boutique Method</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
+    <meta name="description" content="Legal Design institucional e protocolos de comunicação inclusiva para escritórios jurídicos: clareza, autoridade silenciosa e percepção de valor em padrão premium.">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="accessibility.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,13 +16,8 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: { 400: '#d4af37', 900: '#8a6d1f' }
-                    },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } },
                     animation: { 'fade-in': 'fadeIn 1s ease-out forwards' },
                     keyframes: {
                         fadeIn: {
@@ -69,7 +66,7 @@
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV PADRÃO (igual às demais páginas) -->
+    <!-- NAV PADRÃO -->
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
             <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
@@ -99,7 +96,7 @@
         </div>
     </nav>
 
-    <main id="main-content" class="pt-24 md:pt-28">
+    <main id="main-content" class="pt-32 md:pt-40">
         <header class="h-[65vh] flex items-center justify-center bg-neutral-900 border-b border-white/5 relative overflow-hidden">
             <div class="absolute text-[20vw] opacity-[0.02] font-serif select-none pointer-events-none text-white">JUR</div>
             <div class="text-center z-10 px-6 animate-fade-in">
@@ -110,21 +107,26 @@
         </header>
 
         <section class="max-w-4xl mx-auto py-24 px-6">
-            <h2 class="font-serif text-3xl mb-8 text-white">A nova era das bancas</h2>
+            <h2 class="font-serif text-3xl mb-8 text-white">A nova era da advocacia premium</h2>
             <p class="text-neutral-400 leading-loose mb-12 text-lg font-light">
-                O setor jurídico exige mais do que excelência técnica; exige percepção de valor. A vertente JUR do Boutique Method estrutura a "autoridade silenciosa" de escritórios através de:
+                No jurídico, excelência técnica é premissa — não diferencial. O que sustenta percepção de valor é previsibilidade, clareza e presença institucional.
+                A vertente JUR do Boutique Method estrutura a <strong>autoridade silenciosa</strong> de escritórios e lideranças jurídicas, reduzindo atrito, elevando confiança e fortalecendo a tomada de decisão do cliente.
             </p>
 
             <div class="grid md:grid-cols-2 gap-12 mb-16">
                 <div>
                     <h3 class="text-white uppercase tracking-widest text-xs border-b border-gold-400 pb-2 mb-4 w-12">01</h3>
                     <h4 class="text-xl mb-2 text-white font-serif">Legal Design Institucional</h4>
-                    <p class="text-sm text-neutral-500 leading-relaxed">Padronização visual e textual de peças processuais para maximizar a clareza e persuasão.</p>
+                    <p class="text-sm text-neutral-500 leading-relaxed">
+                        Padronização visual e textual de documentos e comunicação para maximizar clareza, persuasão e consistência — sem perder tecnicidade.
+                    </p>
                 </div>
                 <div>
                     <h3 class="text-white uppercase tracking-widest text-xs border-b border-gold-400 pb-2 mb-4 w-12">02</h3>
                     <h4 class="text-xl mb-2 text-white font-serif">Comunicação Inclusiva</h4>
-                    <p class="text-sm text-neutral-500 leading-relaxed">Protocolos de linguagem que conectam o operador do direito ao cliente final sem perda de tecnicidade.</p>
+                    <p class="text-sm text-neutral-500 leading-relaxed">
+                        Protocolos de linguagem que conectam o operador do direito ao cliente final com segurança cognitiva, transparência e impacto institucional.
+                    </p>
                 </div>
             </div>
 
@@ -132,7 +134,7 @@
                 <p class="text-sm text-neutral-400 mb-8 font-light">Explore os produtos desta vertente ou inicie uma consultoria completa.</p>
                 <div class="flex flex-col md:flex-row justify-center gap-6">
                     <a href="store.html" class="px-8 py-4 border border-white/20 text-white hover:bg-white hover:text-black transition duration-300 text-[10px] uppercase tracking-[0.2em]">
-                        Ver Produtos JUR
+                        Acessar Acervo JUR
                     </a>
                     <a href="iniciar-tratativas.html" class="px-8 py-4 bg-gold-400 text-black font-bold hover:bg-white transition duration-300 text-[10px] uppercase tracking-[0.2em]">
                         Iniciar Tratativas
@@ -171,7 +173,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Vertente Jurídica da Boutique Method. Performance e Design Institucional. Estruturamos a autoridade silenciosa de escritórios de advocacia através do Legal Design Institucional e Protocolos de Comunicação Inclusiva, garantindo clareza e percepção de valor.";
+                const text = "Vertente Jurídica da Boutique Method. Performance e Design Institucional. Estruturamos a autoridade silenciosa de escritórios jurídicos com Legal Design Institucional e protocolos de Comunicação Inclusiva, elevando clareza, previsibilidade e percepção de valor.";
 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
