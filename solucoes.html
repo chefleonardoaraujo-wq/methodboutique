@@ -25,6 +25,12 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
+        /* SR-only */
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
         /* Botão de Audiodescrição */
         .audio-fab {
             position: fixed;
@@ -61,8 +67,17 @@
     <!-- NAV (padrão blindado - igual ao restante do site) -->
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+
+            <!-- LOGO (BMIP) -->
+            <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
+                <img
+                    src="bmip-logo-dark.png"
+                    alt="Boutique Method IP Holding"
+                    class="h-10 md:h-12 w-auto"
+                    loading="eager"
+                    decoding="async"
+                />
+                <span class="sr-only">Boutique Method®</span>
             </a>
 
             <div class="flex items-center space-x-4 md:space-x-8">
@@ -72,7 +87,7 @@
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
                     <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
 
-                    <!-- Nesta página, marquei "Serviços" como ativo (porque Soluções = portfólio/serviços). -->
+                    <!-- Nesta página, "Serviços" ativo -->
                     <a href="servicos.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Serviços</a>
 
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
@@ -128,7 +143,7 @@
                         <ul class="space-y-1 text-[10px] text-neutral-400 mb-6 font-light">
                             <li>• Plano de resposta rápida</li>
                             <li>• Nota oficial e comunicados</li>
-                            <li>• Q&A (perguntas difíceis)</li>
+                            <li>• Q&amp;A (perguntas difíceis)</li>
                         </ul>
                     </div>
                     <a href="iniciar-tratativas.html" class="block text-center border border-white/10 py-2 text-[10px] uppercase text-white hover:bg-gold-400 hover:text-black hover:border-gold-400 transition">Contratar</a>
@@ -191,7 +206,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
