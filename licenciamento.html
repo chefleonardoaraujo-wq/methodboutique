@@ -49,8 +49,17 @@
   <!-- NAV (BMIP padrão + PT|EN) -->
   <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-      <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-        Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+
+      <!-- LOGO (PNG) -->
+      <a href="index.html" class="flex items-center gap-3 hover:opacity-95 transition" aria-label="Boutique Method - Página inicial">
+        <img src="Logo_Boutique_Method_IP_Oficial.png"
+             alt="Boutique Method IP Holding"
+             class="h-9 md:h-10 w-auto select-none"
+             loading="eager"
+             decoding="async">
+        <span class="font-serif text-xl tracking-widest text-white uppercase">
+          Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+        </span>
       </a>
 
       <div class="flex items-center space-x-4 md:space-x-8">
@@ -251,7 +260,15 @@
   </main>
 
   <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
-    <p>Boutique Method IP Holding Ltda © 2026</p>
+    <div class="flex flex-col items-center gap-4">
+      <!-- LOGO (PNG) -->
+      <img src="Logo_Boutique_Method_IP_Oficial.png"
+           alt="Boutique Method IP Holding"
+           class="h-8 w-auto opacity-80 select-none"
+           loading="lazy"
+           decoding="async">
+      <p>Boutique Method IP Holding Ltda © 2026</p>
+    </div>
   </footer>
 
   <script src="accessibility.js"></script>
