@@ -17,6 +17,12 @@
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; } 
         .gold-selection::selection { background: #d4af37; color: black; } 
 
+        /* SR-only */
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
         /* Botão de Audiodescrição */
         .audio-fab {
             position: fixed;
@@ -51,16 +57,30 @@
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+
+            <!-- LOGO (BMIP) -->
+            <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
+                <img
+                    src="bmip-logo-dark.png"
+                    alt="Boutique Method IP Holding"
+                    class="h-10 md:h-12 w-auto"
+                    loading="eager"
+                    decoding="async"
+                />
+                <span class="sr-only">Boutique Method®</span>
             </a>
+
             <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                 <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                 <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                 <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                 <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                <a href="store.html" class="text-gold-400 transition border-b border-gold-400 pb-1">Store</a>
+
+                <!-- Mentoria = serviço; marque Serviços como ativo no menu principal do site.
+                     Se você quiser manter "Store" ativo aqui, troque as classes abaixo. -->
+                <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
             </div>
+
             <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
                 Iniciar Tratativas
             </a>
@@ -76,7 +96,8 @@
                     Mentoria <span class="italic text-neutral-500">Executiva</span>
                 </h1>
                 <p class="text-neutral-400 font-light text-lg leading-relaxed max-w-2xl">
-                    Acompanhamento estratégico direto com os sócios da Holding, desenhado para líderes que precisam de clareza, priorização e execução com padrão executivo.
+                    Acompanhamento estratégico direto com os sócios da Holding, desenhado para líderes que precisam de clareza,
+                    priorização e execução com padrão executivo.
                 </p>
             </div>
 
@@ -113,7 +134,7 @@
                                 <p class="text-neutral-500 text-xs">Rituais, indicadores e cadência para garantir que o plano não morra.</p>
                             </div>
                         </li>
-                         <li class="flex items-start gap-4">
+                        <li class="flex items-start gap-4">
                             <span class="text-gold-400 mt-1" aria-hidden="true">✓</span>
                             <div>
                                 <strong class="text-white text-sm block mb-1">Revisão de Materiais Críticos</strong>
@@ -163,7 +184,7 @@
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
