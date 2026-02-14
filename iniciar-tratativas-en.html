@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Initiate Protocols | Boutique Method</title>
+    <title>Start Discussions | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] }, colors: { gold: { 400: '#d4af37', 500: '#c5a028' } } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } }
+                }
+            }
+        }
     </script>
 
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
-        
-        /* Minimalist Input Styles */
+
+        /* Input styling */
         .input-minimal {
             background: transparent;
             border: none;
@@ -32,20 +39,14 @@
             font-weight: 300;
             font-size: 0.9rem;
         }
-        .input-minimal:focus {
-            border-bottom-color: #d4af37;
-        }
+        .input-minimal:focus { border-bottom-color: #d4af37; }
         .input-minimal::placeholder {
             color: #555;
             text-transform: uppercase;
             font-size: 0.75rem;
             letter-spacing: 1px;
         }
-        
-        select.input-minimal {
-            appearance: none;
-            border-radius: 0;
-        }
+        select.input-minimal { appearance: none; border-radius: 0; }
 
         /* Audio Description Button */
         .audio-fab {
@@ -75,57 +76,73 @@
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
     </style>
 </head>
+
 <body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <a href="#main-content" class="skip-link">Skip to initiation form</a>
+    <a href="#main-content" class="skip-link">Skip to the form</a>
 
-    <nav class="w-full py-8 px-8 flex justify-between items-center bg-transparent relative z-20">
-        <a href="index-en.html" class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 hover:text-white transition">
-            ← Back
-        </a>
-        <div class="flex items-center gap-6">
-            <div class="font-serif text-xl tracking-widest text-white uppercase">
-                Boutique Method
+    <!-- STANDARD NAV (same as other pages) -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
+                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+            </a>
+
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
+                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
+                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
+                    <a href="como-funciona-en.html" class="text-white hover:text-gold-400 transition">How It Works</a>
+                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
+                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Archive</a>
+                </div>
+
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <a href="iniciar-tratativas.html" class="text-neutral-500 hover:text-white transition">PT</a>
+                    <span class="text-white/30">|</span>
+                    <span class="text-gold-400 cursor-default">EN</span>
+                </div>
             </div>
-            <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4">
-                <a href="iniciar-tratativas.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                <span class="text-white/30">|</span>
-                <span class="text-gold-400 cursor-default">EN</span>
-            </div>
+
+            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Start Discussions
+            </a>
         </div>
     </nav>
 
-    <main id="main-content" class="flex-grow flex items-center justify-center px-6 py-12">
+    <!-- Padding-top increased so content doesn't stick to fixed nav -->
+    <main id="main-content" class="flex-grow flex items-center justify-center px-6 pt-40 pb-16">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
-            
-            <div class="space-y-8 pt-10">
+
+            <div class="space-y-8 pt-6">
                 <h1 class="font-serif text-5xl md:text-6xl text-white leading-tight">
                     Initiation <br>
                     <span class="italic text-neutral-500">Protocol</span>
                 </h1>
-                
+
                 <p class="text-neutral-400 font-light leading-relaxed max-w-md">
-                    To ensure the integrity of our operations and the confidentiality of our clients, all protocols begin through this secure channel.
+                    To protect the integrity of our operations and the confidentiality of our clients, all discussions begin through this secure channel.
                 </p>
 
                 <ul class="space-y-3 mt-8">
                     <li class="flex items-center text-sm text-neutral-300">
                         <span class="w-1.5 h-1.5 bg-gold-400 rounded-full mr-3"></span>
-                        Service under NDA
+                        Engagement under NDA
                     </li>
                     <li class="flex items-center text-sm text-neutral-300">
                         <span class="w-1.5 h-1.5 bg-gold-400 rounded-full mr-3"></span>
-                        Response within 24 business hours
+                        Reply within 24 business hours
                     </li>
                 </ul>
             </div>
 
             <div class="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 shadow-2xl">
-                <form action="https://formsubmit.co/youremail@here.com" method="POST" class="space-y-8">
-                    
+                <form action="https://formspree.io/f/xykdznjb" method="POST" class="space-y-8">
+
                     <div>
-                        <label for="name" class="sr-only">Full Name / Position</label>
-                        <input type="text" id="name" name="name" class="input-minimal" placeholder="Full Name / Position" required>
+                        <label for="name" class="sr-only">Full Name</label>
+                        <input type="text" id="name" name="name" class="input-minimal" placeholder="Full Name / Role" required>
                     </div>
 
                     <div>
@@ -134,29 +151,31 @@
                     </div>
 
                     <div class="relative">
-                        <label for="subject" class="sr-only">Select Matter</label>
-                        <select id="subject" name="subject" class="input-minimal text-neutral-400" required>
-                            <option value="" disabled selected>SELECT MATTER</option>
+                        <label for="topic" class="sr-only">Select a Topic</label>
+                        <select id="topic" name="topic" class="input-minimal text-neutral-400" required>
+                            <option value="" disabled selected>SELECT A TOPIC</option>
                             <option value="licensing" style="background:#000;">Method Licensing</option>
                             <option value="services" style="background:#000;">Service Engagement</option>
                             <option value="partnership" style="background:#000;">Strategic Partnership</option>
-                            <option value="media" style="background:#000;">Press / Media</option>
+                            <option value="press" style="background:#000;">Press / Media</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                            </svg>
                         </div>
                     </div>
 
                     <div>
                         <label for="message" class="sr-only">Message</label>
-                        <textarea id="message" name="message" rows="3" class="input-minimal" placeholder="Brief description of the demand" required></textarea>
+                        <textarea id="message" name="message" rows="3" class="input-minimal" placeholder="Brief description of your request" required></textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-gold-400 text-black font-bold text-xs uppercase tracking-[0.2em] py-5 hover:bg-white transition duration-500 mt-4">
-                        Initiate Protocol
+                        Start Protocol
                     </button>
 
-                    <input type="hidden" name="_next" value="https://boutiquemethodip.com/thanks.html">
+                    <input type="hidden" name="_next" value="https://boutiquemethodip.com/obrigado.html">
                     <input type="hidden" name="_captcha" value="false">
                 </form>
             </div>
@@ -164,17 +183,17 @@
         </div>
     </main>
 
-    <footer class="py-8 text-center text-[10px] text-neutral-600 uppercase tracking-widest mt-auto">
+    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen Page</span>
     </button>
 
     <script src="accessibility.js"></script>
@@ -191,10 +210,10 @@
                 synth.cancel();
                 isPlaying = false;
                 btn.classList.add('paused');
-                label.innerText = "Listen to Page";
+                label.innerText = "Listen Page";
             } else {
-                const text = "Boutique Method Initiation Protocol. To ensure confidentiality, all inquiries begin through this channel. The form requires your name, corporate email, subject of interest, and a brief description of your demand. Service is provided under NDA and responded to within 24 business hours.";
-                
+                const text = "Boutique Method Initiation Protocol. To ensure confidentiality, all discussions start through this channel. The form requests your name, corporate email, topic of interest, and a brief description of your request. Engagement is conducted under a non-disclosure agreement, with a reply within twenty-four business hours.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
@@ -202,7 +221,7 @@
                 utter.onend = () => {
                     isPlaying = false;
                     btn.classList.add('paused');
-                    label.innerText = "Listen to Page";
+                    label.innerText = "Listen Page";
                 };
 
                 synth.speak(utter);
