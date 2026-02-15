@@ -20,6 +20,7 @@
             }
         }
     </script>
+
     <style>
         :root { --nav-offset: 104px; }
         @media (min-width: 768px) { :root { --nav-offset: 88px; } }
@@ -99,57 +100,42 @@
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV (corrigido + wordmark visível + layout robusto) -->
-    <nav class="fixed inset-x-0 top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-screen-2xl mx-auto px-6 py-4">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- NAV (IGUAL AO ORIGEM/LICENCIAMENTO) -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
 
-                <!-- BRAND: logo + Boutique Method -->
-                <a href="index.html"
-                   class="flex items-center gap-3 hover:opacity-90 transition"
-                   aria-label="Boutique Method IP Holding">
-                    <img src="bmip-logo-dark.png"
-                         alt="Boutique Method IP Holding"
-                         class="h-10 md:h-12 w-auto"
-                         loading="eager"
-                         decoding="async" />
+            <!-- LOGO (PNG) + WORDMARK -->
+            <a href="index.html" class="flex items-center gap-3 hover:opacity-95 transition" aria-label="Boutique Method - Página inicial">
+                <img src="bmip-logo-dark.png"
+                     alt="Boutique Method IP Holding"
+                     class="h-9 md:h-10 w-auto select-none"
+                     loading="eager"
+                     decoding="async">
+                <span class="font-serif text-xl tracking-widest text-white uppercase">
+                    Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+                </span>
+            </a>
 
-                    <!-- Wordmark visível (some apenas em telas muito pequenas) -->
-                    <span class="hidden sm:flex flex-col leading-none whitespace-nowrap">
-                        <span class="font-serif text-lg md:text-xl tracking-widest text-white uppercase">
-                            Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-                        </span>
-                        <span class="text-[9px] md:text-[10px] tracking-[0.22em] uppercase text-neutral-500 mt-1">
-                            IP Holding
-                        </span>
-                    </span>
-
-                    <span class="sr-only">Boutique Method IP Holding</span>
-                </a>
-
-                <!-- LINKS + IDIOMA -->
-                <div class="flex items-center justify-center gap-x-6 gap-y-2 flex-wrap md:flex-nowrap whitespace-nowrap
-                            text-[10px] lg:text-xs tracking-[0.14em] uppercase font-light text-center">
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                     <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
                     <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
                     <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
-
-                    <span class="hidden md:inline-block w-px h-4 bg-white/20 mx-2" aria-hidden="true"></span>
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30" aria-hidden="true">|</span>
-                    <a href="index-en.html" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <!-- CTA -->
-                <a href="iniciar-tratativas.html"
-                   class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest
-                          hover:bg-gold-400 hover:text-black transition duration-500 whitespace-nowrap">
-                    Iniciar Tratativas
-                </a>
+                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <span class="text-gold-400 cursor-default">PT</span>
+                    <span class="text-white/30">|</span>
+                    <a href="index-en.html" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+                </div>
             </div>
+
+            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+                Iniciar Tratativas
+            </a>
         </div>
     </nav>
 
@@ -165,9 +151,7 @@
                 </h1>
 
                 <p class="text-neutral-400 text-sm md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-                    Somos uma IP Holding que estrutura, protege e licencia métodos. Transformamos
-                    conhecimento em <strong class="text-white font-normal">sistemas replicáveis</strong> — linguagem, protocolos e padrões — para
-                    reduzir ruído, proteger reputação e gerar escala com previsibilidade.
+                    Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação. Nosso papel é codificar a cultura da sua organização em processos tangíveis.
                 </p>
 
                 <div class="pt-8 flex flex-col md:flex-row gap-6 justify-center">
