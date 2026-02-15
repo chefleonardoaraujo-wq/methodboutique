@@ -10,7 +10,6 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
     <script>
         tailwind.config = {
             theme: {
@@ -21,16 +20,24 @@
             }
         }
     </script>
-
     <style>
+        :root { --nav-offset: 104px; }
+        @media (min-width: 768px) { :root { --nav-offset: 88px; } }
+
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
-        /* Acessibilidade (texto apenas para leitores de tela) */
+        /* Evita conteúdo "comido" pelo NAV fixo */
+        main { padding-top: var(--nav-offset); }
+        #main-content { scroll-margin-top: var(--nav-offset); }
+
         .sr-only{
-            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+          position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+          clip:rect(0,0,0,0);white-space:nowrap;border:0;
         }
+
+        /* Hero ocupa a viewport descontando o NAV */
+        .hero { min-height: calc(100vh - var(--nav-offset)); }
 
         /* ESTILO DA BARRA DE INCLUSÃO (TRUSTBAR) */
         .trustbar {
@@ -92,24 +99,35 @@
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV (corrigido: anti-quebra / anti-corte) -->
+    <!-- NAV (corrigido + wordmark visível + layout robusto) -->
     <nav class="fixed inset-x-0 top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-screen-2xl mx-auto px-6 py-4">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
 
-                <!-- LOGO -->
-                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
-                    <img
-                        src="bmip-logo-dark.png"
-                        alt="Boutique Method IP Holding"
-                        class="h-10 md:h-12 w-auto"
-                        loading="eager"
-                        decoding="async"
-                    />
-                    <span class="sr-only">Boutique Method®</span>
+                <!-- BRAND: logo + Boutique Method -->
+                <a href="index.html"
+                   class="flex items-center gap-3 hover:opacity-90 transition"
+                   aria-label="Boutique Method IP Holding">
+                    <img src="bmip-logo-dark.png"
+                         alt="Boutique Method IP Holding"
+                         class="h-10 md:h-12 w-auto"
+                         loading="eager"
+                         decoding="async" />
+
+                    <!-- Wordmark visível (some apenas em telas muito pequenas) -->
+                    <span class="hidden sm:flex flex-col leading-none whitespace-nowrap">
+                        <span class="font-serif text-lg md:text-xl tracking-widest text-white uppercase">
+                            Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+                        </span>
+                        <span class="text-[9px] md:text-[10px] tracking-[0.22em] uppercase text-neutral-500 mt-1">
+                            IP Holding
+                        </span>
+                    </span>
+
+                    <span class="sr-only">Boutique Method IP Holding</span>
                 </a>
 
-                <!-- MENU -->
+                <!-- LINKS + IDIOMA -->
                 <div class="flex items-center justify-center gap-x-6 gap-y-2 flex-wrap md:flex-nowrap whitespace-nowrap
                             text-[10px] lg:text-xs tracking-[0.14em] uppercase font-light text-center">
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
@@ -119,7 +137,6 @@
                     <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
 
-                    <!-- IDIOMA -->
                     <span class="hidden md:inline-block w-px h-4 bg-white/20 mx-2" aria-hidden="true"></span>
                     <span class="text-gold-400 cursor-default">PT</span>
                     <span class="text-white/30" aria-hidden="true">|</span>
@@ -137,8 +154,7 @@
     </nav>
 
     <main id="main-content">
-        <!-- HEADER (ajustado para NAV fixo não “comer” nada) -->
-        <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-44 md:pt-28">
+        <header class="hero relative flex items-center justify-center px-6 overflow-hidden">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 via-black to-black opacity-50"></div>
 
             <div class="relative z-10 max-w-5xl text-center space-y-8">
@@ -149,20 +165,17 @@
                 </h1>
 
                 <p class="text-neutral-400 text-sm md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-                    Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação.
-                    Nosso papel é codificar a cultura da sua organização em processos tangíveis.
+                    Somos uma IP Holding que estrutura, protege e licencia métodos. Transformamos
+                    conhecimento em <strong class="text-white font-normal">sistemas replicáveis</strong> — linguagem, protocolos e padrões — para
+                    reduzir ruído, proteger reputação e gerar escala com previsibilidade.
                 </p>
 
                 <div class="pt-8 flex flex-col md:flex-row gap-6 justify-center">
-                    <a href="origem.html" class="px-8 py-3 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-gold-400 transition duration-500">
-                        Conheça a Origem
-                    </a>
-                    <a href="manifesto.html" class="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">
-                        Conheça a Holding
-                    </a>
+                    <a href="origem.html" class="px-8 py-3 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-gold-400 transition duration-500">Conheça a Origem</a>
+                    <a href="manifesto.html" class="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">Conheça a Holding</a>
                 </div>
 
-                <div class="trustbar" style="animation-delay: 0.5s;">
+                <div class="trustbar animate-fade-in" style="animation-delay: 0.5s;">
                     <span><strong>Atendimento Inclusivo:</strong> Libras</span>
                     <span class="separator"></span>
                     <span>Protocolos para Neurodivergência</span>
