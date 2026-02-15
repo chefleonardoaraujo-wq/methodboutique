@@ -10,6 +10,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -20,13 +21,15 @@
             }
         }
     </script>
+
     <style>
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
+        /* Acessibilidade (texto apenas para leitores de tela) */
         .sr-only{
-          position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-          clip:rect(0,0,0,0);white-space:nowrap;border:0;
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
         }
 
         /* ESTILO DA BARRA DE INCLUSÃO (TRUSTBAR) */
@@ -89,89 +92,77 @@
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV (BMIP padrão + logo + wordmark + PT|EN + CTA) -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- NAV (corrigido: anti-quebra / anti-corte) -->
+    <nav class="fixed inset-x-0 top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-screen-2xl mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
 
-            <!-- LOGO + WORDMARK (consistente com o padrão) -->
-            <a href="index.html" class="flex items-center gap-3 hover:opacity-95 transition" aria-label="Boutique Method - Página inicial">
-                <img
-                    src="bmip-logo-dark.png"
-                    alt="Boutique Method IP Holding"
-                    class="h-9 md:h-10 w-auto select-none"
-                    loading="eager"
-                    decoding="async"
-                />
-                <span class="font-serif text-xl tracking-widest text-white uppercase">
-                    Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-                </span>
-            </a>
+                <!-- LOGO -->
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
+                    <img
+                        src="bmip-logo-dark.png"
+                        alt="Boutique Method IP Holding"
+                        class="h-10 md:h-12 w-auto"
+                        loading="eager"
+                        decoding="async"
+                    />
+                    <span class="sr-only">Boutique Method®</span>
+                </a>
 
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
+                <!-- MENU -->
+                <div class="flex items-center justify-center gap-x-6 gap-y-2 flex-wrap md:flex-nowrap whitespace-nowrap
+                            text-[10px] lg:text-xs tracking-[0.14em] uppercase font-light text-center">
                     <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
                     <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
                     <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
                     <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
                     <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
                     <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
-                </div>
 
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
+                    <!-- IDIOMA -->
+                    <span class="hidden md:inline-block w-px h-4 bg-white/20 mx-2" aria-hidden="true"></span>
                     <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
+                    <span class="text-white/30" aria-hidden="true">|</span>
                     <a href="index-en.html" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
                 </div>
-            </div>
 
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
+                <!-- CTA -->
+                <a href="iniciar-tratativas.html"
+                   class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest
+                          hover:bg-gold-400 hover:text-black transition duration-500 whitespace-nowrap">
+                    Iniciar Tratativas
+                </a>
+            </div>
         </div>
     </nav>
 
     <main id="main-content">
-        <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-48 md:pt-0">
+        <!-- HEADER (ajustado para NAV fixo não “comer” nada) -->
+        <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-44 md:pt-28">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 via-black to-black opacity-50"></div>
 
             <div class="relative z-10 max-w-5xl text-center space-y-8">
-                <!-- Ajuste: deixa claro o que é, em 1 linha -->
-                <p class="text-gold-400 text-xs tracking-[0.4em] uppercase font-light animate-pulse">
-                    IP HOLDING • GOVERNANÇA • LICENCIAMENTO
-                </p>
+                <p class="text-gold-400 text-xs tracking-[0.4em] uppercase font-light animate-pulse">Intellectual Property Holding</p>
 
                 <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight">
                     Do Intelecto <br> ao <span class="italic text-gold-400">Patrimônio.</span>
                 </h1>
 
-                <!-- Ajuste cirúrgico: define o que somos + o que fazemos + efeito -->
                 <p class="text-neutral-400 text-sm md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-                    Somos uma <strong class="text-white font-normal">IP Holding</strong> que estrutura, protege e licencia métodos.
-                    Transformamos conhecimento em <strong class="text-white font-normal">sistemas replicáveis</strong> — linguagem, protocolos e padrões —
-                    para reduzir ruído, proteger reputação e gerar escala com previsibilidade.
+                    Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação.
+                    Nosso papel é codificar a cultura da sua organização em processos tangíveis.
                 </p>
 
-                <!-- Microbloco objetivo: o que entregamos (sem mudar o layout do site) -->
-                <div class="max-w-3xl mx-auto pt-2">
-                    <div class="flex flex-wrap justify-center gap-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-neutral-400">
-                        <span class="border border-white/10 bg-white/5 px-3 py-2">Diagnóstico & Risco</span>
-                        <span class="border border-white/10 bg-white/5 px-3 py-2">Sistema de Padrões</span>
-                        <span class="border border-white/10 bg-white/5 px-3 py-2">Implantação por Sprints</span>
-                        <span class="border border-white/10 bg-white/5 px-3 py-2">Licenciamento</span>
-                    </div>
-                </div>
-
-                <!-- Ajuste de CTA: mais “o que eu faço agora” -->
                 <div class="pt-8 flex flex-col md:flex-row gap-6 justify-center">
-                    <a href="como-funciona.html" class="px-8 py-3 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-gold-400 transition duration-500">
-                        Como Funciona
+                    <a href="origem.html" class="px-8 py-3 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-gold-400 transition duration-500">
+                        Conheça a Origem
                     </a>
-                    <a href="licenciamento.html" class="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">
-                        Ver Licenciamento
+                    <a href="manifesto.html" class="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">
+                        Conheça a Holding
                     </a>
                 </div>
 
-                <div class="trustbar animate-fade-in" style="animation-delay: 0.5s;">
+                <div class="trustbar" style="animation-delay: 0.5s;">
                     <span><strong>Atendimento Inclusivo:</strong> Libras</span>
                     <span class="separator"></span>
                     <span>Protocolos para Neurodivergência</span>
@@ -194,10 +185,7 @@
                         <div class="relative z-10 space-y-4">
                             <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Comunicação Estratégica de Alta Complexidade</h3>
                             <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <!-- Ajuste leve: mais efeito/prática -->
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">
-                                Traduzimos o técnico em linguagem acionável — com precisão institucional — para reduzir ruído e elevar autoridade.
-                            </p>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Traduzimos ambientes técnicos em linguagem inteligível sem perder densidade jurídica ou institucional.</p>
                             <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler mais +</span>
                         </div>
                     </button>
@@ -207,10 +195,7 @@
                         <div class="relative z-10 space-y-4">
                             <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Arquitetura Sistêmica & Governança</h3>
                             <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <!-- Ajuste leve: mais direto -->
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">
-                                Estruturamos protocolos e fluxos para transformar conhecimento em método — com padrão, controle e previsibilidade.
-                            </p>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Estruturamos processos, protocolos e fluxos internos para transformar conhecimento em método replicável.</p>
                             <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler mais +</span>
                         </div>
                     </button>
@@ -220,10 +205,7 @@
                         <div class="relative z-10 space-y-4">
                             <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Propriedade Intelectual Licenciável</h3>
                             <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <!-- Ajuste leve: tira “genérico” e diz o que vira -->
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">
-                                Convertendo expertise em ativos protegidos e licenciáveis: métodos, frameworks, playbooks e padrões operacionais.
-                            </p>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Convertendo expertise em ativos jurídicos protegidos.</p>
                             <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler mais +</span>
                         </div>
                     </button>
@@ -259,15 +241,15 @@
         const modalData = {
             modal1: {
                 title: "Comunicação Estratégica de Alta Complexidade",
-                text: "Traduzimos o técnico em linguagem acionável — com precisão institucional — para reduzir ruído e elevar autoridade.<br><br>Organizamos tomada de decisão, alinhamos stakeholders e protegemos reputação em contextos críticos."
+                text: "Traduzimos ambientes técnicos em linguagem inteligível sem perder densidade jurídica ou institucional.<br><br>Reduzimos ruído, elevamos autoridade e organizamos a tomada de decisão em contextos críticos."
             },
             modal2: {
                 title: "Arquitetura Sistêmica & Governança",
-                text: "Estruturamos protocolos, fluxos e padrões para transformar conhecimento em método replicável.<br><br>Clareza operacional, padronização e previsibilidade como base de crescimento sustentável."
+                text: "Estruturamos processos, protocolos e fluxos internos para transformar conhecimento em método replicável.<br><br>Clareza operacional, padronização e controle estratégico como base de crescimento sustentável."
             },
             modal3: {
                 title: "Propriedade Intelectual Licenciável",
-                text: "Convertendo expertise em ativos protegidos e licenciáveis.<br><br>Métodos, frameworks, playbooks e padrões operacionais que geram escala, recorrência e valorização patrimonial."
+                text: "Convertendo expertise em ativos jurídicos protegidos.<br><br>Métodos, frameworks e estruturas registráveis que geram escala, recorrência e valorização patrimonial."
             }
         };
 
@@ -314,7 +296,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Boutique Method. Do Intelecto ao Patrimônio. Somos uma IP Holding de governança e licenciamento. Estruturamos, protegemos e licenciamos métodos. Transformamos conhecimento em sistemas replicáveis: linguagem, protocolos e padrões, para reduzir ruído, proteger reputação e gerar escala. Entregamos diagnóstico e risco, sistema de padrões, implantação por sprints e licenciamento. Atendimento inclusivo: Libras, protocolos para neurodivergência e acessibilidade para cegos e baixa visão.";
+                const text = "Boutique Method. Do Intelecto ao Patrimônio. Somos uma Holding de Propriedade Intelectual. Oferecemos Atendimento Inclusivo em Libras e Protocolos para Neurodivergência. Nossos Pilares: 1. Comunicação Estratégica. 2. Arquitetura Sistêmica. 3. Propriedade Intelectual.";
 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
