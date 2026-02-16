@@ -296,6 +296,71 @@
                     </div>
                 </div>
 
+                <!-- ✅ NOVO BLOCO: Vertentes (JUR/HC/POL) — complementa sem mexer no que já existe -->
+                <div class="pt-10">
+                    <div class="max-w-5xl mx-auto text-left">
+                        <div class="flex items-end justify-between flex-wrap gap-4">
+                            <div>
+                                <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">Vertentes</span>
+                                <h3 class="font-serif text-2xl md:text-3xl text-white italic mt-2">Licenciamento por Vertical</h3>
+                                <p class="text-white/55 text-xs md:text-sm font-light mt-2 leading-relaxed max-w-3xl">
+                                    A mesma lógica institucional — aplicada com precisão ao seu setor. Acesse as páginas dedicadas de cada vertical.
+                                </p>
+                            </div>
+                            <a href="licenciamento.html"
+                               class="text-[10px] uppercase tracking-[0.25em] text-gold-400/80 hover:text-gold-400 transition border-b border-gold-400/20 hover:border-gold-400/60 pb-1">
+                                Ver visão geral
+                            </a>
+                        </div>
+
+                        <div class="mt-6 grid md:grid-cols-3 gap-4">
+                            <a href="licenciamento-jur.html" class="card p-6 block">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">JUR</span>
+                                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Vertical</span>
+                                </div>
+                                <h4 class="font-serif text-xl text-white italic mt-3">Jurídico</h4>
+                                <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
+                                    Comunicação técnica inteligível, padrões auditáveis e governança de risco.
+                                </p>
+                                <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-70 hover:opacity-100 transition">
+                                    Abrir página →
+                                </span>
+                            </a>
+
+                            <a href="licenciamento-hc.html" class="card p-6 block">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">HC</span>
+                                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Vertical</span>
+                                </div>
+                                <h4 class="font-serif text-xl text-white italic mt-3">Saúde</h4>
+                                <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
+                                    Jornadas assistenciais, redução de ruído e padrões para redes e alta complexidade.
+                                </p>
+                                <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-70 hover:opacity-100 transition">
+                                    Abrir página →
+                                </span>
+                            </a>
+
+                            <!-- Observação: você escreveu "licenciamento-pol.htnl". Aqui está como .html (padrão).
+                                 Se o arquivo estiver mesmo como .htnl, ajuste o href abaixo para bater 100% com o nome do arquivo. -->
+                            <a href="licenciamento-pol.html" class="card p-6 block">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">POL</span>
+                                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Vertical</span>
+                                </div>
+                                <h4 class="font-serif text-xl text-white italic mt-3">Integridade & Processos</h4>
+                                <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
+                                    Protocolos, governança e padrões de comunicação para ambientes sensíveis e regulados.
+                                </p>
+                                <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-70 hover:opacity-100 transition">
+                                    Abrir página →
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- (5) Para quem é (logo após a dobra, ainda no hero, discreto) -->
                 <div class="pt-10">
                     <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-4">
@@ -453,6 +518,7 @@
                 const text =
                     "Boutique Method. Do Intelecto ao Patrimônio. Estruturamos, protegemos e licenciamos métodos operacionais: linguagem, protocolos e padrões, para reduzir ruído, blindar reputação e escalar com previsibilidade. " +
                     "Entrada: Diagnóstico e Risco. Estrutura: Sistema de Padrões. Execução: Implantação por Sprints. Escala: Licenciamento. " +
+                    "Vertentes de licenciamento: Jurídico, Saúde, e Integridade e Processos. " +
                     "Atendimento Inclusivo: Libras. Protocolos para Neurodivergência. Acessibilidade para cegos e baixa visão.";
 
                 const utter = new SpeechSynthesisUtterance(text);
@@ -473,4 +539,4 @@
         }
     </script>
 </body>
-</html>
+                        </html>
