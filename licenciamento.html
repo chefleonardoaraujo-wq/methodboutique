@@ -36,9 +36,9 @@
     }
     .card:hover { border-color: rgba(212,175,55,0.35); background: rgba(212,175,55,0.03); transform: translateY(-2px); }
 
-    /* Table polish */
-    .table-row { border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .table-row:last-child { border-bottom: none; }
+    /* Modal */
+    .modal-enter { animation: fadeIn .25s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 
@@ -141,59 +141,92 @@
       <div class="max-w-7xl mx-auto text-center">
         <div class="mb-16">
           <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold">Planos</span>
-          <h2 class="font-serif text-4xl text-white italic mt-4">Estrutura de Licenciamento</h2>
+          <h2 class="font-serif text-4xl text-white italic mt-4">Modelos de Licenciamento</h2>
           <p class="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             Três níveis, com implantação por sprints. O escopo final é definido após diagnóstico e escopo.
           </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8 text-left">
+          <!-- Essential -->
           <div class="card p-10">
             <h3 class="font-serif text-2xl text-white italic">Essential</h3>
             <p class="text-neutral-500 text-xs uppercase tracking-widest mt-2">2 sprints • padronização rápida</p>
+
             <ul class="mt-8 space-y-3 text-neutral-400 text-sm font-light">
               <li><span class="text-gold-400 mr-2">✦</span> Carta Magna + Tom de Voz por canal</li>
               <li><span class="text-gold-400 mr-2">✦</span> Templates essenciais (operacional)</li>
               <li><span class="text-gold-400 mr-2">✦</span> Fluxo básico de atendimento + escalonamento</li>
               <li><span class="text-gold-400 mr-2">✦</span> Checklist semanal + métricas mínimas</li>
             </ul>
-            <div class="mt-10">
-              <a href="iniciar-tratativas.html" class="inline-block text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
+
+            <!-- Modal trigger -->
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <button type="button"
+                      onclick="openPlanModal('essential')"
+                      class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
+                Ver escopo completo +
+              </button>
+
+              <a href="iniciar-tratativas.html"
+                 class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
                 Iniciar tratativas →
               </a>
             </div>
           </div>
 
+          <!-- Professional -->
           <div class="card p-10 border-2 border-gold-400 bg-gold-400/[0.03] shadow-2xl relative">
             <div class="absolute top-0 right-0 p-4">
               <span class="text-gold-400 text-[8px] border border-gold-400 px-2 py-1 uppercase font-bold">Recomendado</span>
             </div>
             <h3 class="font-serif text-2xl text-gold-400 italic">Professional</h3>
             <p class="text-neutral-400 text-xs uppercase tracking-widest mt-2">4 sprints • consistência + performance</p>
+
             <ul class="mt-8 space-y-3 text-neutral-300 text-sm font-light">
               <li><span class="text-gold-400 mr-2">✦</span> Tudo do Essential</li>
               <li><span class="text-gold-400 mr-2">✦</span> Scripts ampliados + objeções</li>
               <li><span class="text-gold-400 mr-2">✦</span> Playbook de crise (tático)</li>
               <li><span class="text-gold-400 mr-2">✦</span> RACI + SLA interno + ritual mensal</li>
             </ul>
-            <div class="mt-10">
-              <a href="iniciar-tratativas.html" class="inline-block text-white text-[10px] uppercase tracking-[0.25em] border-b border-white/30 pb-1 hover:text-gold-400 transition">
+
+            <!-- Modal trigger -->
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <button type="button"
+                      onclick="openPlanModal('professional')"
+                      class="text-white text-[10px] uppercase tracking-[0.25em] border-b border-white/30 pb-1 hover:text-gold-400 transition">
+                Ver escopo completo +
+              </button>
+
+              <a href="iniciar-tratativas.html"
+                 class="text-white text-[10px] uppercase tracking-[0.25em] border-b border-white/30 pb-1 hover:text-gold-400 transition">
                 Iniciar tratativas →
               </a>
             </div>
           </div>
 
+          <!-- Enterprise -->
           <div class="card p-10">
             <h3 class="font-serif text-2xl text-white italic">Enterprise</h3>
             <p class="text-neutral-500 text-xs uppercase tracking-widest mt-2">8–12 sprints • multiunidade</p>
+
             <ul class="mt-8 space-y-3 text-neutral-400 text-sm font-light">
               <li><span class="text-gold-400 mr-2">✦</span> Tudo do Professional</li>
               <li><span class="text-gold-400 mr-2">✦</span> Governança multiunidade + multiplicadores</li>
               <li><span class="text-gold-400 mr-2">✦</span> Kit robusto de reputação + trilhas formais</li>
               <li><span class="text-gold-400 mr-2">✦</span> Auditorias + painel de métricas + recertificação</li>
             </ul>
-            <div class="mt-10">
-              <a href="iniciar-tratativas.html" class="inline-block text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
+
+            <!-- Modal trigger -->
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <button type="button"
+                      onclick="openPlanModal('enterprise')"
+                      class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
+                Ver escopo completo +
+              </button>
+
+              <a href="iniciar-tratativas.html"
+                 class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
                 Iniciar tratativas →
               </a>
             </div>
@@ -202,62 +235,32 @@
       </div>
     </section>
 
-    <!-- SPOT vs LICENSE -->
-    <section class="py-24 px-6 border-t border-white/5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
-        <div class="space-y-5">
-          <h2 class="font-serif text-3xl text-white italic">Avulso (Spot) vs Licenciamento</h2>
-          <p class="text-neutral-400 font-light leading-relaxed">
-            Projetos avulsos resolvem uma dor específica. O licenciamento instala um padrão, com sustentação e evolução.
-            Quando o risco reputacional e o volume de comunicação sobem, “spot” vira remendo.
-          </p>
-          <div class="card p-8">
-            <p class="text-neutral-300 font-light text-sm leading-relaxed">
-              <span class="text-gold-400 font-bold">Regra de ouro:</span> se a sua operação depende de consistência, escala ou
-              multiunidade, você precisa de governança — não de “um arquivo bonito”.
-            </p>
-          </div>
-        </div>
-
-        <div class="card p-10">
-          <h3 class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">Estrutura</h3>
-          <p class="text-white font-serif text-2xl italic mt-4">O que está incluso no licenciamento</p>
-
-          <div class="mt-8 space-y-4 text-neutral-400 font-light text-sm">
-            <div class="table-row py-4 flex items-start justify-between gap-6">
-              <span>Entrega de ativos (templates, SOPs, checklists, scripts)</span>
-              <span class="text-neutral-600">✔</span>
-            </div>
-            <div class="table-row py-4 flex items-start justify-between gap-6">
-              <span>Treinamento aplicado por função</span>
-              <span class="text-neutral-600">✔</span>
-            </div>
-            <div class="table-row py-4 flex items-start justify-between gap-6">
-              <span>Revisão e ajustes pós-uso (ciclo real)</span>
-              <span class="text-neutral-600">✔</span>
-            </div>
-            <div class="table-row py-4 flex items-start justify-between gap-6">
-              <span>Kit de sustentação (rituais + métricas)</span>
-              <span class="text-neutral-600">✔</span>
-            </div>
-            <div class="table-row py-4 flex items-start justify-between gap-6">
-              <span>Recertificação anual do padrão</span>
-              <span class="text-neutral-600">✔</span>
-            </div>
-          </div>
-
-          <div class="mt-10">
-            <a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-white transition">
-              Iniciar Protocolo de Licenciamento
-            </a>
-            <p class="text-neutral-600 text-[10px] uppercase tracking-widest mt-3 text-center">
-              Tratativas sob NDA • Retorno em até 24h úteis
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ✅ REMOVIDO: tudo abaixo dos planos (Spot vs Licenciamento) -->
   </main>
+
+  <!-- MODAL OVERLAY (Planos) -->
+  <div id="modal-overlay"
+       class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter"
+       aria-hidden="true">
+    <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
+      <button onclick="closePlanModal()"
+              class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl"
+              aria-label="Fechar Modal">&times;</button>
+
+      <div id="modal-content" class="space-y-6"></div>
+
+      <div class="pt-8 flex flex-col sm:flex-row gap-3 justify-end">
+        <button onclick="closePlanModal()"
+                class="px-6 py-3 border border-white/15 text-white/80 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
+          Voltar
+        </button>
+        <a href="iniciar-tratativas.html"
+           class="px-6 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
+          Iniciar Tratativas
+        </a>
+      </div>
+    </div>
+  </div>
 
   <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
     <div class="flex flex-col items-center gap-4">
@@ -272,5 +275,85 @@
   </footer>
 
   <script src="accessibility.js"></script>
+
+  <script>
+    // --- MODAIS (PLANOS) ---
+    const planModalData = {
+      essential: {
+        title: "Essential",
+        subtitle: "2 sprints • padronização rápida",
+        text:
+          "Camada de base para instalar padrão com velocidade e baixa fricção.<br><br>" +
+          "<strong>Inclui:</strong><br>" +
+          "• Carta Magna (governança de linguagem) + Tom de Voz por canal<br>" +
+          "• Templates essenciais (WhatsApp, e-mail, notas, negativas, alinhamentos)<br>" +
+          "• Fluxo básico de atendimento + escalonamento (quando / como subir nível)<br>" +
+          "• Checklist semanal + métricas mínimas (controle e consistência)<br><br>" +
+          "<strong>Saída:</strong> padrão funcional implantado e operável, com disciplina mínima de sustentação."
+      },
+      professional: {
+        title: "Professional",
+        subtitle: "4 sprints • consistência + performance",
+        text:
+          "Camada de performance: padroniza, treina, organiza decisão e reduz risco operacional.<br><br>" +
+          "<strong>Inclui tudo do Essential</strong> +<br>" +
+          "• Scripts ampliados (objeções, limites, contenção e alinhamentos)<br>" +
+          "• Playbook de crise (tático): respostas, aprovações, tempos e postura<br>" +
+          "• RACI (papéis e responsabilidades) + SLA interno + ritual mensal de governança<br><br>" +
+          "<strong>Saída:</strong> padrão com execução previsível e rotina mínima de auditoria interna."
+      },
+      enterprise: {
+        title: "Enterprise",
+        subtitle: "8–12 sprints • multiunidade",
+        text:
+          "Camada de escala: multiunidade, multiplicadores, governança e recertificação real.<br><br>" +
+          "<strong>Inclui tudo do Professional</strong> +<br>" +
+          "• Governança multiunidade + formação de multiplicadores (trilhas formais)<br>" +
+          "• Kit robusto de reputação (protocolos, matriz de risco e decisões)<br>" +
+          "• Auditorias, painel de métricas e recertificação do padrão<br><br>" +
+          "<strong>Saída:</strong> expansão com controle, consistência e identidade preservada."
+      }
+    };
+
+    function openPlanModal(key) {
+      const data = planModalData[key];
+      const overlay = document.getElementById('modal-overlay');
+      const container = document.getElementById('modal-content');
+
+      container.innerHTML = `
+        <div class="space-y-2">
+          <h3 class="font-serif text-3xl md:text-4xl text-gold-400 leading-tight italic">${data.title}</h3>
+          <p class="text-neutral-400 text-[10px] uppercase tracking-[0.25em]">${data.subtitle}</p>
+        </div>
+        <div class="w-full h-px bg-white/10"></div>
+        <p class="text-neutral-300 font-light text-base md:text-lg leading-relaxed">${data.text}</p>
+      `;
+
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePlanModal() {
+      const overlay = document.getElementById('modal-overlay');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fecha ao clicar fora
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closePlanModal();
+    });
+
+    // Fecha no ESC
+    document.addEventListener('keydown', function(e) {
+      const overlay = document.getElementById('modal-overlay');
+      const isOpen = overlay && overlay.classList.contains('flex');
+      if (isOpen && e.key === 'Escape') closePlanModal();
+    });
+  </script>
 </body>
 </html>
