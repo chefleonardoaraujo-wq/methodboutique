@@ -39,6 +39,30 @@
     /* Modal */
     .modal-enter { animation: fadeIn .25s ease-out forwards; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Inputs (form) */
+    .bmip-input {
+      width: 100%;
+      border-radius: 0.9rem;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.85rem 1rem;
+      color: #fff;
+      transition: .25s ease;
+    }
+    .bmip-input:focus {
+      outline: none;
+      border-color: rgba(212,175,55,0.45);
+      box-shadow: 0 0 0 2px rgba(212,175,55,0.18);
+    }
+    .bmip-label {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 
@@ -79,7 +103,8 @@
         </div>
       </div>
 
-      <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
+      <!-- ✅ CTA agora abre o formulário na própria página -->
+      <a href="#form-tratativas" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
         Iniciar Tratativas
       </a>
     </div>
@@ -98,7 +123,8 @@
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="iniciar-tratativas.html" class="px-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition">
+        <!-- ✅ CTA agora abre o formulário na própria página -->
+        <a href="#form-tratativas" class="px-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition">
           Iniciar Protocolo
         </a>
         <a href="como-funciona.html" class="px-8 py-4 border border-white/15 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition">
@@ -160,7 +186,6 @@
               <li><span class="text-gold-400 mr-2">✦</span> Checklist semanal + métricas mínimas</li>
             </ul>
 
-            <!-- Modal trigger -->
             <div class="mt-8 flex items-center justify-between gap-4">
               <button type="button"
                       onclick="openPlanModal('essential')"
@@ -168,7 +193,7 @@
                 Ver escopo completo +
               </button>
 
-              <a href="iniciar-tratativas.html"
+              <a href="#form-tratativas"
                  class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
                 Iniciar tratativas →
               </a>
@@ -190,7 +215,6 @@
               <li><span class="text-gold-400 mr-2">✦</span> RACI + SLA interno + ritual mensal</li>
             </ul>
 
-            <!-- Modal trigger -->
             <div class="mt-8 flex items-center justify-between gap-4">
               <button type="button"
                       onclick="openPlanModal('professional')"
@@ -198,7 +222,7 @@
                 Ver escopo completo +
               </button>
 
-              <a href="iniciar-tratativas.html"
+              <a href="#form-tratativas"
                  class="text-white text-[10px] uppercase tracking-[0.25em] border-b border-white/30 pb-1 hover:text-gold-400 transition">
                 Iniciar tratativas →
               </a>
@@ -217,7 +241,6 @@
               <li><span class="text-gold-400 mr-2">✦</span> Auditorias + painel de métricas + recertificação</li>
             </ul>
 
-            <!-- Modal trigger -->
             <div class="mt-8 flex items-center justify-between gap-4">
               <button type="button"
                       onclick="openPlanModal('enterprise')"
@@ -225,7 +248,7 @@
                 Ver escopo completo +
               </button>
 
-              <a href="iniciar-tratativas.html"
+              <a href="#form-tratativas"
                  class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
                 Iniciar tratativas →
               </a>
@@ -235,7 +258,117 @@
       </div>
     </section>
 
-    <!-- ✅ REMOVIDO: tudo abaixo dos planos (Spot vs Licenciamento) -->
+    <!-- ✅ FORMULÁRIO (dentro da página) -->
+    <section id="form-tratativas" class="py-24 px-6 border-t border-white/5">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+        <div class="text-left">
+          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold">Protocolo</span>
+          <h2 class="font-serif text-4xl text-white italic mt-4">Iniciar Tratativas</h2>
+
+          <p class="text-neutral-400 font-light mt-6 leading-relaxed">
+            Preencha o mínimo necessário para diagnóstico e direcionamento do plano. O envio é processado por endpoint próprio.
+          </p>
+
+          <div class="mt-8 card p-8">
+            <h3 class="font-serif text-2xl text-white italic">O que acontece após enviar</h3>
+            <ul class="mt-5 space-y-3 text-neutral-400 text-sm font-light">
+              <li><span class="text-gold-400 mr-2">✦</span> Triagem do contexto (vertical, plano, urgência).</li>
+              <li><span class="text-gold-400 mr-2">✦</span> Retorno com próximos passos e pré-escopo.</li>
+              <li><span class="text-gold-400 mr-2">✦</span> Quando aplicável: envio de NDA e agenda de diagnóstico.</li>
+            </ul>
+            <div class="mt-6 text-neutral-500 text-xs leading-relaxed">
+              Caso o endpoint esteja indisponível, o envio por e-mail é oferecido como fallback imediato.
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-10">
+          <form id="bmipForm" class="space-y-5" novalidate>
+            <input type="hidden" name="origem" value="licenciamento.html" />
+
+            <div>
+              <label class="bmip-label" for="nome">Nome</label>
+              <input id="nome" name="nome" class="bmip-input" autocomplete="name" required placeholder="Seu nome completo">
+            </div>
+
+            <div>
+              <label class="bmip-label" for="email">E-mail</label>
+              <input id="email" name="email" type="email" class="bmip-input" autocomplete="email" required placeholder="voce@empresa.com">
+            </div>
+
+            <div>
+              <label class="bmip-label" for="telefone">WhatsApp</label>
+              <input id="telefone" name="telefone" inputmode="tel" class="bmip-input" autocomplete="tel" placeholder="(55) 9XXXX-XXXX">
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="bmip-label" for="vertical">Vertente</label>
+                <select id="vertical" name="vertical" class="bmip-input" required>
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="JUR">JUR (Jurídico)</option>
+                  <option value="HC">HC (Saúde)</option>
+                  <option value="POL">POL (Integridade/Crise)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="bmip-label" for="plano">Plano de interesse</label>
+                <select id="plano" name="plano" class="bmip-input">
+                  <option value="Indefinido" selected>Indefinido</option>
+                  <option value="Essential">Essential</option>
+                  <option value="Professional">Professional</option>
+                  <option value="Enterprise">Enterprise</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="bmip-label" for="empresa">Instituição / Empresa</label>
+              <input id="empresa" name="empresa" class="bmip-input" autocomplete="organization" placeholder="Nome da instituição (opcional)">
+            </div>
+
+            <!-- Honeypot anti-spam -->
+            <div class="hidden" aria-hidden="true">
+              <label for="site">Site</label>
+              <input id="site" name="site" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div>
+              <label class="bmip-label" for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" class="bmip-input" required
+                        placeholder="Objetivo, contexto, urgência e qualquer detalhe relevante."></textarea>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 items-center justify-between pt-2">
+              <button id="bmipSubmit" type="submit"
+                class="w-full sm:w-auto px-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition disabled:opacity-60 disabled:cursor-not-allowed">
+                Enviar
+              </button>
+
+              <a id="bmipFallbackMail"
+                 href="mailto:ceo@boutiquemethodip.com?subject=BMIP%20—%20Iniciar%20Tratativas&body=Olá,%20quero%20iniciar%20tratativas.%0A%0A(Nome)%3A%20%0A(E-mail)%3A%20%0A(WhatsApp)%3A%20%0A(Vertente)%3A%20%0A(Plano)%3A%20%0A(Empresa)%3A%20%0A%0AMensagem%3A%20"
+                 class="w-full sm:w-auto text-center px-8 py-4 border border-white/15 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition">
+                Enviar por e-mail
+              </a>
+            </div>
+
+            <p id="bmipStatus" class="text-sm text-white/70 pt-2" role="status" aria-live="polite"></p>
+
+            <p class="text-[10px] text-neutral-500 uppercase tracking-widest pt-4">
+              AO ENVIAR, VOCÊ CONCORDA COM CONTATO PARA DIAGNÓSTICO E TRIAGEM.
+            </p>
+
+            <noscript>
+              <p class="text-sm text-neutral-300 mt-4">
+                JavaScript está desativado. Use “Enviar por e-mail”.
+              </p>
+            </noscript>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- MODAL OVERLAY (Planos) -->
@@ -254,7 +387,7 @@
                 class="px-6 py-3 border border-white/15 text-white/80 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
           Voltar
         </button>
-        <a href="iniciar-tratativas.html"
+        <a href="#form-tratativas"
            class="px-6 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
           Iniciar Tratativas
         </a>
@@ -264,13 +397,13 @@
 
   <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
     <div class="flex flex-col items-center gap-4">
-      <!-- LOGO (PNG) -->
       <img src="bmip-logo-dark.png"
            alt="Boutique Method IP Holding"
            class="h-8 w-auto opacity-80 select-none"
            loading="lazy"
            decoding="async">
       <p>Boutique Method IP Holding Ltda © 2026</p>
+      <p class="text-neutral-700">ceo@boutiquemethodip.com • (55) 98466-6591</p>
     </div>
   </footer>
 
@@ -343,16 +476,93 @@
       document.body.style.overflow = 'auto';
     }
 
-    // Fecha ao clicar fora
     document.getElementById('modal-overlay').addEventListener('click', function(e) {
       if (e.target === this) closePlanModal();
     });
 
-    // Fecha no ESC
     document.addEventListener('keydown', function(e) {
       const overlay = document.getElementById('modal-overlay');
       const isOpen = overlay && overlay.classList.contains('flex');
       if (isOpen && e.key === 'Escape') closePlanModal();
+    });
+  </script>
+
+  <script>
+    // --- FORM (GitHub Pages) ---
+    // ✅ Endpoint Cloudflare Worker (BMIP)
+    const BMIP_FORM_ENDPOINT = "https://bmip-form.chefleonardoaraujo.workers.dev/contact";
+
+    const form = document.getElementById("bmipForm");
+    const statusEl = document.getElementById("bmipStatus");
+    const submitBtn = document.getElementById("bmipSubmit");
+    const fallbackMail = document.getElementById("bmipFallbackMail");
+
+    function buildMailto(payload) {
+      const subject = `BMIP — Iniciar Tratativas (${payload.vertical || "Vertente"})`;
+      const body = [
+        "Olá, quero iniciar tratativas.",
+        "",
+        `Nome: ${payload.nome || ""}`,
+        `E-mail: ${payload.email || ""}`,
+        `WhatsApp: ${payload.telefone || ""}`,
+        `Vertente: ${payload.vertical || ""}`,
+        `Plano: ${payload.plano || ""}`,
+        `Empresa: ${payload.empresa || ""}`,
+        "",
+        "Mensagem:",
+        payload.mensagem || ""
+      ].join("\n");
+
+      return `mailto:ceo@boutiquemethodip.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando…";
+
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+
+      // Honeypot: bot
+      if (payload.site && payload.site.trim().length > 0) {
+        statusEl.textContent = "Recebido.";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar";
+        form.reset();
+        return;
+      }
+
+      // Validação mínima
+      if (!payload.nome || !payload.email || !payload.vertical || !payload.mensagem) {
+        statusEl.textContent = "Preencha Nome, E-mail, Vertente e Mensagem.";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar";
+        return;
+      }
+
+      // Atualiza fallback mailto com os dados preenchidos
+      fallbackMail.href = buildMailto(payload);
+
+      try {
+        const res = await fetch(BMIP_FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data?.error || "Falha no envio.");
+
+        statusEl.textContent = "Recebido. Retornaremos com os próximos passos.";
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = "Não foi possível enviar agora. Use “Enviar por e-mail” ou tente novamente.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar";
+      }
     });
   </script>
 </body>
