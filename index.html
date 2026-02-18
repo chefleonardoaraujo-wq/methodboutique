@@ -89,15 +89,6 @@
             margin: 0 .35rem;
         }
 
-        /* CTA primário com microcopy */
-        .cta-note{
-            margin-top: .75rem;
-            font-size: 0.65rem;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
-        }
-
         /* Cards sutis para blocos */
         .card {
             border: 1px solid rgba(255,255,255,0.07);
@@ -197,20 +188,18 @@
                     Do Intelecto <br> ao <span class="italic text-gold-400">Patrimônio.</span>
                 </h1>
 
-                <!-- (2) Linha de tradução - Opção A -->
+                <!-- ✅ Textos invertidos + MESMO TAMANHO -->
                 <p class="text-white/80 text-sm md:text-lg font-light max-w-3xl mx-auto leading-relaxed">
-                    <span class="text-gold-400 font-normal">Estruturamos, protegemos e licenciamos métodos operacionais</span>
-                    <span class="text-white/70">(linguagem, protocolos e padrões)</span>
-                    <span class="text-white/80">para reduzir ruído, blindar reputação e escalar com previsibilidade.</span>
-                </p>
-
-                <!-- Mantive seu parágrafo original (não apagado), apenas rebaixado para “apoio” -->
-                <p class="text-neutral-400 text-xs md:text-base font-light max-w-3xl mx-auto leading-relaxed">
                     Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação.
                     Nosso papel é codificar a cultura da sua organização em processos tangíveis.
                 </p>
 
-                <!-- (3) CTA: 1 principal + 1 secundário -->
+                <p class="text-white/80 text-sm md:text-lg font-light max-w-3xl mx-auto leading-relaxed">
+                    Estruturamos, protegemos e licenciamos métodos operacionais (linguagem, protocolos e padrões) para reduzir ruído,
+                    blindar reputação e escalar com previsibilidade.
+                </p>
+
+                <!-- CTA principal -->
                 <div class="pt-6 flex flex-col md:flex-row gap-4 justify-center items-center">
                     <a href="iniciar-tratativas.html"
                        class="px-10 py-4 bg-gold-400 text-black text-xs uppercase tracking-[0.28em] font-bold hover:bg-white transition duration-500">
@@ -222,11 +211,19 @@
                     </a>
                 </div>
 
-                <div class="cta-note">
-                    Sob NDA <span class="proof-dot"></span> Retorno em até 24h úteis <span class="proof-dot"></span> Implantação por sprints
+                <!-- ✅ Botões “Conheça” (Origem / Holding) -->
+                <div class="mt-3 flex flex-col sm:flex-row gap-3 justify-center items-center">
+                    <a href="origem.html"
+                       class="px-6 py-2 border border-white/15 text-white/70 text-[10px] uppercase tracking-[0.28em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+                        Conheça a Origem
+                    </a>
+                    <a href="manifesto.html"
+                       class="px-6 py-2 border border-white/15 text-white/70 text-[10px] uppercase tracking-[0.28em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+                        Conheça a Holding
+                    </a>
                 </div>
 
-                <!-- (6) Proof strip minimalista (credenciais operacionais) -->
+                <!-- Proof strip (mantida) -->
                 <div class="proof-strip" aria-label="Credenciais e garantias operacionais">
                     <span>Protocolo sob NDA</span>
                     <span class="proof-dot" aria-hidden="true"></span>
@@ -247,56 +244,65 @@
                     <a href="acessibilidade.html">Ver política</a>
                 </div>
 
-                <!-- (4) Fluxo 1–4 (substitui “menu solto” por caminho claro) -->
+                <!-- ✅ TÍTULO (acima dos cards 01–04) -->
                 <div class="pt-10">
-                    <div class="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
-                        <a href="iniciar-tratativas.html" class="card p-5 block">
-                            <div class="flex items-baseline justify-between">
-                                <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">01</span>
-                                <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Entrada</span>
-                            </div>
-                            <h3 class="font-serif text-lg text-white italic mt-3">Diagnóstico & Risco</h3>
-                            <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
-                                Mapeamos ruído, vulnerabilidades e prioridades com rigor institucional.
-                            </p>
-                        </a>
+                    <div class="max-w-5xl mx-auto">
+                        <div class="text-center mb-6">
+                            <h2 class="font-serif text-3xl md:text-4xl text-gold-400 italic">
+                                O que fazemos?
+                            </h2>
+                        </div>
 
-                        <a href="como-funciona.html" class="card p-5 block">
-                            <div class="flex items-baseline justify-between">
-                                <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">02</span>
-                                <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Estrutura</span>
-                            </div>
-                            <h3 class="font-serif text-lg text-white italic mt-3">Sistema de Padrões</h3>
-                            <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
-                                Protocolos, linguagem e templates — convertidos em método replicável.
-                            </p>
-                        </a>
+                        <!-- Fluxo 1–4 -->
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+                            <a href="iniciar-tratativas.html" class="card p-5 block">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">01</span>
+                                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Entrada</span>
+                                </div>
+                                <h3 class="font-serif text-lg text-white italic mt-3">Diagnóstico & Risco</h3>
+                                <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
+                                    Mapeamos ruído, vulnerabilidades e prioridades com rigor institucional.
+                                </p>
+                            </a>
 
-                        <a href="como-funciona.html" class="card p-5 block">
-                            <div class="flex items-baseline justify-between">
-                                <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">03</span>
-                                <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Execução</span>
-                            </div>
-                            <h3 class="font-serif text-lg text-white italic mt-3">Implantação por Sprints</h3>
-                            <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
-                                Entregáveis + treinamento + aplicação + revisão em ciclos curtos.
-                            </p>
-                        </a>
+                            <a href="como-funciona.html" class="card p-5 block">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">02</span>
+                                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Estrutura</span>
+                                </div>
+                                <h3 class="font-serif text-lg text-white italic mt-3">Sistema de Padrões</h3>
+                                <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
+                                    Protocolos, linguagem e templates — convertidos em método replicável.
+                                </p>
+                            </a>
 
-                        <a href="licenciamento.html" class="card p-5 block">
-                            <div class="flex items-baseline justify-between">
-                                <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">04</span>
-                                <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Escala</span>
-                            </div>
-                            <h3 class="font-serif text-lg text-white italic mt-3">Licenciamento</h3>
-                            <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
-                                Sustentação do padrão, governança e evolução contínua.
-                            </p>
-                        </a>
+                            <a href="como-funciona.html" class="card p-5 block">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">03</span>
+                                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Execução</span>
+                                </div>
+                                <h3 class="font-serif text-lg text-white italic mt-3">Implantação por Sprints</h3>
+                                <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
+                                    Entregáveis + treinamento + aplicação + revisão em ciclos curtos.
+                                </p>
+                            </a>
+
+                            <a href="licenciamento.html" class="card p-5 block">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">04</span>
+                                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">Escala</span>
+                                </div>
+                                <h3 class="font-serif text-lg text-white italic mt-3">Licenciamento</h3>
+                                <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
+                                    Sustentação do padrão, governança e evolução contínua.
+                                </p>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- ✅ NOVO BLOCO: Vertentes (JUR/HC/POL) — complementa sem mexer no que já existe -->
+                <!-- Vertentes (JUR/HC/POL) -->
                 <div class="pt-10">
                     <div class="max-w-5xl mx-auto text-left">
                         <div class="flex items-end justify-between flex-wrap gap-4">
@@ -305,6 +311,15 @@
                                 <h3 class="font-serif text-2xl md:text-3xl text-white italic mt-2">Licenciamento por Vertical</h3>
                                 <p class="text-white/55 text-xs md:text-sm font-light mt-2 leading-relaxed max-w-3xl">
                                     A mesma lógica institucional — aplicada com precisão ao seu setor. Acesse as páginas dedicadas de cada vertical.
+                                </p>
+
+                                <!-- ✅ Conformidade -->
+                                <p class="mt-3 text-[10px] uppercase tracking-[0.25em] text-gold-400/80">
+                                    Conformidade:
+                                    LGPD <span class="proof-dot" aria-hidden="true"></span>
+                                    OAB <span class="proof-dot" aria-hidden="true"></span>
+                                    CFM <span class="proof-dot" aria-hidden="true"></span>
+                                    WCAG 2.2 (Inclusão)
                                 </p>
                             </div>
                             <a href="licenciamento.html"
@@ -342,8 +357,6 @@
                                 </span>
                             </a>
 
-                            <!-- Observação: você escreveu "licenciamento-pol.htnl". Aqui está como .html (padrão).
-                                 Se o arquivo estiver mesmo como .htnl, ajuste o href abaixo para bater 100% com o nome do arquivo. -->
                             <a href="licenciamento-pol.html" class="card p-6 block">
                                 <div class="flex items-baseline justify-between">
                                     <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">POL</span>
@@ -361,70 +374,77 @@
                     </div>
                 </div>
 
-                <!-- (5) Para quem é (logo após a dobra, ainda no hero, discreto) -->
-                <div class="pt-10">
-                    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-4">
-                        <div class="card p-6 text-left">
-                            <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">Para quem</span>
-                            <h4 class="font-serif text-xl text-white italic mt-3">Saúde & Redes</h4>
-                            <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
-                                Operações com alto volume, risco reputacional e exigência de consistência.
-                            </p>
-                        </div>
-                        <div class="card p-6 text-left">
-                            <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">Para quem</span>
-                            <h4 class="font-serif text-xl text-white italic mt-3">Jurídico</h4>
-                            <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
-                                Linguagem clara sem perder densidade técnica — com padrões auditáveis.
-                            </p>
-                        </div>
-                        <div class="card p-6 text-left">
-                            <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">Para quem</span>
-                            <h4 class="font-serif text-xl text-white italic mt-3">Alta Complexidade</h4>
-                            <p class="text-white/55 text-xs font-light mt-2 leading-relaxed">
-                                Times que precisam operar sob pressão com previsibilidade e governança.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <!-- ✅ REMOVIDO: bloco “Para quem” (3 cards) -->
 
             </div>
         </header>
 
-        <!-- Seção existente mantida (Nossos Pilares) -->
+        <!-- ✅ NOVA SEÇÃO (substitui "Nossos Pilares") -->
         <section class="py-32 px-6 border-t border-white/5 relative overflow-hidden bg-black">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Nossos Pilares</span>
+                    <h2 class="font-serif text-2xl md:text-3xl text-gold-400 tracking-[0.14em] uppercase">
+                        ARQUITETURA ESTRUTURANTE DA BOUTIQUE METHOD™
+                    </h2>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 01 -->
                     <button onclick="openModal('modal1')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
                         <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">01</span>
                         <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Comunicação Estratégica de Alta Complexidade</h3>
+                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">
+                                Estrutura Intelectual Registrável
+                            </h3>
                             <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Traduzimos ambientes técnicos em linguagem inteligível sem perder densidade jurídica ou institucional.</p>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">
+                                Transformamos conhecimento técnico em ativos jurídicos protegidos.
+                            </p>
                             <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler mais +</span>
                         </div>
                     </button>
 
+                    <!-- 02 -->
                     <button onclick="openModal('modal2')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
                         <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">02</span>
                         <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Arquitetura Sistêmica & Governança</h3>
+                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">
+                                Arquitetura Sistêmica Operacional
+                            </h3>
                             <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Estruturamos processos, protocolos e fluxos internos para transformar conhecimento em método replicável.</p>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">
+                                Eliminamos improviso institucional por meio de estrutura.
+                            </p>
                             <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler mais +</span>
                         </div>
                     </button>
 
+                    <!-- 03 -->
                     <button onclick="openModal('modal3')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
                         <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">03</span>
                         <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Propriedade Intelectual Licenciável</h3>
+                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">
+                                Governança e Blindagem Reputacional
+                            </h3>
                             <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Convertendo expertise em ativos jurídicos protegidos.</p>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">
+                                Proteção estratégica antes da crise.
+                            </p>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler mais +</span>
+                        </div>
+                    </button>
+
+                    <!-- 04 -->
+                    <button onclick="openModal('modal4')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
+                        <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">04</span>
+                        <div class="relative z-10 space-y-4">
+                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">
+                                Escala Licenciável e Expansão Estruturada
+                            </h3>
+                            <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
+                            <p class="text-neutral-400 text-sm font-light leading-relaxed">
+                                Arquitetura intelectual pronta para expansão.
+                            </p>
                             <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler mais +</span>
                         </div>
                     </button>
@@ -459,16 +479,34 @@
         // --- LÓGICA DOS MODAIS ---
         const modalData = {
             modal1: {
-                title: "Comunicação Estratégica de Alta Complexidade",
-                text: "Traduzimos ambientes técnicos em linguagem inteligível sem perder densidade jurídica ou institucional.<br><br>Reduzimos ruído, elevamos autoridade e organizamos a tomada de decisão em contextos críticos."
+                title: "Estrutura Intelectual Registrável",
+                text:
+                    "Transformamos conhecimento técnico em ativos jurídicos protegidos.<br><br>" +
+                    "Métodos, frameworks e protocolos convertidos em propriedade intelectual formalmente estruturada, com rastreabilidade, governança e potencial de valorização patrimonial.<br><br>" +
+                    "Não vendemos apenas execução.<br><strong>Criamos ativos.</strong>"
             },
             modal2: {
-                title: "Arquitetura Sistêmica & Governança",
-                text: "Estruturamos processos, protocolos e fluxos internos para transformar conhecimento em método replicável.<br><br>Clareza operacional, padronização e controle estratégico como base de crescimento sustentável."
+                title: "Arquitetura Sistêmica Operacional",
+                text:
+                    "Eliminamos improviso institucional por meio de estrutura.<br><br>" +
+                    "Modelamos linguagem, fluxos, protocolos e processos internos para garantir clareza técnica, padronização estratégica e execução replicável.<br><br>" +
+                    "Comunicação deixa de ser variável humana.<br><strong>Passa a ser engenharia organizacional.</strong>"
             },
             modal3: {
-                title: "Propriedade Intelectual Licenciável",
-                text: "Convertendo expertise em ativos jurídicos protegidos.<br><br>Métodos, frameworks e estruturas registráveis que geram escala, recorrência e valorização patrimonial."
+                title: "Governança e Blindagem Reputacional",
+                text:
+                    "Proteção estratégica antes da crise.<br><br>" +
+                    "Implantamos matriz de risco comunicacional, protocolos de resposta e estrutura decisória que reduzem exposição institucional e vulnerabilidade reputacional.<br><br>" +
+                    "A reputação deixa de depender de talento individual.<br><strong>Passa a depender de sistema.</strong>"
+            },
+            modal4: {
+                title: "Escala Licenciável e Expansão Estruturada",
+                text:
+                    "Arquitetura intelectual pronta para expansão.<br><br>" +
+                    "Modelo proprietário implantado por sprints estruturados, auditável, replicável e aplicável às vertentes jurídica, saúde e institucional.<br><br>" +
+                    "<strong>Crescimento com controle.</strong><br>" +
+                    "<strong>Expansão com consistência.</strong><br>" +
+                    "<strong>Escala com identidade preservada.</strong>"
             }
         };
 
@@ -516,9 +554,12 @@
                 label.innerText = "Ouvir Página";
             } else {
                 const text =
-                    "Boutique Method. Do Intelecto ao Patrimônio. Estruturamos, protegemos e licenciamos métodos operacionais: linguagem, protocolos e padrões, para reduzir ruído, blindar reputação e escalar com previsibilidade. " +
-                    "Entrada: Diagnóstico e Risco. Estrutura: Sistema de Padrões. Execução: Implantação por Sprints. Escala: Licenciamento. " +
+                    "Boutique Method. Do Intelecto ao Patrimônio. " +
+                    "Somos uma Holding de Propriedade Intelectual dedicada à arquitetura de métodos que protegem a reputação. Nosso papel é codificar a cultura da sua organização em processos tangíveis. " +
+                    "Estruturamos, protegemos e licenciamos métodos operacionais, linguagem, protocolos e padrões, para reduzir ruído, blindar reputação e escalar com previsibilidade. " +
+                    "O que fazemos? Entrada: Diagnóstico e Risco. Estrutura: Sistema de Padrões. Execução: Implantação por Sprints. Escala: Licenciamento. " +
                     "Vertentes de licenciamento: Jurídico, Saúde, e Integridade e Processos. " +
+                    "Conformidade: LGPD, OAB, CFM e diretrizes de inclusão WCAG dois ponto dois. " +
                     "Atendimento Inclusivo: Libras. Protocolos para Neurodivergência. Acessibilidade para cegos e baixa visão.";
 
                 const utter = new SpeechSynthesisUtterance(text);
@@ -539,4 +580,4 @@
         }
     </script>
 </body>
-                        </html>
+</html>
