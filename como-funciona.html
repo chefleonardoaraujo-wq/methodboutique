@@ -60,20 +60,6 @@
       z-index: 10;
       border-radius: 999px;
     }
-
-    /* MODAL FIX PARA CELULAR */
-    .modal-container {
-      max-height: 85vh;
-      overflow-y: auto;
-      width: 95%;
-      scrollbar-width: thin;
-      scrollbar-color: #d4af37 transparent;
-    }
-    .modal-container::-webkit-scrollbar { width: 4px; }
-    .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
-
-    .modal-enter { animation: fadeIn 0.25s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.985); } to { opacity: 1; transform: scale(1); } }
   </style>
 </head>
 
@@ -224,151 +210,10 @@
         </div>
       </div>
     </section>
-
-    <section class="py-32 px-6 border-t border-white/5 bg-[#080808]">
-      <div class="max-w-7xl mx-auto text-center">
-        <div class="mb-16 space-y-4">
-          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold">Investment Ledger</span>
-          <h2 class="font-serif text-4xl text-white italic">Entregáveis por Plano</h2>
-          <p class="text-neutral-500 text-sm">Selecione o plano para visualizar o escopo completo de ativos.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <button type="button" onclick="openPlanModal('essential')" class="group p-10 border border-white/10 bg-white/[0.02] hover:border-gold-400 transition duration-500 text-left">
-            <h3 class="text-2xl text-white font-serif italic mb-4">Essential</h3>
-            <p class="text-neutral-500 text-xs uppercase tracking-widest mb-8">2 Sprints • Padronização rápida</p>
-            <span class="text-gold-400 text-[10px] uppercase tracking-[0.2em] border-b border-gold-400/30 pb-1 group-hover:text-white transition">Auditar Ativos →</span>
-          </button>
-
-          <button type="button" onclick="openPlanModal('professional')" class="group p-10 border-2 border-gold-400 bg-gold-400/[0.03] shadow-2xl transition duration-500 text-left relative">
-            <div class="absolute top-0 right-0 p-4"><span class="text-gold-400 text-[8px] border border-gold-400 px-2 py-1 uppercase font-bold">Recommended</span></div>
-            <h3 class="text-2xl text-gold-400 font-serif italic mb-4">Professional</h3>
-            <p class="text-neutral-400 text-xs uppercase tracking-widest mb-8">4 Sprints • Consistência + Performance</p>
-            <span class="text-white text-[10px] uppercase tracking-[0.2em] border-b border-white/30 pb-1 group-hover:text-gold-400 transition">Auditar Ativos →</span>
-          </button>
-
-          <button type="button" onclick="openPlanModal('enterprise')" class="group p-10 border border-white/10 bg-white/[0.02] hover:border-gold-400 transition duration-500 text-left">
-            <h3 class="text-2xl text-white font-serif italic mb-4">Enterprise</h3>
-            <p class="text-neutral-500 text-xs uppercase tracking-widest mb-8">8–12 Sprints • Multiunidade</p>
-            <span class="text-gold-400 text-[10px] uppercase tracking-[0.2em] border-b border-gold-400/30 pb-1 group-hover:text-white transition">Auditar Ativos →</span>
-          </button>
-        </div>
-      </div>
-    </section>
   </main>
-
-  <!-- MODAL -->
-  <div id="modal-overlay"
-       class="fixed inset-0 bg-black/98 backdrop-blur-xl z-[100] hidden items-center justify-center p-4"
-       role="dialog"
-       aria-modal="true"
-       aria-hidden="true">
-    <div class="bg-neutral-900 border border-gold-400/30 max-w-3xl w-full p-8 md:p-16 relative shadow-2xl modal-container modal-enter">
-      <button type="button" onclick="closeModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl" aria-label="Fechar modal">✕</button>
-      <div id="modal-content" class="space-y-10"></div>
-    </div>
-  </div>
 
   <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
     <p>Boutique Method IP Holding Ltda © 2026</p>
   </footer>
-
-  <script>
-    const planDetails = {
-      essential: {
-        title: "Essential",
-        duration: "2 Sprints",
-        indicado: "Padronização rápida",
-        entregaveis: "Carta Magna; Tom de Voz por canal; Templates essenciais; Fluxo básico de atendimento e escalonamento.",
-        implantacao: "2 encontros; treino rápido; ajustes finais pós-uso.",
-        governanca: "Checklist semanal; métricas mínimas; guia de manutenção."
-      },
-      professional: {
-        title: "Professional",
-        duration: "4 Sprints",
-        indicado: "Consistência + performance",
-        entregaveis: "Tudo do Essential; scripts ampliados; playbook de crise (tático); padrões por público; respostas para objeções.",
-        implantacao: "4 encontros; treino por função; revisão guiada de canais reais.",
-        governanca: "RACI; SLA interno; ritual mensal; auditoria leve (baseline)."
-      },
-      enterprise: {
-        title: "Enterprise",
-        duration: "8–12 Sprints",
-        indicado: "Multiunidade e alta exposição",
-        entregaveis: "Tudo do Professional; governança multiunidade; kit robusto de reputação; trilhas formais; customizações por cenário.",
-        implantacao: "Trilhas + reciclagens; multiplicadores; oficina com supervisão; implantação por unidade.",
-        governanca: "Comitê executivo; auditorias; painel de métricas; manual de sustentação; recertificação."
-      }
-    };
-
-    let lastFocusedEl = null;
-
-    function openPlanModal(id) {
-      const data = planDetails[id];
-      const overlay = document.getElementById('modal-overlay');
-      const container = document.getElementById('modal-content');
-
-      lastFocusedEl = document.activeElement;
-
-      container.innerHTML = `
-        <div class="space-y-2">
-          <h3 class="font-serif text-4xl md:text-5xl text-white italic">${data.title}</h3>
-          <p class="text-gold-400 text-xs uppercase tracking-[0.2em] font-bold">${data.indicado} • ${data.duration}</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-10 pt-4">
-          <div class="space-y-4">
-            <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold">Entregáveis (Núcleo)</h4>
-            <p class="text-neutral-300 font-light leading-relaxed text-base">${data.entregaveis}</p>
-          </div>
-          <div class="space-y-4">
-            <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold">Implantação & Treino</h4>
-            <p class="text-neutral-300 font-light leading-relaxed text-base">${data.implantacao}</p>
-          </div>
-        </div>
-
-        <div class="pt-8 border-t border-white/5">
-          <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold mb-4">Governança & Sustentação</h4>
-          <p class="text-white font-serif text-xl md:text-2xl italic leading-relaxed">${data.governanca}</p>
-        </div>
-
-        <div class="pt-8">
-          <a href="iniciar-tratativas.html" class="block w-full bg-gold-400 text-black text-center py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-white transition duration-500">
-            Iniciar Tratativas do Plano
-          </a>
-        </div>
-      `;
-
-      overlay.classList.remove('hidden');
-      overlay.classList.add('flex');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-
-      const closeBtn = overlay.querySelector('button[aria-label="Fechar modal"]');
-      if (closeBtn) closeBtn.focus();
-    }
-
-    function closeModal() {
-      const overlay = document.getElementById('modal-overlay');
-      overlay.classList.add('hidden');
-      overlay.classList.remove('flex');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = 'auto';
-
-      if (lastFocusedEl) lastFocusedEl.focus();
-    }
-
-    window.addEventListener('click', function(e) {
-      const overlay = document.getElementById('modal-overlay');
-      if (e.target === overlay) closeModal();
-    });
-
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        const overlay = document.getElementById('modal-overlay');
-        if (!overlay.classList.contains('hidden')) closeModal();
-      }
-    });
-  </script>
 </body>
 </html>
