@@ -29,11 +29,9 @@
                         charcoal: '#0a0a0a'
                     },
                     backgroundImage: {
-                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)'
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-out forwards'
-                    },
+                    animation: { 'fade-in': 'fadeIn 1s ease-out forwards' },
                     keyframes: {
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(10px)' },
@@ -49,7 +47,7 @@
         :root { --nav-offset: 100px; }
 
         body {
-            background-color: #020202;
+            background-color: #050505;
             color: #e5e5e5;
             font-family: 'Lato', sans-serif;
             overflow-x: hidden;
@@ -68,16 +66,15 @@
         :focus-visible {
             outline: 1px solid #d4af37;
             outline-offset: 4px;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
 
-        .sr-only{ position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
 
-        /* Mobile drawer (padrão index) */
-        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-        @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
-
-        /* Botão de Audiodescrição (padrão index) */
+        /* Botão de Audiodescrição (PADRÃO INDEX) */
         .audio-fab {
             position: fixed; bottom: 40px; right: 40px; z-index: 100;
             background: rgba(10, 10, 10, 0.6);
@@ -97,21 +94,24 @@
         .paused .bar { animation: none; height: 2px; opacity: 0.5; }
         @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
+        /* Mobile drawer enter/feel (PADRÃO INDEX) */
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+
+        /* Pequeno ajuste para o FAB no mobile */
         @media (max-width: 640px) {
-            .audio-fab { bottom: 18px; right: 18px; padding: 12px 18px; }
+            .audio-fab { right: 16px; bottom: 18px; padding: 12px 18px; }
         }
     </style>
 </head>
 
 <body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <!-- Skip link padrão -->
-    <a href="#main-content"
-       class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
         Pular para o conteúdo
     </a>
 
-    <!-- NAV (padrão index) -->
+    <!-- NAV (IGUAL AO INDEX) -->
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
@@ -148,7 +148,7 @@
                 </a>
             </div>
 
-            <!-- Mobile: Hamburger -->
+            <!-- Mobile: Hamburger (IGUAL AO INDEX) -->
             <button id="mobileMenuBtn"
                     type="button"
                     class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
@@ -164,7 +164,7 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU DRAWER (padrão index) -->
+    <!-- MOBILE MENU DRAWER (IGUAL AO INDEX) -->
     <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
         <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
@@ -194,7 +194,7 @@
 
                 <a href="iniciar-tratativas.html"
                    onclick="toggleMobileMenu(false)"
-                   class="mt-6 w-full inline-flex justify-center px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                   class="mt-6 block w-full text-center px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
                     Iniciar Tratativas
                 </a>
             </div>
@@ -205,7 +205,7 @@
         </div>
     </div>
 
-    <main id="main-content" class="flex-grow">
+    <main id="main-content" class="pt-32 md:pt-40">
         <header class="h-[65vh] flex items-center justify-center bg-neutral-900 border-b border-white/5 relative overflow-hidden">
             <div class="absolute text-[20vw] opacity-[0.02] font-serif select-none pointer-events-none text-white">JUR</div>
             <div class="text-center z-10 px-6 animate-fade-in">
@@ -269,7 +269,7 @@
     <script src="accessibility.js"></script>
 
     <script>
-        // --- MENU MOBILE (padrão index) ---
+        // --- MENU MOBILE (IGUAL AO INDEX) ---
         let mobileMenuOpen = false;
 
         function toggleMobileMenu(force) {
@@ -295,7 +295,7 @@
             }
         });
 
-        // --- Áudio Descrição (mantido) ---
+        // --- Áudio Descrição (preservado) ---
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
