@@ -155,6 +155,10 @@
         /* Mobile menu enter/feel */
         .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+
+        /* ✅ AJUSTE: MODAL PADRONIZADO PARA MOBILE (SEM “COMER” CONTEÚDO) */
+        #modal-body { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+        #modal-content { word-break: break-word; }
     </style>
 </head>
 
@@ -554,11 +558,22 @@
         </section>
     </main>
 
-    <!-- MODAL (z maior que menu mobile) -->
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-center justify-center p-6 modal-enter">
-        <div class="bg-neutral-900/90 border border-gold-400/20 max-w-2xl w-full p-10 md:p-14 relative shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light" aria-label="Fechar Modal">&times;</button>
-            <div id="modal-content" class="space-y-8"></div>
+    <!-- ✅ MODAL (PADRONIZADO PARA MOBILE, SEM CORTES) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-center justify-center p-4 sm:p-6 modal-enter">
+        <div class="bg-neutral-900/90 border border-gold-400/20 max-w-2xl w-full shadow-2xl relative max-h-[85vh] overflow-hidden">
+
+            <!-- header sempre visível -->
+            <div class="flex items-center justify-between h-[72px] px-6 sm:px-10 border-b border-white/10">
+                <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500">Boutique Method</span>
+                <button onclick="closeModal()"
+                        class="text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light leading-none"
+                        aria-label="Fechar Modal">&times;</button>
+            </div>
+
+            <!-- corpo com scroll -->
+            <div id="modal-body" class="px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto max-h-[calc(85vh-72px)]">
+                <div id="modal-content" class="space-y-6"></div>
+            </div>
         </div>
     </div>
 
@@ -741,10 +756,10 @@
             const container = document.getElementById('modal-content');
 
             container.innerHTML = `
-                <h3 class="font-serif text-3xl md:text-4xl text-gold-400 mb-8 leading-tight italic">${content.title}</h3>
-                <div class="text-neutral-300 font-light text-lg leading-loose space-y-4 border-l border-gold-400/30 pl-6">${content.text}</div>
-                <div class="pt-10 flex justify-end">
-                    <button onclick="closeModal()" class="px-8 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-300">Fechar</button>
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-gold-400 mb-6 leading-tight italic">${content.title}</h3>
+                <div class="text-neutral-300 font-light text-base sm:text-lg leading-relaxed sm:leading-loose space-y-4 border-l border-gold-400/30 pl-5 sm:pl-6">${content.text}</div>
+                <div class="pt-8 flex justify-end">
+                    <button onclick="closeModal()" class="px-7 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-300">Fechar</button>
                 </div>
             `;
 
