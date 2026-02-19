@@ -63,18 +63,9 @@
         main { padding-top: var(--nav-offset); }
         #main-content { scroll-margin-top: var(--nav-offset); }
 
-        :focus-visible {
-            outline: 1px solid #d4af37;
-            outline-offset: 4px;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-        }
+        :focus-visible { outline: 1px solid #d4af37; outline-offset: 4px; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
 
-        .sr-only{
-            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-            clip:rect(0,0,0,0);white-space:nowrap;border:0;
-        }
-
-        /* Botão de Audiodescrição (PADRÃO INDEX) */
+        /* Botão de Audiodescrição (IGUAL INDEX) */
         .audio-fab {
             position: fixed; bottom: 40px; right: 40px; z-index: 100;
             background: rgba(10, 10, 10, 0.6);
@@ -94,11 +85,17 @@
         .paused .bar { animation: none; height: 2px; opacity: 0.5; }
         @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
-        /* Mobile drawer enter/feel (PADRÃO INDEX) */
+        /* Mobile menu enter/feel (IGUAL INDEX) */
         .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
 
-        /* Pequeno ajuste para o FAB no mobile */
+        .modal-enter { animation: fadeInModal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+        /* ✅ Modal mobile sem cortar conteúdo */
+        #modal-body { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+        #modal-content { word-break: break-word; }
+
         @media (max-width: 640px) {
             .audio-fab { right: 16px; bottom: 18px; padding: 12px 18px; }
         }
@@ -107,11 +104,10 @@
 
 <body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
-        Pular para o conteúdo
-    </a>
+    <!-- ✅ IGUAL AO TEU INDEX CORRETO -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV (IGUAL AO INDEX) -->
+    <!-- ✅ NAV (COPIADO DO INDEX CORRETO) -->
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
@@ -142,13 +138,16 @@
                     <a href="jur-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <a href="iniciar-tratativas.html"
-                   class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                <!-- ✅ IGUAL AO INDEX: abre modal, não navega direto -->
+                <button type="button"
+                        onclick="openModal('tratativas')"
+                        class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
+                        aria-label="Entenda o que significa Iniciar Tratativas">
                     Iniciar Tratativas
-                </a>
+                </button>
             </div>
 
-            <!-- Mobile: Hamburger (IGUAL AO INDEX) -->
+            <!-- Mobile: Hamburger -->
             <button id="mobileMenuBtn"
                     type="button"
                     class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
@@ -164,7 +163,7 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU DRAWER (IGUAL AO INDEX) -->
+    <!-- ✅ MOBILE MENU DRAWER (COPIADO DO INDEX CORRETO) -->
     <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
         <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
@@ -192,11 +191,13 @@
                     <a href="jur-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <a href="iniciar-tratativas.html"
-                   onclick="toggleMobileMenu(false)"
-                   class="mt-6 block w-full text-center px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                <!-- ✅ igual index: fecha menu e abre modal -->
+                <button type="button"
+                        onclick="toggleMobileMenu(false); openModal('tratativas');"
+                        class="mt-6 w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
+                        aria-label="Entenda o que significa Iniciar Tratativas">
                     Iniciar Tratativas
-                </a>
+                </button>
             </div>
 
             <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
@@ -205,7 +206,8 @@
         </div>
     </div>
 
-    <main id="main-content" class="pt-32 md:pt-40">
+    <!-- ✅ MAIN sem pt-32/md:pt-40 (pra não “alterar” o NAV) -->
+    <main id="main-content">
         <header class="h-[65vh] flex items-center justify-center bg-neutral-900 border-b border-white/5 relative overflow-hidden">
             <div class="absolute text-[20vw] opacity-[0.02] font-serif select-none pointer-events-none text-white">JUR</div>
             <div class="text-center z-10 px-6 animate-fade-in">
@@ -253,6 +255,22 @@
         </section>
     </main>
 
+    <!-- ✅ MODAL (mesmo padrão do index) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-center justify-center p-4 sm:p-6 modal-enter">
+        <div class="bg-neutral-900/90 border border-gold-400/20 max-w-2xl w-full shadow-2xl relative max-h-[85vh] overflow-hidden">
+            <div class="flex items-center justify-between h-[72px] px-6 sm:px-10 border-b border-white/10">
+                <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500">Boutique Method</span>
+                <button onclick="closeModal()"
+                        class="text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light leading-none"
+                        aria-label="Fechar Modal">&times;</button>
+            </div>
+
+            <div id="modal-body" class="px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto max-h-[calc(85vh-72px)]">
+                <div id="modal-content" class="space-y-6"></div>
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
@@ -269,7 +287,7 @@
     <script src="accessibility.js"></script>
 
     <script>
-        // --- MENU MOBILE (IGUAL AO INDEX) ---
+        // --- MENU MOBILE (IGUAL AO INDEX CORRETO) ---
         let mobileMenuOpen = false;
 
         function toggleMobileMenu(force) {
@@ -292,7 +310,56 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (mobileMenuOpen) toggleMobileMenu(false);
+
+                const overlay = document.getElementById('modal-overlay');
+                if (overlay && overlay.classList.contains('flex')) closeModal();
             }
+        });
+
+        // --- MODAL “TRATATIVAS” (pra NAV ficar 100% igual ao index) ---
+        const modalData = {
+            tratativas: {
+                title: "Iniciar Tratativas — O que significa",
+                text:
+                    "Tratativas são o início formal de uma conversa estratégica, com nível institucional.<br><br>" +
+                    "Aqui, não é “um orçamento rápido”: é alinhamento de escopo, risco, confidencialidade e governança.<br><br>" +
+                    "<strong>Próximo passo:</strong> após entender o contexto, você pode seguir para a página de tratativas."
+            }
+        };
+
+        function openModal(id) {
+            if (mobileMenuOpen) toggleMobileMenu(false);
+
+            const content = modalData[id];
+            if (!content) return;
+
+            const overlay = document.getElementById('modal-overlay');
+            const container = document.getElementById('modal-content');
+
+            container.innerHTML = `
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-gold-400 mb-6 leading-tight italic">${content.title}</h3>
+                <div class="text-neutral-300 font-light text-base sm:text-lg leading-relaxed sm:leading-loose space-y-4 border-l border-gold-400/30 pl-5 sm:pl-6">${content.text}</div>
+
+                <div class="pt-8 flex flex-col sm:flex-row gap-3 sm:justify-end">
+                    <button onclick="closeModal()" class="px-7 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-300">Fechar</button>
+                    <a href="iniciar-tratativas.html" class="px-7 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white transition duration-300 text-center">Ir para Tratativas</a>
+                </div>
+            `;
+
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
         });
 
         // --- Áudio Descrição (preservado) ---
