@@ -19,12 +19,12 @@
                         sans: ['"Lato"', 'sans-serif'],
                         signature: ['"Great Vibes"', 'cursive']
                     },
-                    colors: { 
-                        gold: { 
+                    colors: {
+                        gold: {
                             300: '#e5c55b',
-                            400: '#d4af37', 
+                            400: '#d4af37',
                             500: '#b5922f',
-                            900: '#8a6d1f' 
+                            900: '#8a6d1f'
                         },
                         obsidian: '#050505',
                         charcoal: '#0a0a0a'
@@ -47,11 +47,11 @@
     </script>
     <style>
         :root { --nav-offset: 100px; }
-        
-        body { 
-            background-color: #020202; 
-            color: #e5e5e5; 
-            font-family: 'Lato', sans-serif; 
+
+        body {
+            background-color: #020202;
+            color: #e5e5e5;
+            font-family: 'Lato', sans-serif;
             overflow-x: hidden;
         }
 
@@ -85,6 +85,12 @@
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
         .paused .bar { animation: none; height: 2px; opacity: 0.5; }
         @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+
+        /* ✅ Ajuste fino mobile (sem mudar conteúdo) */
+        @media (max-width: 640px) {
+            .audio-fab { bottom: 16px; right: 16px; padding: 12px 16px; }
+            #audioLabel { font-size: 8px; }
+        }
     </style>
 </head>
 
@@ -94,14 +100,17 @@
 
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
-            
+
             <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
                 <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
                 <div class="flex flex-col">
-                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span></span>
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+                    </span>
                 </div>
             </a>
 
+            <!-- Desktop -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
                     <a href="origem.html" class="text-gold-400 relative group cursor-default">A Origem<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
@@ -123,24 +132,91 @@
                     Iniciar Tratativas
                 </a>
             </div>
+
+            <!-- ✅ Mobile: Hamburger (igual ao index) -->
+            <button id="mobileMenuBtn"
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Abrir menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false">
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+
         </div>
     </nav>
 
-    <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
+    <!-- ✅ MOBILE MENU DRAWER (igual ao index) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
+
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+                <button type="button"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                        onclick="toggleMobileMenu(false)"
+                        aria-label="Fechar menu">&times;</button>
+            </div>
+
+            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <a href="origem.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-gold-400">A Origem</a>
+
+                <a href="manifesto.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
+
+                <a href="licenciamento.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
+
+                <a href="como-funciona.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
+
+                <a href="servicos.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
+
+                <a href="store.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo</a>
+            </div>
+
+            <div class="pt-8">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="origem-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+                </div>
+
+                <a href="iniciar-tratativas.html"
+                   onclick="toggleMobileMenu(false)"
+                   class="mt-6 block w-full text-center px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Iniciar Tratativas
+                </a>
+            </div>
+
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ (conteúdo preservado) -->
+    <main id="main-content" class="flex-grow pb-32 px-6">
         <div class="max-w-5xl mx-auto space-y-32 animate-fade-up">
-            
+
             <div class="max-w-4xl mx-auto space-y-16">
-                <div class="space-y-8 border-l border-gold-400/50 pl-10 md:pl-16 relative">
-                    <div class="absolute -left-[3px] top-0 h-16 w-[5px] bg-gold-400"></div> 
-                    
+                <div class="space-y-8 border-l border-gold-400/50 pl-6 sm:pl-10 md:pl-16 relative">
+                    <div class="absolute -left-[3px] top-0 h-16 w-[5px] bg-gold-400"></div>
+
                     <span class="text-neutral-500 text-[10px] md:text-xs tracking-[0.3em] uppercase block">Por que a Boutique Method IP Holding existe</span>
-                    
-                    <h1 class="font-serif text-5xl md:text-7xl text-white leading-tight">
+
+                    <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl text-white leading-tight">
                         "Clareza é <span class="italic text-gold-400">Dignidade</span>."
                     </h1>
                 </div>
 
-                <div class="space-y-10 text-neutral-400 font-light text-lg md:text-xl leading-loose text-justify pl-4 md:pl-10 max-w-3xl">
+                <div class="space-y-10 text-neutral-400 font-light text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose text-justify pl-0 sm:pl-4 md:pl-10 max-w-3xl">
                     <p>
                         O caos é o padrão quando não existe governança. Sem uma força intencional de organização, empresas acumulam ruído: decisões se perdem, processos se fragmentam e a reputação passa a depender do improviso.
                     </p>
@@ -159,13 +235,13 @@
                 <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
                 <div class="grid md:grid-cols-12 gap-12">
-                    
+
                     <div class="md:col-span-5 space-y-6 md:text-right md:pr-8 md:border-r md:border-white/5">
                         <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase block opacity-80">LEONARDO CHAVES ARAUJO - Founder & CEO</span>
-                        <h2 class="font-serif text-4xl md:text-5xl text-white leading-tight">A Ciência por Trás do Método</h2>
+                        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-tight">A Ciência por Trás do Método</h2>
                     </div>
 
-                    <div class="md:col-span-7 space-y-8 text-neutral-400 font-light text-lg md:text-xl leading-loose text-justify">
+                    <div class="md:col-span-7 space-y-8 text-neutral-400 font-light text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose text-justify">
                         <p>
                             Para Leonardo Chaves Araujo, a excelência não é um ato, é um hábito construído sobre processos obsessivos.
                         </p>
@@ -178,7 +254,7 @@
                         </p>
 
                         <div class="pt-12 md:pt-16 flex md:justify-end opacity-80 hover:opacity-100 transition duration-500">
-                            <p class="font-signature text-5xl md:text-6xl text-gold-400 -rotate-2">Leonardo Chaves Araujo</p>
+                            <p class="font-signature text-4xl sm:text-5xl md:text-6xl text-gold-400 -rotate-2">Leonardo Chaves Araujo</p>
                         </div>
                     </div>
                 </div>
@@ -202,6 +278,31 @@
     <script src="accessibility.js"></script>
 
     <script>
+        // ✅ MENU MOBILE (igual ao index)
+        let mobileMenuOpen = false;
+
+        function toggleMobileMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
+
+            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+            if (mobileMenuOpen) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenuOpen) toggleMobileMenu(false);
+        });
+
+        // --- ÁUDIO (preservado) ---
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
