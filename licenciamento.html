@@ -1,569 +1,600 @@
-<!-- licenciamento.html -->
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Licenciamento | Boutique Method</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Licenciamento | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <link rel="stylesheet" href="accessibility.css" />
+    <link rel="stylesheet" href="accessibility.css" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-          colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { 
+                        gold: { 
+                            300: '#e5c55b',
+                            400: '#d4af37', 
+                            500: '#b5922f',
+                            900: '#8a6d1f' 
+                        },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-    .gold-selection::selection { background: #d4af37; color: black; }
-    :focus-visible { outline: 2px solid rgba(212,175,55,0.6); outline-offset: 4px; }
+    <style>
+        :root { --nav-offset: 100px; }
+        
+        body { 
+            background-color: #020202; 
+            color: #e5e5e5; 
+            font-family: 'Lato', sans-serif; 
+            overflow-x: hidden;
+        }
 
-    /* Subtle cards */
-    .card {
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.02);
-      transition: .4s ease;
-    }
-    .card:hover { border-color: rgba(212,175,55,0.35); background: rgba(212,175,55,0.03); transform: translateY(-2px); }
+        /* Seleção de texto Dourada */
+        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
 
-    /* Modal */
-    .modal-enter { animation: fadeIn .25s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Scrollbar personalizada fina */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
-    /* Inputs (form) */
-    .bmip-input {
-      width: 100%;
-      border-radius: 0.9rem;
-      background: rgba(0,0,0,0.35);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 0.85rem 1rem;
-      color: #fff;
-      transition: .25s ease;
-    }
-    .bmip-input:focus {
-      outline: none;
-      border-color: rgba(212,175,55,0.45);
-      box-shadow: 0 0 0 2px rgba(212,175,55,0.18);
-    }
-    .bmip-label {
-      display: block;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 0.35rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-  </style>
+        main { padding-top: var(--nav-offset); }
+
+        /* Glassmorphism e Cards */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+        .glass-panel:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+
+        /* Inputs (form) */
+        .bmip-input {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 1.2rem;
+            color: #fff;
+            transition: .3s ease;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+        }
+        .bmip-input:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 15px rgba(212,175,55,0.1);
+        }
+        .bmip-label {
+            display: block;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Botão de Áudio Premium */
+        .audio-fab {
+            position: fixed; bottom: 40px; right: 40px; z-index: 100;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 14px 28px;
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; transition: all 0.5s ease;
+        }
+        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
+        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
+        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+
+        .modal-enter { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+    </style>
 </head>
 
-<body class="antialiased gold-selection flex flex-col min-h-screen">
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[100]">Pular para o conteúdo</a>
 
-  <!-- NAV (BMIP padrão + PT|EN) -->
-  <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+            
+            <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span></span>
+                </div>
+            </a>
 
-      <!-- LOGO (PNG) -->
-      <a href="index.html" class="flex items-center gap-3 hover:opacity-95 transition" aria-label="Boutique Method - Página inicial">
-        <img src="bmip-logo-dark.png"
-             alt="Boutique Method IP Holding"
-             class="h-9 md:h-10 w-auto select-none"
-             loading="eager"
-             decoding="async">
-        <span class="font-serif text-xl tracking-widest text-white uppercase">
-          Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-        </span>
-      </a>
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="licenciamento.html" class="text-gold-400 relative group cursor-default">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+                    <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                </div>
 
-      <div class="flex items-center space-x-4 md:space-x-8">
-        <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-          <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-          <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-          <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition" aria-current="page">Licenciamento</a>
-          <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-          <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-          <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="licenciamento-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
+                </div>
+
+                <a href="#form-tratativas" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Iniciar Tratativas
+                </a>
+            </div>
         </div>
+    </nav>
 
-        <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-          <span class="text-gold-400 cursor-default">PT</span>
-          <span class="text-white/30">|</span>
-          <a href="licenciamento-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
-        </div>
-      </div>
-
-      <!-- ✅ CTA agora abre o formulário na própria página -->
-      <a href="#form-tratativas" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-        Iniciar Tratativas
-      </a>
-    </div>
-  </nav>
-
-  <main id="main-content" class="flex-grow">
-    <!-- HERO -->
-    <header class="pt-52 pb-20 px-6 text-center">
-      <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Modelo de Licenciamento</span>
-      <h1 class="font-serif text-4xl md:text-7xl text-white mb-6 italic">
-        Licencie o <span class="text-neutral-500">Método</span>
-      </h1>
-      <p class="text-neutral-400 font-light max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
-        Boutique Method é um sistema replicável de governança de linguagem, templates operacionais e rituais de execução.
-        Você não compra horas. Você compra um método auditável — implantado por sprints.
-      </p>
-
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <!-- ✅ CTA agora abre o formulário na própria página -->
-        <a href="#form-tratativas" class="px-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition">
-          Iniciar Protocolo
-        </a>
-        <a href="como-funciona.html" class="px-8 py-4 border border-white/15 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition">
-          Ver Como Funciona
-        </a>
-      </div>
-    </header>
-
-    <!-- VALUE PILLARS -->
-    <section class="py-20 px-6 border-t border-white/5">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-        <div class="card p-10">
-          <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">01</span>
-          <h2 class="font-serif text-2xl text-white italic mt-4">Sistema</h2>
-          <p class="text-neutral-400 font-light mt-4 leading-relaxed text-sm">
-            Templates, SOPs, checklists, scripts e rituais. Tudo desenhado para operação real — não teoria.
-          </p>
-        </div>
-
-        <div class="card p-10">
-          <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">02</span>
-          <h2 class="font-serif text-2xl text-white italic mt-4">Implantação</h2>
-          <p class="text-neutral-400 font-light mt-4 leading-relaxed text-sm">
-            Entregáveis + treinamento + aplicação + revisão. Em ciclos curtos (sprints) com avanço mensurável.
-          </p>
-        </div>
-
-        <div class="card p-10">
-          <span class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">03</span>
-          <h2 class="font-serif text-2xl text-white italic mt-4">Governança</h2>
-          <p class="text-neutral-400 font-light mt-4 leading-relaxed text-sm">
-            Sustentação do padrão com rotinas, métricas mínimas e recertificação. Manutenção anual do nível.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PLANS -->
-    <section class="py-24 px-6 border-t border-white/5 bg-[#080808]">
-      <div class="max-w-7xl mx-auto text-center">
-        <div class="mb-16">
-          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold">Planos</span>
-          <h2 class="font-serif text-4xl text-white italic mt-4">Modelos de Licenciamento</h2>
-          <p class="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
-            Três níveis, com implantação por sprints. O escopo final é definido após diagnóstico e escopo.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8 text-left">
-          <!-- Essential -->
-          <div class="card p-10">
-            <h3 class="font-serif text-2xl text-white italic">Essential</h3>
-            <p class="text-neutral-500 text-xs uppercase tracking-widest mt-2">2 sprints • padronização rápida</p>
-
-            <ul class="mt-8 space-y-3 text-neutral-400 text-sm font-light">
-              <li><span class="text-gold-400 mr-2">✦</span> Carta Magna + Tom de Voz por canal</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Templates essenciais (operacional)</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Fluxo básico de atendimento + escalonamento</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Checklist semanal + métricas mínimas</li>
-            </ul>
-
-            <div class="mt-8 flex items-center justify-between gap-4">
-              <button type="button"
-                      onclick="openPlanModal('essential')"
-                      class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
-                Ver escopo completo +
-              </button>
-
-              <a href="#form-tratativas"
-                 class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
-                Iniciar tratativas →
-              </a>
-            </div>
-          </div>
-
-          <!-- Professional -->
-          <div class="card p-10 border-2 border-gold-400 bg-gold-400/[0.03] shadow-2xl relative">
-            <div class="absolute top-0 right-0 p-4">
-              <span class="text-gold-400 text-[8px] border border-gold-400 px-2 py-1 uppercase font-bold">Recomendado</span>
-            </div>
-            <h3 class="font-serif text-2xl text-gold-400 italic">Professional</h3>
-            <p class="text-neutral-400 text-xs uppercase tracking-widest mt-2">4 sprints • consistência + performance</p>
-
-            <ul class="mt-8 space-y-3 text-neutral-300 text-sm font-light">
-              <li><span class="text-gold-400 mr-2">✦</span> Tudo do Essential</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Scripts ampliados + objeções</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Playbook de crise (tático)</li>
-              <li><span class="text-gold-400 mr-2">✦</span> RACI + SLA interno + ritual mensal</li>
-            </ul>
-
-            <div class="mt-8 flex items-center justify-between gap-4">
-              <button type="button"
-                      onclick="openPlanModal('professional')"
-                      class="text-white text-[10px] uppercase tracking-[0.25em] border-b border-white/30 pb-1 hover:text-gold-400 transition">
-                Ver escopo completo +
-              </button>
-
-              <a href="#form-tratativas"
-                 class="text-white text-[10px] uppercase tracking-[0.25em] border-b border-white/30 pb-1 hover:text-gold-400 transition">
-                Iniciar tratativas →
-              </a>
-            </div>
-          </div>
-
-          <!-- Enterprise -->
-          <div class="card p-10">
-            <h3 class="font-serif text-2xl text-white italic">Enterprise</h3>
-            <p class="text-neutral-500 text-xs uppercase tracking-widest mt-2">8–12 sprints • multiunidade</p>
-
-            <ul class="mt-8 space-y-3 text-neutral-400 text-sm font-light">
-              <li><span class="text-gold-400 mr-2">✦</span> Tudo do Professional</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Governança multiunidade + multiplicadores</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Kit robusto de reputação + trilhas formais</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Auditorias + painel de métricas + recertificação</li>
-            </ul>
-
-            <div class="mt-8 flex items-center justify-between gap-4">
-              <button type="button"
-                      onclick="openPlanModal('enterprise')"
-                      class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
-                Ver escopo completo +
-              </button>
-
-              <a href="#form-tratativas"
-                 class="text-gold-400 text-[10px] uppercase tracking-[0.25em] border-b border-gold-400/40 pb-1 hover:text-white transition">
-                Iniciar tratativas →
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ✅ FORMULÁRIO (dentro da página) -->
-    <section id="form-tratativas" class="py-24 px-6 border-t border-white/5">
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
-        <div class="text-left">
-          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold">Protocolo</span>
-          <h2 class="font-serif text-4xl text-white italic mt-4">Iniciar Tratativas</h2>
-
-          <p class="text-neutral-400 font-light mt-6 leading-relaxed">
-            Preencha o mínimo necessário para diagnóstico e direcionamento do plano. O envio é processado por endpoint próprio.
-          </p>
-
-          <div class="mt-8 card p-8">
-            <h3 class="font-serif text-2xl text-white italic">O que acontece após enviar</h3>
-            <ul class="mt-5 space-y-3 text-neutral-400 text-sm font-light">
-              <li><span class="text-gold-400 mr-2">✦</span> Triagem do contexto (vertical, plano, urgência).</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Retorno com próximos passos e pré-escopo.</li>
-              <li><span class="text-gold-400 mr-2">✦</span> Quando aplicável: envio de NDA e agenda de diagnóstico.</li>
-            </ul>
-            <div class="mt-6 text-neutral-500 text-xs leading-relaxed">
-              Caso o endpoint esteja indisponível, o envio por e-mail é oferecido como fallback imediato.
-            </div>
-          </div>
-        </div>
-
-        <div class="card p-10">
-          <form id="bmipForm" class="space-y-5" novalidate>
-            <input type="hidden" name="origem" value="licenciamento.html" />
-
-            <div>
-              <label class="bmip-label" for="nome">Nome</label>
-              <input id="nome" name="nome" class="bmip-input" autocomplete="name" required placeholder="Seu nome completo">
-            </div>
-
-            <div>
-              <label class="bmip-label" for="email">E-mail</label>
-              <input id="email" name="email" type="email" class="bmip-input" autocomplete="email" required placeholder="voce@empresa.com">
-            </div>
-
-            <div>
-              <label class="bmip-label" for="telefone">WhatsApp</label>
-              <input id="telefone" name="telefone" inputmode="tel" class="bmip-input" autocomplete="tel" placeholder="(55) 9XXXX-XXXX">
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label class="bmip-label" for="vertical">Vertente</label>
-                <select id="vertical" name="vertical" class="bmip-input" required>
-                  <option value="" selected disabled>Selecione</option>
-                  <option value="JUR">JUR (Jurídico)</option>
-                  <option value="HC">HC (Saúde)</option>
-                  <option value="POL">POL (Integridade/Crise)</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="bmip-label" for="plano">Plano de interesse</label>
-                <select id="plano" name="plano" class="bmip-input">
-                  <option value="Indefinido" selected>Indefinido</option>
-                  <option value="Essential">Essential</option>
-                  <option value="Professional">Professional</option>
-                  <option value="Enterprise">Enterprise</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label class="bmip-label" for="empresa">Instituição / Empresa</label>
-              <input id="empresa" name="empresa" class="bmip-input" autocomplete="organization" placeholder="Nome da instituição (opcional)">
-            </div>
-
-            <!-- Honeypot anti-spam -->
-            <div class="hidden" aria-hidden="true">
-              <label for="site">Site</label>
-              <input id="site" name="site" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div>
-              <label class="bmip-label" for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" rows="5" class="bmip-input" required
-                        placeholder="Objetivo, contexto, urgência e qualquer detalhe relevante."></textarea>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-3 items-center justify-between pt-2">
-              <button id="bmipSubmit" type="submit"
-                class="w-full sm:w-auto px-8 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition disabled:opacity-60 disabled:cursor-not-allowed">
-                Enviar
-              </button>
-
-              <a id="bmipFallbackMail"
-                 href="mailto:ceo@boutiquemethodip.com?subject=BMIP%20—%20Iniciar%20Tratativas&body=Olá,%20quero%20iniciar%20tratativas.%0A%0A(Nome)%3A%20%0A(E-mail)%3A%20%0A(WhatsApp)%3A%20%0A(Vertente)%3A%20%0A(Plano)%3A%20%0A(Empresa)%3A%20%0A%0AMensagem%3A%20"
-                 class="w-full sm:w-auto text-center px-8 py-4 border border-white/15 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition">
-                Enviar por e-mail
-              </a>
-            </div>
-
-            <p id="bmipStatus" class="text-sm text-white/70 pt-2" role="status" aria-live="polite"></p>
-
-            <p class="text-[10px] text-neutral-500 uppercase tracking-widest pt-4">
-              AO ENVIAR, VOCÊ CONCORDA COM CONTATO PARA DIAGNÓSTICO E TRIAGEM.
+    <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
+        
+        <header class="max-w-5xl mx-auto text-center mb-32 animate-fade-up">
+            <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">Modelo de Licenciamento</span>
+            <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 italic">
+                Licencie o <span class="text-neutral-500 not-italic">Método</span>
+            </h1>
+            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+                Boutique Method é um sistema replicável de governança de linguagem, templates operacionais e rituais de execução.
+                Você não compra horas. Você compra um método auditável — implantado por sprints.
             </p>
 
-            <noscript>
-              <p class="text-sm text-neutral-300 mt-4">
-                JavaScript está desativado. Use “Enviar por e-mail”.
-              </p>
-            </noscript>
-          </form>
+            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#form-tratativas" class="px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-300">
+                    Iniciar Protocolo
+                </a>
+                <a href="como-funciona.html" class="px-10 py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-300">
+                    Ver Como Funciona
+                </a>
+            </div>
+        </header>
+
+        <section class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8 mb-32">
+            <div class="glass-panel p-10 md:p-12 relative group">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
+                    <span class="font-serif text-6xl italic text-white">01</span>
+                </div>
+                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Sistema</h2>
+                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                <p class="text-neutral-400 font-light text-sm leading-relaxed">
+                    Templates, SOPs, checklists, scripts e rituais. Tudo desenhado para operação real — não teoria.
+                </p>
+            </div>
+
+            <div class="glass-panel p-10 md:p-12 relative group">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
+                    <span class="font-serif text-6xl italic text-white">02</span>
+                </div>
+                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Implantação</h2>
+                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                <p class="text-neutral-400 font-light text-sm leading-relaxed">
+                    Entregáveis + treinamento + aplicação + revisão. Em ciclos curtos (sprints) com avanço mensurável.
+                </p>
+            </div>
+
+            <div class="glass-panel p-10 md:p-12 relative group">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
+                    <span class="font-serif text-6xl italic text-white">03</span>
+                </div>
+                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Governança</h2>
+                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                <p class="text-neutral-400 font-light text-sm leading-relaxed">
+                    Sustentação do padrão com rotinas, métricas mínimas e recertificação. Manutenção anual do nível.
+                </p>
+            </div>
+        </section>
+
+        <section class="max-w-[1400px] mx-auto mb-32 relative">
+            <div class="absolute inset-0 bg-gold-400/5 blur-[100px] -z-10 opacity-30"></div>
+
+            <div class="text-center mb-16">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold mb-4">Planos</span>
+                <h2 class="font-serif text-4xl text-white italic">Modelos de Licenciamento</h2>
+                <p class="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto font-light">
+                    Três níveis, com implantação por sprints. O escopo final é definido após diagnóstico e escopo.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-panel p-10 flex flex-col h-full hover:border-white/20">
+                    <div>
+                        <h3 class="font-serif text-3xl text-white italic mb-2">Essential</h3>
+                        <p class="text-neutral-500 text-[10px] uppercase tracking-widest">2 sprints • padronização rápida</p>
+                        <div class="h-px w-full bg-white/10 my-8"></div>
+                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Carta Magna + Tom de Voz por canal</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Templates essenciais (operacional)</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Fluxo básico de atendimento + escalonamento</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Checklist semanal + métricas mínimas</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto pt-10 flex flex-col gap-4">
+                        <button onclick="openPlanModal('essential')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left">Ver escopo completo +</button>
+                        <a href="#form-tratativas" class="w-full py-3 border border-white/10 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition text-center">Iniciar tratativas</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-10 flex flex-col h-full border-gold-400/30 bg-gold-400/[0.02] relative transform md:-translate-y-4 shadow-2xl shadow-black/50">
+                    <div class="absolute top-0 right-0">
+                        <span class="bg-gold-400 text-black text-[9px] px-3 py-1 uppercase font-bold tracking-wider">Recomendado</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-3xl text-gold-400 italic mb-2">Professional</h3>
+                        <p class="text-neutral-400 text-[10px] uppercase tracking-widest">4 sprints • consistência + performance</p>
+                        <div class="h-px w-full bg-gold-400/20 my-8"></div>
+                        <ul class="space-y-4 text-neutral-300 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Tudo do Essential</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Scripts ampliados + objeções</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Playbook de crise (tático)</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> RACI + SLA interno + ritual mensal</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto pt-10 flex flex-col gap-4">
+                        <button onclick="openPlanModal('professional')" class="text-white text-[10px] uppercase tracking-[0.2em] hover:text-gold-400 transition text-left">Ver escopo completo +</button>
+                        <a href="#form-tratativas" class="w-full py-3 bg-gold-400 text-black text-[10px] uppercase tracking-[0.2em] hover:bg-white transition text-center font-bold">Iniciar tratativas</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-10 flex flex-col h-full hover:border-white/20">
+                    <div>
+                        <h3 class="font-serif text-3xl text-white italic mb-2">Enterprise</h3>
+                        <p class="text-neutral-500 text-[10px] uppercase tracking-widest">8–12 sprints • multiunidade</p>
+                        <div class="h-px w-full bg-white/10 my-8"></div>
+                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Tudo do Professional</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Governança multiunidade + multiplicadores</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Kit robusto de reputação + trilhas formais</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Auditorias + painel de métricas + recertificação</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto pt-10 flex flex-col gap-4">
+                        <button onclick="openPlanModal('enterprise')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left">Ver escopo completo +</button>
+                        <a href="#form-tratativas" class="w-full py-3 border border-white/10 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition text-center">Iniciar tratativas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="form-tratativas" class="max-w-6xl mx-auto border-t border-white/5 pt-24">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div class="text-left space-y-8">
+                    <div>
+                        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold mb-4">Protocolo</span>
+                        <h2 class="font-serif text-4xl md:text-5xl text-white italic">Iniciar Tratativas</h2>
+                    </div>
+
+                    <p class="text-neutral-400 font-light text-lg leading-relaxed">
+                        Preencha o mínimo necessário para diagnóstico e direcionamento do plano. O envio é processado por endpoint próprio.
+                    </p>
+
+                    <div class="glass-panel p-8 md:p-10 border-l-2 border-l-gold-400">
+                        <h3 class="font-serif text-2xl text-white italic mb-6">O que acontece após enviar</h3>
+                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Triagem do contexto (vertical, plano, urgência).</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Retorno com próximos passos e pré-escopo.</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Quando aplicável: envio de NDA e agenda de diagnóstico.</li>
+                        </ul>
+                        <div class="mt-8 pt-6 border-t border-white/5 text-neutral-500 text-xs leading-relaxed">
+                            Caso o endpoint esteja indisponível, o envio por e-mail é oferecido como fallback imediato.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-10 md:p-12">
+                    <form id="bmipForm" class="space-y-6" novalidate>
+                        <input type="hidden" name="origem" value="licenciamento.html" />
+
+                        <div class="space-y-2">
+                            <label class="bmip-label" for="nome">Nome</label>
+                            <input id="nome" name="nome" class="bmip-input" autocomplete="name" required placeholder="Seu nome completo">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="bmip-label" for="email">E-mail</label>
+                            <input id="email" name="email" type="email" class="bmip-input" autocomplete="email" required placeholder="voce@empresa.com">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="bmip-label" for="telefone">WhatsApp</label>
+                            <input id="telefone" name="telefone" inputmode="tel" class="bmip-input" autocomplete="tel" placeholder="(55) 9XXXX-XXXX">
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="bmip-label" for="vertical">Vertente</label>
+                                <div class="relative">
+                                    <select id="vertical" name="vertical" class="bmip-input appearance-none" required>
+                                        <option value="" selected disabled>Selecione</option>
+                                        <option value="JUR">JUR (Jurídico)</option>
+                                        <option value="HC">HC (Saúde)</option>
+                                        <option value="POL">POL (Integridade/Crise)</option>
+                                    </select>
+                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="bmip-label" for="plano">Plano de interesse</label>
+                                <div class="relative">
+                                    <select id="plano" name="plano" class="bmip-input appearance-none">
+                                        <option value="Indefinido" selected>Indefinido</option>
+                                        <option value="Essential">Essential</option>
+                                        <option value="Professional">Professional</option>
+                                        <option value="Enterprise">Enterprise</option>
+                                    </select>
+                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="bmip-label" for="empresa">Instituição / Empresa</label>
+                            <input id="empresa" name="empresa" class="bmip-input" autocomplete="organization" placeholder="Nome da instituição (opcional)">
+                        </div>
+
+                        <div class="hidden" aria-hidden="true">
+                            <label for="site">Site</label>
+                            <input id="site" name="site" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="bmip-label" for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" class="bmip-input" required placeholder="Objetivo, contexto, urgência e qualquer detalhe relevante."></textarea>
+                        </div>
+
+                        <div class="pt-6 flex flex-col gap-4">
+                            <button id="bmipSubmit" type="submit" class="w-full py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition disabled:opacity-60 disabled:cursor-not-allowed">
+                                Enviar
+                            </button>
+
+                            <a id="bmipFallbackMail" href="mailto:ceo@boutiquemethodip.com" class="w-full text-center py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition">
+                                Enviar por e-mail
+                            </a>
+                        </div>
+
+                        <p id="bmipStatus" class="text-sm text-center text-gold-400 min-h-[20px]" role="status" aria-live="polite"></p>
+
+                        <p class="text-[9px] text-neutral-600 text-center uppercase tracking-widest">
+                            AO ENVIAR, VOCÊ CONCORDA COM CONTATO PARA DIAGNÓSTICO E TRIAGEM.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter" aria-hidden="true">
+        <div class="bg-neutral-900/95 border border-gold-400/20 max-w-2xl w-full p-10 md:p-14 relative shadow-2xl">
+            <button onclick="closePlanModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light" aria-label="Fechar Modal">✕</button>
+
+            <div id="modal-content" class="space-y-8"></div>
+
+            <div class="pt-10 flex flex-col sm:flex-row gap-4 justify-end border-t border-white/5 mt-8">
+                <button onclick="closePlanModal()" class="px-8 py-3 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
+                    Voltar
+                </button>
+                <a href="#form-tratativas" onclick="closePlanModal()" class="px-8 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
+                    Iniciar Tratativas
+                </a>
+            </div>
         </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- MODAL OVERLAY (Planos) -->
-  <div id="modal-overlay"
-       class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter"
-       aria-hidden="true">
-    <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
-      <button onclick="closePlanModal()"
-              class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl"
-              aria-label="Fechar Modal">&times;</button>
-
-      <div id="modal-content" class="space-y-6"></div>
-
-      <div class="pt-8 flex flex-col sm:flex-row gap-3 justify-end">
-        <button onclick="closePlanModal()"
-                class="px-6 py-3 border border-white/15 text-white/80 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
-          Voltar
-        </button>
-        <a href="#form-tratativas"
-           class="px-6 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
-          Iniciar Tratativas
-        </a>
-      </div>
     </div>
-  </div>
 
-  <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest">
-    <div class="flex flex-col items-center gap-4">
-      <img src="bmip-logo-dark.png"
-           alt="Boutique Method IP Holding"
-           class="h-8 w-auto opacity-80 select-none"
-           loading="lazy"
-           decoding="async">
-      <p>Boutique Method IP Holding Ltda © 2026</p>
-      <p class="text-neutral-700">ceo@boutiquemethodip.com • (55) 98466-6591</p>
-    </div>
-  </footer>
-
-  <script src="accessibility.js"></script>
-
-  <script>
-    // --- MODAIS (PLANOS) ---
-    const planModalData = {
-      essential: {
-        title: "Essential",
-        subtitle: "2 sprints • padronização rápida",
-        text:
-          "Camada de base para instalar padrão com velocidade e baixa fricção.<br><br>" +
-          "<strong>Inclui:</strong><br>" +
-          "• Carta Magna (governança de linguagem) + Tom de Voz por canal<br>" +
-          "• Templates essenciais (WhatsApp, e-mail, notas, negativas, alinhamentos)<br>" +
-          "• Fluxo básico de atendimento + escalonamento (quando / como subir nível)<br>" +
-          "• Checklist semanal + métricas mínimas (controle e consistência)<br><br>" +
-          "<strong>Saída:</strong> padrão funcional implantado e operável, com disciplina mínima de sustentação."
-      },
-      professional: {
-        title: "Professional",
-        subtitle: "4 sprints • consistência + performance",
-        text:
-          "Camada de performance: padroniza, treina, organiza decisão e reduz risco operacional.<br><br>" +
-          "<strong>Inclui tudo do Essential</strong> +<br>" +
-          "• Scripts ampliados (objeções, limites, contenção e alinhamentos)<br>" +
-          "• Playbook de crise (tático): respostas, aprovações, tempos e postura<br>" +
-          "• RACI (papéis e responsabilidades) + SLA interno + ritual mensal de governança<br><br>" +
-          "<strong>Saída:</strong> padrão com execução previsível e rotina mínima de auditoria interna."
-      },
-      enterprise: {
-        title: "Enterprise",
-        subtitle: "8–12 sprints • multiunidade",
-        text:
-          "Camada de escala: multiunidade, multiplicadores, governança e recertificação real.<br><br>" +
-          "<strong>Inclui tudo do Professional</strong> +<br>" +
-          "• Governança multiunidade + formação de multiplicadores (trilhas formais)<br>" +
-          "• Kit robusto de reputação (protocolos, matriz de risco e decisões)<br>" +
-          "• Auditorias, painel de métricas e recertificação do padrão<br><br>" +
-          "<strong>Saída:</strong> expansão com controle, consistência e identidade preservada."
-      }
-    };
-
-    function openPlanModal(key) {
-      const data = planModalData[key];
-      const overlay = document.getElementById('modal-overlay');
-      const container = document.getElementById('modal-content');
-
-      container.innerHTML = `
-        <div class="space-y-2">
-          <h3 class="font-serif text-3xl md:text-4xl text-gold-400 leading-tight italic">${data.title}</h3>
-          <p class="text-neutral-400 text-[10px] uppercase tracking-[0.25em]">${data.subtitle}</p>
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+        <div class="flex flex-col items-center gap-6">
+            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
+            <div class="space-y-2">
+                <p>Boutique Method IP Holding Ltda © 2026</p>
+                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+            </div>
         </div>
-        <div class="w-full h-px bg-white/10"></div>
-        <p class="text-neutral-300 font-light text-base md:text-lg leading-relaxed">${data.text}</p>
-      `;
+    </footer>
 
-      overlay.classList.remove('hidden');
-      overlay.classList.add('flex');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+    </button>
 
-    function closePlanModal() {
-      const overlay = document.getElementById('modal-overlay');
-      overlay.classList.add('hidden');
-      overlay.classList.remove('flex');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = 'auto';
-    }
+    <script src="accessibility.js"></script>
 
-    document.getElementById('modal-overlay').addEventListener('click', function(e) {
-      if (e.target === this) closePlanModal();
-    });
+    <script>
+        // --- MODAIS (PLANOS) ---
+        const planModalData = {
+            essential: {
+                title: "Essential",
+                subtitle: "2 sprints • padronização rápida",
+                text: "Camada de base para instalar padrão com velocidade e baixa fricção.<br><br><strong>Inclui:</strong><br>• Carta Magna (governança de linguagem) + Tom de Voz por canal<br>• Templates essenciais (WhatsApp, e-mail, notas, negativas, alinhamentos)<br>• Fluxo básico de atendimento + escalonamento (quando / como subir nível)<br>• Checklist semanal + métricas mínimas (controle e consistência)<br><br><strong>Saída:</strong> padrão funcional implantado e operável, com disciplina mínima de sustentação."
+            },
+            professional: {
+                title: "Professional",
+                subtitle: "4 sprints • consistência + performance",
+                text: "Camada de performance: padroniza, treina, organiza decisão e reduz risco operacional.<br><br><strong>Inclui tudo do Essential</strong> +<br>• Scripts ampliados (objeções, limites, contenção e alinhamentos)<br>• Playbook de crise (tático): respostas, aprovações, tempos e postura<br>• RACI (papéis e responsabilidades) + SLA interno + ritual mensal de governança<br><br><strong>Saída:</strong> padrão com execução previsível e rotina mínima de auditoria interna."
+            },
+            enterprise: {
+                title: "Enterprise",
+                subtitle: "8–12 sprints • multiunidade",
+                text: "Camada de escala: multiunidade, multiplicadores, governança e recertificação real.<br><br><strong>Inclui tudo do Professional</strong> +<br>• Governança multiunidade + formação de multiplicadores (trilhas formais)<br>• Kit robusto de reputação (protocolos, matriz de risco e decisões)<br>• Auditorias, painel de métricas e recertificação do padrão<br><br><strong>Saída:</strong> expansão com controle, consistência e identidade preservada."
+            }
+        };
 
-    document.addEventListener('keydown', function(e) {
-      const overlay = document.getElementById('modal-overlay');
-      const isOpen = overlay && overlay.classList.contains('flex');
-      if (isOpen && e.key === 'Escape') closePlanModal();
-    });
-  </script>
+        function openPlanModal(key) {
+            const data = planModalData[key];
+            const overlay = document.getElementById('modal-overlay');
+            const container = document.getElementById('modal-content');
 
-  <script>
-    // --- FORM (GitHub Pages) ---
-    // ✅ Endpoint Cloudflare Worker (BMIP)
-    const BMIP_FORM_ENDPOINT = "https://bmip-form.chefleonardoaraujo.workers.dev/contact";
+            container.innerHTML = `
+                <div class="space-y-2 mb-8 border-l-2 border-gold-400 pl-6">
+                    <h3 class="font-serif text-3xl md:text-4xl text-white leading-tight italic">${data.title}</h3>
+                    <p class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">${data.subtitle}</p>
+                </div>
+                <p class="text-neutral-300 font-light text-lg leading-loose text-justify">${data.text}</p>
+            `;
 
-    const form = document.getElementById("bmipForm");
-    const statusEl = document.getElementById("bmipStatus");
-    const submitBtn = document.getElementById("bmipSubmit");
-    const fallbackMail = document.getElementById("bmipFallbackMail");
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
 
-    function buildMailto(payload) {
-      const subject = `BMIP — Iniciar Tratativas (${payload.vertical || "Vertente"})`;
-      const body = [
-        "Olá, quero iniciar tratativas.",
-        "",
-        `Nome: ${payload.nome || ""}`,
-        `E-mail: ${payload.email || ""}`,
-        `WhatsApp: ${payload.telefone || ""}`,
-        `Vertente: ${payload.vertical || ""}`,
-        `Plano: ${payload.plano || ""}`,
-        `Empresa: ${payload.empresa || ""}`,
-        "",
-        "Mensagem:",
-        payload.mensagem || ""
-      ].join("\n");
+        function closePlanModal() {
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+        }
 
-      return `mailto:ceo@boutiquemethodip.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      statusEl.textContent = "";
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Enviando…";
-
-      const fd = new FormData(form);
-      const payload = Object.fromEntries(fd.entries());
-
-      // Honeypot: bot
-      if (payload.site && payload.site.trim().length > 0) {
-        statusEl.textContent = "Recebido.";
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar";
-        form.reset();
-        return;
-      }
-
-      // Validação mínima
-      if (!payload.nome || !payload.email || !payload.vertical || !payload.mensagem) {
-        statusEl.textContent = "Preencha Nome, E-mail, Vertente e Mensagem.";
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar";
-        return;
-      }
-
-      // Atualiza fallback mailto com os dados preenchidos
-      fallbackMail.href = buildMailto(payload);
-
-      try {
-        const res = await fetch(BMIP_FORM_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
+        document.getElementById('modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closePlanModal();
         });
 
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data?.error || "Falha no envio.");
+        document.addEventListener('keydown', function(e) {
+            const overlay = document.getElementById('modal-overlay');
+            const isOpen = overlay && overlay.classList.contains('flex');
+            if (isOpen && e.key === 'Escape') closePlanModal();
+        });
 
-        statusEl.textContent = "Recebido. Retornaremos com os próximos passos.";
-        form.reset();
-      } catch (err) {
-        statusEl.textContent = "Não foi possível enviar agora. Use “Enviar por e-mail” ou tente novamente.";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar";
-      }
-    });
-  </script>
+        // --- FORM ---
+        const BMIP_FORM_ENDPOINT = "https://bmip-form.chefleonardoaraujo.workers.dev/contact";
+        const form = document.getElementById("bmipForm");
+        const statusEl = document.getElementById("bmipStatus");
+        const submitBtn = document.getElementById("bmipSubmit");
+        const fallbackMail = document.getElementById("bmipFallbackMail");
+
+        function buildMailto(payload) {
+            const subject = `BMIP — Iniciar Tratativas (${payload.vertical || "Vertente"})`;
+            const body = [
+                "Olá, quero iniciar tratativas.", "",
+                `Nome: ${payload.nome || ""}`,
+                `E-mail: ${payload.email || ""}`,
+                `WhatsApp: ${payload.telefone || ""}`,
+                `Vertente: ${payload.vertical || ""}`,
+                `Plano: ${payload.plano || ""}`,
+                `Empresa: ${payload.empresa || ""}`, "",
+                "Mensagem:", payload.mensagem || ""
+            ].join("\n");
+            return `mailto:ceo@boutiquemethodip.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            statusEl.textContent = "";
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Enviando…";
+
+            const fd = new FormData(form);
+            const payload = Object.fromEntries(fd.entries());
+
+            if (payload.site && payload.site.trim().length > 0) {
+                statusEl.textContent = "Recebido.";
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Enviar";
+                form.reset();
+                return;
+            }
+
+            if (!payload.nome || !payload.email || !payload.vertical || !payload.mensagem) {
+                statusEl.textContent = "Preencha Nome, E-mail, Vertente e Mensagem.";
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Enviar";
+                return;
+            }
+
+            fallbackMail.href = buildMailto(payload);
+
+            try {
+                const res = await fetch(BMIP_FORM_ENDPOINT, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(data?.error || "Falha no envio.");
+                statusEl.textContent = "Recebido. Retornaremos com os próximos passos.";
+                form.reset();
+            } catch (err) {
+                statusEl.textContent = "Não foi possível enviar agora. Use “Enviar por e-mail” ou tente novamente.";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Enviar";
+            }
+        });
+
+        // Áudio Descrição
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
+
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
+
+            if (isPlaying) {
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Ouvir Página";
+            } else {
+                const text = "Modelo de Licenciamento: Licencie o Método. Boutique Method é um sistema replicável de governança. Planos: Essential (2 sprints), Professional (4 sprints) e Enterprise (8 a 12 sprints). Iniciar Tratativas: Preencha o formulário abaixo.";
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'pt-BR';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Ouvir Página";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Parar Áudio";
+            }
+        }
+    </script>
 </body>
 </html>
