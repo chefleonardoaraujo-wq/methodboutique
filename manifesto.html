@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,184 +9,249 @@
     <link rel="stylesheet" href="accessibility.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif']
+                    },
+                    colors: { 
+                        gold: { 
+                            300: '#e5c55b',
+                            400: '#d4af37', 
+                            500: '#b5922f',
+                            900: '#8a6d1f' 
+                        },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
-
-        /* Screen-reader only text */
-        .sr-only{
-            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        :root { --nav-offset: 100px; }
+        
+        body { 
+            background-color: #020202; 
+            color: #e5e5e5; 
+            font-family: 'Lato', sans-serif; 
+            overflow-x: hidden;
         }
 
-        /* BOTÃO AUDIODESCRIÇÃO */
+        /* Seleção de texto Dourada */
+        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
+
+        /* Scrollbar personalizada fina */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+        main { padding-top: var(--nav-offset); }
+
+        /* Glassmorphism para os Dogmas */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Botão de Áudio Premium */
         .audio-fab {
-            position: fixed; bottom: 30px; right: 30px; z-index: 100;
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px;
-            padding: 12px 24px; display: flex; align-items: center; gap: 10px;
-            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: fixed; bottom: 40px; right: 40px; z-index: 100;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 14px 28px;
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; transition: all 0.5s ease;
         }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
+        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
+        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
-        /* FIX PARA CELULAR: Engenharia de Modais */
-        .modal-container {
-            max-height: 85vh;
-            overflow-y: auto;
-            width: 95%;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 transparent;
-        }
-        .modal-container::-webkit-scrollbar { width: 4px; }
-        .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
-
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .modal-enter { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 
-<body class="antialiased gold-selection flex flex-col min-h-screen">
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[100]">Pular para o conteúdo</a>
 
-    <!-- NAV (BMIP padrão + PT|EN) -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-
-            <!-- LOGO (PNG) + WORDMARK -->
-            <a href="index.html" class="flex items-center gap-3 hover:opacity-95 transition" aria-label="Boutique Method - Página inicial">
-                <img
-                    src="bmip-logo-dark.png"
-                    alt="Boutique Method IP Holding"
-                    class="h-9 md:h-10 w-auto select-none"
-                    loading="eager"
-                    decoding="async"
-                />
-                <span class="font-serif text-xl tracking-widest text-white uppercase">
-                    Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-                </span>
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+            
+            <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span></span>
+                </div>
             </a>
 
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-gold-400 border-b border-gold-400 pb-1 transition" aria-current="page">A Holding</a>
-                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto.html" class="text-gold-400 relative group cursor-default">A Holding<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+                    <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                 </div>
 
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="manifesto-en.html" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="manifesto-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
+
+                <a href="iniciar-tratativas.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Iniciar Tratativas
+                </a>
             </div>
-
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
         </div>
     </nav>
 
-    <main id="main-content">
-        <header class="pt-48 md:pt-52 pb-20 px-6 text-center">
-            <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Manifesto Corporativo</span>
-            <h1 class="font-serif text-4xl md:text-7xl text-white mb-6">
-                Do Caos ao <span class="italic text-neutral-500">Patrimônio.</span>
-            </h1>
-        </header>
+    <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
+        <div class="max-w-[1400px] mx-auto animate-fade-up">
+            
+            <header class="text-center mb-24 relative">
+                <div class="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent -z-10"></div>
+                <div class="inline-block bg-obsidian px-8">
+                    <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">Manifesto Corporativo</span>
+                    <h1 class="font-serif text-5xl md:text-8xl text-white">
+                        Do Caos ao <span class="italic text-neutral-500">Patrimônio.</span>
+                    </h1>
+                </div>
+            </header>
 
-        <section class="px-6 pb-32">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+            <section class="grid md:grid-cols-12 gap-16 md:gap-24 items-start">
 
-                <div class="space-y-8 text-lg font-light leading-relaxed text-neutral-300 text-justify">
-                    <p>
-                        Vivemos na era do ruído. Muitos falam. Poucos constroem algo que permaneça.
-                        Acreditamos que o conhecimento de um especialista não deve morrer com ele — nem depender da sua presença física para gerar valor.
-                        <strong class="text-white">Conhecimento estruturado é patrimônio.</strong>
-                    </p>
+                <div class="md:col-span-7 space-y-12">
+                    <div class="space-y-8 text-neutral-400 font-light text-lg md:text-xl leading-loose text-justify">
+                        <p>
+                            Vivemos na era do ruído. Muitos falam. Poucos constroem algo que permaneça.
+                            Acreditamos que o conhecimento de um especialista não deve morrer com ele — nem depender da sua presença física para gerar valor.
+                            <strong class="text-white font-normal border-b border-gold-400/30">Conhecimento estruturado é patrimônio.</strong>
+                        </p>
 
-                    <div class="border-l-2 border-gold-400 pl-6 my-8 italic text-white font-serif text-xl">
-                        “A Boutique Method IP Holding existe para transformar conhecimento tácito em ativo proprietário.”
+                        <div class="border-l-2 border-gold-400 pl-8 my-10 italic text-white font-serif text-2xl md:text-3xl leading-snug opacity-90">
+                            “A Boutique Method IP Holding existe para transformar conhecimento tácito em ativo proprietário.”
+                        </div>
+
+                        <p>
+                            Capturamos a inteligência do negócio e a organizamos em sistemas operacionais replicáveis, seguros e valiosos.
+                            Onde há improviso, instituímos método. Onde há complexidade, instalamos clareza.
+                        </p>
                     </div>
 
-                    <p>
-                        Capturamos a inteligência do negócio e a organizamos em sistemas operacionais replicáveis, seguros e valiosos.
-                        Onde há improviso, instituímos método. Onde há complexidade, instalamos clareza.
-                    </p>
-
-                    <div class="space-y-4">
-                        <button onclick="openModal('modalOrigem')" class="w-full text-left group border border-white/10 bg-white/5 p-6 md:p-8 hover:border-gold-400 transition duration-500">
-                            <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">Capítulo I</span>
-                            <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition">Origem</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler História +</span>
+                    <div class="grid sm:grid-cols-2 gap-6 pt-6">
+                        <button onclick="openModal('modalOrigem')" class="text-left group glass-panel p-8 hover:border-gold-400/50 transition duration-500 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gold-400/5 translate-y-full group-hover:translate-y-0 transition duration-500"></div>
+                            <span class="relative z-10 text-gold-400 text-[10px] tracking-[0.3em] uppercase block mb-3 font-bold opacity-70">Capítulo I</span>
+                            <h3 class="relative z-10 font-serif text-3xl text-white italic group-hover:text-gold-200 transition">Origem</h3>
+                            <div class="relative z-10 w-8 h-px bg-white/20 mt-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                            <span class="relative z-10 text-[9px] uppercase tracking-widest text-gold-400 mt-4 block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition duration-500 delay-100">Ler História →</span>
                         </button>
 
-                        <button onclick="openModal('modalBoutique')" class="w-full text-left group border border-white/10 bg-white/5 p-6 md:p-8 hover:border-gold-400 transition duration-500">
-                            <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">Capítulo II</span>
-                            <h3 class="font-serif text-2xl text-white group-hover:text-gold-400 transition">Boutique</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Ler Conceito +</span>
+                        <button onclick="openModal('modalBoutique')" class="text-left group glass-panel p-8 hover:border-gold-400/50 transition duration-500 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gold-400/5 translate-y-full group-hover:translate-y-0 transition duration-500"></div>
+                            <span class="relative z-10 text-gold-400 text-[10px] tracking-[0.3em] uppercase block mb-3 font-bold opacity-70">Capítulo II</span>
+                            <h3 class="relative z-10 font-serif text-3xl text-white italic group-hover:text-gold-200 transition">Boutique</h3>
+                            <div class="relative z-10 w-8 h-px bg-white/20 mt-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                            <span class="relative z-10 text-[9px] uppercase tracking-widest text-gold-400 mt-4 block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition duration-500 delay-100">Ler Conceito →</span>
                         </button>
                     </div>
                 </div>
 
-                <div class="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 h-fit sticky top-32">
-                    <h3 class="font-serif text-3xl text-white mb-12">Dogmas da <span class="text-gold-400 italic">Holding</span></h3>
+                <div class="md:col-span-5 md:sticky md:top-32">
+                    <div class="glass-panel p-10 md:p-12 relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-gold-400/5 rounded-full blur-3xl"></div>
 
-                    <div class="space-y-10">
-                        <button onclick="openModal('dogma1')" class="group text-left w-full hover:translate-x-2 transition duration-500">
-                            <div class="flex items-center mb-2">
-                                <span class="text-gold-400 font-serif text-xl italic mr-2">I.</span>
-                                <span class="text-white text-sm uppercase tracking-[0.2em] font-bold group-hover:text-gold-400 transition">Auctoritas</span>
-                            </div>
-                            <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition">Não gritamos para ser ouvidos. A competência técnica é o nosso megafone.</p>
-                        </button>
+                        <h3 class="font-serif text-3xl text-white mb-12 relative z-10">Dogmas da <br><span class="text-gold-400 italic">Holding</span></h3>
 
-                        <button onclick="openModal('dogma2')" class="group text-left w-full hover:translate-x-2 transition duration-500">
-                            <div class="flex items-center mb-2">
-                                <span class="text-gold-400 font-serif text-xl italic mr-2">II.</span>
-                                <span class="text-white text-sm uppercase tracking-[0.2em] font-bold group-hover:text-gold-400 transition">Claritas</span>
-                            </div>
-                            <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition">A complexidade é o refúgio do inseguro. A simplicidade é o auge da sofisticação.</p>
-                        </button>
+                        <div class="space-y-10 relative z-10">
+                            <button onclick="openModal('dogma1')" class="group text-left w-full transition duration-500">
+                                <div class="flex items-baseline gap-4 mb-3 pb-3 border-b border-white/5 group-hover:border-gold-400/30 transition duration-500">
+                                    <span class="text-gold-400 font-serif text-xl italic opacity-60 group-hover:opacity-100 transition">I.</span>
+                                    <span class="text-white text-xs uppercase tracking-[0.25em] font-bold group-hover:text-gold-400 transition">Auctoritas</span>
+                                </div>
+                                <p class="text-neutral-500 text-sm font-light leading-relaxed group-hover:text-neutral-300 transition pl-8">
+                                    Não gritamos para ser ouvidos. A competência técnica é o nosso megafone.
+                                </p>
+                            </button>
 
-                        <button onclick="openModal('dogma3')" class="group text-left w-full hover:translate-x-2 transition duration-500">
-                            <div class="flex items-center mb-2">
-                                <span class="text-gold-400 font-serif text-xl italic mr-2">III.</span>
-                                <span class="text-white text-sm uppercase tracking-[0.2em] font-bold group-hover:text-gold-400 transition">Perpetuitas</span>
-                            </div>
-                            <p class="text-neutral-500 text-xs leading-relaxed group-hover:text-white transition">Construímos estruturas para durar gerações. Foco em legado e Equity.</p>
-                        </button>
+                            <button onclick="openModal('dogma2')" class="group text-left w-full transition duration-500">
+                                <div class="flex items-baseline gap-4 mb-3 pb-3 border-b border-white/5 group-hover:border-gold-400/30 transition duration-500">
+                                    <span class="text-gold-400 font-serif text-xl italic opacity-60 group-hover:opacity-100 transition">II.</span>
+                                    <span class="text-white text-xs uppercase tracking-[0.25em] font-bold group-hover:text-gold-400 transition">Claritas</span>
+                                </div>
+                                <p class="text-neutral-500 text-sm font-light leading-relaxed group-hover:text-neutral-300 transition pl-8">
+                                    A complexidade é o refúgio do inseguro. A simplicidade é o auge da sofisticação.
+                                </p>
+                            </button>
+
+                            <button onclick="openModal('dogma3')" class="group text-left w-full transition duration-500">
+                                <div class="flex items-baseline gap-4 mb-3 pb-3 border-b border-white/5 group-hover:border-gold-400/30 transition duration-500">
+                                    <span class="text-gold-400 font-serif text-xl italic opacity-60 group-hover:opacity-100 transition">III.</span>
+                                    <span class="text-white text-xs uppercase tracking-[0.25em] font-bold group-hover:text-gold-400 transition">Perpetuitas</span>
+                                </div>
+                                <p class="text-neutral-500 text-sm font-light leading-relaxed group-hover:text-neutral-300 transition pl-8">
+                                    Construímos estruturas para durar gerações. Foco em legado e Equity.
+                                </p>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-4 md:p-6">
-        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-6 md:p-12 relative shadow-2xl modal-container modal-enter">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Fechar">✕</button>
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter">
+        <div class="bg-neutral-900/95 border border-gold-400/20 max-w-2xl w-full p-10 md:p-14 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light" aria-label="Fechar">✕</button>
             <div id="modal-content" class="space-y-6"></div>
         </div>
     </div>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
+
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+        <div class="audio-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+    </button>
+
+    <script src="accessibility.js"></script>
 
     <script>
         const modalData = {
@@ -218,12 +283,11 @@
             const container = document.getElementById('modal-content');
 
             container.innerHTML = `
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-2">${content.label}</span>
-                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight italic">${content.title}</h3>
-                <div class="w-12 h-px bg-gold-400 mb-6"></div>
-                <p class="text-neutral-300 font-light text-base md:text-lg leading-relaxed text-justify">${content.text}</p>
-                <div class="pt-8 flex justify-end">
-                    <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Fechar</button>
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4 font-bold opacity-80">${content.label}</span>
+                <h3 class="font-serif text-3xl md:text-4xl text-white mb-8 leading-tight italic border-l-2 border-gold-400 pl-6">${content.title}</h3>
+                <p class="text-neutral-300 font-light text-lg leading-loose text-justify">${content.text}</p>
+                <div class="pt-10 flex justify-end">
+                    <button onclick="closeModal()" class="px-8 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-300">Fechar</button>
                 </div>
             `;
 
@@ -239,9 +303,40 @@
             document.body.style.overflow = 'auto';
         }
 
-        window.onclick = function(event) {
-            const overlay = document.getElementById('modal-overlay');
-            if (event.target == overlay) closeModal();
+        document.getElementById('modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Áudio Descrição
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
+
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
+
+            if (isPlaying) {
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Ouvir Página";
+            } else {
+                const text = "Manifesto Corporativo: Do Caos ao Patrimônio. Vivemos na era do ruído. Muitos falam. Poucos constroem algo que permaneça. Acreditamos que o conhecimento de um especialista não deve morrer com ele. Conhecimento estruturado é patrimônio. Dogmas da Holding: Auctoritas - Autoridade Real. Claritas - Clareza Radical. Perpetuitas - Legado e Equity.";
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'pt-BR';
+                utter.rate = 0.95;
+
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Ouvir Página";
+                };
+
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Parar Áudio";
+            }
         }
     </script>
 </body>
