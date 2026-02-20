@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessibility & Integrity | Boutique Method</title>
+    <title>Accessibility | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="accessibility.css">
@@ -15,86 +15,174 @@
             theme: {
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } }
+                    colors: {
+                        gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)'
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
+        :root { --nav-offset: 100px; }
 
-        /* LUXURY DESIGN: Technical Ledger */
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+        main { padding-top: var(--nav-offset); }
+        #main-content { scroll-margin-top: var(--nav-offset); }
+
+        :focus-visible {
+            outline: 1px solid #d4af37;
+            outline-offset: 4px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
+        /* DESIGN: Technical Ledger */
         .spec-grid { border-top: 1px solid rgba(255, 255, 255, 0.1); border-left: 1px solid rgba(255, 255, 255, 0.1); }
         .spec-item { border-right: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.5s ease; }
         .spec-item:hover { background: rgba(212, 175, 55, 0.02); }
-        
+
         .status-tag { font-size: 9px; letter-spacing: 0.2em; color: #d4af37; border: 1px solid rgba(212, 175, 55, 0.3); padding: 2px 8px; text-transform: uppercase; }
 
-        /* Founder's Note */
+        /* Founder Note */
         .founder-note { background: linear-gradient(to bottom right, #0a0a0a, #050505); border: 1px solid rgba(255, 255, 255, 0.05); position: relative; }
         .founder-note::before { content: '"'; position: absolute; top: -20px; left: 40px; font-family: 'Playfair Display', serif; font-size: 8rem; color: #d4af37; opacity: 0.1; line-height: 1; }
 
-        /* Audio FAB Control */
-        .audio-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50px;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
-        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
-        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
-        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
-        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
-        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 20%; }
-        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+        /* Mobile drawer enter/feel (index standard) */
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
     </style>
 </head>
-<body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-            </a>
-            <div class="flex items-center space-x-8 text-[10px] tracking-[0.2em] uppercase font-light">
-                <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-                <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-                <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                <a href="como-funciona-en.html" class="text-white hover:text-gold-400 transition">How It Works</a>
-                <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
-                <div class="flex items-center gap-2 border-l border-white/20 pl-4 ml-2">
-                    <a href="acessibilidade.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                    <span class="text-white/30">|</span>
-                    <span class="text-gold-400 cursor-default">EN</span>
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
+
+    <!-- Skip link (index standard) -->
+    <a href="#main-content"
+       class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
+        Skip to content
+    </a>
+
+    <!-- NAV (index standard + mobile drawer) -->
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+
+            <a href="index-en.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Home">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+                    </span>
                 </div>
+            </a>
+
+            <!-- Desktop -->
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="origem-en.html" class="hover:text-gold-400 transition duration-300 relative group">Origin<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto-en.html" class="hover:text-gold-400 transition duration-300 relative group">The Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="licenciamento-en.html" class="hover:text-gold-400 transition duration-300 relative group">Licensing<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="como-funciona-en.html" class="hover:text-gold-400 transition duration-300 relative group">How It Works<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="servicos-en.html" class="hover:text-gold-400 transition duration-300 relative group">Services<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="store-en.html" class="hover:text-gold-400 transition duration-300 relative group">Collection<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                </div>
+
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <a href="acessibilidade.html" class="text-neutral-600 hover:text-white transition">PT</a>
+                    <span class="text-gold-400">EN</span>
+                </div>
+
+                <a href="iniciar-tratativas-en.html"
+                   class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Start Negotiations
+                </a>
             </div>
-            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Initiate Protocols</a>
+
+            <!-- Mobile: Hamburger -->
+            <button id="mobileMenuBtn"
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Open menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false">
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+
         </div>
     </nav>
+
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
+
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+                <button type="button"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                        onclick="toggleMobileMenu(false)"
+                        aria-label="Close menu">&times;</button>
+            </div>
+
+            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <a href="origem-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origin</a>
+                <a href="manifesto-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">The Holding</a>
+                <a href="licenciamento-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licensing</a>
+                <a href="como-funciona-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">How It Works</a>
+                <a href="servicos-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Services</a>
+                <a href="store-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Collection</a>
+            </div>
+
+            <div class="pt-8">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+                    <a href="acessibilidade.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition">PT</a>
+                    <span class="text-gold-400">EN</span>
+                </div>
+
+                <a href="iniciar-tratativas-en.html"
+                   onclick="toggleMobileMenu(false)"
+                   class="mt-6 block w-full text-center px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Start Negotiations
+                </a>
+            </div>
+
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Mobile Navigation
+            </div>
+        </div>
+    </div>
 
     <main id="main-content" class="pt-48 md:pt-60 pb-24 px-6">
         <div class="max-w-5xl mx-auto space-y-32">
             
             <header class="text-center space-y-6">
                 <span class="text-gold-400 text-xs tracking-[0.3em] uppercase font-bold">Integrity & IP</span>
-                <h1 class="font-serif text-4xl md:text-6xl text-white italic text-center">
-                    Accessibility <span class="text-neutral-500">as an Asset</span>
-                </h1>
+                <h1 class="font-serif text-4xl md:text-6xl text-white italic">Accessibility <span class="text-neutral-500">as an Asset</span></h1>
                 <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed text-center">
                     We do not treat inclusion as assistance, but as <strong>process engineering</strong>. If a method cannot be accessed by everyone, it is not a method; it is a limitation.
                 </p>
@@ -103,13 +191,13 @@
             <section class="founder-note p-10 md:p-16">
                 <div class="grid md:grid-cols-12 gap-12 items-center">
                     <div class="md:col-span-8 space-y-6">
-                        <h2 class="font-serif text-3xl text-white italic">Founder's Commitment</h2>
+                        <h2 class="font-serif text-3xl text-white italic">The Founder’s Commitment</h2>
                         <div class="text-neutral-300 font-light leading-relaxed space-y-4 text-justify">
                             <p>
-                                My background in <strong>Nanotechnology</strong> taught me that atomic-scale precision defines the success of a complex structure. At Boutique Method, I apply that same obsession to human service.
+                                My journey in <strong>Nanotechnology</strong> taught me that precision at the atomic scale is what defines the success of a complex structure. At Boutique Method, I apply that same obsession to human service.
                             </p>
                             <p>
-                                To me, excellence is not an act — it is a habit built on obsessive processes. I decided our Holding would be the first to encode accessibility within its IP. We protect not only brands, but the right of every partner and client — neurodivergent, deaf, or blind — to operate with the elite results we deliver.
+                                For me, excellence is not an act; it is a habit built on obsessive processes. I decided our Holding would be the first to codify accessibility inside its IP. We protect not only brands, but the right of every partner and client — neurodivergent, deaf, or blind — to operate with the same elite standard of results we deliver.
                             </p>
                         </div>
                         <div class="pt-4">
@@ -130,8 +218,8 @@
             <section class="space-y-12">
                 <div class="flex flex-col md:flex-row justify-between items-end border-b border-white/10 pb-8 gap-4">
                     <div class="space-y-2">
-                        <h2 class="font-serif text-3xl text-white italic text-left">Technical Specifications</h2>
-                        <p class="text-neutral-500 text-[10px] uppercase tracking-[0.2em] text-left">Web Compliance Protocol (WCAG 2.1 AA)</p>
+                        <h2 class="font-serif text-3xl text-white italic">Technical Specifications</h2>
+                        <p class="text-neutral-500 text-[10px] uppercase tracking-[0.2em]">Web Compliance Protocol (WCAG 2.1 AA)</p>
                     </div>
                     <div class="status-tag">Status: Audited</div>
                 </div>
@@ -140,55 +228,56 @@
                     <div class="spec-item p-10 space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-gold-400 font-serif text-xl italic">Navigation</span>
-                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter text-right">Pillar 01</span>
+                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter">Pillar 01</span>
                         </div>
-                        <p class="text-white text-sm font-light leading-relaxed">Full support for skip links and keyboard navigation (tab indexing).</p>
+                        <p class="text-white text-sm font-light leading-relaxed">Full support for skip links and keyboard navigation (Tab indexing).</p>
                         <div class="text-[9px] uppercase tracking-widest text-gold-400 font-bold pt-2">✔ Active</div>
                     </div>
 
                     <div class="spec-item p-10 space-y-4">
                         <div class="flex justify-between items-center">
-                            <span class="text-gold-400 font-serif text-xl italic text-left">Visual</span>
-                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter text-right">Pillar 02</span>
+                            <span class="text-gold-400 font-serif text-xl italic">Visual</span>
+                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter">Pillar 02</span>
                         </div>
-                        <p class="text-white text-sm font-light leading-relaxed">Minimum 4.5:1 contrast ratio for text and UI elements.</p>
-                        <div class="text-[9px] uppercase tracking-widest text-gold-400 font-bold pt-2 text-left">✔ Audited</div>
+                        <p class="text-white text-sm font-light leading-relaxed">Minimum contrast of 4.5:1 for text and UI elements.</p>
+                        <div class="text-[9px] uppercase tracking-widest text-gold-400 font-bold pt-2">✔ Audited</div>
                     </div>
 
                     <div class="spec-item p-10 space-y-4">
                         <div class="flex justify-between items-center">
-                            <span class="text-gold-400 font-serif text-xl italic text-left">Interaction</span>
-                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter text-right">Pillar 03</span>
+                            <span class="text-gold-400 font-serif text-xl italic">Interaction</span>
+                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter">Pillar 03</span>
                         </div>
-                        <p class="text-white text-sm font-light leading-relaxed">No time-dependent workflows (low friction).</p>
-                        <div class="text-[9px] uppercase tracking-widest text-gold-400 font-bold pt-2 text-left">✔ Compliant</div>
+                        <p class="text-white text-sm font-light leading-relaxed">No time-dependent flows (low friction).</p>
+                        <div class="text-[9px] uppercase tracking-widest text-gold-400 font-bold pt-2">✔ Compliant</div>
                     </div>
 
                     <div class="spec-item p-10 space-y-4">
                         <div class="flex justify-between items-center">
-                            <span class="text-gold-400 font-serif text-xl italic text-left">Content</span>
-                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter text-right">Pillar 04</span>
+                            <span class="text-gold-400 font-serif text-xl italic">Content</span>
+                            <span class="text-[10px] text-neutral-500 font-bold uppercase tracking-tighter">Pillar 04</span>
                         </div>
-                        <p class="text-white text-sm font-light leading-relaxed text-left">Audio description via SpeechSynthesis for critical assets.</p>
-                        <div class="text-[9px] uppercase tracking-widest text-gold-400 font-bold pt-2 text-left">✔ Installed</div>
+                        <p class="text-white text-sm font-light leading-relaxed">Audio description via SpeechSynthesis for critical assets.</p>
+                        <div class="text-[9px] uppercase tracking-widest text-gold-400 font-bold pt-2">✔ Installed</div>
                     </div>
                 </div>
             </section>
 
-            <section class="grid md:grid-cols-2 gap-16 lg:gap-24 pt-16">
+            <section class="grid md:grid-cols-2 gap-16 lg:gap-24">
                 <div class="space-y-6">
-                    <h3 class="font-serif text-2xl text-white italic border-b border-gold-400/20 pb-4 text-left">Sign Language Protocol</h3>
+                    <h3 class="font-serif text-2xl text-white italic border-b border-gold-400/20 pb-4">Libras Protocol</h3>
                     <p class="text-neutral-400 text-sm leading-relaxed text-justify">
-                        Our video service channel in Sign Language operates with immediate scheduling for strategic protocols. Licensing our methodologies includes an application manual for specific signs related to technical IP terminology.
+                        Our video support channel in Libras operates with immediate scheduling for strategic negotiations. The licensing of our methodologies includes the manual for applying specific signs for technical IP terms.
                     </p>
                 </div>
                 <div class="space-y-6">
-                    <h3 class="font-serif text-2xl text-white italic border-b border-gold-400/20 pb-4 text-left">Neurodivergent Shielding</h3>
+                    <h3 class="font-serif text-2xl text-white italic border-b border-gold-400/20 pb-4">Neurodivergent Shielding</h3>
                     <p class="text-neutral-400 text-sm leading-relaxed text-justify">
-                        We implement the <strong>Plain Language</strong> protocol. All our Legal Design contracts are reviewed to avoid ambiguity, ensuring predictability and cognitive security for clients on the spectrum or with ADHD.
+                        We implement the <strong>Plain Language</strong> protocol. All of our Legal Design contracts are reviewed to avoid ambiguity, ensuring predictability and cognitive safety for clients on the spectrum or with ADHD.
                     </p>
                 </div>
             </section>
+
         </div>
     </main>
 
@@ -196,49 +285,33 @@
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
-        <div class="audio-wave">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
-    </button>
-
-    <script src="accessibility.js"></script>
     <script>
-        const synth = window.speechSynthesis;
-        let isPlaying = false;
+        // --- MOBILE MENU (index standard) ---
+        let mobileMenuOpen = false;
 
-        function toggleAudioDescription() {
-            const btn = document.getElementById('globalAudioBtn');
-            const label = document.getElementById('audioLabel');
+        function toggleMobileMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
 
-            if (isPlaying) {
-                synth.cancel();
-                isPlaying = false;
-                btn.classList.add('paused');
-                label.innerText = "Listen to Page";
+            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+            if (mobileMenuOpen) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
             } else {
-                const text =
-                    "Boutique Method Accessibility and Integrity page. We present the founder's commitment to inclusion as process engineering. We detail technical specifications aligned with WCAG 2.1 AA, including skip links, keyboard navigation, audited contrast, low-friction interaction, and audio description via speech synthesis. We also describe our sign language protocol and our plain-language shielding for neurodivergent clients.";
-
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'en-US';
-                utter.rate = 0.95;
-
-                utter.onend = () => {
-                    isPlaying = false;
-                    btn.classList.add('paused');
-                    label.innerText = "Listen to Page";
-                };
-
-                synth.speak(utter);
-                isPlaying = true;
-                btn.classList.remove('paused');
-                label.innerText = "Stop Audio";
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                btn.setAttribute('aria-expanded', 'false');
             }
         }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (mobileMenuOpen) toggleMobileMenu(false);
+            }
+        });
     </script>
+
 </body>
 </html>
