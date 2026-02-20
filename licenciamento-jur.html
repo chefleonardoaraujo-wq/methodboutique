@@ -1,212 +1,409 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUR | Jurídico & Legal Design | Boutique Method</title>
-    <meta name="description" content="Vertente JUR: legal design institucional, padronização de documentos, jornada do cliente e protocolos replicáveis para operações jurídicas com padrão de marca.">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="accessibility.css">
+  <title>JUR | Jurídico & Legal Design | Boutique Method</title>
+  <meta name="description" content="Vertente JUR: legal design institucional, padronização de documentos, jornada do cliente e protocolos replicáveis para operações jurídicas com padrão de marca." />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
-                }
-            }
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="accessibility.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+          colors: {
+            gold: { 300: '#e5c55b', 400: '#d4af37', 500: '#b5922f', 900: '#8a6d1f' },
+            obsidian: '#050505',
+            charcoal: '#0a0a0a'
+          },
+          backgroundImage: {
+            'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)'
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
+  <style>
+    :root { --nav-offset: 100px; }
 
-        /* Botão de Audiodescrição */
-        .audio-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50px;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
-        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
-        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
-        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
-        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
-        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 20%; }
-        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
-    </style>
+    body {
+      background-color: #050505;
+      color: #e5e5e5;
+      font-family: 'Lato', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+    main { padding-top: var(--nav-offset); }
+    #main-content { scroll-margin-top: var(--nav-offset); }
+
+    :focus-visible {
+      outline: 1px solid #d4af37;
+      outline-offset: 4px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .sr-only{ position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+
+    /* Mobile menu enter/feel (PADRÃO INDEX) */
+    .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+    @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+
+    /* Modal enter (PADRÃO INDEX) */
+    .modal-enter { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+    /* ✅ Modal mobile-safe */
+    #modal-body { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    #modal-content { word-break: break-word; }
+
+    /* Botão de Audiodescrição (mantido do seu arquivo) */
+    .audio-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+    .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
+    .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+    .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+    .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+    .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+    .paused .bar { animation: none; height: 20%; }
+    @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+  </style>
 </head>
 
-<body class="antialiased gold-selection flex flex-col min-h-screen">
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV PADRÃO -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-            </a>
+  <!-- ✅ NAV (AGORA IGUAL AO INDEX + MOBILE DRAWER + CTA EM MODAL) -->
+  <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+    <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
-                </div>
-
-                <!-- Idioma padrão -->
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="jur-legal-design-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
-                </div>
-            </div>
-
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
+      <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
+        <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+        <div class="flex flex-col">
+          <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+            Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+          </span>
         </div>
-    </nav>
+      </a>
 
-    <!-- pt padrão p/ nav fixo -->
-    <main id="main-content" class="flex-grow pt-52 pb-24 px-6">
-        <div class="max-w-4xl mx-auto">
-
-            <div class="mb-12">
-                <a href="licenciamento.html"
-                   class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition"
-                   aria-label="Voltar para a visão geral de Licenciamento">
-                    &larr; Voltar para Visão Geral
-                </a>
-            </div>
-
-            <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Vertente de Licenciamento</span>
-                <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">JUR</h1>
-                <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Jurídico & Legal Design</p>
-            </header>
-
-            <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
-                <p>
-                    A vertente JUR do Método Boutique foi desenhada para estruturar a comunicação jurídica como um ativo operacional — com clareza,
-                    consistência e previsibilidade. Aqui, excelência técnica não basta: o diferencial competitivo aparece quando o cliente entende,
-                    confia e age com segurança.
-                </p>
-
-                <p>
-                    Implantamos um sistema de padronização inteligente (sem empobrecer o conteúdo), com foco em: Legal Design, organização de documentos,
-                    governança de comunicação com o cliente, rotinas de atendimento e materiais que reduzem ruído, retrabalho e desgaste do time.
-                </p>
-
-                <div class="bg-neutral-900/50 p-8 border border-white/10 my-10">
-                    <h2 class="font-serif text-2xl text-white mb-6">O que essa vertente costuma organizar</h2>
-
-                    <ul class="space-y-3 text-sm text-neutral-400">
-                        <li class="flex gap-3">
-                            <span class="text-gold-400" aria-hidden="true">•</span>
-                            Documentos e modelos (contratos, propostas, notificações, comunicações críticas)
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="text-gold-400" aria-hidden="true">•</span>
-                            Jornada do cliente (onboarding, atualizações, prazos, entregáveis e orientações)
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="text-gold-400" aria-hidden="true">•</span>
-                            Linguagem e acessibilidade (clareza, estrutura, legibilidade e tom)
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="text-gold-400" aria-hidden="true">•</span>
-                            Operação replicável (padrões, roteiros, checklists e sprints de implantação)
-                        </li>
-                    </ul>
-                </div>
-
-                <p class="text-white font-medium italic">
-                    Resultado esperado: mais entendimento, menos atrito, mais confiança e uma operação jurídica com padrão de marca.
-                </p>
-
-                <div class="pt-12 text-center">
-                    <a href="iniciar-tratativas.html"
-                       class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500"
-                       aria-label="Solicitar licenciamento da vertente Jurídico e Legal Design">
-                        Solicitar Licenciamento JUR
-                    </a>
-                </div>
-            </div>
-
+      <!-- Desktop -->
+      <div class="hidden lg:flex items-center gap-10">
+        <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+          <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
         </div>
-    </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
-    </footer>
+        <div class="h-4 w-px bg-white/10"></div>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave" aria-hidden="true">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+          <span class="text-gold-400">PT</span>
+          <a href="jur-legal-design-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
-    </button>
 
-    <script src="accessibility.js"></script>
+        <!-- ✅ CTA NÃO REDIRECIONA: ABRE MODAL -->
+        <button type="button"
+                onclick="openModal('tratativas')"
+                class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
+                aria-label="Entenda o que significa Iniciar Tratativas">
+          Iniciar Tratativas
+        </button>
+      </div>
 
-    <script>
-        const synth = window.speechSynthesis;
-        let isPlaying = false;
+      <!-- Mobile: Hamburger -->
+      <button id="mobileMenuBtn"
+              type="button"
+              class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+              onclick="toggleMobileMenu()"
+              aria-label="Abrir menu"
+              aria-controls="mobileMenu"
+              aria-expanded="false">
+        <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
 
-        function toggleAudioDescription() {
-            const btn = document.getElementById('globalAudioBtn');
-            const label = document.getElementById('audioLabel');
+    </div>
+  </nav>
 
-            if (isPlaying) {
-                synth.cancel();
-                isPlaying = false;
-                btn.classList.add('paused');
-                label.innerText = "Ouvir Página";
-            } else {
-                const text =
-                    "Vertente JUR: Jurídico e Legal Design. Esta página apresenta como o Método Boutique padroniza a comunicação jurídica como um ativo operacional. Organizamos documentos e modelos, estruturamos a jornada do cliente, ajustamos linguagem e acessibilidade, e implantamos rotinas replicáveis para reduzir ruído e retrabalho, elevando confiança e padrão de marca.";
+  <!-- ✅ MOBILE MENU DRAWER (IGUAL AO INDEX) -->
+  <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+    <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'pt-BR';
-                utter.rate = 0.95;
+    <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+        <button type="button"
+                class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                onclick="toggleMobileMenu(false)"
+                aria-label="Fechar menu">&times;</button>
+      </div>
 
-                utter.onend = () => {
-                    isPlaying = false;
-                    btn.classList.add('paused');
-                    label.innerText = "Ouvir Página";
-                };
+      <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+        <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
+        <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
+        <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
+        <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
+        <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
+        <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo</a>
+      </div>
 
-                synth.speak(utter);
-                isPlaying = true;
-                btn.classList.remove('paused');
-                label.innerText = "Parar Áudio";
-            }
-        }
-    </script>
+      <div class="pt-8">
+        <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+          <span class="text-gold-400">PT</span>
+          <a href="jur-legal-design-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+        </div>
+
+        <button type="button"
+                onclick="toggleMobileMenu(false); openModal('tratativas');"
+                class="mt-6 w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
+                aria-label="Entenda o que significa Iniciar Tratativas">
+          Iniciar Tratativas
+        </button>
+      </div>
+
+      <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+        <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="flex-grow pt-52 pb-24 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-12">
+        <a href="licenciamento.html"
+           class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition"
+           aria-label="Voltar para a visão geral de Licenciamento">
+          &larr; Voltar para Visão Geral
+        </a>
+      </div>
+
+      <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Vertente de Licenciamento</span>
+        <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">JUR</h1>
+        <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Jurídico & Legal Design</p>
+      </header>
+
+      <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
+        <p>
+          A vertente JUR do Método Boutique foi desenhada para estruturar a comunicação jurídica como um ativo operacional — com clareza,
+          consistência e previsibilidade. Aqui, excelência técnica não basta: o diferencial competitivo aparece quando o cliente entende,
+          confia e age com segurança.
+        </p>
+
+        <p>
+          Implantamos um sistema de padronização inteligente (sem empobrecer o conteúdo), com foco em: Legal Design, organização de documentos,
+          governança de comunicação com o cliente, rotinas de atendimento e materiais que reduzem ruído, retrabalho e desgaste do time.
+        </p>
+
+        <div class="bg-neutral-900/50 p-8 border border-white/10 my-10">
+          <h2 class="font-serif text-2xl text-white mb-6">O que essa vertente costuma organizar</h2>
+
+          <ul class="space-y-3 text-sm text-neutral-400">
+            <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">•</span>Documentos e modelos (contratos, propostas, notificações, comunicações críticas)</li>
+            <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">•</span>Jornada do cliente (onboarding, atualizações, prazos, entregáveis e orientações)</li>
+            <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">•</span>Linguagem e acessibilidade (clareza, estrutura, legibilidade e tom)</li>
+            <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">•</span>Operação replicável (padrões, roteiros, checklists e sprints de implantação)</li>
+          </ul>
+        </div>
+
+        <p class="text-white font-medium italic">
+          Resultado esperado: mais entendimento, menos atrito, mais confiança e uma operação jurídica com padrão de marca.
+        </p>
+
+        <div class="pt-12 text-center">
+          <!-- aqui você pode manter link ou também abrir modal; mantive link do seu original -->
+          <a href="iniciar-tratativas.html"
+             class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500"
+             aria-label="Solicitar licenciamento da vertente Jurídico e Legal Design">
+            Solicitar Licenciamento JUR
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ✅ MODAL (PADRÃO INDEX) -->
+  <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-center justify-center p-4 sm:p-6 modal-enter">
+    <div class="bg-neutral-900/90 border border-gold-400/20 max-w-2xl w-full shadow-2xl relative max-h-[85vh] overflow-hidden">
+
+      <div class="flex items-center justify-between h-[72px] px-6 sm:px-10 border-b border-white/10">
+        <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500">Boutique Method</span>
+        <button onclick="closeModal()"
+                class="text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light leading-none"
+                aria-label="Fechar Modal">&times;</button>
+      </div>
+
+      <div id="modal-body" class="px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto max-h-[calc(85vh-72px)]">
+        <div id="modal-content" class="space-y-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+    <p>Boutique Method IP Holding Ltda © 2026</p>
+  </footer>
+
+  <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+    <div class="audio-wave" aria-hidden="true">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+  </button>
+
+  <script src="accessibility.js"></script>
+
+  <script>
+    // --- MENU MOBILE (PADRÃO INDEX) ---
+    let mobileMenuOpen = false;
+
+    function toggleMobileMenu(force) {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('mobileMenuBtn');
+
+      mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+      if (mobileMenuOpen) {
+        menu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        menu.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (mobileMenuOpen) toggleMobileMenu(false);
+
+        const overlay = document.getElementById('modal-overlay');
+        if (overlay && overlay.classList.contains('flex')) closeModal();
+      }
+    });
+
+    // --- MODAL (apenas CTA "tratativas" nesta página) ---
+    const modalData = {
+      tratativas: {
+        title: "Iniciar Tratativas — O que significa",
+        text:
+          "Tratativas são o início formal de uma conversa estratégica, com nível institucional.<br><br>" +
+          "Aqui, não é “um orçamento rápido”: é alinhamento de escopo, risco, confidencialidade e governança.<br><br>" +
+          "<strong>O que normalmente ocorre:</strong><br>" +
+          "• Definição do contexto (vertical, unidade(s), público e exposição).<br>" +
+          "• Identificação do risco principal (ruído, LGPD, reputação, conduta, crise).<br>" +
+          "• Validação de metas e critérios de sucesso.<br>" +
+          "• Organização do próximo passo (diagnóstico, sprint inicial ou proposta)."
+      }
+    };
+
+    function openModal(id) {
+      if (mobileMenuOpen) toggleMobileMenu(false);
+
+      const content = modalData[id];
+      if (!content) return;
+
+      const overlay = document.getElementById('modal-overlay');
+      const container = document.getElementById('modal-content');
+
+      container.innerHTML = `
+        <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-gold-400 mb-6 leading-tight italic">${content.title}</h3>
+        <div class="text-neutral-300 font-light text-base sm:text-lg leading-relaxed sm:leading-loose space-y-4 border-l border-gold-400/30 pl-5 sm:pl-6">${content.text}</div>
+        <div class="pt-8 flex justify-end">
+          <button onclick="closeModal()" class="px-7 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-300">Fechar</button>
+        </div>
+      `;
+
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const overlay = document.getElementById('modal-overlay');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // --- Áudio Descrição (preservado) ---
+    const synth = window.speechSynthesis;
+    let isPlaying = false;
+
+    function toggleAudioDescription() {
+      const btn = document.getElementById('globalAudioBtn');
+      const label = document.getElementById('audioLabel');
+
+      if (isPlaying) {
+        synth.cancel();
+        isPlaying = false;
+        btn.classList.add('paused');
+        label.innerText = "Ouvir Página";
+      } else {
+        const text =
+          "Vertente JUR: Jurídico e Legal Design. Esta página apresenta como o Método Boutique padroniza a comunicação jurídica como um ativo operacional. " +
+          "Organizamos documentos e modelos, estruturamos a jornada do cliente, ajustamos linguagem e acessibilidade, e implantamos rotinas replicáveis " +
+          "para reduzir ruído e retrabalho, elevando confiança e padrão de marca.";
+
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'pt-BR';
+        utter.rate = 0.95;
+
+        utter.onend = () => {
+          isPlaying = false;
+          btn.classList.add('paused');
+          label.innerText = "Ouvir Página";
+        };
+
+        synth.speak(utter);
+        isPlaying = true;
+        btn.classList.remove('paused');
+        label.innerText = "Parar Áudio";
+      }
+    }
+  </script>
 </body>
 </html>
