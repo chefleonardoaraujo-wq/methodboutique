@@ -1,361 +1,459 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How It Works | Boutique Method</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How It Works | Boutique Method</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <link rel="stylesheet" href="accessibility.css" />
+    <link rel="stylesheet" href="accessibility.css" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-          colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+                    colors: { 
+                        gold: { 
+                            300: '#e5c55b',
+                            400: '#d4af37', 
+                            500: '#b5922f',
+                            900: '#8a6d1f' 
+                        },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-    .gold-selection::selection { background: #d4af37; color: black; }
+    <style>
+        :root { --nav-offset: 100px; }
+        
+        body { 
+            background-color: #020202; 
+            color: #e5e5e5; 
+            font-family: 'Lato', sans-serif; 
+            overflow-x: hidden;
+        }
 
-    /* Better focus visibility */
-    :focus-visible { outline: 2px solid rgba(212,175,55,0.6); outline-offset: 4px; }
+        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
 
-    /* ROADMAP DESIGN */
-    .roadmap-container { position: relative; }
-    .roadmap-line {
-      position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.25), transparent);
-    }
-    @media (max-width: 768px) { .roadmap-line { left: 20px; } }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
-    .step-card {
-      position: relative;
-      transition: all 0.5s ease;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(255, 255, 255, 0.01);
-    }
-    .step-card:hover { border-color: rgba(212, 175, 55, 0.35); background: rgba(212, 175, 55, 0.02); }
+        main { padding-top: var(--nav-offset); }
+        #main-content { scroll-margin-top: var(--nav-offset); }
 
-    .step-number {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: #d4af37;
-      font-size: 1.05rem;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(212, 175, 55, 0.28);
-      background: #050505;
-      z-index: 10;
-      border-radius: 999px;
-    }
+        :focus-visible {
+            outline: 1px solid #d4af37;
+            outline-offset: 4px;
+            box-shadow: 0 0 15px rgba(212,175,55,0.18);
+        }
 
-    /* MODAL FIX FOR MOBILE */
-    .modal-container {
-      max-height: 85vh;
-      overflow-y: auto;
-      width: 95%;
-      scrollbar-width: thin;
-      scrollbar-color: #d4af37 transparent;
-    }
-    .modal-container::-webkit-scrollbar { width: 4px; }
-    .modal-container::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s ease;
+        }
+        .glass-panel:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
 
-    .modal-enter { animation: fadeIn 0.25s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.985); } to { opacity: 1; transform: scale(1); } }
-  </style>
+        /* TIMELINE DESIGN */
+        .roadmap-container { position: relative; }
+        .roadmap-line {
+            position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.4), transparent);
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) { .roadmap-line { left: 24px; transform: none; } }
+
+        .step-number-badge {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #d4af37;
+            font-size: 1.1rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            background: #050505;
+            z-index: 10;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            transition: 0.3s;
+        }
+        .step-group:hover .step-number-badge {
+            background: #d4af37;
+            color: #000;
+            border-color: #d4af37;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Audio Button */
+        .audio-fab {
+            position: fixed; bottom: 40px; right: 40px; z-index: 100;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 14px 28px;
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; transition: all 0.5s ease;
+        }
+        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
+        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
+        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+
+        /* Mobile Drawer (NAV) */
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+
+        @media (max-width: 640px) {
+            .audio-fab { bottom: 16px; right: 16px; padding: 12px 20px; }
+        }
+    </style>
 </head>
 
-<body class="antialiased gold-selection flex flex-col min-h-screen">
-  <a href="#main-content" class="skip-link">Skip to content</a>
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-  <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-      <a href="index-en.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-        Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
-      </a>
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
+        Skip to content
+    </a>
 
-      <div class="flex items-center space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-        <a href="origem-en.html" class="text-white hover:text-gold-400 transition">The Origin</a>
-        <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">The Holding</a>
-        <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-        <a href="como-funciona-en.html" class="text-gold-400 border-b border-gold-400 pb-1" aria-current="page">How It Works</a>
-        <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-        <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
-        <div class="flex items-center gap-2 border-l border-white/20 pl-4">
-          <a href="como-funciona.html" class="text-neutral-500 hover:text-white transition" lang="pt-BR">PT</a>
-          <span class="text-white/30">|</span>
-          <span class="text-gold-400 cursor-default">EN</span>
+    <!-- NAV (STANDARD + MOBILE) -->
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+            
+            <a href="index-en.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Home">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop NAV -->
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="origem-en.html" class="hover:text-gold-400 transition duration-300 relative group">Origin<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto-en.html" class="hover:text-gold-400 transition duration-300 relative group">The Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="licenciamento-en.html" class="hover:text-gold-400 transition duration-300 relative group">Licensing<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="como-funciona-en.html" class="text-gold-400 relative group cursor-default">How It Works<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+                    <a href="servicos-en.html" class="hover:text-gold-400 transition duration-300 relative group">Services<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="store-en.html" class="hover:text-gold-400 transition duration-300 relative group">Collection<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                </div>
+
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <a href="como-funciona.html" class="text-neutral-600 hover:text-white transition" lang="pt-BR">PT</a>
+                    <span class="text-gold-400">EN</span>
+                </div>
+
+                <a href="iniciar-tratativas-en.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Start Negotiations
+                </a>
+            </div>
+
+            <!-- Mobile: Hamburger -->
+            <button id="mobileMenuBtn"
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Open menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false">
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
         </div>
-      </div>
+    </nav>
 
-      <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">
-        Initiate Protocols
-      </a>
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
+
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+                <button type="button"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                        onclick="toggleMobileMenu(false)"
+                        aria-label="Close menu">✕</button>
+            </div>
+
+            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <a href="origem-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origin</a>
+                <a href="manifesto-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">The Holding</a>
+                <a href="licenciamento-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licensing</a>
+                <a href="como-funciona-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">How It Works</a>
+                <a href="servicos-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Services</a>
+                <a href="store-en.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Collection</a>
+            </div>
+
+            <div class="pt-8">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+                    <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="pt-BR">PT</a>
+                    <span class="text-gold-400">EN</span>
+                </div>
+
+                <a href="iniciar-tratativas-en.html"
+                   onclick="toggleMobileMenu(false)"
+                   class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
+                    Start Negotiations
+                </a>
+            </div>
+
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Mobile Navigation
+            </div>
+        </div>
     </div>
-  </nav>
 
-  <main id="main-content">
-    <header class="pt-48 md:pt-60 pb-16 px-6 text-center">
-      <h1 class="font-serif text-4xl md:text-7xl text-white mb-6 italic">How It <span class="text-neutral-500">Works</span></h1>
-      <p class="text-neutral-400 font-light max-w-3xl mx-auto text-lg leading-relaxed">
-        Licensing by sprints: deliverables + training + application + review. A replicable system — not hourly consulting.
-      </p>
-    </header>
+    <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
+        <header class="max-w-4xl mx-auto text-center mb-24 animate-fade-up">
+            <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">End-to-End Flow</span>
+            <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 italic">How <span class="text-neutral-500 not-italic">It Works</span></h1>
+            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+                Sprint-based licensing: deliverables + training + application + review. A replicable system — not hourly consulting.
+            </p>
+        </header>
 
-    <section class="py-24 px-6 border-t border-white/5">
-      <div class="max-w-5xl mx-auto text-center mb-20">
-        <h2 class="font-serif text-3xl text-white italic">Licensing Stages</h2>
-        <p class="text-[10px] uppercase tracking-widest text-neutral-500 mt-2">End-to-end full workflow</p>
-      </div>
+        <section class="max-w-6xl mx-auto roadmap-container pb-20">
+            <div class="roadmap-line hidden md:block" aria-hidden="true"></div>
 
-      <div class="max-w-5xl mx-auto roadmap-container">
-        <div class="roadmap-line hidden md:block" aria-hidden="true"></div>
+            <div class="space-y-24">
+                
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
+                    <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
+                        <span class="text-white font-serif text-8xl italic select-none">01</span>
+                    </div>
+                    
+                    <div class="step-number-badge" aria-hidden="true">I</div>
+                    
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Initiation Protocol</h3>
+                        <p class="text-neutral-400 text-sm font-light relative z-10">NDA + briefing.</p>
+                    </div>
+                </div>
 
-        <div class="space-y-20">
-          <!-- 01 -->
-          <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-            <div class="md:w-5/12 text-right hidden md:block">
-              <span class="text-gold-400/10 font-serif text-7xl italic">01</span>
-            </div>
-            <div class="step-number" aria-hidden="true">I</div>
-            <div class="md:w-5/12 step-card p-8">
-              <h3 class="font-serif text-2xl text-white mb-2 italic">Initiation Protocol</h3>
-              <p class="text-neutral-400 text-sm font-light leading-relaxed">NDA + briefing.</p>
-            </div>
-          </div>
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-16 step-group">
+                    <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
+                        <span class="text-white font-serif text-8xl italic select-none">02</span>
+                    </div>
+                    
+                    <div class="step-number-badge" aria-hidden="true">II</div>
+                    
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Diagnosis & Scope</h3>
+                        <p class="text-neutral-400 text-sm font-light relative z-10">Mapping and priorities.</p>
+                    </div>
+                </div>
 
-          <!-- 02 -->
-          <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
-            <div class="md:w-5/12 text-left hidden md:block">
-              <span class="text-gold-400/10 font-serif text-7xl italic">02</span>
-            </div>
-            <div class="step-number" aria-hidden="true">II</div>
-            <div class="md:w-5/12 step-card p-8 md:text-right">
-              <h3 class="font-serif text-2xl text-white mb-2 italic">Diagnosis & Scope</h3>
-              <p class="text-neutral-400 text-sm font-light">Mapping and priorities.</p>
-            </div>
-          </div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
+                    <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
+                        <span class="text-white font-serif text-8xl italic select-none">03</span>
+                    </div>
+                    
+                    <div class="step-number-badge" aria-hidden="true">III</div>
+                    
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Agreement + Setup</h3>
+                        <p class="text-neutral-400 text-sm font-light relative z-10">Brand governance, calendar, and plan.</p>
+                    </div>
+                </div>
 
-          <!-- 03 -->
-          <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-            <div class="md:w-5/12 text-right hidden md:block">
-              <span class="text-gold-400/10 font-serif text-7xl italic">03</span>
-            </div>
-            <div class="step-number" aria-hidden="true">III</div>
-            <div class="md:w-5/12 step-card p-8">
-              <h3 class="font-serif text-2xl text-white mb-2 italic">Contract + Setup</h3>
-              <p class="text-neutral-400 text-sm font-light">Brand governance, calendar, and plan.</p>
-            </div>
-          </div>
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-16 step-group">
+                    <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
+                        <span class="text-white font-serif text-8xl italic select-none">04</span>
+                    </div>
+                    
+                    <div class="step-number-badge" aria-hidden="true">IV</div>
+                    
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Sprint Implementation</h3>
+                        <p class="text-neutral-400 text-sm font-light relative z-10">Applied delivery + training + adjustments.</p>
+                    </div>
+                </div>
 
-          <!-- 04 -->
-          <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
-            <div class="md:w-5/12 text-left hidden md:block">
-              <span class="text-gold-400/10 font-serif text-7xl italic">04</span>
-            </div>
-            <div class="step-number" aria-hidden="true">IV</div>
-            <div class="md:w-5/12 step-card p-8 md:text-right">
-              <h3 class="font-serif text-2xl text-white mb-2 italic">Implementation by Sprints</h3>
-              <p class="text-neutral-400 text-sm font-light">Applied delivery + training + refinements.</p>
-            </div>
-          </div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
+                    <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
+                        <span class="text-white font-serif text-8xl italic select-none">05</span>
+                    </div>
+                    
+                    <div class="step-number-badge" aria-hidden="true">V</div>
+                    
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Validation & Kit</h3>
+                        <p class="text-neutral-400 text-sm font-light relative z-10">Routines, checklists, and sustaining metrics.</p>
+                    </div>
+                </div>
 
-          <!-- 05 -->
-          <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-            <div class="md:w-5/12 text-right hidden md:block">
-              <span class="text-gold-400/10 font-serif text-7xl italic">05</span>
-            </div>
-            <div class="step-number" aria-hidden="true">V</div>
-            <div class="md:w-5/12 step-card p-8">
-              <h3 class="font-serif text-2xl text-white mb-2 italic">Validation & Sustainment Kit</h3>
-              <p class="text-neutral-400 text-sm font-light">Routines, checklists, and metrics.</p>
-            </div>
-          </div>
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-16 step-group">
+                    <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
+                        <span class="text-white font-serif text-8xl italic select-none">06</span>
+                    </div>
+                    
+                    <div class="step-number-badge" aria-hidden="true">VI</div>
+                    
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Assisted Operations</h3>
+                        <p class="text-neutral-400 text-sm font-light relative z-10">Support and evolution (per plan).</p>
+                    </div>
+                </div>
 
-          <!-- 06 -->
-          <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 group">
-            <div class="md:w-5/12 text-left hidden md:block">
-              <span class="text-gold-400/10 font-serif text-7xl italic">06</span>
-            </div>
-            <div class="step-number" aria-hidden="true">VI</div>
-            <div class="md:w-5/12 step-card p-8 md:text-right">
-              <h3 class="font-serif text-2xl text-white mb-2 italic">Assisted Operation</h3>
-              <p class="text-neutral-400 text-sm font-light">Support and evolution (per plan).</p>
-            </div>
-          </div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
+                    <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
+                        <span class="text-white font-serif text-8xl italic select-none">07</span>
+                    </div>
+                    
+                    <div class="step-number-badge" aria-hidden="true">VII</div>
+                    
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
+                        <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Renewal</h3>
+                        <p class="text-neutral-400 text-sm font-light relative z-10">Annual standard maintenance and recertification.</p>
+                    </div>
+                </div>
 
-          <!-- 07 -->
-          <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 group">
-            <div class="md:w-5/12 text-right hidden md:block">
-              <span class="text-gold-400/10 font-serif text-7xl italic">07</span>
             </div>
-            <div class="step-number" aria-hidden="true">VII</div>
-            <div class="md:w-5/12 step-card p-8">
-              <h3 class="font-serif text-2xl text-white mb-2 italic">Renewal / Recertification</h3>
-              <p class="text-neutral-400 text-sm font-light">Annual standard maintenance.</p>
+        </section>
+
+        <section class="max-w-4xl mx-auto text-center border-t border-white/5 pt-24 pb-12">
+            <h2 class="font-serif text-3xl md:text-4xl text-white italic mb-6">Ready to begin?</h2>
+            <p class="text-neutral-500 text-sm font-light mb-10 max-w-xl mx-auto">
+                Turn processes into assets. The first step is aligning expectations.
+            </p>
+            <a href="iniciar-tratativas-en.html" class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-300">
+                Start Negotiations
+            </a>
+        </section>
+    </main>
+
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+        <div class="flex flex-col items-center gap-6">
+            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
+            <div class="space-y-2">
+                <p>Boutique Method IP Holding Ltda © 2026</p>
+                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="py-32 px-6 border-t border-white/5 bg-[#080808]">
-      <div class="max-w-7xl mx-auto text-center">
-        <div class="mb-16 space-y-4">
-          <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold">Investment Ledger</span>
-          <h2 class="font-serif text-4xl text-white italic">Deliverables by Plan</h2>
-          <p class="text-neutral-500 text-sm">Select a plan to audit the full scope of assets.</p>
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page">
+        <div class="audio-wave" aria-hidden="true">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
+        <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Listen</span>
+    </button>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <button type="button" onclick="openPlanModal('essential')" class="group p-10 border border-white/10 bg-white/[0.02] hover:border-gold-400 transition duration-500 text-left">
-            <h3 class="text-2xl text-white font-serif italic mb-4">Essential</h3>
-            <p class="text-neutral-500 text-xs uppercase tracking-widest mb-8">2 Sprints • Fast standardization</p>
-            <span class="text-gold-400 text-[10px] uppercase tracking-[0.2em] border-b border-gold-400/30 pb-1 group-hover:text-white transition">Audit Assets →</span>
-          </button>
+    <script src="accessibility.js"></script>
 
-          <button type="button" onclick="openPlanModal('professional')" class="group p-10 border-2 border-gold-400 bg-gold-400/[0.03] shadow-2xl transition duration-500 text-left relative">
-            <div class="absolute top-0 right-0 p-4"><span class="text-gold-400 text-[8px] border border-gold-400 px-2 py-1 uppercase font-bold">Recommended</span></div>
-            <h3 class="text-2xl text-gold-400 font-serif italic mb-4">Professional</h3>
-            <p class="text-neutral-400 text-xs uppercase tracking-widest mb-8">4 Sprints • Consistency + Performance</p>
-            <span class="text-white text-[10px] uppercase tracking-[0.2em] border-b border-white/30 pb-1 group-hover:text-gold-400 transition">Audit Assets →</span>
-          </button>
+    <script>
+        // --- NAV MOBILE ---
+        let mobileMenuOpen = false;
 
-          <button type="button" onclick="openPlanModal('enterprise')" class="group p-10 border border-white/10 bg-white/[0.02] hover:border-gold-400 transition duration-500 text-left">
-            <h3 class="text-2xl text-white font-serif italic mb-4">Enterprise</h3>
-            <p class="text-neutral-500 text-xs uppercase tracking-widest mb-8">8–12 Sprints • Multi-unit</p>
-            <span class="text-gold-400 text-[10px] uppercase tracking-[0.2em] border-b border-gold-400/30 pb-1 group-hover:text-white transition">Audit Assets →</span>
-          </button>
-        </div>
-      </div>
-    </section>
-  </main>
+        function toggleMobileMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
 
-  <!-- MODAL -->
-  <div id="modal-overlay"
-       class="fixed inset-0 bg-black/98 backdrop-blur-xl z-[100] hidden items-center justify-center p-4"
-       role="dialog"
-       aria-modal="true"
-       aria-hidden="true">
-    <div class="bg-neutral-900 border border-gold-400/30 max-w-3xl w-full p-8 md:p-16 relative shadow-2xl modal-container modal-enter">
-      <button type="button" onclick="closeModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl" aria-label="Close modal">✕</button>
-      <div id="modal-content" class="space-y-10"></div>
-    </div>
-  </div>
+            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
 
-  <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-    <p>Boutique Method IP Holding Ltda © 2026</p>
-  </footer>
+            if (mobileMenuOpen) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        }
 
-  <script>
-    const planDetails = {
-      essential: {
-        title: "Essential",
-        duration: "2 Sprints",
-        indicated: "Fast standardization",
-        deliverables: "Magna Carta; Tone of Voice by channel; Essential templates; Basic support and escalation flow.",
-        implementation: "2 meetings; fast training; final post-use refinements.",
-        governance: "Weekly checklist; minimum metrics; maintenance guide."
-      },
-      professional: {
-        title: "Professional",
-        duration: "4 Sprints",
-        indicated: "Consistency + performance",
-        deliverables: "Everything in Essential; expanded scripts; tactical crisis playbook; audience-based standards; objection-handling responses.",
-        implementation: "4 meetings; role-based training; guided review of real channels.",
-        governance: "RACI; internal SLA; monthly ritual; light audit (baseline)."
-      },
-      enterprise: {
-        title: "Enterprise",
-        duration: "8–12 Sprints",
-        indicated: "Multi-unit and high exposure",
-        deliverables: "Everything in Professional; multi-unit governance; robust reputation kit; formal tracks; scenario-based customizations.",
-        implementation: "Tracks + refreshers; multipliers; supervised workshop; unit-by-unit rollout.",
-        governance: "Executive committee; audits; metrics dashboard; sustainment manual; recertification."
-      }
-    };
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (mobileMenuOpen) toggleMobileMenu(false);
+            }
+        });
 
-    let lastFocusedEl = null;
+        // --- Audio Description ---
+        const synth = window.speechSynthesis;
+        let isPlaying = false;
 
-    function openPlanModal(id) {
-      const data = planDetails[id];
-      const overlay = document.getElementById('modal-overlay');
-      const container = document.getElementById('modal-content');
+        function toggleAudioDescription() {
+            const btn = document.getElementById('globalAudioBtn');
+            const label = document.getElementById('audioLabel');
 
-      lastFocusedEl = document.activeElement;
+            if (isPlaying) {
+                synth.cancel();
+                isPlaying = false;
+                btn.classList.add('paused');
+                label.innerText = "Listen";
+            } else {
+                const text =
+                    "How It Works. Sprint-based licensing: deliverables, training, application, and review. " +
+                    "Steps: one, Initiation Protocol. two, Diagnosis and Scope. three, Agreement and Setup. " +
+                    "four, Sprint Implementation. five, Validation and Kit. six, Assisted Operations. seven, Renewal and Recertification.";
 
-      container.innerHTML = `
-        <div class="space-y-2">
-          <h3 class="font-serif text-4xl md:text-5xl text-white italic">${data.title}</h3>
-          <p class="text-gold-400 text-xs uppercase tracking-[0.2em] font-bold">${data.indicated} • ${data.duration}</p>
-        </div>
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'en-US';
+                utter.rate = 0.95;
 
-        <div class="grid md:grid-cols-2 gap-10 pt-4">
-          <div class="space-y-4">
-            <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold">Core Deliverables</h4>
-            <p class="text-neutral-300 font-light leading-relaxed text-base">${data.deliverables}</p>
-          </div>
-          <div class="space-y-4">
-            <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold">Implementation & Training</h4>
-            <p class="text-neutral-300 font-light leading-relaxed text-base">${data.implementation}</p>
-          </div>
-        </div>
+                utter.onend = () => {
+                    isPlaying = false;
+                    btn.classList.add('paused');
+                    label.innerText = "Listen";
+                };
 
-        <div class="pt-8 border-t border-white/5">
-          <h4 class="text-gold-400 text-[10px] uppercase tracking-widest font-bold mb-4">Governance & Sustainment</h4>
-          <p class="text-white font-serif text-xl md:text-2xl italic leading-relaxed">${data.governance}</p>
-        </div>
-
-        <div class="pt-8">
-          <a href="iniciar-tratativas-en.html" class="block w-full bg-gold-400 text-black text-center py-5 text-xs font-bold uppercase tracking-[0.3em] hover:bg-white transition duration-500">
-            Initiate Plan Protocol
-          </a>
-        </div>
-      `;
-
-      overlay.classList.remove('hidden');
-      overlay.classList.add('flex');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-
-      const closeBtn = overlay.querySelector('button[aria-label="Close modal"]');
-      if (closeBtn) closeBtn.focus();
-    }
-
-    function closeModal() {
-      const overlay = document.getElementById('modal-overlay');
-      overlay.classList.add('hidden');
-      overlay.classList.remove('flex');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = 'auto';
-
-      if (lastFocusedEl) lastFocusedEl.focus();
-    }
-
-    // Close by clicking overlay
-    window.addEventListener('click', function(e) {
-      const overlay = document.getElementById('modal-overlay');
-      if (e.target === overlay) closeModal();
-    });
-
-    // Close by ESC
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        const overlay = document.getElementById('modal-overlay');
-        if (!overlay.classList.contains('hidden')) closeModal();
-      }
-    });
-  </script>
+                synth.speak(utter);
+                isPlaying = true;
+                btn.classList.remove('paused');
+                label.innerText = "Stop";
+            }
+        }
+    </script>
 </body>
 </html>
