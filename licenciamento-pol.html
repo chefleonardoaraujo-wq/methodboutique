@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +10,47 @@
     <link rel="stylesheet" href="accessibility.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                    colors: {
+                        gold: { 300: '#e5c55b', 400: '#d4af37', 900: '#8a6d1f' },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
+        :root { --nav-offset: 100px; }
+
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Seleção de texto dourada (premium) */
+        ::selection { background: rgba(212, 175, 55, 0.22); color: #d4af37; }
+
+        main { padding-top: var(--nav-offset); }
+
+        /* evita âncoras sob o nav fixo */
+        #main-content { scroll-margin-top: var(--nav-offset); }
+
+        :focus-visible {
+            outline: 1px solid #d4af37;
+            outline-offset: 4px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
 
         /* Botão de Audiodescrição */
         .audio-fab {
@@ -49,47 +76,124 @@
         .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
         .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 20%; }
+        .paused .bar { animation: none; height: 20%; opacity: 0.6; }
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+
+        /* Mobile: reduzir footprint do FAB */
+        @media (max-width: 640px) {
+            .audio-fab { bottom: 16px; right: 16px; padding: 10px 18px; }
+            .audio-wave { height: 12px; }
+            .bar { width: 1px; }
+        }
+
+        /* Mobile drawer */
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
     </style>
 </head>
 
-<body class="antialiased gold-selection flex flex-col min-h-screen">
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[100]">
+        Pular para o conteúdo
+    </a>
 
-    <!-- NAV PADRÃO -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+    <!-- ✅ NAV PADRÃO + MOBILE DRAWER (IGUAL AO LICENCIAMENTO/INDEX) -->
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+
+            <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+                    </span>
+                </div>
             </a>
 
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400 pb-1 transition">Licenciamento</a>
-                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+            <!-- Desktop -->
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="licenciamento.html" class="text-gold-400 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+                    <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                 </div>
 
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="pol-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="pol-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
+
+                <a href="iniciar-tratativas.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Iniciar Tratativas
+                </a>
             </div>
 
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
+            <!-- Mobile: Hamburger -->
+            <button id="mobileMenuBtn"
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Abrir menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false">
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+
         </div>
     </nav>
 
-    <!-- pt padrão p/ nav fixo -->
-    <main id="main-content" class="flex-grow pt-52 pb-20 px-6">
+    <!-- Mobile Menu Drawer -->
+    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
+
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+                <button type="button"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                        onclick="toggleMobileMenu(false)"
+                        aria-label="Fechar menu">&times;</button>
+            </div>
+
+            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
+                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
+
+                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Licenciamento</a>
+
+                <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
+                <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
+                <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo</a>
+            </div>
+
+            <div class="pt-8">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="pol-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+                </div>
+
+                <a href="iniciar-tratativas.html"
+                   onclick="toggleMobileMenu(false)"
+                   class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
+                    Iniciar Tratativas
+                </a>
+            </div>
+
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content" class="flex-grow pb-20 px-6">
         <div class="max-w-4xl mx-auto">
 
             <div class="mb-12">
@@ -143,8 +247,14 @@
         </div>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+        <div class="flex flex-col items-center gap-6">
+            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
+            <div class="space-y-2">
+                <p>Boutique Method IP Holding Ltda © 2026</p>
+                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+            </div>
+        </div>
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo da página">
@@ -159,6 +269,34 @@
     <script src="accessibility.js"></script>
 
     <script>
+        // ✅ MENU MOBILE
+        let mobileMenuOpen = false;
+
+        function toggleMobileMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
+
+            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+            if (mobileMenuOpen) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        // ESC fecha menu mobile
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (mobileMenuOpen) toggleMobileMenu(false);
+            }
+        });
+
+        // Audiodescrição
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
