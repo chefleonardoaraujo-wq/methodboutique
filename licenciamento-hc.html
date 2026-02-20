@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Licenciamento | Boutique Method</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HC - Saúde & Experiência Assistencial | Boutique Method</title>
+    <meta name="description" content="Vertente HC do Método Boutique: jornadas assistenciais, padronização de linguagem, protocolos de atendimento e governança de comunicação clínica para reduzir ruído e elevar segurança e confiança.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="accessibility.css" />
+    <link rel="stylesheet" href="accessibility.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -17,26 +18,12 @@
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
                     colors: {
-                        gold: {
-                            300: '#e5c55b',
-                            400: '#d4af37',
-                            500: '#b5922f',
-                            900: '#8a6d1f'
-                        },
+                        gold: { 300: '#e5c55b', 400: '#d4af37', 500: '#b5922f', 900: '#8a6d1f' },
                         obsidian: '#050505',
                         charcoal: '#0a0a0a'
                     },
                     backgroundImage: {
                         'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
-                    },
-                    animation: {
-                        'fade-up': 'fadeUp 1s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
                     }
                 }
             }
@@ -47,103 +34,76 @@
         :root { --nav-offset: 100px; }
 
         body {
-            background-color: #020202;
+            background-color: #050505;
             color: #e5e5e5;
             font-family: 'Lato', sans-serif;
             overflow-x: hidden;
         }
 
-        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+        ::selection { background: rgba(212, 175, 55, 0.22); color: #d4af37; }
 
         main { padding-top: var(--nav-offset); }
-
-        /* ✅ evita que âncoras “comam” conteúdo sob o NAV */
         #main-content { scroll-margin-top: var(--nav-offset); }
-        #form-tratativas { scroll-margin-top: var(--nav-offset); }
 
         :focus-visible {
             outline: 1px solid #d4af37;
             outline-offset: 4px;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
         }
 
-        .glass-panel {
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
+        .glass-panel{
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
-        }
-        .glass-panel:hover {
-            border-color: rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-2px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
         }
 
-        .bmip-input {
-            width: 100%;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 1rem 1.2rem;
-            color: #fff;
-            transition: .3s ease;
-            font-family: 'Lato', sans-serif;
-            font-weight: 300;
-        }
-        .bmip-input:focus {
-            outline: none;
-            border-color: #d4af37;
-            background: rgba(255,255,255,0.05);
-            box-shadow: 0 0 15px rgba(212,175,55,0.1);
-        }
-        .bmip-label {
-            display: block;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
+        /* Mobile drawer */
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
 
+        /* Botão de Audiodescrição */
         .audio-fab {
-            position: fixed; bottom: 40px; right: 40px; z-index: 100;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            padding: 14px 28px;
-            display: flex; align-items: center; gap: 12px;
-            cursor: pointer; transition: all 0.5s ease;
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 50px;
+            padding: 12px 22px;
+            display: flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
-        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
-        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 14px; }
+        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
         .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
         .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
-        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+        .paused .bar { animation: none; height: 20%; opacity: 0.65; }
+        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
 
-        .modal-enter { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-
-        /* ✅ MOBILE DRAWER (igual ao index) */
-        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-        @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+        @media (max-width: 640px) {
+            .audio-fab { bottom: 16px; right: 16px; padding: 10px 18px; }
+            .audio-wave { height: 12px; }
+            .bar { width: 1px; }
+        }
     </style>
 </head>
 
 <body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[100]">
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
         Pular para o conteúdo
     </a>
 
-    <!-- ✅ NAV (PADRÃO INDEX + MOBILE) -->
+    <!-- NAV (PADRÃO + MOBILE) -->
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
@@ -161,7 +121,7 @@
                 <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
                     <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="licenciamento.html" class="text-gold-400 relative group cursor-default">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+                    <a href="licenciamento.html" class="text-gold-400 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
                     <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
@@ -171,12 +131,11 @@
 
                 <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
                     <span class="text-gold-400">PT</span>
-                    <a href="licenciamento-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
+                    <!-- ajuste o arquivo EN se o seu nome for diferente -->
+                    <a href="hc-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <!-- mantém o comportamento original (scroll até o formulário) -->
-                <a href="#form-tratativas"
-                   class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                <a href="iniciar-tratativas.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
                     Iniciar Tratativas
                 </a>
             </div>
@@ -197,7 +156,7 @@
         </div>
     </nav>
 
-    <!-- ✅ MOBILE MENU DRAWER -->
+    <!-- MOBILE MENU DRAWER -->
     <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
         <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
@@ -214,8 +173,7 @@
                 <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
                 <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
 
-                <!-- ativo -->
-                <span class="block py-4 border-b border-white/10 text-gold-400 cursor-default">Licenciamento</span>
+                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Licenciamento</a>
 
                 <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
                 <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
@@ -225,10 +183,10 @@
             <div class="pt-8">
                 <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
                     <span class="text-gold-400">PT</span>
-                    <a href="licenciamento-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+                    <a href="hc-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <a href="#form-tratativas"
+                <a href="iniciar-tratativas.html"
                    onclick="toggleMobileMenu(false)"
                    class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
                     Iniciar Tratativas
@@ -241,260 +199,87 @@
         </div>
     </div>
 
-    <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
+    <!-- CONTEÚDO -->
+    <main id="main-content" class="flex-grow pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
 
-        <header class="max-w-5xl mx-auto text-center mb-32 animate-fade-up">
-            <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">Modelo de Licenciamento</span>
-            <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 italic">
-                Licencie o <span class="text-neutral-500 not-italic">Método</span>
-            </h1>
-            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-                Boutique Method é um sistema replicável de governança de linguagem, templates operacionais e rituais de execução.
-                Você não compra horas. Você compra um método auditável — implantado por sprints.
-            </p>
-
-            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="#form-tratativas" class="px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-300">
-                    Iniciar Protocolo
-                </a>
-                <a href="como-funciona.html" class="px-10 py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-300">
-                    Ver Como Funciona
+            <div class="mb-12">
+                <a href="licenciamento.html"
+                   class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition"
+                   aria-label="Voltar para a visão geral de Licenciamento">
+                    &larr; Voltar para a Visão Geral
                 </a>
             </div>
-        </header>
 
-        <section class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8 mb-32">
-            <div class="glass-panel p-10 md:p-12 relative group">
-                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
-                    <span class="font-serif text-6xl italic text-white">01</span>
-                </div>
-                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Sistema</h2>
-                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
-                <p class="text-neutral-400 font-light text-sm leading-relaxed">
-                    Templates, SOPs, checklists, scripts e rituais. Tudo desenhado para operação real — não teoria.
+            <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Vertente de Licenciamento</span>
+                <h1 class="font-serif text-5xl md:text-7xl text-white italic mb-2">HC</h1>
+                <p class="text-gold-400 text-sm uppercase tracking-[0.3em]">Saúde & Experiência Assistencial</p>
+            </header>
+
+            <div class="space-y-8 text-neutral-300 font-light text-lg leading-relaxed text-justify">
+                <p>
+                    A vertente HC do Método Boutique foi desenhada para transformar comunicação assistencial em segurança operacional.
+                    Em saúde, o ruído não é apenas desconforto — pode virar retrabalho, conflitos, judicialização e falhas de jornada.
                 </p>
-            </div>
 
-            <div class="glass-panel p-10 md:p-12 relative group">
-                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
-                    <span class="font-serif text-6xl italic text-white">02</span>
-                </div>
-                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Implantação</h2>
-                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
-                <p class="text-neutral-400 font-light text-sm leading-relaxed">
-                    Entregáveis + treinamento + aplicação + revisão. Em ciclos curtos (sprints) com avanço mensurável.
+                <p>
+                    Estruturamos uma camada replicável de linguagem, templates e protocolos para atendimento, orientação e rotinas internas:
+                    com foco em clareza, consistência, limites éticos e acessibilidade. O objetivo é reduzir atrito, elevar confiança e
+                    dar previsibilidade à experiência do paciente — sem “inventar moda” na prática clínica.
                 </p>
-            </div>
 
-            <div class="glass-panel p-10 md:p-12 relative group">
-                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
-                    <span class="font-serif text-6xl italic text-white">03</span>
+                <div class="glass-panel p-8 md:p-10 border border-white/10 my-10">
+                    <h2 class="font-serif text-2xl text-white mb-6">O que essa vertente costuma organizar</h2>
+
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Jornada do paciente (pré, durante e pós) — instruções, preparo, retornos e expectativas
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Padrões de atendimento (WhatsApp, balcão, telefone e e-mail) — scripts, negativas e escalonamento
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Comunicação de atrasos, imprevistos e orientações críticas — com linguagem segura e humana
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Protocolos de privacidade e dados (LGPD) — minimização, consentimentos e boas práticas de acesso
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-gold-400" aria-hidden="true">•</span>
+                            Rotinas internas e governança (RACI, SLAs internos, checklists e rituais) para manter o padrão vivo
+                        </li>
+                    </ul>
                 </div>
-                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Governança</h2>
-                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
-                <p class="text-neutral-400 font-light text-sm leading-relaxed">
-                    Sustentação do padrão com rotinas, métricas mínimas e recertificação. Manutenção anual do nível.
+
+                <p class="text-white font-medium italic">
+                    Resultado esperado: menos ruído, menos retrabalho, menos conflito — e uma experiência assistencial mais clara, previsível e confiável.
                 </p>
-            </div>
-        </section>
 
-        <section class="max-w-[1400px] mx-auto mb-32 relative">
-            <div class="absolute inset-0 bg-gold-400/5 blur-[100px] -z-10 opacity-30"></div>
-
-            <div class="text-center mb-16">
-                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold mb-4">Planos</span>
-                <h2 class="font-serif text-4xl text-white italic">Modelos de Licenciamento</h2>
-                <p class="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto font-light">
-                    Três níveis, com implantação por sprints. O escopo final é definido após diagnóstico e escopo.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-panel p-10 flex flex-col h-full hover:border-white/20">
-                    <div>
-                        <h3 class="font-serif text-3xl text-white italic mb-2">Essential</h3>
-                        <p class="text-neutral-500 text-[10px] uppercase tracking-widest">2 sprints • padronização rápida</p>
-                        <div class="h-px w-full bg-white/10 my-8"></div>
-                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Carta Magna + Tom de Voz por canal</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Templates essenciais (operacional)</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Fluxo básico de atendimento + escalonamento</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Checklist semanal + métricas mínimas</li>
-                        </ul>
-                    </div>
-                    <div class="mt-auto pt-10 flex flex-col gap-4">
-                        <button onclick="openPlanModal('essential')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left">Ver escopo completo +</button>
-                        <a href="#form-tratativas" class="w-full py-3 border border-white/10 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition text-center">Iniciar tratativas</a>
-                    </div>
+                <div class="pt-12 text-center">
+                    <a href="iniciar-tratativas.html"
+                       class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500"
+                       aria-label="Solicitar licenciamento da vertente Saúde e Experiência Assistencial">
+                        Solicitar Licenciamento HC
+                    </a>
                 </div>
 
-                <div class="glass-panel p-10 flex flex-col h-full border-gold-400/30 bg-gold-400/[0.02] relative transform md:-translate-y-4 shadow-2xl shadow-black/50">
-                    <div class="absolute top-0 right-0">
-                        <span class="bg-gold-400 text-black text-[9px] px-3 py-1 uppercase font-bold tracking-wider">Recomendado</span>
-                    </div>
-                    <div>
-                        <h3 class="font-serif text-3xl text-gold-400 italic mb-2">Professional</h3>
-                        <p class="text-neutral-400 text-[10px] uppercase tracking-widest">4 sprints • consistência + performance</p>
-                        <div class="h-px w-full bg-gold-400/20 my-8"></div>
-                        <ul class="space-y-4 text-neutral-300 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Tudo do Essential</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Scripts ampliados + objeções</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Playbook de crise (tático)</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> RACI + SLA interno + ritual mensal</li>
-                        </ul>
-                    </div>
-                    <div class="mt-auto pt-10 flex flex-col gap-4">
-                        <button onclick="openPlanModal('professional')" class="text-white text-[10px] uppercase tracking-[0.2em] hover:text-gold-400 transition text-left">Ver escopo completo +</button>
-                        <a href="#form-tratativas" class="w-full py-3 bg-gold-400 text-black text-[10px] uppercase tracking-[0.2em] hover:bg-white transition text-center font-bold">Iniciar tratativas</a>
-                    </div>
-                </div>
-
-                <div class="glass-panel p-10 flex flex-col h-full hover:border-white/20">
-                    <div>
-                        <h3 class="font-serif text-3xl text-white italic mb-2">Enterprise</h3>
-                        <p class="text-neutral-500 text-[10px] uppercase tracking-widest">8–12 sprints • multiunidade</p>
-                        <div class="h-px w-full bg-white/10 my-8"></div>
-                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Tudo do Professional</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Governança multiunidade + multiplicadores</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Kit robusto de reputação + trilhas formais</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Auditorias + painel de métricas + recertificação</li>
-                        </ul>
-                    </div>
-                    <div class="mt-auto pt-10 flex flex-col gap-4">
-                        <button onclick="openPlanModal('enterprise')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left">Ver escopo completo +</button>
-                        <a href="#form-tratativas" class="w-full py-3 border border-white/10 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition text-center">Iniciar tratativas</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="form-tratativas" class="max-w-6xl mx-auto border-t border-white/5 pt-24">
-            <div class="grid lg:grid-cols-2 gap-16 items-start">
-                <div class="text-left space-y-8">
-                    <div>
-                        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold mb-4">Protocolo</span>
-                        <h2 class="font-serif text-4xl md:text-5xl text-white italic">Iniciar Tratativas</h2>
-                    </div>
-
-                    <p class="text-neutral-400 font-light text-lg leading-relaxed">
-                        Preencha o mínimo necessário para diagnóstico e direcionamento do plano. O envio é processado por endpoint próprio.
+                <!-- Legal Notice HC -->
+                <div class="mt-16 pt-8 border-t border-white/5 text-center">
+                    <p class="text-[10px] text-neutral-600 uppercase tracking-wider max-w-3xl mx-auto leading-relaxed">
+                        <strong>Legal Notice (HC):</strong> a Boutique Method atua com consultoria em governança de comunicação, processos e padronização.
+                        Não realizamos diagnóstico, prescrição, conduta clínica ou orientação médica individual.
+                        A responsabilidade por decisões clínicas, ética profissional e conformidade regulatória permanece com o cliente e seus responsáveis técnicos.
                     </p>
-
-                    <div class="glass-panel p-8 md:p-10 border-l-2 border-l-gold-400">
-                        <h3 class="font-serif text-2xl text-white italic mb-6">O que acontece após enviar</h3>
-                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Triagem do contexto (vertical, plano, urgência).</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Retorno com próximos passos e pré-escopo.</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Quando aplicável: envio de NDA e agenda de diagnóstico.</li>
-                        </ul>
-                        <div class="mt-8 pt-6 border-t border-white/5 text-neutral-500 text-xs leading-relaxed">
-                            Caso o endpoint esteja indisponível, o envio por e-mail é oferecido como fallback imediato.
-                        </div>
-                    </div>
                 </div>
 
-                <div class="glass-panel p-10 md:p-12">
-                    <form id="bmipForm" class="space-y-6" novalidate>
-                        <input type="hidden" name="origem" value="licenciamento.html" />
-
-                        <div class="space-y-2">
-                            <label class="bmip-label" for="nome">Nome</label>
-                            <input id="nome" name="nome" class="bmip-input" autocomplete="name" required placeholder="Seu nome completo">
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="bmip-label" for="email">E-mail</label>
-                            <input id="email" name="email" type="email" class="bmip-input" autocomplete="email" required placeholder="voce@empresa.com">
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="bmip-label" for="telefone">WhatsApp</label>
-                            <input id="telefone" name="telefone" inputmode="tel" class="bmip-input" autocomplete="tel" placeholder="(55) 9XXXX-XXXX">
-                        </div>
-
-                        <div class="grid sm:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="bmip-label" for="vertical">Vertente</label>
-                                <div class="relative">
-                                    <select id="vertical" name="vertical" class="bmip-input appearance-none" required>
-                                        <option value="" selected disabled>Selecione</option>
-                                        <option value="JUR">JUR (Jurídico)</option>
-                                        <option value="HC">HC (Saúde)</option>
-                                        <option value="POL">POL (Integridade/Crise)</option>
-                                    </select>
-                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label class="bmip-label" for="plano">Plano de interesse</label>
-                                <div class="relative">
-                                    <select id="plano" name="plano" class="bmip-input appearance-none">
-                                        <option value="Indefinido" selected>Indefinido</option>
-                                        <option value="Essential">Essential</option>
-                                        <option value="Professional">Professional</option>
-                                        <option value="Enterprise">Enterprise</option>
-                                    </select>
-                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="bmip-label" for="empresa">Instituição / Empresa</label>
-                            <input id="empresa" name="empresa" class="bmip-input" autocomplete="organization" placeholder="Nome da instituição (opcional)">
-                        </div>
-
-                        <div class="hidden" aria-hidden="true">
-                            <label for="site">Site</label>
-                            <input id="site" name="site" tabindex="-1" autocomplete="off">
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="bmip-label" for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="5" class="bmip-input" required placeholder="Objetivo, contexto, urgência e qualquer detalhe relevante."></textarea>
-                        </div>
-
-                        <div class="pt-6 flex flex-col gap-4">
-                            <button id="bmipSubmit" type="submit" class="w-full py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition disabled:opacity-60 disabled:cursor-not-allowed">
-                                Enviar
-                            </button>
-
-                            <a id="bmipFallbackMail" href="mailto:ceo@boutiquemethodip.com" class="w-full text-center py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition">
-                                Enviar por e-mail
-                            </a>
-                        </div>
-
-                        <p id="bmipStatus" class="text-sm text-center text-gold-400 min-h-[20px]" role="status" aria-live="polite"></p>
-
-                        <p class="text-[9px] text-neutral-600 text-center uppercase tracking-widest">
-                            AO ENVIAR, VOCÊ CONCORDA COM CONTATO PARA DIAGNÓSTICO E TRIAGEM.
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Modal dos planos -->
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter" aria-hidden="true">
-        <div class="bg-neutral-900/95 border border-gold-400/20 max-w-2xl w-full p-10 md:p-14 relative shadow-2xl">
-            <button onclick="closePlanModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light" aria-label="Fechar Modal">✕</button>
-
-            <div id="modal-content" class="space-y-8"></div>
-
-            <div class="pt-10 flex flex-col sm:flex-row gap-4 justify-end border-t border-white/5 mt-8">
-                <button onclick="closePlanModal()" class="px-8 py-3 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
-                    Voltar
-                </button>
-                <a href="#form-tratativas" onclick="closePlanModal()" class="px-8 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
-                    Iniciar Tratativas
-                </a>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
         <div class="flex flex-col items-center gap-6">
@@ -506,19 +291,19 @@
         </div>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo da página">
+        <div class="audio-wave" aria-hidden="true">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
     </button>
 
     <script src="accessibility.js"></script>
 
     <script>
-        // --- ✅ MENU MOBILE (PADRÃO INDEX) ---
+        // MENU MOBILE
         let mobileMenuOpen = false;
 
         function toggleMobileMenu(force) {
@@ -538,137 +323,13 @@
             }
         }
 
-        // --- MODAIS (PLANOS) ---
-        const planModalData = {
-            essential: {
-                title: "Essential",
-                subtitle: "2 sprints • padronização rápida",
-                text: "Camada de base para instalar padrão com velocidade e baixa fricção.<br><br><strong>Inclui:</strong><br>• Carta Magna (governança de linguagem) + Tom de Voz por canal<br>• Templates essenciais (WhatsApp, e-mail, notas, negativas, alinhamentos)<br>• Fluxo básico de atendimento + escalonamento (quando / como subir nível)<br>• Checklist semanal + métricas mínimas (controle e consistência)<br><br><strong>Saída:</strong> padrão funcional implantado e operável, com disciplina mínima de sustentação."
-            },
-            professional: {
-                title: "Professional",
-                subtitle: "4 sprints • consistência + performance",
-                text: "Camada de performance: padroniza, treina, organiza decisão e reduz risco operacional.<br><br><strong>Inclui tudo do Essential</strong> +<br>• Scripts ampliados (objeções, limites, contenção e alinhamentos)<br>• Playbook de crise (tático): respostas, aprovações, tempos e postura<br>• RACI (papéis e responsabilidades) + SLA interno + ritual mensal de governança<br><br><strong>Saída:</strong> padrão com execução previsível e rotina mínima de auditoria interna."
-            },
-            enterprise: {
-                title: "Enterprise",
-                subtitle: "8–12 sprints • multiunidade",
-                text: "Camada de escala: multiunidade, multiplicadores, governança e recertificação real.<br><br><strong>Inclui tudo do Professional</strong> +<br>• Governança multiunidade + formação de multiplicadores (trilhas formais)<br>• Kit robusto de reputação (protocolos, matriz de risco e decisões)<br>• Auditorias, painel de métricas e recertificação do padrão<br><br><strong>Saída:</strong> expansão com controle, consistência e identidade preservada."
-            }
-        };
-
-        function openPlanModal(key) {
-            // fecha menu mobile (evita overlay concorrente)
-            if (mobileMenuOpen) toggleMobileMenu(false);
-
-            const data = planModalData[key];
-            const overlay = document.getElementById('modal-overlay');
-            const container = document.getElementById('modal-content');
-
-            container.innerHTML = `
-                <div class="space-y-2 mb-8 border-l-2 border-gold-400 pl-6">
-                    <h3 class="font-serif text-3xl md:text-4xl text-white leading-tight italic">${data.title}</h3>
-                    <p class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">${data.subtitle}</p>
-                </div>
-                <p class="text-neutral-300 font-light text-lg leading-loose text-justify">${data.text}</p>
-            `;
-
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            overlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePlanModal() {
-            const overlay = document.getElementById('modal-overlay');
-            overlay.classList.add('hidden');
-            overlay.classList.remove('flex');
-            overlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('modal-overlay').addEventListener('click', function(e) {
-            if (e.target === this) closePlanModal();
-        });
-
-        // ✅ ESC fecha menu mobile e modal de planos
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 if (mobileMenuOpen) toggleMobileMenu(false);
-
-                const overlay = document.getElementById('modal-overlay');
-                const isOpen = overlay && overlay.classList.contains('flex');
-                if (isOpen) closePlanModal();
             }
         });
 
-        // --- FORM ---
-        const BMIP_FORM_ENDPOINT = "https://bmip-form.chefleonardoaraujo.workers.dev/contact";
-        const form = document.getElementById("bmipForm");
-        const statusEl = document.getElementById("bmipStatus");
-        const submitBtn = document.getElementById("bmipSubmit");
-        const fallbackMail = document.getElementById("bmipFallbackMail");
-
-        function buildMailto(payload) {
-            const subject = `BMIP — Iniciar Tratativas (${payload.vertical || "Vertente"})`;
-            const body = [
-                "Olá, quero iniciar tratativas.", "",
-                `Nome: ${payload.nome || ""}`,
-                `E-mail: ${payload.email || ""}`,
-                `WhatsApp: ${payload.telefone || ""}`,
-                `Vertente: ${payload.vertical || ""}`,
-                `Plano: ${payload.plano || ""}`,
-                `Empresa: ${payload.empresa || ""}`, "",
-                "Mensagem:", payload.mensagem || ""
-            ].join("\n");
-            return `mailto:ceo@boutiquemethodip.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
-
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            statusEl.textContent = "";
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Enviando…";
-
-            const fd = new FormData(form);
-            const payload = Object.fromEntries(fd.entries());
-
-            if (payload.site && payload.site.trim().length > 0) {
-                statusEl.textContent = "Recebido.";
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Enviar";
-                form.reset();
-                return;
-            }
-
-            if (!payload.nome || !payload.email || !payload.vertical || !payload.mensagem) {
-                statusEl.textContent = "Preencha Nome, E-mail, Vertente e Mensagem.";
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Enviar";
-                return;
-            }
-
-            fallbackMail.href = buildMailto(payload);
-
-            try {
-                const res = await fetch(BMIP_FORM_ENDPOINT, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload),
-                });
-                const data = await res.json().catch(() => ({}));
-                if (!res.ok) throw new Error(data?.error || "Falha no envio.");
-                statusEl.textContent = "Recebido. Retornaremos com os próximos passos.";
-                form.reset();
-            } catch (err) {
-                statusEl.textContent = "Não foi possível enviar agora. Use “Enviar por e-mail” ou tente novamente.";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Enviar";
-            }
-        });
-
-        // Áudio Descrição
+        // Audiodescrição
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
@@ -682,7 +343,10 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Modelo de Licenciamento: Licencie o Método. Boutique Method é um sistema replicável de governança. Planos: Essential (2 sprints), Professional (4 sprints) e Enterprise (8 a 12 sprints). Iniciar Tratativas: Preencha o formulário abaixo.";
+                const text =
+                    "Vertente H-C: Saúde e Experiência Assistencial. Esta página apresenta como o Método Boutique estrutura comunicação assistencial com clareza e governança. " +
+                    "Organizamos jornada do paciente, padrões de atendimento, comunicação de imprevistos e rotinas internas, com atenção a privacidade e acessibilidade.";
+
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
