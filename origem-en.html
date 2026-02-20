@@ -1,254 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique Method | IP Holding</title>
+    <title>The Origin | Boutique Method</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="accessibility.css">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                        signature: ['"Great Vibes"', 'cursive']
+                    },
+                    colors: {
+                        gold: {
+                            300: '#e5c55b',
+                            400: '#d4af37',
+                            500: '#b5922f',
+                            900: '#8a6d1f'
+                        },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
-        .gold-selection::selection { background: #d4af37; color: black; }
+        :root { --nav-offset: 100px; }
 
-        /* Screen-reader only text */
-        .sr-only{
-            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        body {
+            background-color: #020202;
+            color: #e5e5e5;
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
         }
-        
-        /* INCLUSIVE SERVICE BAR (TRUSTBAR) STYLE */
-        .trustbar {
-            margin-top: 3rem;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: inline-flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #999;
-            backdrop-filter: blur(4px);
-        }
-        .trustbar strong { color: #d4af37; font-weight: normal; }
-        .trustbar a { color: #d4af37; border-bottom: 1px solid rgba(212, 175, 55, 0.3); transition: 0.3s; margin-left: 0.5rem; }
-        .trustbar a:hover { color: white; border-color: white; }
-        .separator { width: 1px; height: 10px; background: rgba(255,255,255,0.2); display: none; }
-        @media (min-width: 768px) { .separator { display: block; } }
 
-        /* Audio Description Button */
+        /* Golden text selection */
+        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
+
+        /* Thin custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+        main { padding-top: var(--nav-offset); }
+
+        /* Premium Audio Button */
         .audio-fab {
-            position: fixed; bottom: 30px; right: 30px; z-index: 100;
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px;
-            padding: 12px 24px; display: flex; align-items: center; gap: 10px;
-            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: fixed; bottom: 40px; right: 40px; z-index: 100;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 14px 28px;
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; transition: all 0.5s ease;
         }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
-        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
-        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
+        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
         .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
         .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 20%; }
-        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
+        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* ✅ Fine mobile adjustment (without changing content) */
+        @media (max-width: 640px) {
+            .audio-fab { bottom: 16px; right: 16px; padding: 12px 16px; }
+            #audioLabel { font-size: 8px; }
+        }
     </style>
 </head>
-<body class="antialiased gold-selection flex flex-col min-h-screen">
 
-    <a href="#main-content" class="skip-link">Skip to content</a>
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[100]">Skip to content</a>
 
-            <!-- LOGO applied (BMIP) -->
-            <a href="index-en.html" class="flex items-center gap-3 hover:opacity-90 transition" aria-label="Boutique Method IP Holding">
-                <img
-                    src="bmip-logo-dark.png"
-                    alt="Boutique Method IP Holding"
-                    class="h-10 md:h-12 w-auto"
-                    loading="eager"
-                    decoding="async"
-                />
-                <span class="sr-only">Boutique Method®</span>
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+
+            <a href="index-en.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Home">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+                    </span>
+                </div>
             </a>
-            
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem-en.html" class="text-white hover:text-gold-400 transition">Origin</a>
-                    <a href="manifesto-en.html" class="text-white hover:text-gold-400 transition">Holding</a>
-                    <a href="licenciamento-en.html" class="text-white hover:text-gold-400 transition">Licensing</a>
-                    <a href="servicos-en.html" class="text-white hover:text-gold-400 transition">Services</a>
-                    <a href="store-en.html" class="text-white hover:text-gold-400 transition">Collection</a>
+
+            <!-- Desktop -->
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="origem-en.html" class="text-gold-400 relative group cursor-default">The Origin<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+                    <a href="manifesto-en.html" class="hover:text-gold-400 transition duration-300 relative group">The Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="licenciamento-en.html" class="hover:text-gold-400 transition duration-300 relative group">Licensing<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="como-funciona-en.html" class="hover:text-gold-400 transition duration-300 relative group">How It Works<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="servicos-en.html" class="hover:text-gold-400 transition duration-300 relative group">Services<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="store-en.html" class="hover:text-gold-400 transition duration-300 relative group">Library<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                 </div>
-                
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <a href="index.html" class="text-neutral-500 hover:text-white transition">PT</a>
-                    <span class="text-white/30">|</span>
-                    <span class="text-gold-400 cursor-default">EN</span>
+
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <a href="origem.html" class="text-neutral-600 hover:text-white transition" lang="pt-BR">PT</a>
+                    <span class="text-gold-400">EN</span>
                 </div>
+
+                <a href="start-engagement.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Start Engagement
+                </a>
             </div>
 
-            <a href="iniciar-tratativas-en.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Initiate Protocols
-            </a>
+            <!-- ✅ Mobile: Hamburger (same as index) -->
+            <button id="mobileMenuBtn"
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Open menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false">
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+
         </div>
     </nav>
 
-    <main id="main-content">
-        <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-48 md:pt-0">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-900/10 via-black to-black opacity-50"></div>
-            <div class="relative z-10 max-w-5xl text-center space-y-8">
-                <p class="text-gold-400 text-xs tracking-[0.4em] uppercase font-light animate-pulse">Intellectual Property Holding</p>
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight">From Intellect <br> to <span class="italic text-gold-400">Equity.</span></h1>
-                <p class="text-neutral-400 text-sm md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-                    We are an Intellectual Property Holding dedicated to the architecture of methods that protect reputation. Our role is to encode your organization's culture into tangible processes.
-                </p>
-                
-                <div class="pt-8 flex flex-col md:flex-row gap-6 justify-center">
-                    <a href="origem-en.html" class="px-8 py-3 bg-white text-black text-xs uppercase tracking-widest font-bold hover:bg-gold-400 transition duration-500">The Origin</a>
-                    <a href="manifesto-en.html" class="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition duration-500">The Holding</a>
-                </div>
+    <!-- ✅ MOBILE MENU DRAWER (same as index) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
-                <div class="trustbar animate-fade-in" style="animation-delay: 0.5s;">
-                    <span><strong>Inclusive Service:</strong> Sign Language (Libras)</span>
-                    <span class="separator"></span>
-                    <span>Neurodivergence Protocols</span>
-                    <span class="separator"></span>
-                    <span>Blind/Low Vision Accessibility</span>
-                    <a href="acessibilidade-en.html">View policy</a>
-                </div>
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+                <button type="button"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                        onclick="toggleMobileMenu(false)"
+                        aria-label="Close menu">&times;</button>
             </div>
-        </header>
 
-        <section class="py-32 px-6 border-t border-white/5 relative overflow-hidden bg-black">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-4">Our Pillars</span>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <button onclick="openModal('modal1')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
-                        <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">01</span>
-                        <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">High-Complexity Strategic Communication</h3>
-                            <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">We translate technical environments into intelligible language without losing legal or institutional density.</p>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Read more +</span>
-                        </div>
-                    </button>
+            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <a href="origem-en.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-gold-400">The Origin</a>
 
-                    <button onclick="openModal('modal2')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
-                        <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">02</span>
-                        <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Systemic Architecture & Governance</h3>
-                            <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">We structure processes, protocols, and internal workflows to transform knowledge into a replicable method.</p>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Read more +</span>
-                        </div>
-                    </button>
+                <a href="manifesto-en.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">The Holding</a>
 
-                    <button onclick="openModal('modal3')" class="group relative border border-white/10 bg-white/5 p-10 transition duration-500 hover:border-gold-400/50 hover:bg-neutral-900 overflow-hidden block text-left w-full">
-                        <span class="absolute -top-6 -right-6 text-9xl font-serif italic text-white/5 group-hover:text-gold-400/10 transition duration-500">03</span>
-                        <div class="relative z-10 space-y-4">
-                            <h3 class="text-xl text-white font-serif group-hover:text-gold-400 transition duration-300">Licensable Intellectual Property</h3>
-                            <div class="w-12 h-px bg-gold-400/50 group-hover:w-24 transition-all duration-500"></div>
-                            <p class="text-neutral-400 text-sm font-light leading-relaxed">Converting expertise into protected legal assets.</p>
-                            <span class="text-[10px] uppercase tracking-widest text-gold-400 mt-4 block opacity-60 group-hover:opacity-100 transition">Read more +</span>
-                        </div>
-                    </button>
-                </div>
+                <a href="licenciamento-en.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licensing</a>
+
+                <a href="como-funciona-en.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">How It Works</a>
+
+                <a href="servicos-en.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Services</a>
+
+                <a href="store-en.html" onclick="toggleMobileMenu(false)"
+                   class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Library</a>
             </div>
-        </section>
-    </main>
 
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter">
-        <div class="bg-neutral-900 border border-gold-400/30 max-w-2xl w-full p-8 md:p-12 relative shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-500 hover:text-gold-400 transition-colors text-2xl" aria-label="Close Modal">&times;</button>
-            <div id="modal-content" class="space-y-6"></div>
+            <div class="pt-8">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+                    <a href="origem.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="pt-BR">PT</a>
+                    <span class="text-gold-400">EN</span>
+                </div>
+
+                <a href="start-engagement.html"
+                   onclick="toggleMobileMenu(false)"
+                   class="mt-6 block w-full text-center px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Start Engagement
+                </a>
+            </div>
+
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Mobile Navigation
+            </div>
         </div>
     </div>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
+    <!-- ✅ (content preserved) -->
+    <main id="main-content" class="flex-grow pb-32 px-6">
+        <div class="max-w-5xl mx-auto space-y-32 animate-fade-up">
+
+            <div class="max-w-4xl mx-auto space-y-16">
+                <div class="space-y-8 border-l border-gold-400/50 pl-6 sm:pl-10 md:pl-16 relative">
+                    <div class="absolute -left-[3px] top-0 h-16 w-[5px] bg-gold-400"></div>
+
+                    <span class="text-neutral-500 text-[10px] md:text-xs tracking-[0.3em] uppercase block">Why Boutique Method IP Holding exists</span>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl text-white leading-tight">
+                        "Clarity is <span class="italic text-gold-400">Dignity</span>."
+                    </h1>
+                </div>
+
+                <div class="space-y-10 text-neutral-400 font-light text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose text-justify pl-0 sm:pl-4 md:pl-10 max-w-3xl">
+                    <p>
+                        Chaos is the default when there is no governance. Without an intentional force of organization, companies accumulate noise: decisions get lost, processes fragment, and reputation becomes dependent on improvisation.
+                    </p>
+                    <p>
+                        Boutique Method was born from a simple — and practical — observation: <strong class="text-white font-normal border-b border-gold-400/30 pb-0.5">talent without method does not scale.</strong>
+                        I saw brilliant professionals and promising companies stall not because they lacked competence, but because they lacked clarity: diffuse communication, nonexistent standards, and an operation that requires excessive effort to produce predictable results.
+                    </p>
+                    <p>
+                        For us, intellectual property is not just a registered idea. It is <strong class="text-white font-normal border-b border-gold-400/30 pb-0.5">a replicable system</strong>:
+                        the ability to turn the intangible (what you know) into routine, language, process, and standard — and, by doing so, convert knowledge into tangible value (what the company delivers, sustains, and is worth).
+                    </p>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto border-t border-white/5 pt-24 relative">
+                <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+                <div class="grid md:grid-cols-12 gap-12">
+
+                    <div class="md:col-span-5 space-y-6 md:text-right md:pr-8 md:border-r md:border-white/5">
+                        <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase block opacity-80">LEONARDO CHAVES ARAUJO - Founder & CEO</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-tight">The Science Behind the Method</h2>
+                    </div>
+
+                    <div class="md:col-span-7 space-y-8 text-neutral-400 font-light text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose text-justify">
+                        <p>
+                            For Leonardo Chaves Araujo, excellence is not an act; it is a habit built on obsessive processes.
+                        </p>
+                        <p>
+                            With a master’s degree in <span class="text-white font-normal border-b border-gold-400/30">Nanotechnology</span>, he identified that companies collapse due to invisible microfractures in their basic processes. It isn’t the market that brings a business down; it is the lack of internal cohesion.
+                            Just as in nanotechnology, where small structures determine the material’s behavior, in corporate management micro-decisions in language shape reputation.
+                        </p>
+                        <p>
+                            His mission with Boutique Method IP Holding is to turn the intuitive “way of doing” of great leaders into solid Intellectual Property assets, generating replicable scale and freedom.
+                        </p>
+
+                        <div class="pt-12 md:pt-16 flex md:justify-end opacity-80 hover:opacity-100 transition duration-500">
+                            <p class="font-signature text-4xl sm:text-5xl md:text-6xl text-gold-400 -rotate-2">Leonardo Chaves Araujo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
         <p>Boutique Method IP Holding Ltda © 2026</p>
     </footer>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to page content">
+    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Listen to content">
         <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
+        <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Listen to Page</span>
     </button>
 
     <script src="accessibility.js"></script>
 
     <script>
-        const modalData = {
-            modal1: {
-                title: "High-Complexity Strategic Communication",
-                text: "We translate technical environments into intelligible language without losing legal or institutional density.<br><br>We reduce noise, elevate authority, and organize decision-making in critical contexts."
-            },
-            modal2: {
-                title: "Systemic Architecture & Governance",
-                text: "We structure processes, protocols, and internal workflows to transform knowledge into a replicable method.<br><br>Operational clarity, standardization, and strategic control as a foundation for sustainable growth."
-            },
-            modal3: {
-                title: "Licensable Intellectual Property",
-                text: "Converting expertise into protected legal assets.<br><br>Methods, frameworks, and recordable structures that generate scale, recurrence, and equity value."
+        // ✅ MOBILE MENU (same as index)
+        let mobileMenuOpen = false;
+
+        function toggleMobileMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
+
+            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+            if (mobileMenuOpen) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                btn.setAttribute('aria-expanded', 'false');
             }
-        };
-
-        function openModal(id) {
-            const content = modalData[id];
-            const overlay = document.getElementById('modal-overlay');
-            const container = document.getElementById('modal-content');
-            
-            container.innerHTML = `
-                <h3 class="font-serif text-3xl md:text-4xl text-gold-400 mb-6 leading-tight">${content.title}</h3>
-                <p class="text-neutral-300 font-light text-lg leading-relaxed">${content.text}</p>
-                <div class="pt-8 flex justify-end">
-                    <button onclick="closeModal()" class="px-6 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-widest hover:bg-gold-400 hover:text-black transition">Close</button>
-                </div>
-            `;
-            
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            const overlay = document.getElementById('modal-overlay');
-            overlay.classList.add('hidden');
-            overlay.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('modal-overlay').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenuOpen) toggleMobileMenu(false);
         });
 
+        // --- AUDIO (preserved) ---
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
@@ -262,15 +316,17 @@
                 btn.classList.add('paused');
                 label.innerText = "Listen to Page";
             } else {
-                const text = "Boutique Method. From Intellect to Equity. We are an Intellectual Property Holding. We offer Inclusive Service in Sign Language and Neurodivergence Protocols. Our Pillars: 1. Strategic Communication. 2. Systemic Architecture. 3. Intellectual Property.";
+                const text = "The Origin of Boutique Method IP Holding. Clarity is Dignity. Leonardo Chaves Araujo, Founder and C E O, master’s in nanotechnology, applies the surgical precision of science to corporate management to turn talent into a replicable method.";
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'en-US';
                 utter.rate = 0.95;
+
                 utter.onend = () => {
                     isPlaying = false;
                     btn.classList.add('paused');
                     label.innerText = "Listen to Page";
                 };
+
                 synth.speak(utter);
                 isPlaying = true;
                 btn.classList.remove('paused');
