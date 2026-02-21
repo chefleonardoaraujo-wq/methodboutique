@@ -159,6 +159,20 @@
         /* ✅ AJUSTE: MODAL PADRONIZADO PARA MOBILE (SEM “COMER” CONTEÚDO) */
         #modal-body { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
         #modal-content { word-break: break-word; }
+
+        /* ✅ EFEITO: “LIGAR/APAGAR” NO TEXTO DOURADO (INTELLECTUAL PROPERTY HOLDING) */
+        @keyframes goldFlicker {
+            0%, 100% { opacity: .95; filter: brightness(1); text-shadow: 0 0 10px rgba(212,175,55,.20), 0 0 22px rgba(212,175,55,.12); }
+            6%       { opacity: .35; filter: brightness(.85); text-shadow: none; }
+            8%       { opacity: .98; filter: brightness(1.05); text-shadow: 0 0 14px rgba(212,175,55,.25), 0 0 30px rgba(212,175,55,.14); }
+            10%      { opacity: .55; filter: brightness(.9); text-shadow: none; }
+            12%      { opacity: .98; filter: brightness(1.05); text-shadow: 0 0 14px rgba(212,175,55,.25), 0 0 30px rgba(212,175,55,.14); }
+            60%      { opacity: .90; filter: brightness(1); text-shadow: 0 0 10px rgba(212,175,55,.18); }
+            62%      { opacity: .45; filter: brightness(.88); text-shadow: none; }
+            64%      { opacity: .98; filter: brightness(1.06); text-shadow: 0 0 16px rgba(212,175,55,.26), 0 0 34px rgba(212,175,55,.16); }
+        }
+        .gold-flicker { animation: goldFlicker 5.6s infinite; will-change: opacity, filter; }
+        @media (prefers-reduced-motion: reduce) { .gold-flicker { animation: none; } }
     </style>
 </head>
 
@@ -270,7 +284,7 @@
             <div class="relative z-10 max-w-6xl text-center space-y-10 animate-fade-up">
 
                 <div class="inline-block mb-4">
-                    <p class="text-gold-400 text-[10px] tracking-[0.5em] uppercase font-medium border-b border-gold-400/20 pb-4 px-4">Intellectual Property Holding</p>
+                    <p class="text-gold-400 text-[10px] tracking-[0.5em] uppercase font-medium border-b border-gold-400/20 pb-4 px-4 gold-flicker">Intellectual Property Holding</p>
                 </div>
 
                 <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl text-white leading-[0.9] tracking-tight">
