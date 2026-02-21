@@ -1,644 +1,1461 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acervo Digital | Boutique Method</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acervo Digital | Boutique Method</title>
+  <meta name="description" content="Acervo digital da Boutique Method IP Holding: ativos avulsos com entrega imediata, templates editáveis, checklists e protocolos executivos." />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" href="accessibility.css">
+  <link rel="stylesheet" href="accessibility.css" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { 
-                        gold: { 
-                            300: '#e5c55b',
-                            400: '#d4af37', 
-                            500: '#b5922f',
-                            900: '#8a6d1f' 
-                        },
-                        obsidian: '#050505',
-                        charcoal: '#0a0a0a'
-                    },
-                    backgroundImage: {
-                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
-                    },
-                    animation: {
-                        'fade-up': 'fadeUp 1s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
+          colors: {
+            gold: { 300: '#e5c55b', 400: '#d4af37', 500: '#b5922f', 900: '#8a6d1f' },
+            obsidian: '#050505',
+            charcoal: '#0a0a0a'
+          },
+          backgroundImage: {
+            'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+          },
+          animation: { 'fade-up': 'fadeUp 1s ease-out forwards' },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
             }
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        :root { --nav-offset: 100px; }
-        
-        body { 
-            background-color: #020202; 
-            color: #e5e5e5; 
-            font-family: 'Lato', sans-serif; 
-            overflow-x: hidden;
-        }
+  <style>
+    :root { --nav-offset: 100px; }
 
-        /* Seleção de texto Dourada */
-        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
+    body {
+      background-color: #020202;
+      color: #e5e5e5;
+      font-family: 'Lato', sans-serif;
+      overflow-x: hidden;
+    }
 
-        /* Scrollbar personalizada fina */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+    ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
 
-        main { padding-top: var(--nav-offset); }
-        #main-content { scroll-margin-top: var(--nav-offset); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
-        :focus-visible {
-            outline: 1px solid #d4af37;
-            outline-offset: 4px;
-            box-shadow: 0 0 15px rgba(212,175,55,0.18);
-        }
+    main { padding-top: var(--nav-offset); }
+    #main-content { scroll-margin-top: var(--nav-offset); }
 
-        /* Lista de Ativos */
-        .asset-row {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .asset-row:hover {
-            background-color: rgba(212, 175, 55, 0.03);
-            padding-left: 1.5rem;
-            border-bottom-color: rgba(212, 175, 55, 0.3);
-        }
-        .asset-row:hover .asset-title { color: #d4af37; }
-        .asset-row:hover .asset-arrow { opacity: 1; transform: translateX(0); }
+    :focus-visible {
+      outline: 1px solid #d4af37;
+      outline-offset: 4px;
+      box-shadow: 0 0 15px rgba(212,175,55,0.18);
+    }
 
-        /* MODAL */
-        dialog::backdrop { background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); }
-        dialog {
-            background: transparent; padding: 0; max-width: 900px; width: 95%;
-            border: none; outline: none; margin: auto;
-            opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: scale(0.95);
-        }
-        dialog[open] { opacity: 1; transform: scale(1); }
-        .modal-shell { max-height: 90vh; overflow-y: auto; }
+    .asset-row {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .asset-row:hover {
+      background-color: rgba(212, 175, 55, 0.03);
+      padding-left: 1.5rem;
+      border-bottom-color: rgba(212, 175, 55, 0.3);
+    }
+    .asset-row:hover .asset-title { color: #d4af37; }
+    .asset-row:hover .asset-arrow { opacity: 1; transform: translateX(0); }
 
-        /* Botão de Áudio Premium */
-        .audio-fab {
-            position: fixed; bottom: 40px; right: 40px; z-index: 100;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            padding: 14px 28px;
-            display: flex; align-items: center; gap: 12px;
-            cursor: pointer; transition: all 0.5s ease;
-        }
-        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
-        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
-        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
-        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
-        .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
-        .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
-        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+    dialog::backdrop { background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); }
+    dialog {
+      background: transparent; padding: 0; max-width: 980px; width: 95%;
+      border: none; outline: none; margin: auto;
+      opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: scale(0.95);
+    }
+    dialog[open] { opacity: 1; transform: scale(1); }
+    .modal-shell { max-height: 90vh; overflow-y: auto; }
 
-        /* Mobile Drawer (NAV) */
-        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-        @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+    .audio-fab {
+      position: fixed; bottom: 40px; right: 40px; z-index: 100;
+      background: rgba(10, 10, 10, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 14px 28px;
+      display: flex; align-items: center; gap: 12px;
+      cursor: pointer; transition: all 0.5s ease;
+    }
+    .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+    .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
+    .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+    .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+    .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
+    .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+    .paused .bar { animation: none; height: 2px; opacity: 0.5; }
+    @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
-        @media (max-width: 640px) {
-            .audio-fab { bottom: 16px; right: 16px; padding: 12px 20px; }
-        }
-    </style>
+    .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+    @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+
+    @media (max-width: 640px) {
+      .audio-fab { bottom: 16px; right: 16px; padding: 12px 20px; }
+    }
+  </style>
 </head>
 
 <body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">Pular para o acervo</a>
+  <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
+    Pular para o acervo
+  </a>
 
-    <!-- NAV (PADRÃO + MOBILE) -->
-    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
-        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
-            
-            <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
-                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
-                <div class="flex flex-col">
-                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
-                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
-                    </span>
-                </div>
-            </a>
+  <!-- NAV (PADRÃO + MOBILE) -->
+  <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+    <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
-            <!-- Desktop -->
-            <div class="hidden lg:flex items-center gap-10">
-                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
-                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="store.html" class="text-gold-400 relative group cursor-default">Acervo<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
-                </div>
-
-                <div class="h-4 w-px bg-white/10"></div>
-
-                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
-                    <span class="text-gold-400">PT</span>
-                    <a href="#" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
-                </div>
-
-                <a href="iniciar-tratativas.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
-                    Iniciar Tratativas
-                </a>
-            </div>
-
-            <!-- Mobile: Hamburger -->
-            <button id="mobileMenuBtn"
-                    type="button"
-                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
-                    onclick="toggleMobileMenu()"
-                    aria-label="Abrir menu"
-                    aria-controls="mobileMenu"
-                    aria-expanded="false">
-                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-            </button>
+      <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
+        <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500" />
+        <div class="flex flex-col">
+          <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+            Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+          </span>
         </div>
-    </nav>
+      </a>
 
-    <!-- MOBILE MENU DRAWER -->
-    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
-        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
-
-        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
-            <div class="flex items-center justify-between pb-6 border-b border-white/10">
-                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
-                <button type="button"
-                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
-                        onclick="toggleMobileMenu(false)"
-                        aria-label="Fechar menu">✕</button>
-            </div>
-
-            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
-                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
-                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
-                <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
-                <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
-                <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Acervo</a>
-            </div>
-
-            <div class="pt-8">
-                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
-                    <span class="text-gold-400">PT</span>
-                    <a href="#" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
-                </div>
-
-                <a href="iniciar-tratativas.html"
-                   onclick="toggleMobileMenu(false)"
-                   class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
-                    Iniciar Tratativas
-                </a>
-            </div>
-
-            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
-                <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
-            </div>
+      <!-- Desktop -->
+      <div class="hidden lg:flex items-center gap-10">
+        <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+          <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="store.html" class="text-gold-400 relative group cursor-default">Acervo<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
         </div>
+
+        <div class="h-4 w-px bg-white/10"></div>
+
+        <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+          <span class="text-gold-400">PT</span>
+          <a href="#" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
+        </div>
+
+        <a href="iniciar-tratativas.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+          Iniciar Tratativas
+        </a>
+      </div>
+
+      <!-- Mobile: Hamburger -->
+      <button id="mobileMenuBtn"
+              type="button"
+              class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+              onclick="toggleMobileMenu()"
+              aria-label="Abrir menu"
+              aria-controls="mobileMenu"
+              aria-expanded="false">
+        <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
+  </nav>
 
-    <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
-        <header class="max-w-4xl mx-auto text-center mb-24 animate-fade-up">
-            <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">Ecossistema de Ativos</span>
-            <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 italic">Acervo <span class="text-neutral-500 not-italic">Digital</span></h1>
-            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
-                Acesso imediato à inteligência processual da Holding. Pare de improvisar em cenários de alta complexidade.
+  <!-- MOBILE MENU DRAWER -->
+  <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+    <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
+
+    <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+        <button type="button"
+                class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                onclick="toggleMobileMenu(false)"
+                aria-label="Fechar menu">✕</button>
+      </div>
+
+      <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+        <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
+        <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
+        <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
+        <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
+        <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
+        <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Acervo</a>
+      </div>
+
+      <div class="pt-8">
+        <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+          <span class="text-gold-400">PT</span>
+          <a href="#" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+        </div>
+
+        <a href="iniciar-tratativas.html"
+           onclick="toggleMobileMenu(false)"
+           class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
+          Iniciar Tratativas
+        </a>
+      </div>
+
+      <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+        <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
+    <header class="max-w-5xl mx-auto text-center mb-14 animate-fade-up">
+      <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">Ecossistema de Ativos</span>
+      <h1 class="font-serif text-5xl md:text-8xl text-white mb-6 italic">Acervo <span class="text-neutral-500 not-italic">Digital</span></h1>
+      <p class="text-neutral-400 font-light max-w-3xl mx-auto text-lg leading-relaxed">
+        Produtos avulsos com <span class="text-white">entrega imediata</span>, estrutura executiva e editáveis.
+        Quando for caso de projeto sob NDA, você mantém a rota premium.
+      </p>
+
+      <!-- Proof Strip -->
+      <div class="mt-10 max-w-4xl mx-auto border border-white/10 bg-black/30 backdrop-blur-sm rounded-md">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-0">
+          <div class="px-6 py-4 text-center border-b sm:border-b-0 sm:border-r border-white/10">
+            <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Entrega</div>
+            <div class="text-[11px] tracking-[0.2em] uppercase text-white mt-2">Download imediato</div>
+          </div>
+          <div class="px-6 py-4 text-center border-b sm:border-b-0 sm:border-r border-white/10">
+            <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Formato</div>
+            <div class="text-[11px] tracking-[0.2em] uppercase text-white mt-2">PDF + Editáveis</div>
+          </div>
+          <div class="px-6 py-4 text-center">
+            <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Licença</div>
+            <div class="text-[11px] tracking-[0.2em] uppercase text-white mt-2">Uso empresarial</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Comece por aqui -->
+    <section class="max-w-6xl mx-auto mb-14">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="servicos.html" class="group border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-6 hover:border-gold-400/40 transition">
+          <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Caminho 01</div>
+          <div class="mt-3 font-serif text-2xl text-white italic group-hover:text-gold-400 transition">Serviços (Spot)</div>
+          <p class="mt-3 text-sm text-neutral-400 font-light leading-relaxed">Para contratação sob demanda, com escopo, prazos e governança.</p>
+          <div class="mt-6 text-[10px] uppercase tracking-[0.25em] text-gold-400">Ver serviços →</div>
+        </a>
+
+        <a href="licenciamento.html" class="group border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-6 hover:border-gold-400/40 transition">
+          <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Caminho 02</div>
+          <div class="mt-3 font-serif text-2xl text-white italic group-hover:text-gold-400 transition">Licenciamento</div>
+          <p class="mt-3 text-sm text-neutral-400 font-light leading-relaxed">Para implantação por sprints e replicação do método em operação.</p>
+          <div class="mt-6 text-[10px] uppercase tracking-[0.25em] text-gold-400">Ver planos →</div>
+        </a>
+
+        <div class="border border-gold-400/35 bg-black/35 backdrop-blur-sm rounded-md p-6">
+          <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Caminho 03</div>
+          <div class="mt-3 font-serif text-2xl text-gold-400 italic">Produtos Avulsos</div>
+          <p class="mt-3 text-sm text-neutral-300 font-light leading-relaxed">Escolha, compre e implemente. Sem fricção. Sem improviso.</p>
+          <div class="mt-6 text-[10px] uppercase tracking-[0.25em] text-white/80">Você está aqui</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros + Busca -->
+    <section class="max-w-6xl mx-auto mb-16">
+      <div class="border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-5 md:p-6">
+        <div class="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between">
+          <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Filtrar</div>
+            <div class="flex flex-wrap gap-2">
+              <button class="filter-btn px-4 py-2 border border-white/15 text-[10px] uppercase tracking-[0.22em] text-white/80 hover:border-gold-400/40 hover:text-gold-400 transition"
+                      data-filter="all" aria-pressed="true">Tudo</button>
+              <button class="filter-btn px-4 py-2 border border-white/15 text-[10px] uppercase tracking-[0.22em] text-white/80 hover:border-gold-400/40 hover:text-gold-400 transition"
+                      data-filter="risk" aria-pressed="false">Blindagem</button>
+              <button class="filter-btn px-4 py-2 border border-white/15 text-[10px] uppercase tracking-[0.22em] text-white/80 hover:border-gold-400/40 hover:text-gold-400 transition"
+                      data-filter="strat" aria-pressed="false">Estratégia</button>
+              <button class="filter-btn px-4 py-2 border border-white/15 text-[10px] uppercase tracking-[0.22em] text-white/80 hover:border-gold-400/40 hover:text-gold-400 transition"
+                      data-filter="ops" aria-pressed="false">Operação</button>
+              <button class="filter-btn px-4 py-2 border border-white/15 text-[10px] uppercase tracking-[0.22em] text-white/80 hover:border-gold-400/40 hover:text-gold-400 transition"
+                      data-filter="perf" aria-pressed="false">Performance</button>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+            <div class="flex items-center gap-3">
+              <label for="assetSearch" class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Busca</label>
+              <input id="assetSearch" type="search" placeholder="Código ou nome do ativo…"
+                     class="w-full sm:w-80 bg-black/40 border border-white/10 focus:border-gold-400/50 text-white placeholder:text-neutral-600 px-4 py-3 text-sm outline-none transition" />
+            </div>
+
+            <div class="flex items-center gap-3">
+              <label for="sortSelect" class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Ordenar</label>
+              <select id="sortSelect" class="bg-black/40 border border-white/10 focus:border-gold-400/50 text-white px-4 py-3 text-sm outline-none transition">
+                <option value="default">Curadoria</option>
+                <option value="priceAsc">Menor preço</option>
+                <option value="priceDesc">Maior preço</option>
+                <option value="codeAsc">Código (A–Z)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 text-[10px] tracking-[0.22em] uppercase text-neutral-600">
+          Dica: configure seus links de checkout no script (CHECKOUT_URLS) para ativar compra direta e order bump.
+        </div>
+      </div>
+    </section>
+
+    <!-- Bundles -->
+    <section class="max-w-6xl mx-auto mb-16">
+      <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+        <h2 class="font-serif text-3xl text-white italic">Bundles</h2>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Combos recomendados</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-7">
+          <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Bundle</div>
+          <div class="mt-3 font-serif text-2xl text-white italic">Blindagem Executiva</div>
+          <p class="mt-3 text-sm text-neutral-400 font-light leading-relaxed">
+            RISK-01 + GOV-01 — crise + governança para reduzir risco e aumentar previsibilidade.
+          </p>
+          <div class="mt-5 flex items-center justify-between gap-4">
+            <div class="text-white font-serif text-xl font-light">R$ 1.397</div>
+            <a href="#" data-checkout="BUNDLE-RISK-GOV"
+               class="buy-btn px-6 py-3 bg-gold-400 text-black text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500 text-center">
+              Comprar bundle
+            </a>
+          </div>
+          <div class="mt-4 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega: download imediato • Editáveis inclusos
+          </div>
+        </div>
+
+        <div class="border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-7">
+          <div class="text-[9px] tracking-[0.35em] uppercase text-neutral-500">Bundle</div>
+          <div class="mt-3 font-serif text-2xl text-white italic">Operação de Elite</div>
+          <p class="mt-3 text-sm text-neutral-400 font-light leading-relaxed">
+            OPS-01 + OPS-02 — padronização + scripts para matar retrabalho e ruído.
+          </p>
+          <div class="mt-5 flex items-center justify-between gap-4">
+            <div class="text-white font-serif text-xl font-light">R$ 497</div>
+            <a href="#" data-checkout="BUNDLE-OPS"
+               class="buy-btn px-6 py-3 bg-gold-400 text-black text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500 text-center">
+              Comprar bundle
+            </a>
+          </div>
+          <div class="mt-4 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega: download imediato • Implementação rápida
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTA DE ATIVOS -->
+    <div class="max-w-5xl mx-auto space-y-24 pb-16" id="assetsRoot">
+
+      <section data-section="risk">
+        <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+          <h2 class="font-serif text-3xl text-white italic">Blindagem & Risco</h2>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="RISK-01" data-category="risk" data-price="997"
+               onclick="openDialog('modal-crise')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: RISK-01</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Kit Crise & Reputação</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">A "Golden Hour" decide o futuro do seu negócio.</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Checklist</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Editáveis</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 997</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="GOV-01" data-category="risk" data-price="597"
+               onclick="openDialog('modal-gov')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: GOV-01</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Governança & Protocolos</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Sua empresa precisa de uma "Constituição" operacional.</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">SOPs</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Editáveis</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 597</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-section="strat">
+        <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+          <h2 class="font-serif text-3xl text-white italic">Estratégia & Marca</h2>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="STRAT-01" data-category="strat" data-price="497"
+               onclick="openDialog('modal-diag')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: STRAT-01</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Diagnóstico Estratégico</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Onde seu capital intelectual está vazando?</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Matriz & scoring</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Plano 7 dias</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 497</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="BRAND-01" data-category="strat" data-price="697"
+               onclick="openDialog('modal-pos')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: BRAND-01</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Posicionamento Premium</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Ajuste sua percepção de valor.</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Mensagens-mestre</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Editáveis</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 697</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-section="ops">
+        <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+          <h2 class="font-serif text-3xl text-white italic">Operação & Cultura</h2>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="OPS-01" data-category="ops" data-price="397"
+               onclick="openDialog('modal-org')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: OPS-01</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Organização & Padronização</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Elimine o retrabalho e o caos das reuniões inúteis.</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">SOPs</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Rituais</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 397</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="OPS-02" data-category="ops" data-price="197"
+               onclick="openDialog('modal-script')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: OPS-02</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Scripts Operacionais</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Pare de redigir a mesma mensagem 10 vezes.</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">WhatsApp</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">E-mail</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 197</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-section="perf">
+        <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+          <h2 class="font-serif text-3xl text-white italic">Performance & Legal</h2>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="PERF-01" data-category="perf" data-price="297"
+               onclick="openDialog('modal-pv')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: PERF-01</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Porta-Voz & Autoridade</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Fale como um estadista, decida como um CEO.</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Técnica “ponte”</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Roteiros</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 297</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+
+          <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+               role="button" tabindex="0"
+               data-asset="PERF-02" data-category="perf" data-price="497"
+               onclick="openDialog('modal-legal')">
+            <div class="flex-1">
+              <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: PERF-02</div>
+              <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Legal Design Kit</h3>
+              <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Contratos que vendem e protegem simultaneamente.</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Download imediato</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">PDF + DOCX</span>
+                <span class="px-3 py-1 border border-white/10 text-[9px] uppercase tracking-[0.25em] text-neutral-400">Clareza</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+              <span class="text-white text-xl font-light font-serif">R$ 497</span>
+              <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="pt-6">
+        <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
+          <h2 class="font-serif text-3xl text-white italic">FAQ & Garantia</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-7">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-gold-400">Entrega</div>
+            <p class="mt-3 text-sm text-neutral-300 font-light leading-relaxed">
+              Após a compra, você recebe o acesso imediatamente (download + e-mail). Cada ativo vem com instrução de uso e aplicação objetiva.
             </p>
-        </header>
+          </div>
 
-        <div class="max-w-5xl mx-auto space-y-24 pb-20">
+          <div class="border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-7">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-gold-400">Licença & uso</div>
+            <p class="mt-3 text-sm text-neutral-300 font-light leading-relaxed">
+              Uso empresarial interno. Para replicação em múltiplas unidades, franquias ou treinamento formal, utilize a via de licenciamento.
+            </p>
+          </div>
 
-            <section>
-                <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
-                    <h2 class="font-serif text-3xl text-white italic">Blindagem & Risco</h2>
-                </div>
-                <div class="flex flex-col">
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-crise')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: RISK-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Kit Crise & Reputação</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">A "Golden Hour" decide o futuro do seu negócio.</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 997</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
+          <div class="border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-7">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-gold-400">Atualizações</div>
+            <p class="mt-3 text-sm text-neutral-300 font-light leading-relaxed">
+              Atualizações podem ser oferecidas por versão (quando aplicável). Para manutenção contínua, recomendamos licenciamento.
+            </p>
+          </div>
 
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-gov')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: GOV-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Governança & Protocolos</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Sua empresa precisa de uma "Constituição" operacional.</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 597</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
-                    <h2 class="font-serif text-3xl text-white italic">Estratégia & Marca</h2>
-                </div>
-                <div class="flex flex-col">
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-diag')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: STRAT-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Diagnóstico Estratégico</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Onde seu capital intelectual está vazando?</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 497</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
-
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-pos')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: BRAND-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Posicionamento Premium</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Ajuste sua percepção de valor.</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 697</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
-                    <h2 class="font-serif text-3xl text-white italic">Operação & Cultura</h2>
-                </div>
-                <div class="flex flex-col">
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-org')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: OPS-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Organização & Padronização</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Elimine o retrabalho e o caos das reuniões inúteis.</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 397</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
-
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-script')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: OPS-02</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Scripts Operacionais</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Pare de redigir a mesma mensagem 10 vezes.</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 197</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="flex items-end justify-between border-b border-white/10 pb-4 mb-8">
-                    <h2 class="font-serif text-3xl text-white italic">Performance & Legal</h2>
-                </div>
-                <div class="flex flex-col">
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-pv')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: PERF-01</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Porta-Voz & Autoridade</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Fale como um estadista, decida como um CEO.</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 297</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
-
-                    <div class="asset-row group cursor-pointer py-10 flex flex-col md:flex-row md:items-center justify-between gap-6" onclick="openDialog('modal-legal')">
-                        <div class="flex-1">
-                            <div class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase mb-3 font-bold group-hover:text-gold-400 transition">Asset Code: PERF-02</div>
-                            <h3 class="asset-title text-3xl font-serif text-white transition mb-2">Legal Design Kit</h3>
-                            <p class="text-neutral-500 font-light text-sm max-w-xl group-hover:text-neutral-400 transition">Contratos que vendem e protegem simultaneamente.</p>
-                        </div>
-                        <div class="flex items-center gap-8">
-                            <span class="text-white text-xl font-light font-serif">R$ 497</span>
-                            <span class="asset-arrow text-gold-400 text-3xl opacity-0 -translate-x-4 transition font-light">→</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+          <div class="border border-white/10 bg-black/25 backdrop-blur-sm rounded-md p-7">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-gold-400">Garantia condicional</div>
+            <p class="mt-3 text-sm text-neutral-300 font-light leading-relaxed">
+              Se você aplicar o checklist principal do ativo e ainda ficar com dúvida operacional, oferecemos uma revisão orientativa única (escopo limitado).
+            </p>
+          </div>
         </div>
-    </main>
+      </section>
 
-    <dialog id="modal-crise">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-crise')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: RISK-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Kit Crise & Reputação</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        Uma crise mal gerida nos primeiros 60 minutos pode destruir décadas de construção de marca. Este kit não é apenas um guia; é seu <strong>seguro de sobrevivência</strong>. Contém protocolos de "War Room" para estancar sangramentos reputacionais. Se você não tem um plano, a crise dita as regras. <strong>Não seja pego de surpresa.</strong>
-                    </p>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 997,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Adquirir Blindagem</a>
-                </div>
+    </div>
+  </main>
+
+  <!-- =========================
+       MODAIS (com ORDER BUMP)
+       ========================= -->
+
+  <!-- RISK-01 -->
+  <dialog id="modal-crise">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-crise')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: RISK-01</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Kit Crise & Reputação</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            Uma crise mal gerida nos primeiros 60 minutos pode destruir décadas de construção de marca.
+            Este kit entrega protocolos de War Room para estancar sangramentos reputacionais com velocidade, clareza e autoridade.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• Guia de uso (PDF) + checklist de resposta (PDF)</li>
+              <li>• Protocolos de War Room e governança de crise (PDF)</li>
+              <li>• Templates editáveis: comunicados, Q&A, notas internas e externas (DOCX)</li>
+              <li>• Matriz de severidade e tomada de decisão (PDF)</li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="border border-white/10 p-4 bg-black/30">
+              <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Para quem é</div>
+              <div class="mt-2 text-sm text-neutral-300 font-light">Liderança, comunicação, jurídico, operações e porta-voz.</div>
             </div>
-        </div>
-    </dialog>
-
-    <dialog id="modal-gov">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-gov')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: GOV-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Governança & Protocolos</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        O "disse-me-disse" mata a produtividade. Este ativo entrega a <strong>Arquitetura da Ordem</strong>: fluxos de aprovação blindados e rituais que garantem que a visão do dono seja executada em cada nível. <strong>Saia do operacional e deixe o método governar o seu legado.</strong>
-                    </p>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 597,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Implantar Governança</a>
-                </div>
+            <div class="border border-white/10 p-4 bg-black/30">
+              <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Tempo típico</div>
+              <div class="mt-2 text-sm text-neutral-300 font-light">60–90 min para setup inicial + execução conforme cenário.</div>
             </div>
+          </div>
         </div>
-    </dialog>
 
-    <dialog id="modal-diag">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-diag')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: STRAT-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Diagnóstico Estratégico</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        Trabalhar sem clareza é desperdício de energia. Faça uma <strong>autópsia estratégica</strong> na sua comunicação. Identifique ruídos que destroem sua autoridade e descubra onde o dinheiro está vazando por falha de processo. <strong>A verdade dói, mas liberta o seu lucro.</strong>
-                    </p>
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 997,00</div>
+
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_RISK01_GOV01" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_RISK01_GOV01" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar GOV-01 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Governe a execução após a crise: SOPs, rituais e fluxo de decisão.
                 </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 497,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Fazer Diagnóstico</a>
-                </div>
+              </label>
             </div>
-        </div>
-    </dialog>
+          </div>
 
-    <dialog id="modal-pos">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-pos')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: BRAND-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Posicionamento Premium</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        Quem é visto como "opção" briga por preço. Quem é visto como "elite" briga por agenda. Codifique sua <strong>Superioridade Técnica</strong> em narrativa. Saia da média e aprenda a comunicar valor de forma que o preço se torne um mero detalhe. <strong>Venda para quem compra solução.</strong>
-                    </p>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 697,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Elevar Patamar</a>
-                </div>
+          <a href="#"
+             data-checkout-primary="RISK-01"
+             data-checkout-bundle="OB-RISK01-GOV01"
+             data-bump-checkbox="ob_RISK01_GOV01"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
+
+          <a href="iniciar-tratativas.html?asset=RISK-01"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
+
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • PDF + editáveis • Licença empresarial
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- GOV-01 -->
+  <dialog id="modal-gov">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-gov')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: GOV-01</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Governança & Protocolos</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            O "disse-me-disse" mata a produtividade. Este ativo instala arquitetura de decisão:
+            fluxos de aprovação, rituais e SOPs para executar com consistência.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• Manual executivo de governança (PDF)</li>
+              <li>• SOPs e fluxos de aprovação (PDF + editáveis)</li>
+              <li>• Templates: pauta, ata, decisão, delegação e responsabilidades (DOCX)</li>
+              <li>• Checklist de implantação em 7 dias (PDF)</li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="border border-white/10 p-4 bg-black/30">
+              <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Para quem é</div>
+              <div class="mt-2 text-sm text-neutral-300 font-light">Donos, diretores, coordenação e operação.</div>
             </div>
-        </div>
-    </dialog>
-
-    <dialog id="modal-org">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-org')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: OPS-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Organização & Padronização</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        Processos dependentes de pessoas são frágeis. Processos dependentes de métodos são <strong>imparáveis</strong>. Pare de dar "exemplo" e passe a dar o método. SOPs e rituais que acabam com o retrabalho. <strong>Construa um negócio que funciona, com ou sem você.</strong>
-                    </p>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 397,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Padronizar Agora</a>
-                </div>
+            <div class="border border-white/10 p-4 bg-black/30">
+              <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Tempo típico</div>
+              <div class="mt-2 text-sm text-neutral-300 font-light">90–120 min para setup inicial.</div>
             </div>
+          </div>
         </div>
-    </dialog>
 
-    <dialog id="modal-script">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-script')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: OPS-02</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Scripts Operacionais</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        Quanto tempo você perde resolvendo conflitos bobos? Este arsenal de mensagens pré-formatadas garante uma comunicação de elite em todas as frentes: do fechamento à cobrança. <strong>Comunicação padronizada evita má interpretação e economiza horas da sua semana.</strong>
-                    </p>
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 597,00</div>
+
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_GOV01_OPS02" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_GOV01_OPS02" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar OPS-02 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Scripts prontos para execução: WhatsApp + e-mail, limites e alinhamento.
                 </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 197,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Comprar Tempo</a>
-                </div>
+              </label>
             </div>
-        </div>
-    </dialog>
+          </div>
 
-    <dialog id="modal-pv">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-pv')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: PERF-01</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Porta-Voz & Autoridade</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        Não basta ter razão; é preciso ter autoridade. Este guia é o treinamento para líderes que precisam dominar a oratória em ambientes de alta pressão. Aprenda técnicas de "Ponte" para perguntas difíceis e postura executiva que transmite <strong>segurança absoluta</strong>. <strong>Sua voz é poder.</strong>
-                    </p>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 297,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Dominar a Fala</a>
-                </div>
+          <a href="#"
+             data-checkout-primary="GOV-01"
+             data-checkout-bundle="OB-GOV01-OPS02"
+             data-bump-checkbox="ob_GOV01_OPS02"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
+
+          <a href="iniciar-tratativas.html?asset=GOV-01"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
+
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • PDF + editáveis • Licença empresarial
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- STRAT-01 -->
+  <dialog id="modal-diag">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-diag')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: STRAT-01</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Diagnóstico Estratégico</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            Faça uma leitura técnica do seu sistema de comunicação, identifique vazamentos de valor e priorize correções com método.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• Checklist de avaliação + scoring (PDF)</li>
+              <li>• Matriz de priorização (modelo editável)</li>
+              <li>• Plano de ação em 7 dias (PDF)</li>
+              <li>• Guia de leitura executiva (PDF)</li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="border border-white/10 p-4 bg-black/30">
+              <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Para quem é</div>
+              <div class="mt-2 text-sm text-neutral-300 font-light">Gestão, marketing, atendimento, jurídico e operação.</div>
             </div>
-        </div>
-    </dialog>
-
-    <dialog id="modal-legal">
-        <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
-            <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-legal')">✕</button>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: PERF-02</span>
-                    <h2 class="font-serif text-4xl text-white leading-tight italic">Legal Design Kit</h2>
-                    <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
-                        Contratos de 20 páginas em juridiquês são barreiras de venda. O Legal Design Kit transforma documentos densos em <strong>ferramentas de persuasão visual</strong>. Feche negócios mais rápido e proteja seu IP com clareza e elegância. <strong>Segurança jurídica com padrão executivo.</strong>
-                    </p>
-                </div>
-                <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
-                    <div class="text-4xl text-gold-400 font-serif mb-6">R$ 497,00</div>
-                    <a href="iniciar-tratativas.html" class="bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">Transformar Contratos</a>
-                </div>
+            <div class="border border-white/10 p-4 bg-black/30">
+              <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500">Tempo típico</div>
+              <div class="mt-2 text-sm text-neutral-300 font-light">60–90 min para aplicação completa.</div>
             </div>
+          </div>
         </div>
-    </dialog>
 
-    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
-        <div class="flex flex-col items-center gap-6">
-            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
-            <div class="space-y-2">
-                <p>Boutique Method IP Holding Ltda © 2026</p>
-                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 497,00</div>
+
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_STRAT01_BRAND01" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_STRAT01_BRAND01" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar BRAND-01 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Transforme diagnóstico em percepção: mensagens-mestre e padrão premium.
+                </div>
+              </label>
             </div>
+          </div>
+
+          <a href="#"
+             data-checkout-primary="STRAT-01"
+             data-checkout-bundle="OB-STRAT01-BRAND01"
+             data-bump-checkbox="ob_STRAT01_BRAND01"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
+
+          <a href="iniciar-tratativas.html?asset=STRAT-01"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
+
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • Modelos editáveis • Licença empresarial
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </dialog>
 
-    <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+  <!-- BRAND-01 -->
+  <dialog id="modal-pos">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-pos')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: BRAND-01</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Posicionamento Premium</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            Codifique sua superioridade técnica em narrativa, mensagens e padrões. Para ser escolhido por agenda — não por preço.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• Guia de posicionamento (PDF)</li>
+              <li>• Mensagens-mestre (modelo editável)</li>
+              <li>• Estrutura de pitch e prova (modelo)</li>
+              <li>• Checklist de consistência de marca (PDF)</li>
+            </ul>
+          </div>
         </div>
-        <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Acervo</span>
-    </button>
 
-    <script src="accessibility.js"></script>
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 697,00</div>
 
-    <script>
-        // --- NAV MOBILE (sem erros em celular) ---
-        let mobileMenuOpen = false;
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_BRAND01_STRAT01" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_BRAND01_STRAT01" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar STRAT-01 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Diagnóstico técnico para sustentar posicionamento com prova e prioridade.
+                </div>
+              </label>
+            </div>
+          </div>
 
-        function toggleMobileMenu(force) {
-            const menu = document.getElementById('mobileMenu');
-            const btn = document.getElementById('mobileMenuBtn');
-            if (!menu || !btn) return;
+          <a href="#"
+             data-checkout-primary="BRAND-01"
+             data-checkout-bundle="OB-BRAND01-STRAT01"
+             data-bump-checkbox="ob_BRAND01_STRAT01"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
 
-            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+          <a href="iniciar-tratativas.html?asset=BRAND-01"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
 
-            if (mobileMenuOpen) {
-                menu.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                btn.setAttribute('aria-expanded', 'true');
-            } else {
-                menu.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                btn.setAttribute('aria-expanded', 'false');
-            }
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • Modelos editáveis • Licença empresarial
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- OPS-01 -->
+  <dialog id="modal-org">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-org')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: OPS-01</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Organização & Padronização</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            SOPs e rituais para eliminar retrabalho e operar com previsibilidade.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• SOPs essenciais (PDF)</li>
+              <li>• Templates: pauta, ata, check-in/check-out, delegação (DOCX)</li>
+              <li>• Checklist de implantação (PDF)</li>
+              <li>• Rotina semanal (modelo)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 397,00</div>
+
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_OPS01_OPS02" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_OPS01_OPS02" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar OPS-02 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Scripts prontos para execução diária (WhatsApp + e-mail).
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <a href="#"
+             data-checkout-primary="OPS-01"
+             data-checkout-bundle="OB-OPS01-OPS02"
+             data-bump-checkbox="ob_OPS01_OPS02"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
+
+          <a href="iniciar-tratativas.html?asset=OPS-01"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
+
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • Templates • Licença empresarial
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- OPS-02 -->
+  <dialog id="modal-script">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-script')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: OPS-02</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Scripts Operacionais</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            Um arsenal de mensagens para WhatsApp e e-mail, prontas para uso e ajustáveis.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• Biblioteca de scripts (WhatsApp + e-mail)</li>
+              <li>• Negativas e limites com cordialidade técnica</li>
+              <li>• Cobrança, alinhamento, confirmação e follow-ups</li>
+              <li>• Versões curtas e versões formais (padrão holding)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 197,00</div>
+
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_OPS02_OPS01" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_OPS02_OPS01" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar OPS-01 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Padronização + SOPs para sustentar execução com método.
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <a href="#"
+             data-checkout-primary="OPS-02"
+             data-checkout-bundle="OB-OPS02-OPS01"
+             data-bump-checkbox="ob_OPS02_OPS01"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
+
+          <a href="iniciar-tratativas.html?asset=OPS-02"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
+
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • Biblioteca de mensagens • Licença empresarial
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- PERF-01 -->
+  <dialog id="modal-pv">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-pv')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: PERF-01</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Porta-Voz & Autoridade</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            Técnicas de ponte, postura executiva e roteiros para ambientes de alta pressão.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• Guia de postura e presença (PDF)</li>
+              <li>• Técnica “ponte” e respostas difíceis (PDF)</li>
+              <li>• Roteiros e frameworks de entrevista (modelo)</li>
+              <li>• Checklist de risco de linguagem (PDF)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 297,00</div>
+
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_PERF01_PERF02" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_PERF01_PERF02" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar PERF-02 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Legal Design para apoiar contratos e decisões com clareza visual.
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <a href="#"
+             data-checkout-primary="PERF-01"
+             data-checkout-bundle="OB-PERF01-PERF02"
+             data-bump-checkbox="ob_PERF01_PERF02"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
+
+          <a href="iniciar-tratativas.html?asset=PERF-01"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
+
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • Roteiros • Licença empresarial
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- PERF-02 -->
+  <dialog id="modal-legal">
+    <div class="modal-shell bg-[#0a0a0a] border border-gold-400/20 p-8 md:p-14 relative shadow-2xl">
+      <button class="absolute top-5 right-5 text-neutral-500 hover:text-gold-400 transition text-2xl" onclick="closeDialog('modal-legal')" aria-label="Fechar">✕</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <span class="text-gold-400 text-[10px] tracking-[0.3em] uppercase font-bold">Asset: PERF-02</span>
+          <h2 class="font-serif text-4xl text-white leading-tight italic">Legal Design Kit</h2>
+          <p class="text-neutral-300 font-light leading-relaxed text-justify text-sm">
+            Transforme documento em clareza visual, mantendo rigor e reduzindo atrito na assinatura.
+          </p>
+
+          <div class="border-t border-white/10 pt-6">
+            <div class="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-3">O que inclui</div>
+            <ul class="text-sm text-neutral-300 font-light space-y-2">
+              <li>• Guia de princípios de Legal Design (PDF)</li>
+              <li>• Template de contrato visual (DOCX)</li>
+              <li>• Checklist de clareza e riscos (PDF)</li>
+              <li>• Estrutura de resumo executivo (modelo)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center border-l border-white/5 pl-0 md:pl-12">
+          <div class="text-4xl text-gold-400 font-serif mb-4">R$ 497,00</div>
+
+          <!-- Order Bump -->
+          <div class="border border-white/10 bg-black/30 p-5 mb-4">
+            <div class="text-[9px] uppercase tracking-[0.35em] text-neutral-500">Order bump</div>
+            <div class="mt-3 flex items-start gap-3">
+              <input id="ob_PERF02_PERF01" type="checkbox" style="accent-color:#d4af37" class="mt-1" />
+              <label for="ob_PERF02_PERF01" class="cursor-pointer">
+                <div class="text-[11px] uppercase tracking-[0.22em] text-white">Adicionar PERF-01 com 20% off</div>
+                <div class="mt-2 text-sm text-neutral-400 font-light leading-relaxed">
+                  Postura e técnica “ponte” para sustentar decisões e comunicação sob pressão.
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <a href="#"
+             data-checkout-primary="PERF-02"
+             data-checkout-bundle="OB-PERF02-PERF01"
+             data-bump-checkbox="ob_PERF02_PERF01"
+             class="buy-dynamic bg-gold-400 text-black text-center py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-500">
+            Comprar (download imediato)
+          </a>
+
+          <a href="iniciar-tratativas.html?asset=PERF-02"
+             class="mt-3 border border-white/20 text-white text-center py-4 text-[10px] uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-500">
+            Falar sob NDA / Projeto sob demanda
+          </a>
+
+          <div class="mt-6 text-[10px] uppercase tracking-[0.22em] text-neutral-600">
+            Entrega imediata • PDF + DOCX • Licença empresarial
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+    <div class="flex flex-col items-center gap-6">
+      <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none" />
+      <div class="space-y-2">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+        <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
+    <div class="audio-wave">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Acervo</span>
+  </button>
+
+  <script src="accessibility.js"></script>
+
+  <script>
+    // =========================
+    // CHECKOUT LINKS (EDITE AQUI)
+    // =========================
+    const CHECKOUT_URLS = {
+      // Singles
+      "RISK-01": "#",
+      "GOV-01": "#",
+      "STRAT-01": "#",
+      "BRAND-01": "#",
+      "OPS-01": "#",
+      "OPS-02": "#",
+      "PERF-01": "#",
+      "PERF-02": "#",
+
+      // Bundles (cards)
+      "BUNDLE-RISK-GOV": "#",
+      "BUNDLE-OPS": "#",
+
+      // Order Bump Combos (modais)
+      "OB-RISK01-GOV01": "#",
+      "OB-GOV01-OPS02": "#",
+      "OB-STRAT01-BRAND01": "#",
+      "OB-BRAND01-STRAT01": "#",
+      "OB-OPS01-OPS02": "#",
+      "OB-OPS02-OPS01": "#",
+      "OB-PERF01-PERF02": "#",
+      "OB-PERF02-PERF01": "#"
+    };
+
+    // --- NAV MOBILE ---
+    let mobileMenuOpen = false;
+    function toggleMobileMenu(force) {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('mobileMenuBtn');
+      if (!menu || !btn) return;
+
+      mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+      if (mobileMenuOpen) {
+        menu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        menu.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (mobileMenuOpen) toggleMobileMenu(false);
+      }
+    });
+
+    // --- MODAIS ---
+    let lastFocus = null;
+
+    function openDialog(id) {
+      const d = document.getElementById(id);
+      if (!d) return;
+      lastFocus = document.activeElement;
+
+      if (typeof d.showModal !== 'function') d.setAttribute('open', '');
+      else d.showModal();
+
+      const closeBtn = d.querySelector('button[onclick*="closeDialog"]') || d.querySelector('button');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeDialog(id) {
+      const d = document.getElementById(id);
+      if (!d) return;
+
+      if (typeof d.close !== 'function') d.removeAttribute('open');
+      else d.close();
+
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.querySelectorAll('dialog').forEach(d => {
+      d.addEventListener('click', e => {
+        const shell = d.querySelector('.modal-shell');
+        if (!shell) return;
+        if (!shell.contains(e.target)) closeDialog(d.id);
+      });
+
+      d.addEventListener('close', () => {
+        if (lastFocus) lastFocus.focus();
+      });
+    });
+
+    // Acessibilidade: abrir com Enter/Espaço
+    document.querySelectorAll('.asset-row[role="button"]').forEach(row => {
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          row.click();
         }
+      });
+    });
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                if (mobileMenuOpen) toggleMobileMenu(false);
-            }
+    // =========================
+    // Compra direta + Order Bump (dinâmico)
+    // =========================
+    function resolveCheckoutKey(btn) {
+      const primary = btn.getAttribute('data-checkout-primary');
+      const bundle = btn.getAttribute('data-checkout-bundle');
+      const cbId = btn.getAttribute('data-bump-checkbox');
+
+      if (bundle && cbId) {
+        const cb = document.getElementById(cbId);
+        if (cb && cb.checked) return bundle;
+      }
+      return primary;
+    }
+
+    function setAnchorUrl(a, url) {
+      if (url && url !== "#") {
+        a.setAttribute('href', url);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+        a.classList.remove('opacity-60', 'cursor-not-allowed');
+        a.setAttribute('aria-disabled', 'false');
+      } else {
+        a.setAttribute('href', '#');
+        a.removeAttribute('target');
+        a.removeAttribute('rel');
+        a.classList.add('opacity-60', 'cursor-not-allowed');
+        a.setAttribute('aria-disabled', 'true');
+      }
+    }
+
+    function refreshDynamicBuyButtons() {
+      document.querySelectorAll('.buy-dynamic[data-checkout-primary]').forEach(btn => {
+        const key = resolveCheckoutKey(btn);
+        const url = CHECKOUT_URLS[key] || "#";
+        setAnchorUrl(btn, url);
+      });
+    }
+
+    function wireOrderBumps() {
+      document.querySelectorAll('.buy-dynamic[data-bump-checkbox]').forEach(btn => {
+        const cbId = btn.getAttribute('data-bump-checkbox');
+        const cb = document.getElementById(cbId);
+        if (cb) cb.addEventListener('change', refreshDynamicBuyButtons);
+      });
+
+      // Intercepta cliques quando checkout não configurado
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('.buy-dynamic[data-checkout-primary]');
+        if (!a) return;
+        const key = resolveCheckoutKey(a);
+        const url = CHECKOUT_URLS[key] || "#";
+        if (!url || url === "#") {
+          e.preventDefault();
+          alert("Checkout não configurado. Cole os links em CHECKOUT_URLS no final do arquivo.");
+        }
+      });
+
+      refreshDynamicBuyButtons();
+    }
+
+    // =========================
+    // Botões simples de checkout (Bundles)
+    // =========================
+    function applyStaticCheckoutLinks() {
+      document.querySelectorAll('[data-checkout]').forEach(a => {
+        const key = a.getAttribute('data-checkout');
+        const url = CHECKOUT_URLS[key] || "#";
+        setAnchorUrl(a, url);
+      });
+    }
+
+    // =========================
+    // Filtros, busca e ordenação
+    // =========================
+    let activeFilter = 'all';
+
+    const searchInput = document.getElementById('assetSearch');
+    const sortSelect = document.getElementById('sortSelect');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function normalize(s) {
+      return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function applyFilters() {
+      const q = normalize(searchInput ? searchInput.value : '');
+      const sortMode = sortSelect ? sortSelect.value : 'default';
+
+      const assets = Array.from(document.querySelectorAll('[data-asset]'));
+
+      assets.forEach(el => {
+        const cat = el.getAttribute('data-category');
+        const code = el.getAttribute('data-asset') || '';
+        const title = el.querySelector('.asset-title') ? el.querySelector('.asset-title').innerText : '';
+        const hay = normalize(code + ' ' + title);
+
+        const matchFilter = (activeFilter === 'all') ? true : (cat === activeFilter);
+        const matchSearch = q ? hay.includes(q) : true;
+
+        el.style.display = (matchFilter && matchSearch) ? '' : 'none';
+      });
+
+      document.querySelectorAll('[data-section]').forEach(section => {
+        const secKey = section.getAttribute('data-section');
+        if (activeFilter !== 'all' && secKey !== activeFilter) {
+          section.style.display = 'none';
+          return;
+        }
+        const visibleRows = section.querySelectorAll('[data-asset]:not([style*="display: none"])');
+        section.style.display = visibleRows.length ? '' : 'none';
+      });
+
+      if (sortMode !== 'default') {
+        document.querySelectorAll('[data-section]').forEach(section => {
+          const rows = Array.from(section.querySelectorAll('[data-asset]'));
+          const container = rows.length ? rows[0].parentElement : null;
+          if (!container) return;
+
+          const visibleRows = rows.filter(r => r.style.display !== 'none');
+
+          const sortFn = {
+            priceAsc: (a,b) => Number(a.dataset.price) - Number(b.dataset.price),
+            priceDesc: (a,b) => Number(b.dataset.price) - Number(a.dataset.price),
+            codeAsc: (a,b) => String(a.dataset.asset).localeCompare(String(b.dataset.asset))
+          }[sortMode];
+
+          if (!sortFn) return;
+
+          visibleRows.sort(sortFn).forEach(r => container.appendChild(r));
+          rows.filter(r => r.style.display === 'none').forEach(r => container.appendChild(r));
         });
+      }
+    }
 
-        // --- MODAIS (ACERVO) ---
-        let lastFocus = null;
+    function setActiveFilter(next) {
+      activeFilter = next;
+      filterBtns.forEach(btn => {
+        const isActive = btn.dataset.filter === next;
+        btn.setAttribute('aria-pressed', String(isActive));
+        btn.classList.toggle('border-gold-400/60', isActive);
+        btn.classList.toggle('text-gold-400', isActive);
+      });
+      applyFilters();
+    }
 
-        function openDialog(id) {
-            const d = document.getElementById(id);
-            if (!d) return;
-            lastFocus = document.activeElement;
+    if (searchInput) searchInput.addEventListener('input', applyFilters);
+    if (sortSelect) sortSelect.addEventListener('change', applyFilters);
+    filterBtns.forEach(btn => btn.addEventListener('click', () => setActiveFilter(btn.dataset.filter)));
 
-            // Fallback para browsers antigos (caso <dialog> não exista bem)
-            if (typeof d.showModal !== 'function') {
-                d.setAttribute('open', '');
-            } else {
-                d.showModal();
-            }
+    // =========================
+    // Áudio Descrição
+    // =========================
+    const synth = window.speechSynthesis;
+    let isPlaying = false;
 
-            const closeBtn = d.querySelector('button[onclick*="closeDialog"]') || d.querySelector('button');
-            if (closeBtn) closeBtn.focus();
-        }
+    function toggleAudioDescription() {
+      const btn = document.getElementById('globalAudioBtn');
+      const label = document.getElementById('audioLabel');
+      if (!btn || !label) return;
 
-        function closeDialog(id) {
-            const d = document.getElementById(id);
-            if (!d) return;
+      if (isPlaying) {
+        synth.cancel();
+        isPlaying = false;
+        btn.classList.add('paused');
+        label.innerText = "Ouvir Acervo";
+      } else {
+        const text = "Acervo Digital Boutique Method. Produtos avulsos com entrega imediata: blindagem e risco, estratégia e marca, operação e cultura, performance e legal. Use os filtros, busque por código e clique em um item para ver detalhes, valores e comprar.";
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'pt-BR';
+        utter.rate = 0.95;
 
-            if (typeof d.close !== 'function') {
-                d.removeAttribute('open');
-            } else {
-                d.close();
-            }
+        utter.onend = () => {
+          isPlaying = false;
+          btn.classList.add('paused');
+          label.innerText = "Ouvir Acervo";
+        };
 
-            if (lastFocus) lastFocus.focus();
-        }
+        synth.speak(utter);
+        isPlaying = true;
+        btn.classList.remove('paused');
+        label.innerText = "Parar Áudio";
+      }
+    }
 
-        // Close on outside click (sem quebrar em mobile)
-        document.querySelectorAll('dialog').forEach(d => {
-            d.addEventListener('click', e => {
-                const shell = d.querySelector('.modal-shell');
-                if (!shell) return;
-                if (!shell.contains(e.target)) d.close();
-            });
-
-            // ESC restore focus
-            d.addEventListener('close', () => {
-                if (lastFocus) lastFocus.focus();
-            });
-        });
-
-        // Áudio Descrição
-        const synth = window.speechSynthesis;
-        let isPlaying = false;
-
-        function toggleAudioDescription() {
-            const btn = document.getElementById('globalAudioBtn');
-            const label = document.getElementById('audioLabel');
-
-            if (isPlaying) {
-                synth.cancel();
-                isPlaying = false;
-                btn.classList.add('paused');
-                label.innerText = "Ouvir Acervo";
-            } else {
-                const text = "Acervo Digital Boutique Method. Explore ativos exclusivos para blindagem, estratégia, operação e performance do seu capital intelectual. Clique em um item para ver detalhes e valores.";
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'pt-BR';
-                utter.rate = 0.95;
-
-                utter.onend = () => {
-                    isPlaying = false;
-                    btn.classList.add('paused');
-                    label.innerText = "Ouvir Acervo";
-                };
-
-                synth.speak(utter);
-                isPlaying = true;
-                btn.classList.remove('paused');
-                label.innerText = "Parar Áudio";
-            }
-        }
-    </script>
-
+    // Init
+    applyStaticCheckoutLinks();
+    wireOrderBumps();
+    setActiveFilter('all');
+  </script>
 </body>
 </html>
