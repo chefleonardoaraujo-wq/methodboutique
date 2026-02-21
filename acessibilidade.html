@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acessibilidade | Boutique Method</title>
+    <meta name="description" content="Acessibilidade como ativo BMIP: padrões técnicos, protocolos de inclusão e engenharia de processos para operar com clareza e previsibilidade." />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="accessibility.css">
@@ -63,7 +64,7 @@
     <!-- Skip link (padrão do index) -->
     <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">Pular para o conteúdo</a>
 
-    <!-- NAV (PADRÃO INDEX + MOBILE DRAWER) -->
+    <!-- NAV (PADRÃO HOLDING + MOBILE DRAWER) -->
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
@@ -83,12 +84,13 @@
             <!-- Desktop -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
-                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="index.html" class="hover:text-gold-400 transition duration-300 relative group">Início<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="projetos-consultoria.html" class="hover:text-gold-400 transition duration-300 relative group">Projetos &amp; Consultoria<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="acervo-executivo.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo Executivo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="iniciar-tratativas.html" class="hover:text-gold-400 transition duration-300 relative group">Contato<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                 </div>
 
                 <div class="h-4 w-px bg-white/10"></div>
@@ -98,7 +100,7 @@
                     <a href="acessibilidade-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <a href="iniciar-tratativas.html" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                <a href="iniciar-tratativas.html?via=acessibilidade" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
                     Iniciar Tratativas
                 </a>
             </div>
@@ -133,12 +135,13 @@
             </div>
 
             <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
-                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
-                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
+                <a href="index.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Início</a>
+                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
+                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
                 <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
-                <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
-                <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
-                <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo</a>
+                <a href="projetos-consultoria.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Projetos &amp; Consultoria</a>
+                <a href="acervo-executivo.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo Executivo</a>
+                <a href="iniciar-tratativas.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Contato</a>
             </div>
 
             <div class="pt-8">
@@ -147,7 +150,7 @@
                     <a href="acessibilidade-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <a href="iniciar-tratativas.html"
+                <a href="iniciar-tratativas.html?via=acessibilidade"
                    onclick="toggleMobileMenu(false)"
                    class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
                     Iniciar Tratativas
@@ -264,8 +267,14 @@
         </div>
     </main>
 
-    <footer class="bg-black py-12 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+        <div class="flex flex-col items-center gap-6">
+            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none" />
+            <div class="space-y-2">
+                <p>Boutique Method IP Holding Ltda © 2026</p>
+                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+            </div>
+        </div>
     </footer>
 
     <script>
