@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,85 +21,209 @@
             theme: {
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 900: '#8a6d1f' } }
+                    colors: {
+                        gold: { 300: '#e5c55b', 400: '#d4af37', 500: '#b5922f', 900: '#8a6d1f' },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)'
+                    },
+                    animation: { 'fade-in': 'fadeIn 1s ease-out forwards' },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
                 }
             }
         }
     </script>
 
     <style>
-        body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; font-family: 'Lato', sans-serif; }
-        .gold-selection::selection { background: #d4af37; color: black; }
+        :root { --nav-offset: 100px; }
 
-        .audio-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50px;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            overflow-x: hidden;
+            font-family: 'Lato', sans-serif;
         }
-        .audio-fab:hover { border-color: #d4af37; transform: translateY(-2px); }
-        .audio-wave { display: flex; gap: 3px; align-items: center; height: 15px; }
-        .bar { width: 2px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
+
+        ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+        main { padding-top: var(--nav-offset); }
+        #main-content { scroll-margin-top: var(--nav-offset); }
+
+        :focus-visible {
+            outline: 1px solid #d4af37;
+            outline-offset: 4px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Mobile menu enter/feel (IGUAL PADRÃO) */
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(10px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
+
+        .modal-enter { animation: fadeInModal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+        /* ✅ Modal mobile sem cortar conteúdo */
+        #modal-body { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+        #modal-content { word-break: break-word; }
+
+        /* Botão de Audiodescrição (IGUAL INDEX) */
+        .audio-fab {
+            position: fixed; bottom: 40px; right: 40px; z-index: 100;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 14px 28px;
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; transition: all 0.5s ease;
+        }
+        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
+        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
         .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
         .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 20%; }
-        @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
+        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
+
+        @media (max-width: 640px) {
+            .audio-fab { right: 16px; bottom: 18px; padding: 12px 18px; }
+        }
     </style>
 </head>
 
-<body class="antialiased gold-selection flex flex-col min-h-screen">
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV PADRÃO -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+    <!-- ✅ NAV (NOVO PADRÃO HOLDING) -->
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+
+            <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+                    </span>
+                </div>
             </a>
 
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+            <!-- Desktop -->
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">
+                        Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">
+                        Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+
+                    <!-- ✅ faz sentido como ativo: é página de vertente ligada ao licenciamento -->
+                    <a href="licenciamento.html" class="text-gold-400 relative group cursor-default">
+                        Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span>
+                    </a>
+
+                    <a href="projetos-consultoria.html" class="hover:text-gold-400 transition duration-300 relative group">
+                        Projetos &amp; Consultoria<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="acervo-executivo.html" class="hover:text-gold-400 transition duration-300 relative group">
+                        Acervo Executivo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
                 </div>
 
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="hc-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="hc-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
+
+                <!-- ✅ abre modal -->
+                <button type="button"
+                        onclick="openModal('tratativas')"
+                        class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
+                        aria-label="Entenda o que significa Iniciar Tratativas">
+                    Iniciar Tratativas
+                </button>
             </div>
 
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500">
-                Iniciar Tratativas
-            </a>
+            <!-- Mobile: Hamburger -->
+            <button id="mobileMenuBtn"
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Abrir menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false">
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+
         </div>
     </nav>
 
-    <main id="main-content">
-        <header class="h-[65vh] flex items-center justify-center bg-neutral-950 border-b border-white/5 relative overflow-hidden pt-24 md:pt-0">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-black opacity-50"></div>
-            <div class="absolute text-[25vw] opacity-[0.03] font-serif italic select-none pointer-events-none transform -translate-y-10">HC</div>
+    <!-- ✅ MOBILE MENU DRAWER (NOVO PADRÃO HOLDING) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
-            <div class="text-center z-10 px-6 max-w-4xl mx-auto">
-                <span class="text-[#d4af37] uppercase tracking-[0.3em] text-[10px] mb-6 block">Health Care & Hospitalidade</span>
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+                <button type="button"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                        onclick="toggleMobileMenu(false)"
+                        aria-label="Fechar menu">&times;</button>
+            </div>
+
+            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
+                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
+                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Licenciamento</a>
+                <a href="projetos-consultoria.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Projetos &amp; Consultoria</a>
+                <a href="acervo-executivo.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo Executivo</a>
+            </div>
+
+            <div class="pt-8">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="hc-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+                </div>
+
+                <button type="button"
+                        onclick="toggleMobileMenu(false); openModal('tratativas');"
+                        class="mt-6 w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
+                        aria-label="Entenda o que significa Iniciar Tratativas">
+                    Iniciar Tratativas
+                </button>
+            </div>
+
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <header class="h-[65vh] flex items-center justify-center bg-neutral-950 border-b border-white/5 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-black opacity-50"></div>
+            <div class="absolute text-[25vw] opacity-[0.03] font-serif italic select-none pointer-events-none transform -translate-y-10 text-white">HC</div>
+
+            <div class="text-center z-10 px-6 max-w-4xl mx-auto animate-fade-in">
+                <span class="text-gold-400 uppercase tracking-[0.3em] text-[10px] mb-6 block">Health Care & Hospitalidade</span>
                 <h1 class="font-serif text-5xl md:text-7xl text-white mb-8 leading-tight">
                     A Experiência do <br><span class="italic text-neutral-500">Cuidado</span>
                 </h1>
@@ -114,35 +238,37 @@
             <div class="grid md:grid-cols-12 gap-12 mb-24 items-start">
                 <div class="md:col-span-4">
                     <h2 class="font-serif text-3xl text-white leading-normal">Medicina de excelência exige bastidores impecáveis.</h2>
-                    <div class="w-12 h-px bg-[#d4af37] mt-6"></div>
+                    <div class="w-12 h-px bg-gold-400 mt-6"></div>
                 </div>
                 <div class="md:col-span-8 text-neutral-400 font-light leading-loose space-y-6">
                     <p>
                         Em um mercado de saúde saturado, a competência técnica é o mínimo esperado. O diferencial competitivo reside na jornada: previsibilidade, clareza e experiência.
                     </p>
                     <p>
-                        A vertente <strong>HC</strong> do Boutique Method atua na intersecção entre segurança documental (termos, contratos e LGPD) e hospitalidade (recepção, roteiros de atendimento e pós-consulta), garantindo que a percepção de valor do paciente acompanhe a qualidade do ato médico.
+                        A vertente <strong class="text-white font-normal border-b border-gold-400/30">HC</strong> do Boutique Method atua na intersecção entre segurança documental (termos, contratos e LGPD) e hospitalidade (recepção, roteiros de atendimento e pós-consulta), garantindo que a percepção de valor do paciente acompanhe a qualidade do ato médico.
                     </p>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-24">
-                <div class="group border-l border-white/10 pl-8 hover:border-[#d4af37] transition duration-500">
-                    <span class="text-xs font-bold text-[#d4af37] mb-2 block">01</span>
+                <div class="group border-l border-white/10 pl-8 hover:border-gold-400 transition duration-500">
+                    <span class="text-xs font-bold text-gold-400 mb-2 block">01</span>
                     <h3 class="text-xl text-white font-serif mb-4">Recepção Premium</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
                         Treinamento e roteirização de secretárias para atuarem como <em>concierges</em>. Scripts de agendamento, confirmação e acolhimento que reduzem ruído e elevam percepção de valor.
                     </p>
                 </div>
-                <div class="group border-l border-white/10 pl-8 hover:border-[#d4af37] transition duration-500">
-                    <span class="text-xs font-bold text-[#d4af37] mb-2 block">02</span>
+
+                <div class="group border-l border-white/10 pl-8 hover:border-gold-400 transition duration-500">
+                    <span class="text-xs font-bold text-gold-400 mb-2 block">02</span>
                     <h3 class="text-xl text-white font-serif mb-4">Segurança Documental</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
                         Termos de Consentimento (TCLE) e contratos desenhados com <em>Legal Design</em>. Documentos que o paciente compreende — e que protegem juridicamente o profissional.
                     </p>
                 </div>
-                <div class="group border-l border-white/10 pl-8 hover:border-[#d4af37] transition duration-500">
-                    <span class="text-xs font-bold text-[#d4af37] mb-2 block">03</span>
+
+                <div class="group border-l border-white/10 pl-8 hover:border-gold-400 transition duration-500">
+                    <span class="text-xs font-bold text-gold-400 mb-2 block">03</span>
                     <h3 class="text-xl text-white font-serif mb-4">Jornada do Paciente</h3>
                     <p class="text-sm text-neutral-500 leading-relaxed">
                         Mapeamento completo dos pontos de contato: do primeiro clique no site ao pós-operatório/retorno. Identificação e eliminação de gargalos de experiência.
@@ -151,7 +277,7 @@
             </div>
 
             <div class="bg-neutral-900/50 border border-white/5 p-12 text-center relative overflow-hidden">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[#d4af37] opacity-[0.03] blur-3xl -z-10"></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gold-400 opacity-[0.03] blur-3xl -z-10"></div>
 
                 <h3 class="font-serif text-2xl text-white mb-6">Eleve o padrão da sua instituição</h3>
                 <p class="text-sm text-neutral-400 mb-8 max-w-lg mx-auto">
@@ -159,10 +285,12 @@
                 </p>
 
                 <div class="flex flex-col md:flex-row justify-center gap-6">
-                    <a href="store.html" class="px-8 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black hover:border-white transition duration-300">
+                    <a href="acervo-executivo.html"
+                       class="px-8 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black hover:border-white transition duration-300">
                         Acessar Acervo HC
                     </a>
-                    <a href="iniciar-tratativas.html" class="px-8 py-4 bg-[#d4af37] text-neutral-900 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#b38f2d] transition duration-300">
+                    <a href="iniciar-tratativas.html"
+                       class="px-8 py-4 bg-gold-400 text-black text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white transition duration-300">
                         Solicitar Diagnóstico
                     </a>
                 </div>
@@ -177,8 +305,30 @@
         </section>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
+    <!-- ✅ MODAL (padrão do index) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-center justify-center p-4 sm:p-6 modal-enter">
+        <div class="bg-neutral-900/90 border border-gold-400/20 max-w-2xl w-full shadow-2xl relative max-h-[85vh] overflow-hidden">
+            <div class="flex items-center justify-between h-[72px] px-6 sm:px-10 border-b border-white/10">
+                <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500">Boutique Method</span>
+                <button onclick="closeModal()"
+                        class="text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light leading-none"
+                        aria-label="Fechar Modal">&times;</button>
+            </div>
+
+            <div id="modal-body" class="px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto max-h-[calc(85vh-72px)]">
+                <div id="modal-content" class="space-y-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+        <div class="flex flex-col items-center gap-6">
+            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
+            <div class="space-y-2">
+                <p>Boutique Method IP Holding Ltda © 2026</p>
+                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+            </div>
+        </div>
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
@@ -187,11 +337,88 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <span id="audioLabel" class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
+        <span id="audioLabel" class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">Ouvir Página</span>
     </button>
 
     <script src="accessibility.js"></script>
+
     <script>
+        // --- MENU MOBILE (padrão do index) ---
+        let mobileMenuOpen = false;
+
+        function toggleMobileMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
+
+            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+            if (mobileMenuOpen) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (mobileMenuOpen) toggleMobileMenu(false);
+
+                const overlay = document.getElementById('modal-overlay');
+                if (overlay && overlay.classList.contains('flex')) closeModal();
+            }
+        });
+
+        // --- MODAL “TRATATIVAS” ---
+        const modalData = {
+            tratativas: {
+                title: "Iniciar Tratativas — O que significa",
+                text:
+                    "Tratativas são o início formal de uma conversa estratégica, com nível institucional.<br><br>" +
+                    "Aqui, não é “um orçamento rápido”: é alinhamento de escopo, risco, confidencialidade e governança.<br><br>" +
+                    "<strong>Próximo passo:</strong> após entender o contexto, você pode seguir para a página de tratativas."
+            }
+        };
+
+        function openModal(id) {
+            if (mobileMenuOpen) toggleMobileMenu(false);
+
+            const content = modalData[id];
+            if (!content) return;
+
+            const overlay = document.getElementById('modal-overlay');
+            const container = document.getElementById('modal-content');
+
+            container.innerHTML = `
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-gold-400 mb-6 leading-tight italic">${content.title}</h3>
+                <div class="text-neutral-300 font-light text-base sm:text-lg leading-relaxed sm:leading-loose space-y-4 border-l border-gold-400/30 pl-5 sm:pl-6">${content.text}</div>
+
+                <div class="pt-8 flex flex-col sm:flex-row gap-3 sm:justify-end">
+                    <button onclick="closeModal()" class="px-7 py-3 border border-gold-400 text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:bg-gold-400 hover:text-black transition duration-300">Fechar</button>
+                    <a href="iniciar-tratativas.html" class="px-7 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white transition duration-300 text-center">Ir para Tratativas</a>
+                </div>
+            `;
+
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // --- Áudio Descrição (preservado) ---
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
