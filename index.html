@@ -160,34 +160,25 @@
         #modal-body { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
         #modal-content { word-break: break-word; }
 
-        /* ✅ EFEITO ON/OFF CONSTANTE (LIGA/DESLIGA O TEMPO TODO, SEM PAUSAS) */
-        @keyframes goldFlicker {
-            0% {
+        /* ✅ EFEITO ACENDE E APAGA FLUIDO E ELEGANTE */
+        @keyframes acendeApaga {
+            0%, 100% {
                 opacity: 1;
                 filter: brightness(1.35) saturate(1.15);
                 text-shadow:
                     0 0 10px rgba(212,175,55,.45),
-                    0 0 24px rgba(212,175,55,.30),
-                    0 0 48px rgba(212,175,55,.18);
+                    0 0 24px rgba(212,175,55,.30);
             }
             50% {
-                opacity: .12; /* “apagado” perceptível */
-                filter: brightness(.75) saturate(.9);
+                opacity: 0.15; /* Apaga suavemente quase por completo */
+                filter: brightness(0.7) saturate(0.9);
                 text-shadow: none;
-            }
-            100% {
-                opacity: 1;
-                filter: brightness(1.35) saturate(1.15);
-                text-shadow:
-                    0 0 10px rgba(212,175,55,.45),
-                    0 0 24px rgba(212,175,55,.30),
-                    0 0 48px rgba(212,175,55,.18);
             }
         }
 
-        /* steps(2,end) = troca seca ON/OFF (sem fade), contínuo */
         .gold-flicker {
-            animation: goldFlicker .8s steps(2, end) infinite;
+            /* ease-in-out faz a transição ser suave, durando 2.5 segundos por ciclo */
+            animation: acendeApaga 2.5s ease-in-out infinite;
             will-change: opacity, filter, text-shadow;
         }
 
@@ -201,7 +192,6 @@
 
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-    <!-- NAV -->
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
@@ -214,7 +204,6 @@
                 </div>
             </a>
 
-            <!-- Desktop -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
                     <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
@@ -232,7 +221,6 @@
                     <a href="index-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <!-- NÃO REDIRECIONA: ABRE MODAL EXPLICATIVO -->
                 <button type="button"
                         onclick="openModal('tratativas')"
                         class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
@@ -241,7 +229,6 @@
                 </button>
             </div>
 
-            <!-- Mobile: Hamburger -->
             <button id="mobileMenuBtn"
                     type="button"
                     class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
@@ -257,7 +244,6 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU DRAWER -->
     <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
         <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
@@ -381,7 +367,6 @@
                     <div class="h-px w-24 bg-gold-400/30 mx-auto mt-6"></div>
                 </div>
 
-                <!-- AQUI: OS 4 CARDS NÃO NAVEGAM; ABREM MODAIS EXPLICATIVOS -->
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                     <button type="button"
@@ -593,11 +578,9 @@
         </section>
     </main>
 
-    <!-- ✅ MODAL (PADRONIZADO PARA MOBILE, SEM CORTES) -->
     <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-center justify-center p-4 sm:p-6 modal-enter">
         <div class="bg-neutral-900/90 border border-gold-400/20 max-w-2xl w-full shadow-2xl relative max-h-[85vh] overflow-hidden">
 
-            <!-- header sempre visível -->
             <div class="flex items-center justify-between h-[72px] px-6 sm:px-10 border-b border-white/10">
                 <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500">Boutique Method</span>
                 <button onclick="closeModal()"
@@ -605,7 +588,6 @@
                         aria-label="Fechar Modal">&times;</button>
             </div>
 
-            <!-- corpo com scroll -->
             <div id="modal-body" class="px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto max-h-[calc(85vh-72px)]">
                 <div id="modal-content" class="space-y-6"></div>
             </div>
