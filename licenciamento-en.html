@@ -139,6 +139,10 @@
         .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
 
+        /* ✅ MODAL (FIX: header + scroll + footer) */
+        #modal-scroll { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+        #modal-content { word-break: break-word; }
+
         @media (max-width: 640px) {
             .audio-fab { bottom: 16px; right: 16px; padding: 12px 20px; }
         }
@@ -480,20 +484,35 @@
 
     </main>
 
-    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-6 modal-enter" aria-hidden="true">
-        <div class="bg-neutral-900/95 border border-gold-400/20 max-w-2xl w-full p-10 md:p-14 relative shadow-2xl">
-            <button onclick="closePlanModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light" aria-label="Close Modal">✕</button>
+    <!-- ✅ PLAN MODAL (FIXED) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-center justify-center p-4 sm:p-6 modal-enter" aria-hidden="true">
+        <div class="bg-neutral-900/90 border border-gold-400/20 max-w-2xl w-full shadow-2xl relative max-h-[85vh] overflow-hidden flex flex-col">
 
-            <div id="modal-content" class="space-y-8"></div>
-
-            <div class="pt-10 flex flex-col sm:flex-row gap-4 justify-end border-t border-white/5 mt-8">
-                <button onclick="closePlanModal()" class="px-8 py-3 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
-                    Back
-                </button>
-                <a href="#form-tratativas" onclick="closePlanModal()" class="px-8 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
-                    Start Engagement
-                </a>
+            <!-- header always visible -->
+            <div class="flex items-center justify-between h-[72px] px-6 sm:px-10 border-b border-white/10">
+                <span class="text-[10px] uppercase tracking-[0.35em] text-neutral-500">Boutique Method</span>
+                <button onclick="closePlanModal()"
+                        class="text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light leading-none"
+                        aria-label="Close Modal">×</button>
             </div>
+
+            <!-- scrollable content -->
+            <div id="modal-scroll" class="px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto flex-1">
+                <div id="modal-content" class="space-y-8"></div>
+            </div>
+
+            <!-- footer always visible -->
+            <div class="px-6 sm:px-10 py-5 border-t border-white/10 bg-neutral-900/95">
+                <div class="flex flex-col sm:flex-row gap-4 justify-end">
+                    <button onclick="closePlanModal()" class="px-8 py-3 border border-white/10 text-neutral-300 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
+                        Back
+                    </button>
+                    <a href="#form-tratativas" onclick="closePlanModal()" class="px-8 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
+                        Start Engagement
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -570,11 +589,13 @@
             const container = document.getElementById('modal-content');
 
             container.innerHTML = `
-                <div class="space-y-2 mb-8 border-l-2 border-gold-400 pl-6">
+                <div class="space-y-2 border-l-2 border-gold-400 pl-6">
                     <h3 class="font-serif text-3xl md:text-4xl text-white leading-tight italic">${data.title}</h3>
                     <p class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">${data.subtitle}</p>
                 </div>
-                <p class="text-neutral-300 font-light text-lg leading-loose text-justify">${data.text}</p>
+                <div class="text-neutral-300 font-light text-base sm:text-lg leading-relaxed sm:leading-loose text-justify">
+                    ${data.text}
+                </div>
             `;
 
             overlay.classList.remove('hidden');
