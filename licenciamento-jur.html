@@ -71,7 +71,7 @@
     #modal-body { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
     #modal-content { word-break: break-word; }
 
-    /* Botão de Audiodescrição (mantido do seu arquivo) */
+    /* Botão de Audiodescrição */
     .audio-fab {
       position: fixed;
       bottom: 30px;
@@ -104,7 +104,7 @@
 
   <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-  <!-- ✅ NAV (AGORA IGUAL AO INDEX + MOBILE DRAWER + CTA EM MODAL) -->
+  <!-- ✅ NAV (NOVO PADRÃO HOLDING) -->
   <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
     <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
@@ -120,12 +120,14 @@
       <!-- Desktop -->
       <div class="hidden lg:flex items-center gap-10">
         <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
-          <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-          <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+
+          <!-- ✅ ativo: faz sentido em página de vertente -->
+          <a href="licenciamento.html" class="text-gold-400 relative group cursor-default">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+
+          <a href="projetos-consultoria.html" class="hover:text-gold-400 transition duration-300 relative group">Projetos &amp; Consultoria<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+          <a href="acervo-executivo.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo Executivo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
         </div>
 
         <div class="h-4 w-px bg-white/10"></div>
@@ -135,7 +137,7 @@
           <a href="jur-legal-design-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
         </div>
 
-        <!-- ✅ CTA NÃO REDIRECIONA: ABRE MODAL -->
+        <!-- ✅ CTA abre modal -->
         <button type="button"
                 onclick="openModal('tratativas')"
                 class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out"
@@ -160,7 +162,7 @@
     </div>
   </nav>
 
-  <!-- ✅ MOBILE MENU DRAWER (IGUAL AO INDEX) -->
+  <!-- ✅ MOBILE MENU DRAWER (NOVO PADRÃO HOLDING) -->
   <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
     <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
@@ -174,12 +176,11 @@
       </div>
 
       <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
-        <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
-        <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
-        <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
-        <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
-        <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
-        <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo</a>
+        <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
+        <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
+        <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Licenciamento</a>
+        <a href="projetos-consultoria.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Projetos &amp; Consultoria</a>
+        <a href="acervo-executivo.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo Executivo</a>
       </div>
 
       <div class="pt-8">
@@ -205,13 +206,7 @@
   <main id="main-content" class="flex-grow pt-52 pb-24 px-6">
     <div class="max-w-4xl mx-auto">
 
-      <div class="mb-12">
-        <a href="licenciamento.html"
-           class="text-[10px] uppercase tracking-widest text-neutral-500 hover:text-gold-400 transition"
-           aria-label="Voltar para a visão geral de Licenciamento">
-          &larr; Voltar para Visão Geral
-        </a>
-      </div>
+      <!-- ✅ Removido "Voltar para visão geral" conforme seu padrão atual -->
 
       <header class="border-l-2 border-gold-400 pl-6 py-4 mb-12">
         <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block mb-3">Vertente de Licenciamento</span>
@@ -247,7 +242,6 @@
         </p>
 
         <div class="pt-12 text-center">
-          <!-- aqui você pode manter link ou também abrir modal; mantive link do seu original -->
           <a href="iniciar-tratativas.html"
              class="inline-block px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-white transition duration-500"
              aria-label="Solicitar licenciamento da vertente Jurídico e Legal Design">
@@ -276,8 +270,14 @@
     </div>
   </div>
 
-  <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-    <p>Boutique Method IP Holding Ltda © 2026</p>
+  <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+    <div class="flex flex-col items-center gap-6">
+      <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
+      <div class="space-y-2">
+        <p>Boutique Method IP Holding Ltda © 2026</p>
+        <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+      </div>
+    </div>
   </footer>
 
   <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
@@ -292,7 +292,7 @@
   <script src="accessibility.js"></script>
 
   <script>
-    // --- MENU MOBILE (PADRÃO INDEX) ---
+    // --- MENU MOBILE ---
     let mobileMenuOpen = false;
 
     function toggleMobileMenu(force) {
@@ -321,7 +321,7 @@
       }
     });
 
-    // --- MODAL (apenas CTA "tratativas" nesta página) ---
+    // --- MODAL (CTA "tratativas") ---
     const modalData = {
       tratativas: {
         title: "Iniciar Tratativas — O que significa",
@@ -369,7 +369,7 @@
       if (e.target === this) closeModal();
     });
 
-    // --- Áudio Descrição (preservado) ---
+    // --- Áudio Descrição ---
     const synth = window.speechSynthesis;
     let isPlaying = false;
 
