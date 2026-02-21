@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Tratativas | Boutique Method</title>
+    <meta name="description" content="Protocolo de iniciação BMIP: canal seguro para triagem, confidencialidade e encaminhamento de licenciamento, projetos e acervo executivo." />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="accessibility.css">
@@ -16,18 +17,30 @@
             theme: {
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { gold: { 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' } }
+                    colors: {
+                        gold: { 300: '#e5c55b', 400: '#d4af37', 500: '#c5a028', 900: '#8a6d1f' },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
+                    },
+                    backgroundImage: {
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                    },
                 }
             }
         }
     </script>
 
     <style>
+        :root { --nav-offset: 100px; }
+
         body { background-color: #050505; color: #e5e5e5; font-family: 'Lato', sans-serif; overflow-x: hidden; }
         .gold-selection::selection { background: #d4af37; color: black; }
 
+        main { padding-top: var(--nav-offset); }
+        #main-content { scroll-margin-top: var(--nav-offset); }
+
         /* Inputs */
-        .input-minimal {
+        .input-minimal{
             background: transparent;
             border: none;
             border-bottom: 1px solid rgba(255,255,255,0.12);
@@ -48,23 +61,17 @@
         }
         select.input-minimal { appearance: none; border-radius: 0; }
 
-        /* Subtle focus ring for accessibility */
         :focus-visible { outline: 2px solid rgba(212,175,55,0.6); outline-offset: 4px; }
 
-        /* Audio Description Button */
-        .audio-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
+        /* Audio */
+        .audio-fab{
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 50px;
             padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: flex; align-items: center; gap: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -77,42 +84,116 @@
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
         .paused .bar { animation: none; height: 20%; }
         @keyframes wave { 0%, 100% { height: 40%; } 50% { height: 100%; } }
+
+        /* Mobile drawer */
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
     </style>
 </head>
 
-<body class="antialiased gold-selection flex flex-col min-h-screen">
+<body class="antialiased gold-selection flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
-    <a href="#main-content" class="skip-link">Pular para o formulário</a>
+    <a href="#form-tratativas" class="skip-link">Pular para o formulário</a>
 
-    <!-- NAV -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="index.html" class="font-serif text-xl tracking-widest text-white uppercase hover:text-gold-400 transition">
-                Boutique Method<span class="text-gold-400 text-xs align-top ml-1">®</span>
+    <!-- NAV (PADRÃO HOLDING + MOBILE DRAWER) -->
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+
+            <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
+                        Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
+                    </span>
+                </div>
             </a>
 
-            <div class="flex items-center space-x-4 md:space-x-8">
-                <div class="flex space-x-4 md:space-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-center flex-wrap justify-center">
-                    <a href="origem.html" class="text-white hover:text-gold-400 transition">A Origem</a>
-                    <a href="manifesto.html" class="text-white hover:text-gold-400 transition">A Holding</a>
-                    <a href="licenciamento.html" class="text-white hover:text-gold-400 transition">Licenciamento</a>
-                    <a href="como-funciona.html" class="text-white hover:text-gold-400 transition">Como Funciona</a>
-                    <a href="servicos.html" class="text-white hover:text-gold-400 transition">Serviços</a>
-                    <a href="store.html" class="text-white hover:text-gold-400 transition">Acervo</a>
+            <!-- Desktop -->
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <a href="index.html" class="hover:text-gold-400 transition duration-300 relative group">Início<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="projetos-consultoria.html" class="hover:text-gold-400 transition duration-300 relative group">Projetos &amp; Consultoria<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="acervo-executivo.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo Executivo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+
+                    <!-- ativo -->
+                    <a href="iniciar-tratativas.html" class="text-gold-400 relative group cursor-default" aria-current="page">
+                        Contato<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span>
+                    </a>
                 </div>
 
-                <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest border-l border-white/20 pl-4 md:pl-6 ml-2">
-                    <span class="text-gold-400 cursor-default">PT</span>
-                    <span class="text-white/30">|</span>
-                    <a href="iniciar-tratativas-en.html" class="text-neutral-500 hover:text-white transition">EN</a>
+                <div class="h-4 w-px bg-white/10"></div>
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="iniciar-tratativas-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
+
+                <a href="#form-tratativas"
+                   class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
+                    Abrir Formulário
+                </a>
             </div>
 
-            <a href="iniciar-tratativas.html" class="px-6 py-2 border border-gold-400 text-gold-400 text-[10px] md:text-xs uppercase tracking-widest hover:bg-gold-400 hover:text-black transition duration-500" aria-current="page">
-                Iniciar Tratativas
-            </a>
+            <!-- Mobile: Hamburger -->
+            <button id="mobileMenuBtn"
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Abrir menu"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false">
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </button>
+
         </div>
     </nav>
+
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
+
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
+                <button type="button"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
+                        onclick="toggleMobileMenu(false)"
+                        aria-label="Fechar menu">✕</button>
+            </div>
+
+            <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <a href="index.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Início</a>
+                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
+                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
+                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
+                <a href="projetos-consultoria.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Projetos &amp; Consultoria</a>
+                <a href="acervo-executivo.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo Executivo</a>
+                <a href="iniciar-tratativas.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Contato</a>
+            </div>
+
+            <div class="pt-8">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
+                    <span class="text-gold-400">PT</span>
+                    <a href="iniciar-tratativas-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
+                </div>
+
+                <a href="#form-tratativas"
+                   onclick="toggleMobileMenu(false)"
+                   class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
+                    Abrir Formulário
+                </a>
+            </div>
+
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
+            </div>
+        </div>
+    </div>
 
     <main id="main-content" class="flex-grow flex items-center justify-center px-6 pt-40 pb-16">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
@@ -143,7 +224,7 @@
                 </p>
             </section>
 
-            <section class="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 shadow-2xl" aria-label="Formulário de contato seguro">
+            <section id="form-tratativas" class="bg-[#0a0a0a] border border-white/5 p-8 md:p-12 shadow-2xl" aria-label="Formulário de contato seguro">
                 <form action="https://formspree.io/f/xykdznjb" method="POST" class="space-y-8" novalidate>
 
                     <!-- Honeypot (anti-spam) -->
@@ -164,7 +245,7 @@
                         <select id="pauta" name="pauta" class="input-minimal text-neutral-300" required>
                             <option value="" disabled selected>SELECIONE A PAUTA</option>
                             <option value="licenciamento" style="background:#000;">Licenciamento de Método</option>
-                            <option value="servicos" style="background:#000;">Contratação de Serviços</option>
+                            <option value="servicos" style="background:#000;">Projetos & Consultoria</option>
                             <option value="parceria" style="background:#000;">Parceria Estratégica</option>
                             <option value="imprensa" style="background:#000;">Imprensa / Mídia</option>
                         </select>
@@ -190,15 +271,21 @@
                     <!-- Formspree controls -->
                     <input type="hidden" name="_next" value="https://boutiquemethodip.com/obrigado.html">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="Boutique Method | Nova tratativa (site)">
+                    <input type="hidden" name="_subject" value="BMIP | Nova tratativa (site)">
                 </form>
             </section>
 
         </div>
     </main>
 
-    <footer class="bg-black py-8 border-t border-white/10 text-[10px] text-neutral-600 text-center uppercase tracking-widest mt-auto">
-        <p>Boutique Method IP Holding Ltda © 2026</p>
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+        <div class="flex flex-col items-center gap-6">
+            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
+            <div class="space-y-2">
+                <p>Boutique Method IP Holding Ltda © 2026</p>
+                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
+            </div>
+        </div>
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
@@ -213,6 +300,34 @@
     <script src="accessibility.js"></script>
 
     <script>
+        // --- NAV MOBILE ---
+        let mobileMenuOpen = false;
+
+        function toggleMobileMenu(force) {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
+            if (!menu || !btn) return;
+
+            mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
+
+            if (mobileMenuOpen) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (mobileMenuOpen) toggleMobileMenu(false);
+            }
+        });
+
+        // --- ÁUDIO ---
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
@@ -226,7 +341,12 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Protocolo de Iniciação da Boutique Method. Para garantir sigilo, todas as tratativas começam por este canal. O formulário solicita seu nome, e-mail corporativo, pauta de interesse e uma breve descrição da demanda. O atendimento é feito sob acordo de confidencialidade e respondido em até 24 horas úteis. Evite incluir dados sensíveis nesta etapa.";
+                const text =
+                    "Protocolo de Iniciação da Boutique Method IP Holding. " +
+                    "Para garantir sigilo, todas as tratativas começam por este canal. " +
+                    "O formulário solicita seu nome, e-mail corporativo, pauta de interesse e uma breve descrição da demanda. " +
+                    "O atendimento é feito sob acordo de confidencialidade e respondido em até 24 horas úteis. " +
+                    "Evite incluir dados sensíveis nesta etapa.";
 
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
