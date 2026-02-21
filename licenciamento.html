@@ -16,12 +16,12 @@
             theme: {
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { 
-                        gold: { 
+                    colors: {
+                        gold: {
                             300: '#e5c55b',
-                            400: '#d4af37', 
+                            400: '#d4af37',
                             500: '#b5922f',
-                            900: '#8a6d1f' 
+                            900: '#8a6d1f'
                         },
                         obsidian: '#050505',
                         charcoal: '#0a0a0a'
@@ -45,18 +45,16 @@
 
     <style>
         :root { --nav-offset: 100px; }
-        
-        body { 
-            background-color: #020202; 
-            color: #e5e5e5; 
-            font-family: 'Lato', sans-serif; 
+
+        body {
+            background-color: #020202;
+            color: #e5e5e5;
+            font-family: 'Lato', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Seleção de texto Dourada */
         ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
 
-        /* Scrollbar personalizada fina */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
@@ -71,7 +69,6 @@
             box-shadow: 0 0 15px rgba(212,175,55,0.18);
         }
 
-        /* Glassmorphism e Cards */
         .glass-panel {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(10px);
@@ -85,7 +82,6 @@
             transform: translateY(-2px);
         }
 
-        /* Inputs (form) */
         .bmip-input {
             width: 100%;
             background: rgba(255,255,255,0.03);
@@ -111,7 +107,6 @@
             text-transform: uppercase;
         }
 
-        /* Botão de Áudio Premium */
         .audio-fab {
             position: fixed; bottom: 40px; right: 40px; z-index: 100;
             background: rgba(10, 10, 10, 0.6);
@@ -135,7 +130,6 @@
         .modal-enter { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        /* Mobile Drawer (NAV) */
         .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
 
@@ -154,7 +148,7 @@
     <!-- NAV (PADRÃO + MOBILE) -->
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
-            
+
             <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
                 <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
                 <div class="flex flex-col">
@@ -167,12 +161,15 @@
             <!-- Desktop NAV -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
-                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="index.html" class="hover:text-gold-400 transition duration-300 relative group">Início<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+
                     <a href="licenciamento.html" class="text-gold-400 relative group cursor-default">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
-                    <a href="como-funciona.html" class="hover:text-gold-400 transition duration-300 relative group">Como Funciona<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+
+                    <a href="projetos-consultoria.html" class="hover:text-gold-400 transition duration-300 relative group">Projetos &amp; Consultoria<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="acervo-executivo.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo Executivo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="iniciar-tratativas.html" class="hover:text-gold-400 transition duration-300 relative group">Contato<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                 </div>
 
                 <div class="h-4 w-px bg-white/10"></div>
@@ -216,12 +213,15 @@
             </div>
 
             <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
-                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
-                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
+                <a href="index.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Início</a>
+                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
+                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
+
                 <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Licenciamento</a>
-                <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Como Funciona</a>
-                <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
-                <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo</a>
+
+                <a href="projetos-consultoria.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Projetos &amp; Consultoria</a>
+                <a href="acervo-executivo.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo Executivo</a>
+                <a href="iniciar-tratativas.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Contato</a>
             </div>
 
             <div class="pt-8">
@@ -244,8 +244,8 @@
     </div>
 
     <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
-        
-        <header class="max-w-5xl mx-auto text-center mb-32 animate-fade-up">
+
+        <header class="max-w-5xl mx-auto text-center mb-20 animate-fade-up">
             <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">Modelo de Licenciamento</span>
             <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 italic">
                 Licencie o <span class="text-neutral-500 not-italic">Método</span>
@@ -255,17 +255,39 @@
                 Você não compra horas. Você compra um método auditável — implantado por sprints.
             </p>
 
+            <!-- ROTEADOR (clareza imediata) -->
+            <div class="mt-12 max-w-4xl mx-auto glass-panel px-6 py-5 md:px-8 md:py-6">
+                <div class="text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-4">Escolha o caminho</div>
+
+                <div class="grid md:grid-cols-3 gap-3 text-left">
+                    <div class="border border-gold-400/30 bg-gold-400/[0.03] px-5 py-4">
+                        <div class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">Licenciamento</div>
+                        <div class="text-neutral-300 text-sm font-light mt-1">Implantação por sprints + governança do padrão.</div>
+                    </div>
+
+                    <a href="projetos-consultoria.html" class="border border-white/10 hover:border-gold-400/30 px-5 py-4 transition">
+                        <div class="text-neutral-200 text-[10px] uppercase tracking-[0.25em] font-bold hover:text-gold-400 transition">Projetos &amp; Consultoria</div>
+                        <div class="text-neutral-400 text-sm font-light mt-1">Resolução pontual (escopo fechado) sob demanda.</div>
+                    </a>
+
+                    <a href="acervo-executivo.html" class="border border-white/10 hover:border-gold-400/30 px-5 py-4 transition">
+                        <div class="text-neutral-200 text-[10px] uppercase tracking-[0.25em] font-bold hover:text-gold-400 transition">Acervo Executivo</div>
+                        <div class="text-neutral-400 text-sm font-light mt-1">Kits prontos (download) para uso interno.</div>
+                    </a>
+                </div>
+            </div>
+
             <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
                 <a href="#form-tratativas" class="px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-300">
                     Iniciar Protocolo
                 </a>
-                <a href="como-funciona.html" class="px-10 py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-300">
+                <a href="#como-funciona" class="px-10 py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-300">
                     Ver Como Funciona
                 </a>
             </div>
         </header>
 
-        <section class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8 mb-32">
+        <section id="como-funciona" class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8 mb-32 scroll-mt-28">
             <div class="glass-panel p-10 md:p-12 relative group">
                 <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
                     <span class="font-serif text-6xl italic text-white">01</span>
@@ -480,7 +502,6 @@
 
     </main>
 
-    <!-- MODAL OVERLAY (AJUSTADO PARA DESKTOP: SCROLL + FOOTER SEMPRE VISÍVEL) -->
     <div id="modal-overlay"
          class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-start sm:items-center justify-center p-4 sm:p-8 overflow-y-auto overscroll-contain modal-enter"
          aria-hidden="true">
@@ -494,7 +515,6 @@
                     class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light"
                     aria-label="Fechar Modal">✕</button>
 
-            <!-- Área rolável do conteúdo (mantém o footer sempre visível) -->
             <div id="modal-content" class="space-y-8 flex-1 min-h-0 overflow-y-auto pr-3 -mr-3"></div>
 
             <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-end border-t border-white/5 mt-8 shrink-0">
@@ -694,7 +714,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Modelo de Licenciamento: Licencie o Método. Boutique Method é um sistema replicável de governança. Planos: Essential (2 sprints), Professional (4 sprints) e Enterprise (8 a 12 sprints). Iniciar Tratativas: Preencha o formulário abaixo.";
+                const text = "Modelo de Licenciamento: Licencie o Método. Boutique Method é um sistema replicável de governança. Como funciona: Sistema, Implantação e Governança. Planos: Essential, Professional e Enterprise. Iniciar Tratativas: Preencha o formulário.";
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
