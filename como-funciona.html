@@ -16,12 +16,12 @@
             theme: {
                 extend: {
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
-                    colors: { 
-                        gold: { 
+                    colors: {
+                        gold: {
                             300: '#e5c55b',
-                            400: '#d4af37', 
+                            400: '#d4af37',
                             500: '#b5922f',
-                            900: '#8a6d1f' 
+                            900: '#8a6d1f'
                         },
                         obsidian: '#050505',
                         charcoal: '#0a0a0a'
@@ -45,18 +45,16 @@
 
     <style>
         :root { --nav-offset: 100px; }
-        
-        body { 
-            background-color: #020202; 
-            color: #e5e5e5; 
-            font-family: 'Lato', sans-serif; 
+
+        body {
+            background-color: #020202;
+            color: #e5e5e5;
+            font-family: 'Lato', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Seleção de texto Dourada */
         ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
 
-        /* Scrollbar personalizada fina */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
@@ -71,7 +69,6 @@
             box-shadow: 0 0 15px rgba(212,175,55,0.18);
         }
 
-        /* Glassmorphism Cards */
         .glass-panel {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(10px);
@@ -86,7 +83,6 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
-        /* TIMELINE DESIGN */
         .roadmap-container { position: relative; }
         .roadmap-line {
             position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
@@ -119,7 +115,6 @@
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* Botão de Áudio Premium */
         .audio-fab {
             position: fixed; bottom: 40px; right: 40px; z-index: 100;
             background: rgba(10, 10, 10, 0.6);
@@ -140,7 +135,6 @@
         .paused .bar { animation: none; height: 2px; opacity: 0.5; }
         @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
-        /* Mobile Drawer (NAV) */
         .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
 
@@ -157,7 +151,7 @@
     <!-- NAV (PADRÃO + MOBILE) -->
     <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
-            
+
             <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
                 <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
                 <div class="flex flex-col">
@@ -170,12 +164,16 @@
             <!-- Desktop NAV -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
-                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">A Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">A Holding<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="licenciamento.html" class="hover:text-gold-400 transition duration-300 relative group">Licenciamento<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="como-funciona.html" class="text-gold-400 relative group cursor-default">Como Funciona<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
-                    <a href="servicos.html" class="hover:text-gold-400 transition duration-300 relative group">Serviços<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
-                    <a href="store.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="index.html" class="hover:text-gold-400 transition duration-300 relative group">Início<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+
+                    <!-- Como Funciona é página satélite → destacamos Licenciamento -->
+                    <a href="licenciamento.html" class="text-gold-400 relative group cursor-default">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
+
+                    <a href="projetos-consultoria.html" class="hover:text-gold-400 transition duration-300 relative group">Projetos &amp; Consultoria<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="acervo-executivo.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo Executivo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="iniciar-tratativas.html" class="hover:text-gold-400 transition duration-300 relative group">Contato<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                 </div>
 
                 <div class="h-4 w-px bg-white/10"></div>
@@ -219,12 +217,15 @@
             </div>
 
             <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
-                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Origem</a>
-                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">A Holding</a>
-                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Licenciamento</a>
-                <a href="como-funciona.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Como Funciona</a>
-                <a href="servicos.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Serviços</a>
-                <a href="store.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo</a>
+                <a href="index.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Início</a>
+                <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
+                <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
+
+                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Licenciamento</a>
+
+                <a href="projetos-consultoria.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Projetos &amp; Consultoria</a>
+                <a href="acervo-executivo.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo Executivo</a>
+                <a href="iniciar-tratativas.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Contato</a>
             </div>
 
             <div class="pt-8">
@@ -259,14 +260,14 @@
             <div class="roadmap-line hidden md:block" aria-hidden="true"></div>
 
             <div class="space-y-24">
-                
+
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">01</span>
                     </div>
-                    
+
                     <div class="step-number-badge" aria-hidden="true">I</div>
-                    
+
                     <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Protocolo de Iniciação</h3>
@@ -278,9 +279,9 @@
                     <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">02</span>
                     </div>
-                    
+
                     <div class="step-number-badge" aria-hidden="true">II</div>
-                    
+
                     <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Diagnóstico e Escopo</h3>
@@ -292,9 +293,9 @@
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">03</span>
                     </div>
-                    
+
                     <div class="step-number-badge" aria-hidden="true">III</div>
-                    
+
                     <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Contrato + Setup</h3>
@@ -306,9 +307,9 @@
                     <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">04</span>
                     </div>
-                    
+
                     <div class="step-number-badge" aria-hidden="true">IV</div>
-                    
+
                     <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Implantação por Sprints</h3>
@@ -320,9 +321,9 @@
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">05</span>
                     </div>
-                    
+
                     <div class="step-number-badge" aria-hidden="true">V</div>
-                    
+
                     <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Homologação e Kit</h3>
@@ -334,9 +335,9 @@
                     <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">06</span>
                     </div>
-                    
+
                     <div class="step-number-badge" aria-hidden="true">VI</div>
-                    
+
                     <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Operação Assistida</h3>
@@ -348,9 +349,9 @@
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">07</span>
                     </div>
-                    
+
                     <div class="step-number-badge" aria-hidden="true">VII</div>
-                    
+
                     <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Renovação</h3>
