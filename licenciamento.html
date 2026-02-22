@@ -8,26 +8,35 @@
 
     <link rel="stylesheet" href="accessibility.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { 
-                        serif: ['"Playfair Display"', 'serif'], 
-                        sans: ['"Inter"', 'sans-serif'] 
-                    },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Lato"', 'sans-serif'] },
                     colors: {
-                        gold: { 200: '#f1e4bc', 300: '#e5c55b', 400: '#d4af37', 500: '#b5922f', 900: '#1a1608' },
-                        obsidian: '#020202',
-                        card: 'rgba(15, 15, 15, 0.7)'
+                        gold: {
+                            300: '#e5c55b',
+                            400: '#d4af37',
+                            500: '#b5922f',
+                            900: '#8a6d1f'
+                        },
+                        obsidian: '#050505',
+                        charcoal: '#0a0a0a'
                     },
                     backgroundImage: {
-                        'mesh': 'radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.05) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.02) 0px, transparent 50%)',
+                        'lux-gradient': 'radial-gradient(circle at center top, rgba(20,20,20,1) 0%, rgba(5,5,5,1) 60%)',
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -39,107 +48,90 @@
 
         body {
             background-color: #020202;
-            color: #fafafa;
-            font-family: 'Inter', sans-serif;
+            color: #e5e5e5;
+            font-family: 'Lato', sans-serif;
             overflow-x: hidden;
         }
 
         ::selection { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
 
-        /* Estilização de Scrollbar Premium */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #020202; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
         main { padding-top: var(--nav-offset); }
         #main-content { scroll-margin-top: var(--nav-offset); }
 
         :focus-visible {
-            outline: none;
-            box-shadow: 0 0 0 1px #d4af37, 0 0 15px rgba(212,175,55,0.18);
+            outline: 1px solid #d4af37;
+            outline-offset: 4px;
+            box-shadow: 0 0 15px rgba(212,175,55,0.18);
         }
 
-        /* Animações de Entrada (Fade-Up Cascading) */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
         }
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-
-        /* Efeito de brilho nas bordas (Lux Border) */
-        .lux-border {
-            background: rgba(15, 15, 15, 0.4);
-            border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .lux-border:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            background: rgba(20, 20, 20, 0.6);
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 20px -5px rgba(212, 175, 55, 0.1);
+        .glass-panel:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
             transform: translateY(-2px);
         }
 
-        /* Inputs de formulário Premium */
         .bmip-input {
             width: 100%;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 1rem 1.2rem;
             color: #fff;
-            transition: all 0.4s ease;
-            font-family: 'Inter', sans-serif;
+            transition: .3s ease;
+            font-family: 'Lato', sans-serif;
             font-weight: 300;
         }
         .bmip-input:focus {
             outline: none;
             border-color: #d4af37;
             background: rgba(255,255,255,0.05);
-            box-shadow: 0 0 20px rgba(212,175,55,0.1);
+            box-shadow: 0 0 15px rgba(212,175,55,0.1);
         }
         .bmip-label {
             display: block;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             color: rgba(255,255,255,0.5);
             margin-bottom: 0.5rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
         }
 
-        /* Botão Flutuante de Áudio */
         .audio-fab {
-            position: fixed; bottom: 30px; right: 30px; z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 100px; padding: 12px 24px;
+            position: fixed; bottom: 40px; right: 40px; z-index: 100;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 14px 28px;
             display: flex; align-items: center; gap: 12px;
-            cursor: pointer; transition: all 0.3s;
+            cursor: pointer; transition: all 0.5s ease;
         }
-        .audio-fab:hover { transform: scale(1.05); border-color: #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
-        .audio-wave { display: flex; gap: 3px; align-items: flex-end; height: 16px; }
-        .bar { width: 2px; background: #d4af37; border-radius: 2px; transition: height 0.2s; }
+        .audio-fab:hover { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+        .audio-wave { display: flex; gap: 3px; align-items: center; height: 12px; }
+        .bar { width: 1px; background: #d4af37; animation: wave 1s infinite ease-in-out; }
         .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
         .bar:nth-child(2) { height: 100%; animation-delay: 0.1s; }
         .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-        .paused .bar { animation: none; height: 4px; opacity: 0.5; }
-        @keyframes wave { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+        .paused .bar { animation: none; height: 2px; opacity: 0.5; }
+        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
 
-        /* Animações de Modal e Menu */
-        .modal-enter { animation: fadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+        .modal-enter { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
-        @keyframes drawerIn { from { transform: translateX(12px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .drawer-enter { animation: drawerIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes drawerIn { from { transform: translateX(12px); opacity: 0.7; } to { transform: translateX(0); opacity: 1; } }
 
         @media (max-width: 640px) {
             .audio-fab { bottom: 16px; right: 16px; padding: 12px 20px; }
@@ -147,17 +139,18 @@
     </style>
 </head>
 
-<body class="antialiased flex flex-col min-h-screen bg-mesh bg-fixed">
+<body class="antialiased flex flex-col min-h-screen bg-obsidian bg-lux-gradient bg-fixed">
 
     <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-gold-400 focus:text-black focus:p-2 focus:z-[120]">
         Pular para o conteúdo
     </a>
 
-    <nav class="fixed w-full z-50 bg-obsidian/80 backdrop-blur-2xl border-b border-white/[0.05] transition-all duration-500">
-        <div class="max-w-[1440px] mx-auto px-8 h-20 flex items-center justify-between">
+    <!-- NAV (PADRÃO + MOBILE) -->
+    <nav class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/[0.03] transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
 
             <a href="index.html" class="group flex items-center gap-4 opacity-90 hover:opacity-100 transition duration-500" aria-label="Boutique Method - Página inicial">
-                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
+                <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-10 w-auto opacity-90 group-hover:brightness-110 transition duration-500">
                 <div class="flex flex-col">
                     <span class="font-serif text-lg tracking-[0.15em] text-white uppercase leading-none">
                         Boutique Method<span class="text-gold-400 text-[0.6em] align-top ml-1">®</span>
@@ -165,12 +158,14 @@
                 </div>
             </a>
 
+            <!-- Desktop NAV -->
             <div class="hidden lg:flex items-center gap-10">
-                <div class="flex gap-8 text-[10px] tracking-[0.2em] uppercase font-medium text-neutral-400">
+                <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
+                    <!-- ✅ REMOVIDO: Início -->
                     <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
 
-                    <a href="licenciamento.html" class="text-gold-400 border-b border-gold-400/30 pb-1 cursor-default">Licenciamento</a>
+                    <a href="licenciamento.html" class="text-gold-400 relative group cursor-default">Licenciamento<span class="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-400"></span></a>
 
                     <a href="projetos-consultoria.html" class="hover:text-gold-400 transition duration-300 relative group">Projetos &amp; Consultoria<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="acervo-executivo.html" class="hover:text-gold-400 transition duration-300 relative group">Acervo Executivo<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
@@ -180,45 +175,50 @@
                 <div class="h-4 w-px bg-white/10"></div>
 
                 <div class="flex items-center gap-3 text-[10px] uppercase tracking-widest">
-                    <span class="text-gold-400 font-bold">PT</span>
+                    <span class="text-gold-400">PT</span>
                     <a href="licenciamento-en.html" class="text-neutral-600 hover:text-white transition" lang="en">EN</a>
                 </div>
 
-                <a href="#form-tratativas" class="px-6 py-2.5 bg-white text-black text-[10px] uppercase font-bold tracking-[0.15em] hover:bg-gold-400 transition-colors duration-500 ease-out">
+                <a href="#form-tratativas" class="px-8 py-3 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out">
                     Iniciar Tratativas
                 </a>
             </div>
 
+            <!-- Mobile: Hamburger -->
             <button id="mobileMenuBtn"
                     type="button"
-                    class="lg:hidden text-white hover:text-gold-400 transition"
+                    class="lg:hidden inline-flex items-center justify-center w-11 h-11 border border-white/15 bg-white/5 backdrop-blur-sm hover:border-gold-400/40 transition"
                     onclick="toggleMobileMenu()"
                     aria-label="Abrir menu"
                     aria-controls="mobileMenu"
                     aria-expanded="false">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
+                <svg class="w-5 h-5 text-white/80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
                 </svg>
             </button>
         </div>
     </nav>
 
+    <!-- MOBILE MENU DRAWER -->
     <div id="mobileMenu" class="fixed inset-0 z-[110] hidden lg:hidden">
         <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
-        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-obsidian border-l border-white/10 p-6 overflow-y-auto drawer-enter">
+        <div class="absolute top-0 right-0 h-full w-[88%] max-w-sm bg-black/90 border-l border-white/10 p-6 overflow-y-auto drawer-enter">
             <div class="flex items-center justify-between pb-6 border-b border-white/10">
                 <span class="font-serif text-base tracking-[0.15em] text-white uppercase">Menu</span>
                 <button type="button"
-                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none font-light"
+                        class="text-neutral-400 hover:text-gold-400 transition-colors text-3xl leading-none"
                         onclick="toggleMobileMenu(false)"
                         aria-label="Fechar menu">✕</button>
             </div>
 
             <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
+                <!-- ✅ REMOVIDO: Início -->
                 <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
                 <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
-                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400 font-medium">Licenciamento</a>
+
+                <a href="licenciamento.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-gold-400">Licenciamento</a>
+
                 <a href="projetos-consultoria.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Projetos &amp; Consultoria</a>
                 <a href="acervo-executivo.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Acervo Executivo</a>
                 <a href="iniciar-tratativas.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Contato</a>
@@ -226,277 +226,219 @@
 
             <div class="pt-8">
                 <div class="flex items-center justify-between text-[10px] uppercase tracking-widest">
-                    <span class="text-gold-400 font-bold">PT</span>
+                    <span class="text-gold-400">PT</span>
                     <a href="licenciamento-en.html" onclick="toggleMobileMenu(false)" class="text-neutral-500 hover:text-white transition" lang="en">EN</a>
                 </div>
 
                 <a href="#form-tratativas"
                    onclick="toggleMobileMenu(false)"
-                   class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 text-center font-bold">
+                   class="mt-6 block w-full px-6 py-4 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition duration-500 ease-out text-center">
                     Iniciar Tratativas
                 </a>
             </div>
 
-            <div class="pt-8 text-[9px] tracking-[0.3em] uppercase text-neutral-600">
-                <span class="text-gold-400/80 font-bold">BMIP</span> · Navegação Mobile
+            <div class="pt-8 text-[10px] tracking-[0.25em] uppercase text-neutral-600">
+                <span class="text-gold-400/80">BMIP</span> · Navegação Mobile
             </div>
         </div>
     </div>
 
     <main id="main-content" class="flex-grow pt-40 pb-32 px-6">
 
-        <header class="max-w-5xl mx-auto text-center mb-16 fade-in-up">
-            <span class="text-gold-400 text-[9px] tracking-[0.5em] uppercase block mb-6 font-bold">Modelo de Licenciamento</span>
-            <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 italic leading-tight">
-                Licenciamento <span class="text-neutral-500 not-italic font-light">Boutique</span>
+        <header class="max-w-5xl mx-auto text-center mb-20 animate-fade-up">
+            <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block mb-6 font-medium">Modelo de Licenciamento</span>
+            <h1 class="font-serif text-5xl md:text-8xl text-white mb-8 italic">
+                Licencie o <span class="text-neutral-500 not-italic">Método</span>
             </h1>
+            <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+                Boutique Method é um sistema replicável de governança de linguagem, templates operacionais e rituais de execução.
+                Você não compra horas. Você compra um método auditável — implantado por sprints.
+            </p>
 
-            <div class="mt-8 max-w-4xl mx-auto lux-border px-6 py-8 md:px-12 md:py-10 text-left">
-                <div class="text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">O que é licenciamento</div>
+            <!-- ROTEADOR (clareza imediata) -->
+            <div class="mt-12 max-w-4xl mx-auto glass-panel px-6 py-5 md:px-8 md:py-6">
+                <div class="text-[10px] uppercase tracking-[0.35em] text-neutral-500 mb-4">Escolha o caminho</div>
 
-                <p class="text-neutral-300 font-light leading-relaxed text-lg">
-                    <span class="text-white font-medium">Licenciamento é parceria anual</span> com implantação por sprints.
-                </p>
-
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="border border-white/10 bg-white/[0.02] px-5 py-4">
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-neutral-500">Não é</div>
-                        <div class="mt-2 text-sm text-neutral-300 font-light">compra de material.</div>
+                <div class="grid md:grid-cols-3 gap-3 text-left">
+                    <div class="border border-gold-400/30 bg-gold-400/[0.03] px-5 py-4">
+                        <div class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">Licenciamento</div>
+                        <div class="text-neutral-300 text-sm font-light mt-1">Implantação por sprints + governança do padrão.</div>
                     </div>
-                    <div class="border border-white/10 bg-white/[0.02] px-5 py-4">
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-neutral-500">Não é</div>
-                        <div class="mt-2 text-sm text-neutral-300 font-light">projeto pontual.</div>
-                    </div>
-                    <div class="border border-white/10 bg-white/[0.02] px-5 py-4">
-                        <div class="text-[9px] uppercase tracking-[0.3em] text-neutral-500">Não é</div>
-                        <div class="mt-2 text-sm text-neutral-300 font-light">curso.</div>
-                    </div>
-                </div>
 
-                <p class="mt-8 text-neutral-300 font-light leading-relaxed text-base">
-                    É a implantação do <span class="text-white font-medium">Método Boutique™</span> como <span class="text-white font-medium">sistema oficial</span> da sua operação.
-                </p>
+                    <a href="projetos-consultoria.html" class="border border-white/10 hover:border-gold-400/30 px-5 py-4 transition">
+                        <div class="text-neutral-200 text-[10px] uppercase tracking-[0.25em] font-bold hover:text-gold-400 transition">Projetos &amp; Consultoria</div>
+                        <div class="text-neutral-400 text-sm font-light mt-1">Resolução pontual (escopo fechado) sob demanda.</div>
+                    </a>
 
-                <p class="mt-5 text-[10px] uppercase tracking-[0.2em] text-gold-400">
-                    Resultado: padrão, governança e execução replicável — com entregáveis e rotina de sustentação.
-                </p>
-            </div>
-
-            <div class="mt-6 max-w-4xl mx-auto lux-border px-6 py-8 md:px-12 md:py-10 text-left delay-100 fade-in-up">
-                <div class="text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-500 mb-6">Direcionamento rápido</div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-neutral-300">
-                        <thead>
-                            <tr class="text-[9px] uppercase tracking-[0.3em] text-neutral-500 border-b border-white/10">
-                                <th class="py-4 font-normal text-left">Você quer…</th>
-                                <th class="py-4 font-normal text-right">Escolha</th>
-                            </tr>
-                        </thead>
-                        <tbody class="font-light">
-                            <tr class="border-b border-white/5 hover:bg-white/[0.02] transition">
-                                <td class="py-5 pr-6 text-neutral-300">
-                                    Implantar o método oficialmente na sua empresa
-                                </td>
-                                <td class="py-5 text-right">
-                                    <span class="inline-flex items-center gap-2 border border-gold-400/40 bg-gold-400/[0.06] px-4 py-2 text-[9px] font-bold uppercase tracking-[0.3em] text-gold-400">
-                                        Licenciamento
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-white/5 hover:bg-white/[0.02] transition">
-                                <td class="py-5 pr-6 text-neutral-300">
-                                    Resolver algo pontual
-                                </td>
-                                <td class="py-5 text-right">
-                                    <a href="projetos-consultoria.html"
-                                       class="inline-flex items-center gap-2 border border-white/10 hover:border-gold-400/40 px-4 py-2 text-[9px] font-medium uppercase tracking-[0.3em] text-neutral-400 hover:text-gold-400 transition">
-                                        Serviços
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-white/[0.02] transition">
-                                <td class="py-5 pr-6 text-neutral-300">
-                                    Comprar um kit pronto para uso interno
-                                </td>
-                                <td class="py-5 text-right">
-                                    <a href="acervo-executivo.html"
-                                       class="inline-flex items-center gap-2 border border-white/10 hover:border-gold-400/40 px-4 py-2 text-[9px] font-medium uppercase tracking-[0.3em] text-neutral-400 hover:text-gold-400 transition">
-                                        Acervo
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="mt-6 text-[9px] tracking-[0.3em] uppercase text-neutral-600">
-                    Isso elimina confusão antes de falar do “como”.
+                    <a href="acervo-executivo.html" class="border border-white/10 hover:border-gold-400/30 px-5 py-4 transition">
+                        <div class="text-neutral-200 text-[10px] uppercase tracking-[0.25em] font-bold hover:text-gold-400 transition">Acervo Executivo</div>
+                        <div class="text-neutral-400 text-sm font-light mt-1">Kits prontos (download) para uso interno.</div>
+                    </a>
                 </div>
             </div>
 
-            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 delay-200 fade-in-up">
-                <a href="#planos" class="px-10 py-4 bg-gold-400 text-black text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-white transition-colors duration-500 w-full sm:w-auto">
-                    Ver Planos
+            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#form-tratativas" class="px-10 py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition duration-300">
+                    Iniciar Protocolo
                 </a>
-                <a href="#form-tratativas" class="px-10 py-4 border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition-colors duration-500 w-full sm:w-auto">
-                    Iniciar Tratativas
+                <a href="#como-funciona" class="px-10 py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition duration-300">
+                    Ver Como Funciona
                 </a>
             </div>
         </header>
 
-        <section id="planos" class="max-w-[1400px] mx-auto mb-32 relative scroll-mt-32 fade-in-up delay-300">
-            <div class="absolute inset-0 bg-gold-400/5 blur-[120px] -z-10 opacity-40"></div>
-
-            <div class="text-center mb-16">
-                <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block font-bold mb-4">Planos</span>
-                <h2 class="font-serif text-5xl text-white italic">Modelos de Licenciamento</h2>
-                <p class="text-neutral-400 text-base mt-6 max-w-2xl mx-auto font-light leading-relaxed">
-                    Três níveis, com implantação por sprints. O escopo final é definido após diagnóstico e tratativas.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="lux-border p-10 flex flex-col h-full bg-card group">
-                    <div>
-                        <h3 class="font-serif text-4xl text-white italic mb-3 group-hover:text-gold-400 transition-colors">Essential</h3>
-                        <p class="text-neutral-500 text-[9px] font-bold uppercase tracking-[0.3em]">2 sprints • padronização rápida</p>
-                        <div class="h-px w-full bg-white/10 my-8 group-hover:bg-gold-400/30 transition-colors"></div>
-                        <ul class="space-y-4 text-neutral-300 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Carta Magna + Tom de Voz por canal</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Templates essenciais (operacional)</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Fluxo básico de atendimento + escalonamento</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Checklist semanal + métricas mínimas</li>
-                        </ul>
-                    </div>
-                    <div class="mt-auto pt-12 flex flex-col gap-4">
-                        <button onclick="openPlanModal('essential')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left font-medium">Ver escopo completo +</button>
-                        <a href="#form-tratativas" class="w-full py-4 border border-white/10 text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition-colors duration-500 text-center">Iniciar tratativas</a>
-                    </div>
+        <section id="como-funciona" class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8 mb-32 scroll-mt-28">
+            <div class="glass-panel p-10 md:p-12 relative group">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
+                    <span class="font-serif text-6xl italic text-white">01</span>
                 </div>
-
-                <div class="lux-border p-10 flex flex-col h-full border-gold-400/40 bg-gold-400/[0.03] relative transform md:-translate-y-4 shadow-2xl shadow-black/80">
-                    <div class="absolute top-0 right-0">
-                        <span class="bg-gold-400 text-black text-[8px] px-4 py-1.5 uppercase font-bold tracking-[0.3em]">Recomendado</span>
-                    </div>
-                    <div>
-                        <h3 class="font-serif text-4xl text-gold-400 italic mb-3">Professional</h3>
-                        <p class="text-neutral-400 text-[9px] font-bold uppercase tracking-[0.3em]">4 sprints • consistência + performance</p>
-                        <div class="h-px w-full bg-gold-400/20 my-8"></div>
-                        <ul class="space-y-4 text-neutral-300 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Tudo do Essential</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Scripts ampliados + objeções</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Playbook de crise (tático)</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> RACI + SLA interno + ritual mensal</li>
-                        </ul>
-                    </div>
-                    <div class="mt-auto pt-12 flex flex-col gap-4">
-                        <button onclick="openPlanModal('professional')" class="text-white text-[10px] uppercase tracking-[0.2em] hover:text-gold-400 transition text-left font-medium">Ver escopo completo +</button>
-                        <a href="#form-tratativas" class="w-full py-4 bg-gold-400 text-black text-[10px] uppercase font-bold tracking-[0.2em] hover:bg-white transition-colors duration-500 text-center">Iniciar tratativas</a>
-                    </div>
-                </div>
-
-                <div class="lux-border p-10 flex flex-col h-full bg-card group">
-                    <div>
-                        <h3 class="font-serif text-4xl text-white italic mb-3 group-hover:text-gold-400 transition-colors">Enterprise</h3>
-                        <p class="text-neutral-500 text-[9px] font-bold uppercase tracking-[0.3em]">8–12 sprints • multiunidade</p>
-                        <div class="h-px w-full bg-white/10 my-8 group-hover:bg-gold-400/30 transition-colors"></div>
-                        <ul class="space-y-4 text-neutral-300 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Tudo do Professional</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Governança multiunidade + multiplicadores</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Kit robusto de reputação + trilhas formais</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-sm mt-0.5">✦</span> Auditorias + painel de métricas + recertificação</li>
-                        </ul>
-                    </div>
-                    <div class="mt-auto pt-12 flex flex-col gap-4">
-                        <button onclick="openPlanModal('enterprise')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left font-medium">Ver escopo completo +</button>
-                        <a href="#form-tratativas" class="w-full py-4 border border-white/10 text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition-colors duration-500 text-center">Iniciar tratativas</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="como-funciona" class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-6 mb-32 scroll-mt-32">
-            <div class="lux-border bg-card p-10 md:p-14 relative group overflow-hidden">
-                <div class="absolute -top-4 -right-4 p-6 opacity-[0.03] group-hover:opacity-10 transition duration-700 pointer-events-none">
-                    <span class="font-serif text-9xl italic text-white">01</span>
-                </div>
-                <h2 class="font-serif text-4xl text-white italic mb-5 group-hover:text-gold-400 transition-colors">Sistema</h2>
-                <div class="w-8 h-[1px] bg-white/20 mb-8 group-hover:w-24 group-hover:bg-gold-400 transition-all duration-700"></div>
-                <p class="text-neutral-400 font-light text-base leading-relaxed">
+                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Sistema</h2>
+                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                <p class="text-neutral-400 font-light text-sm leading-relaxed">
                     Templates, SOPs, checklists, scripts e rituais. Tudo desenhado para operação real — não teoria.
                 </p>
             </div>
 
-            <div class="lux-border bg-card p-10 md:p-14 relative group overflow-hidden">
-                <div class="absolute -top-4 -right-4 p-6 opacity-[0.03] group-hover:opacity-10 transition duration-700 pointer-events-none">
-                    <span class="font-serif text-9xl italic text-white">02</span>
+            <div class="glass-panel p-10 md:p-12 relative group">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
+                    <span class="font-serif text-6xl italic text-white">02</span>
                 </div>
-                <h2 class="font-serif text-4xl text-white italic mb-5 group-hover:text-gold-400 transition-colors">Implantação</h2>
-                <div class="w-8 h-[1px] bg-white/20 mb-8 group-hover:w-24 group-hover:bg-gold-400 transition-all duration-700"></div>
-                <p class="text-neutral-400 font-light text-base leading-relaxed">
+                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Implantação</h2>
+                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                <p class="text-neutral-400 font-light text-sm leading-relaxed">
                     Entregáveis + treinamento + aplicação + revisão. Em ciclos curtos (sprints) com avanço mensurável.
                 </p>
             </div>
 
-            <div class="lux-border bg-card p-10 md:p-14 relative group overflow-hidden">
-                <div class="absolute -top-4 -right-4 p-6 opacity-[0.03] group-hover:opacity-10 transition duration-700 pointer-events-none">
-                    <span class="font-serif text-9xl italic text-white">03</span>
+            <div class="glass-panel p-10 md:p-12 relative group">
+                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition duration-500">
+                    <span class="font-serif text-6xl italic text-white">03</span>
                 </div>
-                <h2 class="font-serif text-4xl text-white italic mb-5 group-hover:text-gold-400 transition-colors">Governança</h2>
-                <div class="w-8 h-[1px] bg-white/20 mb-8 group-hover:w-24 group-hover:bg-gold-400 transition-all duration-700"></div>
-                <p class="text-neutral-400 font-light text-base leading-relaxed">
+                <h2 class="font-serif text-3xl text-white italic mb-4 group-hover:text-gold-400 transition">Governança</h2>
+                <div class="w-8 h-px bg-white/20 mb-6 group-hover:w-16 group-hover:bg-gold-400 transition-all duration-500"></div>
+                <p class="text-neutral-400 font-light text-sm leading-relaxed">
                     Sustentação do padrão com rotinas, métricas mínimas e recertificação. Manutenção anual do nível.
                 </p>
             </div>
         </section>
 
-        <section id="form-tratativas" class="max-w-7xl mx-auto border-t border-white/5 pt-32">
-            <div class="grid lg:grid-cols-2 gap-20 items-start">
-                <div class="text-left space-y-10">
+        <section class="max-w-[1400px] mx-auto mb-32 relative">
+            <div class="absolute inset-0 bg-gold-400/5 blur-[100px] -z-10 opacity-30"></div>
+
+            <div class="text-center mb-16">
+                <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold mb-4">Planos</span>
+                <h2 class="font-serif text-4xl text-white italic">Modelos de Licenciamento</h2>
+                <p class="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto font-light">
+                    Três níveis, com implantação por sprints. O escopo final é definido após diagnóstico e escopo.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-panel p-10 flex flex-col h-full hover:border-white/20">
                     <div>
-                        <span class="text-gold-400 text-[10px] tracking-[0.4em] uppercase block font-bold mb-6">Protocolo</span>
-                        <h2 class="font-serif text-5xl md:text-7xl text-white italic leading-tight">Iniciar <br>Tratativas</h2>
+                        <h3 class="font-serif text-3xl text-white italic mb-2">Essential</h3>
+                        <p class="text-neutral-500 text-[10px] uppercase tracking-widest">2 sprints • padronização rápida</p>
+                        <div class="h-px w-full bg-white/10 my-8"></div>
+                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Carta Magna + Tom de Voz por canal</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Templates essenciais (operacional)</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Fluxo básico de atendimento + escalonamento</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Checklist semanal + métricas mínimas</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto pt-10 flex flex-col gap-4">
+                        <button onclick="openPlanModal('essential')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left">Ver escopo completo +</button>
+                        <a href="#form-tratativas" class="w-full py-3 border border-white/10 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition text-center">Iniciar tratativas</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-10 flex flex-col h-full border-gold-400/30 bg-gold-400/[0.02] relative transform md:-translate-y-4 shadow-2xl shadow-black/50">
+                    <div class="absolute top-0 right-0">
+                        <span class="bg-gold-400 text-black text-[9px] px-3 py-1 uppercase font-bold tracking-wider">Recomendado</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-3xl text-gold-400 italic mb-2">Professional</h3>
+                        <p class="text-neutral-400 text-[10px] uppercase tracking-widest">4 sprints • consistência + performance</p>
+                        <div class="h-px w-full bg-gold-400/20 my-8"></div>
+                        <ul class="space-y-4 text-neutral-300 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Tudo do Essential</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Scripts ampliados + objeções</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Playbook de crise (tático)</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> RACI + SLA interno + ritual mensal</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto pt-10 flex flex-col gap-4">
+                        <button onclick="openPlanModal('professional')" class="text-white text-[10px] uppercase tracking-[0.2em] hover:text-gold-400 transition text-left">Ver escopo completo +</button>
+                        <a href="#form-tratativas" class="w-full py-3 bg-gold-400 text-black text-[10px] uppercase tracking-[0.2em] hover:bg-white transition text-center font-bold">Iniciar tratativas</a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-10 flex flex-col h-full hover:border-white/20">
+                    <div>
+                        <h3 class="font-serif text-3xl text-white italic mb-2">Enterprise</h3>
+                        <p class="text-neutral-500 text-[10px] uppercase tracking-widest">8–12 sprints • multiunidade</p>
+                        <div class="h-px w-full bg-white/10 my-8"></div>
+                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Tudo do Professional</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Governança multiunidade + multiplicadores</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Kit robusto de reputação + trilhas formais</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 mt-1 text-xs">✦</span> Auditorias + painel de métricas + recertificação</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto pt-10 flex flex-col gap-4">
+                        <button onclick="openPlanModal('enterprise')" class="text-gold-400 text-[10px] uppercase tracking-[0.2em] hover:text-white transition text-left">Ver escopo completo +</button>
+                        <a href="#form-tratativas" class="w-full py-3 border border-white/10 text-white text-[10px] uppercase tracking-[0.2em] hover:border-gold-400 hover:text-gold-400 transition text-center">Iniciar tratativas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="form-tratativas" class="max-w-6xl mx-auto border-t border-white/5 pt-24">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div class="text-left space-y-8">
+                    <div>
+                        <span class="text-gold-400 text-xs tracking-[0.3em] uppercase block font-bold mb-4">Protocolo</span>
+                        <h2 class="font-serif text-4xl md:text-5xl text-white italic">Iniciar Tratativas</h2>
                     </div>
 
-                    <p class="text-neutral-400 font-light text-xl leading-relaxed max-w-lg">
+                    <p class="text-neutral-400 font-light text-lg leading-relaxed">
                         Preencha o mínimo necessário para diagnóstico e direcionamento do plano. O envio é processado por endpoint próprio.
                     </p>
 
-                    <div class="lux-border bg-white/[0.01] p-10 md:p-12 border-l-4 border-l-gold-400">
-                        <h3 class="font-serif text-3xl text-white italic mb-8">O que acontece após enviar</h3>
-                        <ul class="space-y-5 text-neutral-300 text-sm font-light">
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-base mt-0.5">✦</span> Triagem do contexto (vertical, plano, urgência).</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-base mt-0.5">✦</span> Retorno com próximos passos e pré-escopo.</li>
-                            <li class="flex items-start"><span class="text-gold-400 mr-4 text-base mt-0.5">✦</span> Quando aplicável: envio de NDA e agenda de diagnóstico.</li>
+                    <div class="glass-panel p-8 md:p-10 border-l-2 border-l-gold-400">
+                        <h3 class="font-serif text-2xl text-white italic mb-6">O que acontece após enviar</h3>
+                        <ul class="space-y-4 text-neutral-400 text-sm font-light">
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Triagem do contexto (vertical, plano, urgência).</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Retorno com próximos passos e pré-escopo.</li>
+                            <li class="flex items-start"><span class="text-gold-400 mr-3 text-xs">✦</span> Quando aplicável: envio de NDA e agenda de diagnóstico.</li>
                         </ul>
-                        <div class="mt-10 pt-8 border-t border-white/10 text-neutral-500 text-[10px] uppercase tracking-widest leading-relaxed">
+                        <div class="mt-8 pt-6 border-t border-white/5 text-neutral-500 text-xs leading-relaxed">
                             Caso o endpoint esteja indisponível, o envio por e-mail é oferecido como fallback imediato.
                         </div>
                     </div>
                 </div>
 
-                <div class="lux-border bg-card p-10 md:p-16">
-                    <form id="bmipForm" class="space-y-8" novalidate>
+                <div class="glass-panel p-10 md:p-12">
+                    <form id="bmipForm" class="space-y-6" novalidate>
                         <input type="hidden" name="origem" value="licenciamento.html" />
 
-                        <div class="space-y-3">
+                        <div class="space-y-2">
                             <label class="bmip-label" for="nome">Nome</label>
                             <input id="nome" name="nome" class="bmip-input" autocomplete="name" required placeholder="Seu nome completo">
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-2">
                             <label class="bmip-label" for="email">E-mail</label>
                             <input id="email" name="email" type="email" class="bmip-input" autocomplete="email" required placeholder="voce@empresa.com">
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-2">
                             <label class="bmip-label" for="telefone">WhatsApp</label>
                             <input id="telefone" name="telefone" inputmode="tel" class="bmip-input" autocomplete="tel" placeholder="(55) 9XXXX-XXXX">
                         </div>
 
-                        <div class="grid sm:grid-cols-2 gap-8">
-                            <div class="space-y-3">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
                                 <label class="bmip-label" for="vertical">Vertente</label>
                                 <div class="relative">
                                     <select id="vertical" name="vertical" class="bmip-input appearance-none" required>
@@ -505,11 +447,11 @@
                                         <option value="HC">HC (Saúde)</option>
                                         <option value="POL">POL (Integridade/Crise)</option>
                                     </select>
-                                    <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
+                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
                                 </div>
                             </div>
 
-                            <div class="space-y-3">
+                            <div class="space-y-2">
                                 <label class="bmip-label" for="plano">Plano de interesse</label>
                                 <div class="relative">
                                     <select id="plano" name="plano" class="bmip-input appearance-none">
@@ -518,12 +460,12 @@
                                         <option value="Professional">Professional</option>
                                         <option value="Enterprise">Enterprise</option>
                                     </select>
-                                    <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
+                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold-400 text-xs">▼</div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-2">
                             <label class="bmip-label" for="empresa">Instituição / Empresa</label>
                             <input id="empresa" name="empresa" class="bmip-input" autocomplete="organization" placeholder="Nome da instituição (opcional)">
                         </div>
@@ -533,24 +475,24 @@
                             <input id="site" name="site" tabindex="-1" autocomplete="off">
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-2">
                             <label class="bmip-label" for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="5" class="bmip-input resize-none" required placeholder="Objetivo, contexto, urgência e qualquer detalhe relevante."></textarea>
+                            <textarea id="mensagem" name="mensagem" rows="5" class="bmip-input" required placeholder="Objetivo, contexto, urgência e qualquer detalhe relevante."></textarea>
                         </div>
 
-                        <div class="pt-8 flex flex-col gap-4 border-t border-white/5">
-                            <button id="bmipSubmit" type="submit" class="w-full py-5 bg-gold-400 text-black text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-colors duration-500 disabled:opacity-60 disabled:cursor-not-allowed">
+                        <div class="pt-6 flex flex-col gap-4">
+                            <button id="bmipSubmit" type="submit" class="w-full py-4 bg-gold-400 text-black text-xs font-bold uppercase tracking-[0.25em] hover:bg-white transition disabled:opacity-60 disabled:cursor-not-allowed">
                                 Enviar
                             </button>
 
-                            <a id="bmipFallbackMail" href="mailto:ceo@boutiquemethodip.com" class="w-full text-center py-5 border border-white/10 text-neutral-400 text-[10px] font-bold uppercase tracking-[0.3em] hover:border-gold-400 hover:text-gold-400 transition-colors duration-500">
+                            <a id="bmipFallbackMail" href="mailto:ceo@boutiquemethodip.com" class="w-full text-center py-4 border border-white/10 text-white text-xs font-bold uppercase tracking-[0.25em] hover:border-gold-400 hover:text-gold-400 transition">
                                 Enviar por e-mail
                             </a>
                         </div>
 
                         <p id="bmipStatus" class="text-sm text-center text-gold-400 min-h-[20px]" role="status" aria-live="polite"></p>
 
-                        <p class="text-[9px] text-neutral-600 text-center uppercase tracking-[0.3em] mt-4">
+                        <p class="text-[9px] text-neutral-600 text-center uppercase tracking-widest">
                             AO ENVIAR, VOCÊ CONCORDA COM CONTATO PARA DIAGNÓSTICO E TRIAGEM.
                         </p>
                     </form>
@@ -561,49 +503,45 @@
     </main>
 
     <div id="modal-overlay"
-         class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[100] hidden items-start sm:items-center justify-center p-4 sm:p-8 overflow-y-auto overscroll-contain modal-enter"
+         class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-start sm:items-center justify-center p-4 sm:p-8 overflow-y-auto overscroll-contain modal-enter"
          aria-hidden="true">
 
         <div role="dialog"
              aria-modal="true"
-             class="bg-obsidian border border-white/10 max-w-4xl w-full p-1 relative shadow-2xl flex flex-col
+             class="bg-neutral-900/95 border border-gold-400/20 max-w-3xl w-full p-8 md:p-12 relative shadow-2xl flex flex-col
                     max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] overflow-hidden">
-            
-            <div class="bg-card backdrop-blur-3xl p-10 md:p-16 border border-white/5 h-full flex flex-col overflow-hidden">
+
+            <button onclick="closePlanModal()"
+                    class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light"
+                    aria-label="Fechar Modal">✕</button>
+
+            <div id="modal-content" class="space-y-8 flex-1 min-h-0 overflow-y-auto pr-3 -mr-3"></div>
+
+            <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-end border-t border-white/5 mt-8 shrink-0">
                 <button onclick="closePlanModal()"
-                        class="absolute top-8 right-8 text-neutral-500 hover:text-white transition-colors"
-                        aria-label="Fechar Modal">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+                        class="px-8 py-3 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
+                    Voltar
                 </button>
-
-                <div id="modal-content" class="space-y-8 flex-1 min-h-0 overflow-y-auto pr-4 scrollbar-hide"></div>
-
-                <div class="pt-10 flex flex-col sm:flex-row gap-6 justify-end border-t border-white/5 mt-10 shrink-0">
-                    <button onclick="closePlanModal()"
-                            class="px-10 py-4 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-[0.3em] hover:border-gold-400 hover:text-gold-400 transition-colors duration-500 font-bold">
-                        Voltar
-                    </button>
-                    <a href="#form-tratativas" onclick="closePlanModal()"
-                       class="px-10 py-4 bg-gold-400 text-black text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-white transition-colors duration-500 text-center">
-                        Iniciar Tratativas
-                    </a>
-                </div>
+                <a href="#form-tratativas" onclick="closePlanModal()"
+                   class="px-8 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
+                    Iniciar Tratativas
+                </a>
             </div>
         </div>
     </div>
 
-    <footer class="bg-obsidian border-t border-white/5 py-24 px-8 text-center mt-auto">
-        <div class="max-w-4xl mx-auto flex flex-col items-center gap-10">
-            <div class="h-12 w-12 bg-white/5 rounded-sm flex items-center justify-center font-serif text-white">BM</div>
-            <div class="space-y-4">
-                <p class="text-[10px] tracking-[0.4em] text-neutral-400 uppercase font-bold">Boutique Method IP Holding Ltda © 2026</p>
-                <p class="text-[9px] tracking-[0.3em] text-neutral-600 uppercase">Direitos Reservados • High-Level Management Assets</p>
+    <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
+        <div class="flex flex-col items-center gap-6">
+            <img src="bmip-logo-dark.png" alt="Boutique Method IP Holding" class="h-8 w-auto opacity-60 hover:opacity-100 transition duration-500 select-none">
+            <div class="space-y-2">
+                <p>Boutique Method IP Holding Ltda © 2026</p>
+                <p class="text-neutral-600">ceo@boutiquemethodip.com • (55) 98466-6591</p>
             </div>
         </div>
     </footer>
 
     <button id="globalAudioBtn" class="audio-fab paused" onclick="toggleAudioDescription()" aria-label="Ouvir conteúdo">
-        <div class="audio-wave mr-2">
+        <div class="audio-wave">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -620,7 +558,6 @@
         function toggleMobileMenu(force) {
             const menu = document.getElementById('mobileMenu');
             const btn = document.getElementById('mobileMenuBtn');
-            if (!menu || !btn) return;
 
             mobileMenuOpen = (typeof force === 'boolean') ? force : !mobileMenuOpen;
 
@@ -646,17 +583,17 @@
             essential: {
                 title: "Essential",
                 subtitle: "2 sprints • padronização rápida",
-                text: "Camada de base para instalar padrão com velocidade e baixa fricção.<br><br><span class='text-white font-medium'>Inclui:</span><br><br>• Carta Magna (governança de linguagem) + Tom de Voz por canal<br>• Templates essenciais (WhatsApp, e-mail, notas, negativas, alinhamentos)<br>• Fluxo básico de atendimento + escalonamento (quando / como subir nível)<br>• Checklist semanal + métricas mínimas (controle e consistência)<br><br><span class='text-white font-medium'>Saída:</span> padrão funcional implantado e operável, com disciplina mínima de sustentação."
+                text: "Camada de base para instalar padrão com velocidade e baixa fricção.<br><br><strong>Inclui:</strong><br>• Carta Magna (governança de linguagem) + Tom de Voz por canal<br>• Templates essenciais (WhatsApp, e-mail, notas, negativas, alinhamentos)<br>• Fluxo básico de atendimento + escalonamento (quando / como subir nível)<br>• Checklist semanal + métricas mínimas (controle e consistência)<br><br><strong>Saída:</strong> padrão funcional implantado e operável, com disciplina mínima de sustentação."
             },
             professional: {
                 title: "Professional",
                 subtitle: "4 sprints • consistência + performance",
-                text: "Camada de performance: padroniza, treina, organiza decisão e reduz risco operacional.<br><br><span class='text-white font-medium'>Inclui tudo do Essential</span> +<br><br>• Scripts ampliados (objeções, limites, contenção e alinhamentos)<br>• Playbook de crise (tático): respostas, aprovações, tempos e postura<br>• RACI (papéis e responsabilidades) + SLA interno + ritual mensal de governança<br><br><span class='text-white font-medium'>Saída:</span> padrão com execução previsível e rotina mínima de auditoria interna."
+                text: "Camada de performance: padroniza, treina, organiza decisão e reduz risco operacional.<br><br><strong>Inclui tudo do Essential</strong> +<br>• Scripts ampliados (objeções, limites, contenção e alinhamentos)<br>• Playbook de crise (tático): respostas, aprovações, tempos e postura<br>• RACI (papéis e responsabilidades) + SLA interno + ritual mensal de governança<br><br><strong>Saída:</strong> padrão com execução previsível e rotina mínima de auditoria interna."
             },
             enterprise: {
                 title: "Enterprise",
                 subtitle: "8–12 sprints • multiunidade",
-                text: "Camada de escala: multiunidade, multiplicadores, governança e recertificação real.<br><br><span class='text-white font-medium'>Inclui tudo do Professional</span> +<br><br>• Governança multiunidade + formação de multiplicadores (trilhas formais)<br>• Kit robusto de reputação (protocolos, matriz de risco e decisões)<br>• Auditorias, painel de métricas e recertificação do padrão<br><br><span class='text-white font-medium'>Saída:</span> expansão com controle, consistência e identidade preservada."
+                text: "Camada de escala: multiunidade, multiplicadores, governança e recertificação real.<br><br><strong>Inclui tudo do Professional</strong> +<br>• Governança multiunidade + formação de multiplicadores (trilhas formais)<br>• Kit robusto de reputação (protocolos, matriz de risco e decisões)<br>• Auditorias, painel de métricas e recertificação do padrão<br><br><strong>Saída:</strong> expansão com controle, consistência e identidade preservada."
             }
         };
 
@@ -666,13 +603,11 @@
             const container = document.getElementById('modal-content');
 
             container.innerHTML = `
-                <div class="mb-10">
-                    <span class="text-gold-400 text-[10px] uppercase tracking-[0.4em] font-bold block mb-4">Escopo do Licenciamento</span>
-                    <h3 class="font-serif text-5xl md:text-6xl text-white leading-tight italic mb-4">${data.title}</h3>
-                    <p class="inline-flex px-3 py-1 border border-white/10 text-neutral-400 text-[9px] uppercase tracking-[0.3em] font-bold">${data.subtitle}</p>
+                <div class="space-y-2 mb-8 border-l-2 border-gold-400 pl-6">
+                    <h3 class="font-serif text-3xl md:text-4xl text-white leading-tight italic">${data.title}</h3>
+                    <p class="text-gold-400 text-[10px] uppercase tracking-[0.25em] font-bold">${data.subtitle}</p>
                 </div>
-                <div class="h-px w-16 bg-gold-400/50 mb-10"></div>
-                <p class="text-neutral-400 font-light text-xl leading-loose text-justify">${data.text}</p>
+                <p class="text-neutral-300 font-light text-lg leading-loose text-justify">${data.text}</p>
             `;
 
             overlay.classList.remove('hidden');
@@ -772,7 +707,6 @@
         function toggleAudioDescription() {
             const btn = document.getElementById('globalAudioBtn');
             const label = document.getElementById('audioLabel');
-            if (!btn || !label) return;
 
             if (isPlaying) {
                 synth.cancel();
@@ -780,8 +714,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text =
-                    "Licenciamento Boutique Method. Licenciamento é parceria anual com implantação por sprints. Não é compra de material, não é projeto pontual, não é curso. É a implantação do Método Boutique como sistema oficial da operação. Direcionamento rápido: licenciamento para implantação oficial, serviços para demanda pontual, acervo para kits prontos. Planos: Essential, Professional e Enterprise. Em seguida, como funciona: sistema, implantação e governança. Formulário: iniciar tratativas.";
+                const text = "Modelo de Licenciamento: Licencie o Método. Boutique Method é um sistema replicável de governança. Como funciona: Sistema, Implantação e Governança. Planos: Essential, Professional e Enterprise. Iniciar Tratativas: Preencha o formulário.";
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
