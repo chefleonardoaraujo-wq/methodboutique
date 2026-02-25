@@ -115,26 +115,6 @@
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* CTA discreto dentro do card */
-        .step-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 18px;
-            font-size: 10px;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: rgba(212,175,55,0.9);
-            transition: 0.35s;
-        }
-        .step-card:hover .step-cta { color: #fff; }
-        .step-card:hover .step-cta .step-cta-line { width: 34px; background: rgba(212,175,55,0.85); }
-        .step-cta-line { width: 18px; height: 1px; background: rgba(255,255,255,0.15); transition: 0.35s; }
-
-        /* Modal */
-        .modal-enter { animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.985); } to { opacity: 1; transform: scale(1); } }
-
         .audio-fab {
             position: fixed; bottom: 40px; right: 40px; z-index: 100;
             background: rgba(10, 10, 10, 0.6);
@@ -184,7 +164,7 @@
             <!-- Desktop NAV -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex gap-8 text-[11px] tracking-[0.25em] uppercase font-light text-neutral-400">
-                    <a href="index.html" class="hover:text-gold-400 transition duration-300 relative group">Início<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
+                    <!-- ✅ REMOVIDO: Início -->
                     <a href="origem.html" class="hover:text-gold-400 transition duration-300 relative group">Origem<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="manifesto.html" class="hover:text-gold-400 transition duration-300 relative group">Manifesto<span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span></a>
 
@@ -237,7 +217,7 @@
             </div>
 
             <div class="pt-6 space-y-2 text-[11px] tracking-[0.25em] uppercase font-light">
-                <a href="index.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Início</a>
+                <!-- ✅ REMOVIDO: Início -->
                 <a href="origem.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Origem</a>
                 <a href="manifesto.html" onclick="toggleMobileMenu(false)" class="block py-4 border-b border-white/10 text-neutral-300 hover:text-gold-400 transition">Manifesto</a>
 
@@ -274,9 +254,6 @@
             <p class="text-neutral-400 font-light max-w-2xl mx-auto text-lg leading-relaxed">
                 Licenciamento por sprints: entregáveis + treinamento + aplicação + revisão. Um sistema replicável — não consultoria por hora.
             </p>
-            <p class="text-neutral-600 text-xs mt-6 tracking-widest uppercase">
-                Clique em uma etapa para ver detalhes.
-            </p>
         </header>
 
         <section class="max-w-6xl mx-auto roadmap-container pb-20">
@@ -284,7 +261,6 @@
 
             <div class="space-y-24">
 
-                <!-- I -->
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">01</span>
@@ -292,21 +268,13 @@
 
                     <div class="step-number-badge" aria-hidden="true">I</div>
 
-                    <button type="button"
-                            class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group step-card"
-                            data-step="I"
-                            aria-haspopup="dialog"
-                            aria-label="Abrir detalhes da etapa I: Protocolo de Iniciação">
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Protocolo de Iniciação</h3>
                         <p class="text-neutral-400 text-sm font-light relative z-10">NDA + briefing.</p>
-                        <span class="step-cta relative z-10">
-                            <span class="step-cta-line"></span> Ver detalhes +
-                        </span>
-                    </button>
+                    </div>
                 </div>
 
-                <!-- II -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">02</span>
@@ -314,21 +282,13 @@
 
                     <div class="step-number-badge" aria-hidden="true">II</div>
 
-                    <button type="button"
-                            class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group step-card"
-                            data-step="II"
-                            aria-haspopup="dialog"
-                            aria-label="Abrir detalhes da etapa II: Diagnóstico e Escopo">
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Diagnóstico e Escopo</h3>
                         <p class="text-neutral-400 text-sm font-light relative z-10">Mapeamento e prioridades.</p>
-                        <span class="step-cta relative z-10">
-                            <span class="step-cta-line"></span> Ver detalhes +
-                        </span>
-                    </button>
+                    </div>
                 </div>
 
-                <!-- III -->
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">03</span>
@@ -336,21 +296,13 @@
 
                     <div class="step-number-badge" aria-hidden="true">III</div>
 
-                    <button type="button"
-                            class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group step-card"
-                            data-step="III"
-                            aria-haspopup="dialog"
-                            aria-label="Abrir detalhes da etapa III: Contrato + Setup">
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Contrato + Setup</h3>
                         <p class="text-neutral-400 text-sm font-light relative z-10">Governança de marca, calendário e plano.</p>
-                        <span class="step-cta relative z-10">
-                            <span class="step-cta-line"></span> Ver detalhes +
-                        </span>
-                    </button>
+                    </div>
                 </div>
 
-                <!-- IV -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">04</span>
@@ -358,21 +310,13 @@
 
                     <div class="step-number-badge" aria-hidden="true">IV</div>
 
-                    <button type="button"
-                            class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group step-card"
-                            data-step="IV"
-                            aria-haspopup="dialog"
-                            aria-label="Abrir detalhes da etapa IV: Implantação por Sprints">
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Implantação por Sprints</h3>
                         <p class="text-neutral-400 text-sm font-light relative z-10">Entrega aplicada + treino + ajustes.</p>
-                        <span class="step-cta relative z-10">
-                            <span class="step-cta-line"></span> Ver detalhes +
-                        </span>
-                    </button>
+                    </div>
                 </div>
 
-                <!-- V -->
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">05</span>
@@ -380,21 +324,13 @@
 
                     <div class="step-number-badge" aria-hidden="true">V</div>
 
-                    <button type="button"
-                            class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group step-card"
-                            data-step="V"
-                            aria-haspopup="dialog"
-                            aria-label="Abrir detalhes da etapa V: Homologação e Kit">
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Homologação e Kit</h3>
                         <p class="text-neutral-400 text-sm font-light relative z-10">Rotinas, checklists e métricas de sustentação.</p>
-                        <span class="step-cta relative z-10">
-                            <span class="step-cta-line"></span> Ver detalhes +
-                        </span>
-                    </button>
+                    </div>
                 </div>
 
-                <!-- VI -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-left hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">06</span>
@@ -402,21 +338,13 @@
 
                     <div class="step-number-badge" aria-hidden="true">VI</div>
 
-                    <button type="button"
-                            class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group step-card"
-                            data-step="VI"
-                            aria-haspopup="dialog"
-                            aria-label="Abrir detalhes da etapa VI: Operação Assistida">
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 md:text-right relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 -translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Operação Assistida</h3>
                         <p class="text-neutral-400 text-sm font-light relative z-10">Suporte e evolução (conforme plano).</p>
-                        <span class="step-cta relative z-10">
-                            <span class="step-cta-line"></span> Ver detalhes +
-                        </span>
-                    </button>
+                    </div>
                 </div>
 
-                <!-- VII -->
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 step-group">
                     <div class="md:w-5/12 text-right hidden md:block opacity-10 group-hover:opacity-20 transition duration-500">
                         <span class="text-white font-serif text-8xl italic select-none">07</span>
@@ -424,18 +352,11 @@
 
                     <div class="step-number-badge" aria-hidden="true">VII</div>
 
-                    <button type="button"
-                            class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group step-card"
-                            data-step="VII"
-                            aria-haspopup="dialog"
-                            aria-label="Abrir detalhes da etapa VII: Renovação">
+                    <div class="md:w-5/12 w-full glass-panel p-10 md:p-12 text-left relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gold-400/5 translate-x-full group-hover:translate-x-0 transition duration-500"></div>
                         <h3 class="font-serif text-2xl md:text-3xl text-white mb-3 italic relative z-10 group-hover:text-gold-400 transition">Renovação</h3>
                         <p class="text-neutral-400 text-sm font-light relative z-10">Manutenção anual do padrão e recertificação.</p>
-                        <span class="step-cta relative z-10">
-                            <span class="step-cta-line"></span> Ver detalhes +
-                        </span>
-                    </button>
+                    </div>
                 </div>
 
             </div>
@@ -451,45 +372,6 @@
             </a>
         </section>
     </main>
-
-    <!-- MODAL: ETAPAS I–VII -->
-    <div id="step-modal-overlay"
-         class="fixed inset-0 bg-black/95 backdrop-blur-md z-[130] hidden items-start sm:items-center justify-center p-4 sm:p-8 overflow-y-auto overscroll-contain modal-enter"
-         aria-hidden="true">
-
-        <div id="step-modal"
-             role="dialog"
-             aria-modal="true"
-             aria-labelledby="step-modal-title"
-             class="bg-neutral-900/95 border border-gold-400/20 max-w-3xl w-full p-8 md:p-12 relative shadow-2xl flex flex-col
-                    max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] overflow-hidden">
-
-            <button id="step-modal-close"
-                    type="button"
-                    class="absolute top-6 right-6 text-neutral-500 hover:text-gold-400 transition-colors text-3xl font-light"
-                    aria-label="Fechar Modal">✕</button>
-
-            <div class="space-y-2 mb-8 border-l-2 border-gold-400 pl-6">
-                <div class="text-gold-400 text-[10px] uppercase tracking-[0.35em] font-bold" id="step-modal-kicker"></div>
-                <h3 id="step-modal-title" class="font-serif text-3xl md:text-4xl text-white leading-tight italic"></h3>
-                <p id="step-modal-subtitle" class="text-neutral-400 text-sm font-light"></p>
-            </div>
-
-            <div id="step-modal-body" class="space-y-6 flex-1 min-h-0 overflow-y-auto pr-3 -mr-3"></div>
-
-            <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-end border-t border-white/5 mt-8 shrink-0">
-                <button id="step-modal-back"
-                        type="button"
-                        class="px-8 py-3 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-widest hover:border-gold-400 hover:text-gold-400 transition">
-                    Voltar
-                </button>
-                <a href="iniciar-tratativas.html"
-                   class="px-8 py-3 bg-gold-400 text-black text-[10px] uppercase tracking-widest font-bold hover:bg-white transition text-center">
-                    Iniciar Tratativas
-                </a>
-            </div>
-        </div>
-    </div>
 
     <footer class="bg-black py-12 border-t border-white/5 text-[9px] text-neutral-700 text-center uppercase tracking-[0.2em] mt-auto">
         <div class="flex flex-col items-center gap-6">
@@ -539,248 +421,6 @@
             }
         });
 
-        // --- MODAL: ETAPAS ---
-        const stepModalData = {
-            I: {
-                kicker: "Etapa I",
-                title: "Protocolo de Iniciação",
-                subtitle: "NDA + briefing.",
-                what: "Abertura formal do protocolo BMIP. Protege, enquadra e define o mínimo necessário para diagnóstico sem ruído.",
-                entrada: [
-                    "NDA (quando aplicável) e responsáveis por aprovação",
-                    "Briefing inicial (objetivo, contexto, canais e público)",
-                    "Amostras do padrão atual (mensagens/e-mails/fluxos)"
-                ],
-                saida: [
-                    "Triagem de elegibilidade e enquadramento (licenciamento x projeto x acervo)",
-                    "Pré-escopo do diagnóstico e próximos passos",
-                    "Agenda de diagnóstico (quando aplicável)"
-                ],
-                criterio: "Escopo do diagnóstico validado e autorizado."
-            },
-            II: {
-                kicker: "Etapa II",
-                title: "Diagnóstico e Escopo",
-                subtitle: "Mapeamento e prioridades.",
-                what: "Mapeamento do estado atual e definição do que entra primeiro. Aqui nascem prioridades, riscos e o backlog por sprints.",
-                entrada: [
-                    "Mapa de canais (WhatsApp, e-mail, social, presencial)",
-                    "Regras internas e pontos de risco (jurídico/reputação)",
-                    "Volume, gargalos e fricções recorrentes"
-                ],
-                saida: [
-                    "Diagnóstico com prioridades e ordem de implantação",
-                    "Backlog do método (o que vira template, SOP, script, regra)",
-                    "Proposta de sprints (fases e critérios de validação)"
-                ],
-                criterio: "Backlog do método aprovado com ordem de execução."
-            },
-            III: {
-                kicker: "Etapa III",
-                title: "Contrato + Setup",
-                subtitle: "Governança de marca, calendário e plano.",
-                what: "Formalização e preparação do ambiente de execução. Define papéis, rituais e a disciplina mínima para implantar sem travar.",
-                entrada: [
-                    "Dados para contrato/licenciamento e pontos de contato",
-                    "Ferramentas e acessos (Drive/Notion/CRM, quando aplicável)",
-                    "Responsáveis por validação e publicação"
-                ],
-                saida: [
-                    "Governança de marca e uso (regras, limites e aprovações)",
-                    "Calendário de sprints e checkpoints",
-                    "Estrutura mínima de rotinas (semanal/mensal) para sustentação"
-                ],
-                criterio: "Ambiente pronto e governança definida para implantar."
-            },
-            IV: {
-                kicker: "Etapa IV",
-                title: "Implantação por Sprints",
-                subtitle: "Entrega aplicada + treino + ajustes.",
-                what: "Execução em ciclos curtos: entregáveis, treinamento, aplicação real e revisão. O padrão vira operação, não slide.",
-                entrada: [
-                    "Participação mínima do time nas revisões e treinos",
-                    "Feedback de casos reais (o que funcionou / travou / gerou risco)",
-                    "Aprovação rápida de itens críticos"
-                ],
-                saida: [
-                    "Templates, scripts e SOPs implantados em operação real",
-                    "Treinamento orientado ao uso (quando / como / por quê)",
-                    "Ajustes finos com base em aplicação sob pressão"
-                ],
-                criterio: "Padrão operável sem improviso recorrente."
-            },
-            V: {
-                kicker: "Etapa V",
-                title: "Homologação e Kit",
-                subtitle: "Rotinas, checklists e métricas de sustentação.",
-                what: "Fechamento técnico do que foi implantado e empacotamento do sistema. Consolida versões, rotinas e métricas mínimas.",
-                entrada: [
-                    "Validação final do que fica e do que será ampliado depois",
-                    "Revisão de versão e consistência (tom, forma e limites)",
-                    "Alinhamento de donos do processo (quem mantém o padrão)"
-                ],
-                saida: [
-                    "Kit operacional (checklists, rotinas e regras de uso)",
-                    "Métricas mínimas e critérios de qualidade",
-                    "Controle de versões e trilha de atualização"
-                ],
-                criterio: "Kit homologado e pronto para sustentação."
-            },
-            VI: {
-                kicker: "Etapa VI",
-                title: "Operação Assistida",
-                subtitle: "Suporte e evolução (conforme plano).",
-                what: "Sustentação guiada para manter o nível e evoluir sem quebrar a identidade. Corrige, refina e expande com controle.",
-                entrada: [
-                    "Sinais de operação (retrabalho, falhas críticas, dúvidas recorrentes)",
-                    "Feedback do time e do cliente sobre pontos de atrito",
-                    "Casos sensíveis para calibração do padrão"
-                ],
-                saida: [
-                    "Correções e refinamentos (scripts, negativas, escalonamento)",
-                    "Expansão controlada por prioridade (sem inflar o sistema)",
-                    "Rituais de governança aplicados (semanal/mensal)"
-                ],
-                criterio: "Operação estável com governança ativa."
-            },
-            VII: {
-                kicker: "Etapa VII",
-                title: "Renovação",
-                subtitle: "Manutenção anual do padrão e recertificação.",
-                what: "Recertificação e atualização do método para novas fases, equipes, riscos e posicionamento. Mantém padrão vivo e auditável.",
-                entrada: [
-                    "Mudanças internas (processos, equipe, canais, risco)",
-                    "Aprendizados do ciclo (o que consolidar e o que substituir)",
-                    "Novas prioridades e objetivos do próximo período"
-                ],
-                saida: [
-                    "Atualização do kit, versões e regras",
-                    "Recertificação do padrão e revalidação de governança",
-                    "Roadmap do próximo ciclo (sprints futuros)"
-                ],
-                criterio: "Padrão atualizado e revalidado institucionalmente."
-            }
-        };
-
-        const overlay = document.getElementById('step-modal-overlay');
-        const closeBtn = document.getElementById('step-modal-close');
-        const backBtn = document.getElementById('step-modal-back');
-        const kickerEl = document.getElementById('step-modal-kicker');
-        const titleEl = document.getElementById('step-modal-title');
-        const subtitleEl = document.getElementById('step-modal-subtitle');
-        const bodyEl = document.getElementById('step-modal-body');
-        const modalEl = document.getElementById('step-modal');
-
-        let lastFocusedEl = null;
-
-        function renderSection(label, contentHtml) {
-            return `
-                <div class="space-y-2">
-                    <div class="text-[10px] uppercase tracking-[0.35em] text-neutral-500">${label}</div>
-                    ${contentHtml}
-                </div>
-            `;
-        }
-
-        function renderList(items) {
-            const li = items.map(x => `
-                <li class="flex items-start gap-3">
-                    <span class="text-gold-400 mt-1 text-xs">✦</span>
-                    <span class="text-neutral-300 font-light text-sm leading-relaxed">${x}</span>
-                </li>
-            `).join("");
-            return `<ul class="space-y-3">${li}</ul>`;
-        }
-
-        function openStepModal(stepKey) {
-            const data = stepModalData[stepKey];
-            if (!data) return;
-
-            lastFocusedEl = document.activeElement;
-
-            kickerEl.textContent = data.kicker;
-            titleEl.textContent = data.title;
-            subtitleEl.textContent = data.subtitle;
-
-            const html = [
-                renderSection("O que é", `<p class="text-neutral-300 font-light text-base leading-relaxed">${data.what}</p>`),
-                renderSection("Entrada", renderList(data.entrada)),
-                renderSection("Saída", renderList(data.saida)),
-                renderSection("Critério de conclusão", `<p class="text-neutral-400 font-light text-sm leading-relaxed">${data.criterio}</p>`)
-            ].join("");
-
-            bodyEl.innerHTML = html;
-
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            overlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-
-            // foco
-            setTimeout(() => closeBtn.focus(), 0);
-        }
-
-        function closeStepModal() {
-            overlay.classList.add('hidden');
-            overlay.classList.remove('flex');
-            overlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'auto';
-
-            if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
-                setTimeout(() => lastFocusedEl.focus(), 0);
-            }
-        }
-
-        // Clique nos cards
-        document.querySelectorAll('.step-card').forEach(btn => {
-            btn.addEventListener('click', () => openStepModal(btn.dataset.step));
-            btn.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openStepModal(btn.dataset.step);
-                }
-            });
-        });
-
-        // Botões modal
-        closeBtn.addEventListener('click', closeStepModal);
-        backBtn.addEventListener('click', closeStepModal);
-
-        // Clique fora fecha
-        overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) closeStepModal();
-        });
-
-        // ESC fecha + trap de foco simples
-        document.addEventListener('keydown', function(e) {
-            const isOpen = overlay.classList.contains('flex');
-            if (!isOpen) return;
-
-            if (e.key === 'Escape') {
-                closeStepModal();
-                return;
-            }
-
-            if (e.key === 'Tab') {
-                const focusables = modalEl.querySelectorAll(
-                    'button, a[href], textarea, input, select, [tabindex]:not([tabindex="-1"])'
-                );
-                if (!focusables.length) return;
-
-                const first = focusables[0];
-                const last = focusables[focusables.length - 1];
-
-                if (e.shiftKey && document.activeElement === first) {
-                    e.preventDefault();
-                    last.focus();
-                } else if (!e.shiftKey && document.activeElement === last) {
-                    e.preventDefault();
-                    first.focus();
-                }
-            }
-        });
-
-        // Áudio Descrição
         const synth = window.speechSynthesis;
         let isPlaying = false;
 
@@ -794,7 +434,7 @@
                 btn.classList.add('paused');
                 label.innerText = "Ouvir Página";
             } else {
-                const text = "Como Funciona. Licenciamento por sprints: entregáveis, treinamento, aplicação e revisão. Clique em uma etapa para ver detalhes. Etapas: 1. Protocolo de Iniciação. 2. Diagnóstico e Escopo. 3. Contrato e Setup. 4. Implantação por Sprints. 5. Homologação e Kit de Sustentação. 6. Operação Assistida. 7. Renovação e Recertificação.";
+                const text = "Como Funciona. Licenciamento por sprints: entregáveis, treinamento, aplicação e revisão. Etapas: 1. Protocolo de Iniciação. 2. Diagnóstico e Escopo. 3. Contrato e Setup. 4. Implantação por Sprints. 5. Homologação e Kit de Sustentação. 6. Operação Assistida. 7. Renovação e Recertificação.";
                 const utter = new SpeechSynthesisUtterance(text);
                 utter.lang = 'pt-BR';
                 utter.rate = 0.95;
